@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Griego Koiné - Ministerio Vivos para Servir</title>
+    <style>
+        /* Estilos generales */
+        :root {
+            --primary-color: #6f42c1;
+            --primary-dark: #5a32a3;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 100%;
+            margin: 0;
+            padding: 0 15px;
+            background-color: var(--light-bg);
+            min-height: 100vh;
+        }
+        
+        /* Barra de usuario */
+        .user-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 -15px 20px;
+            border-radius: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logout-btn {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            background-color: var(--primary-dark);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        /* Presentación del curso */
+        .course-presentation {
+            background-color: var(--white);
+            padding: 20px 15px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+        
+        .course-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-card {
+            background-color: #f5f0ff;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .info-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+        }
+        
+        .info-card p {
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+        
+        .description {
+            margin: 20px 0;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+        
+        .description p {
+            margin-bottom: 10px;
+        }
+        
+        .note {
+            font-style: italic;
+            background-color: #fff8e1;
+            padding: 12px;
+            border-left: 4px solid #ffc107;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Selector de semanas */
+        .weeks-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .weeks-container h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        select, button {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Media Queries para tablets */
+        @media (min-width: 600px) {
+            body {
+                padding: 0 20px;
+            }
+            
+            .user-header {
+                padding: 15px 20px;
+                margin: 0 -20px 25px;
+                border-radius: 0 0 5px 5px;
+            }
+            
+            .course-presentation {
+                padding: 25px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            
+            select, button {
+                width: auto;
+                min-width: 200px;
+                margin: 10px 5px;
+            }
+        }
+        
+        /* Media Queries para desktop */
+        @media (min-width: 900px) {
+            body {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .user-header {
+                margin: 0 0 30px;
+                border-radius: 5px;
+            }
+        }
+    </style>
+    <script>
+        // Verificar autenticación
+        if(!localStorage.getItem('authenticated')) {
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+<body>
+    <!-- Barra de usuario autenticado -->
+    <div class="user-header">
+        <div>Bienvenido, <strong id="displayName"></strong></div>
+        <a href="logout.html" class="logout-btn">Cerrar sesión</a>
+    </div>
+    
+    <!-- Presentación del curso -->
+    <div class="course-presentation">
+        <h1 class="course-title">Introducción a la Gramática Griega (Koiné)</h1>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Institución</h3>
+                <p>Ministerio "Vivos para Servir"</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Profesor</h3>
+                <p>Rolando Y. Desdín García</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Contacto</h3>
+                <p>📱 +53 58169444</p>
+                <p>📧 vivosparaservir@gmail.com</p>
+                <p>📧 rolandodesdin3@outlook.com</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Detalles del curso</h3>
+                <p>📖 Nivel: Elemental</p>
+                <p>⏳ Duración: 28 semanas (2 semestres)</p>
+                <p>💻 Modalidad: Online (WhatsApp)</p>
+            </div>
+        </div>
+        
+        <div class="description">
+            <p>Este curso introduce al estudiante en los fundamentos del griego koiné bíblico, enfocándose en morfología, sintaxis y vocabulario esencial para la lectura del Nuevo Testamento. El método combina la teoría con ejercicios prácticos y evaluaciones semanales para consolidar el aprendizaje.</p>
+            
+            <p>El curso se desarrolla en la modalidad online, a través de la plataforma Whatsapp. Semanalmente, según especifica la tabla de contenido del sílabo, el profesor facilitará los recursos correspondientes a la etapa en curso.</p>
+        </div>
+        
+        <div class="note">
+            <strong>Nota importante:</strong> Los recursos del curso son propiedad del ministerio "Vivos para Servir", por tanto no son para ser compartidos, ni usados en otros proyectos educativos. Serán entregados al estudiante sin restricciones, pero solo para el consumo del estudiante.
+        </div>
+    </div>
+    
+    <!-- Selector de semanas -->
+    <div class="weeks-container">
+        <h2>Selecciona la semana de clases</h2>
+        <select id="semanas">
+            <option value="">-- Elige una semana --</option>
+            <option value="recursos_semana1.html">Semana 1: Alfabeto Griego</option>
+            <option value="recursos_semana2.html">Semana 2: Sustantivos y Casos Gramaticales</option>
+            <option value="recursos_semana3.html">Semana 3: Artículo Definido y Traducción</option>
+            <!-- Añadir más semanas según avance el curso -->
+        </select>
+        <button onclick="redirigir()">Acceder a recursos</button>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Ministerio "Vivos para Servir" © 2024 - Todos los derechos reservados</p>
+        <p>Curso de Griego Koiné - Versión 1.0</p>
+    </footer>
+     
+    
+    <script>
+        // Mostrar nombre de usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            const userName = localStorage.getItem('userName');
+            if(userName) {
+                document.getElementById('displayName').textContent = userName;
+            }
+        });
+        
+        // Redirigir a semana seleccionada
+        function redirigir() {
+            const semana = document.getElementById('semanas').value;
+            if(semana) {
+                window.location.href = semana;
+            } else {
+                alert("Por favor selecciona una semana");
+            }
+        }
+    </script>
+</body>
+</html>
