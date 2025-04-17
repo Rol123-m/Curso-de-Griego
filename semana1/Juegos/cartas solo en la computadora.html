@@ -157,6 +157,168 @@
             width: 20px;
             height: 20px;
         }
+
+        /* Ajustes para pantallas pequeñas (móviles) */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .levels-container {
+                gap: 10px;
+            }
+
+            .game-level {
+                flex-direction: row; /* Mantener las columnas en fila */
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .column {
+                width: 48%; /* Reducir el ancho de las columnas para que quepan */
+            }
+
+            .word {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            #progress {
+                font-size: 1rem;
+                padding: 8px 20px;
+            }
+
+            .music-controls {
+                bottom: 10px;
+                right: 10px;
+                gap: 5px;
+            }
+
+            .music-btn {
+                width: 30px;
+                height: 30px;
+            }
+
+            .music-btn img {
+                width: 15px;
+                height: 15px;
+            }
+
+            .final-message {
+                padding: 20px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Ajustes para pantallas medianas (tablets) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .logo {
+                width: 200px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .game-level {
+                gap: 40px;
+                padding: 25px;
+            }
+
+            .column {
+                width: 45%;
+            }
+
+            .word {
+                font-size: 1rem;
+                padding: 12px;
+            }
+
+            #progress {
+                font-size: 1.2rem;
+                padding: 10px 25px;
+            }
+
+            .music-controls {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .music-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .music-btn img {
+                width: 18px;
+                height: 18px;
+            }
+
+            .final-message {
+                padding: 30px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Ajustes generales para pantallas grandes (desktop) */
+        @media (min-width: 1025px) {
+            .logo {
+                width: 250px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .game-level {
+                gap: 80px;
+                padding: 30px;
+            }
+
+            .column {
+                width: 300px;
+            }
+
+            .word {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+
+            #progress {
+                font-size: 1.4rem;
+                padding: 10px 30px;
+            }
+
+            .music-controls {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .music-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .music-btn img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .final-message {
+                padding: 40px;
+                font-size: 1.5rem;
+            }
+        }
     </style>
     <script>
         // Verificar autenticación al cargar la página
