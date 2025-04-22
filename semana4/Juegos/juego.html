@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preposiciones del Griego Koiné</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ece9e6, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .game-container {
+      background: #f9f6f2;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #3e3e3e;
+      margin-bottom: 20px;
+    }
+
+    .greek {
+      font-family: 'New Athena Unicode', serif;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      padding: 12px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 1em;
+    }
+
+    .option-btn:hover {
+      background-color: #2980b9;
+    }
+
+    .feedback {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .score {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    button#next {
+      margin-top: 20px;
+      background-color: #2ecc71;
+    }
+
+    button#next:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>¿Qué caso rige esta preposición?</h1>
+    <div class="greek" id="greekWord">ἐν</div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="score" id="score">Puntaje: 0</div>
+    <button id="next" onclick="nextQuestion()" style="display:none;">Siguiente</button>
+  </div>
+
+  <script>
+    const prepositions = [
+      { word: 'ἐν', case: 'Dativo' },
+      { word: 'διά', case: 'Genitivo y Acusativo' },
+      { word: 'εἰς', case: 'Acusativo' },
+      { word: 'ἐκ / ἐξ', case: 'Genitivo' },
+      { word: 'ἀπό', case: 'Genitivo' },
+      { word: 'πρός', case: 'Acusativo' },
+      { word: 'μετά', case: 'Genitivo y Acusativo' },
+      { word: 'κατά', case: 'Genitivo y Acusativo' },
+      { word: 'ὑπέρ', case: 'Genitivo y Acusativo' },
+      { word: 'ὑπό', case: 'Genitivo y Acusativo' },
+      { word: 'ἀντί', case: 'Genitivo' },
+      { word: 'ἐπί', case: 'Genitivo, Dativo y Acusativo' }
+    ];
+
+    const cases = [
+      'Genitivo',
+      'Dativo',
+      'Acusativo',
+      'Genitivo y Acusativo',
+      'Genitivo, Dativo y Acusativo'
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuestion() {
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('next').style.display = 'none';
+      const word = prepositions[current];
+      document.getElementById('greekWord').textContent = word.word;
+
+      let shuffledCases = [...cases];
+      if (!shuffledCases.includes(word.case)) shuffledCases.push(word.case);
+      shuffle(shuffledCases);
+      shuffledCases = shuffledCases.slice(0, 4);
+      if (!shuffledCases.includes(word.case)) shuffledCases[Math.floor(Math.random() * 4)] = word.case;
+
+      const optionsHTML = shuffledCases.map(c =>
+        `<button class="option-btn" onclick="checkAnswer('${c}')">${c}</button>`
+      ).join('');
+      document.getElementById('options').innerHTML = optionsHTML;
+    }
+
+    function checkAnswer(selected) {
+      const correct = prepositions[current].case;
+      const feedback = document.getElementById('feedback');
+
+      if (selected === correct) {
+        score += 10;
+        feedback.textContent = '¡Correcto!';
+        feedback.style.color = 'green';
+      } else {
+        feedback.textContent = `✗ Incorrecto. Respuesta correcta: ${correct}`;
+        feedback.style.color = 'red';
+      }
+
+      document.getElementById('score').textContent = `Puntaje: ${score}`;
+      document.getElementById('next').style.display = 'inline-block';
+
+      const buttons = document.querySelectorAll('.option-btn');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current >= prepositions.length) {
+        document.querySelector('.game-container').innerHTML = `
+          <h1>Juego Terminado</h1>
+          <p class="feedback">Tu puntuación final es <strong>${score}</strong> de ${prepositions.length * 10}.</p>
+          <button onclick="location.reload()">Jugar de nuevo</button>
+        `;
+      } else {
+        loadQuestion();
+      }
+    }
+
+    // Iniciar juego
+    loadQuestion();
+  </script>
+</body>
+</html>
