@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso de Griego Koiné - Ministerio Vivos para Servir</title>
+    
     <style>
         /* Estilos generales */
         :root {
             --primary-color: #48e;
-            --primary-dark: #48e;
+            --primary-dark: #293dec;
             --text-color: #333;
             --light-bg: #f9f9f9;
             --white: #ffffff;
@@ -55,6 +56,9 @@
             font-size: 14px;
             white-space: nowrap;
         }
+        .logout-btn:hover {
+            background-color: #4f116b;
+        }
         
         /* Presentación del curso */
         .course-presentation {
@@ -82,7 +86,7 @@
         }
         
         .info-card {
-            background-color: #e6f0ff;
+            background-color: #e6f0ff33;
             padding: 12px;
             border-radius: 5px;
             border-left: 4px solid var(--primary-color);
@@ -96,6 +100,9 @@
         .info-card p {
             margin: 5px 0;
             font-size: 0.95rem;
+        }
+        .info-card:hover {
+            background-color: #4d5de722;
         }
         
         .description {
@@ -265,6 +272,7 @@
             <option value="recursos_semana1.html">Semana 1: Alfabeto Griego</option>
             <option value="recursos_semana2.html">Semana 2: Sustantivos y Casos Gramaticales</option>
             <option value="recursos_semana3.html">Semana 3: Artículo Definido y Traducción</option>
+            <option value="recursos_semana4.html" class="restricted">Semana 4: Preposiciones y Eimi</option>
             <!-- Añadir más semanas según avance el curso -->
         </select>
         <button onclick="redirigir()">Acceder a recursos</button>
@@ -275,7 +283,8 @@
         <p>Ministerio "Vivos para Servir" © 2024 - Todos los derechos reservados</p>
         <p>Curso de Griego Koiné - Versión 1.0</p>
     </footer>
-     
+    <script src="roles.js"></script>
+    <script src="access_control.js"></script>
     
     <script>
         // Mostrar nombre de usuario
@@ -295,6 +304,20 @@
                 alert("Por favor selecciona una semana");
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const role = localStorage.getItem('userRole');
+    const restrictedContent = document.querySelectorAll('.restricted');
+
+    if (role !== "admin") {
+        restrictedContent.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = "contenido_privado.html";
+            });
+        });
+    }
+});
     </script>
 </body>
 </html>
