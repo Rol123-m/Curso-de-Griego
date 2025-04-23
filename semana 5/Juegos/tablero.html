@@ -329,94 +329,157 @@
 
     <script>
         // Preguntas sobre adjetivos y preposiciones en griego koiné
-        const questions = [
-            {
-                question: "¿Cómo se declina 'ἀγαθός' en nominativo femenino singular?",
-                options: ["ἀγαθή", "ἀγαθός", "ἀγαθόν", "ἀγαθοῦ"],
-                answer: 0
-            },
-            {
-                question: "¿Cuál es la forma correcta del adjetivo 'μέγας' en genitivo masculino singular?",
-                options: ["μεγάλου", "μέγα", "μεγάλη", "μέγας"],
-                answer: 0
-            },
-            {
-                question: "En la frase 'ὁ λόγος ὁ ἀγαθός', ¿qué función tiene 'ἀγαθός'?",
-                options: [
-                    "Atributivo (primera posición)",
-                    "Predicativo",
-                    "Atributivo (segunda posición)",
-                    "Sustantivado"
-                ],
-                answer: 2
-            },
-            {
-                question: "¿Cómo se forma el comparativo de 'κακός'?",
-                options: ["κακώτερος", "κακότερος", "κάκιστος", "κακίων"],
-                answer: 3
-            },
-            {
-                question: "¿Qué forma es correcta para el nominativo plural neutro de 'πᾶς'?",
-                options: ["πάντες", "πάντα", "πάντων", "πᾶσαι"],
-                answer: 1
-            },
-            {
-                question: "¿Qué caso usa normalmente la preposición 'ἀπό'?",
-                options: ["Genitivo", "Dativo", "Acusativo", "Nominativo"],
-                answer: 0
-            },
-            {
-                question: "¿Qué significa 'διὰ' con genitivo?",
-                options: [
-                    "A través de",
-                    "A causa de",
-                    "Hacia",
-                    "Con"
-                ],
-                answer: 1
-            },
-            {
-                question: "¿Qué preposición griega significa 'sobre' y rige dativo?",
-                options: ["ὑπέρ", "ἐπί", "περί", "μετά"],
-                answer: 1
-            },
-            {
-                question: "¿Qué significa 'πρός' con acusativo?",
-                options: ["Desde", "Con", "Hacia", "En"],
-                answer: 2
-            },
-            {
-                question: "¿Qué preposición puede significar 'en' o 'entre' con dativo?",
-                options: ["ἐν", "σύν", "παρά", "ἀνά"],
-                answer: 0
-            },
-            {
-                question: "En 'ἐν τῇ καλῇ οἰκίᾳ', ¿qué función tiene 'καλῇ'?",
-                options: [
-                    "Atributiva",
-                    "Predicativa",
-                    "Sustantivada",
-                    "Adverbial"
-                ],
-                answer: 0
-            },
-            {
-                question: "¿Cómo se traduce 'οἱ δίκαιοι'?",
-                options: [
-                    "Los justos",
-                    "La justicia",
-                    "Justamente",
-                    "El justo"
-                ],
-                answer: 0
-            },
-            {
-                question: "¿Qué caso usarías con 'χωρίς' para decir 'sin fe'?",
-                options: ["Genitivo", "Dativo", "Acusativo", "Nominativo"],
-                answer: 0
-            }
-        ];
-
+           const questions = [
+    // Adjetivos - Declinación
+    {
+        question: "¿Cómo se declina 'ἀγαθός' en nominativo femenino singular?",
+        options: ["ἀγαθή", "ἀγαθός", "ἀγαθόν", "ἀγαθοῦ"],
+        answer: 0
+    },
+    {
+        question: "¿Cuál es la forma correcta del adjetivo 'μέγας' en genitivo masculino singular?",
+        options: ["μεγάλου", "μέγα", "μεγάλη", "μέγας"],
+        answer: 0
+    },
+    {
+        question: "¿Qué forma es correcta para el nominativo plural neutro de 'πᾶς'?",
+        options: ["πάντες", "πάντα", "πάντων", "πᾶσαι"],
+        answer: 1
+    },
+    {
+        question: "¿Cuál es el acusativo masculino singular de 'ἅγιος'?",
+        options: ["ἅγιον", "ἁγίου", "ἅγιο", "ἅγιον"],
+        answer: 0
+    },
+    {
+        question: "¿Cómo se forma el dativo plural femenino de 'δίκαιος'?",
+        options: ["δικαίαις", "δικαίοις", "δικαίους", "δικαίων"],
+        answer: 0
+    },
+    {
+        question: "¿Cuál es el genitivo singular neutro de 'τοιοῦτος'?",
+        options: ["τοιούτου", "τοιαύτης", "τοιούτῳ", "τοιοῦτον"],
+        answer: 0
+    },
+    
+    // Adjetivos - Uso y función
+    {
+        question: "En la frase 'ὁ λόγος ὁ ἀγαθός', ¿qué función tiene 'ἀγαθός'?",
+        options: [
+            "Atributivo (primera posición)",
+            "Predicativo",
+            "Atributivo (segunda posición)",
+            "Sustantivado"
+        ],
+        answer: 2
+    },
+    {
+        question: "En 'ἐν τῇ καλῇ οἰκίᾳ', ¿qué función tiene 'καλῇ'?",
+        options: [
+            "Atributiva",
+            "Predicativa",
+            "Sustantivada",
+            "Adverbial"
+        ],
+        answer: 0
+    },
+    {
+        question: "¿Cómo se traduce 'οἱ δίκαιοι'?",
+        options: [
+            "Los justos",
+            "La justicia",
+            "Justamente",
+            "El justo"
+        ],
+        answer: 0
+    },
+    {
+        question: "En la frase 'ὁ ἄνθρωπος ἀγαθός ἐστιν', ¿qué función tiene 'ἀγαθός'?",
+        options: [
+            "Atributiva",
+            "Predicativa",
+            "Sustantivada",
+            "Adverbial"
+        ],
+        answer: 1
+    },
+    {
+        question: "¿Qué significa 'τὰ καλά' como expresión sustantivada?",
+        options: [
+            "Las cosas buenas",
+            "Los buenos",
+            "Buenamente",
+            "La bondad"
+        ],
+        answer: 0
+    },
+    
+    // Adjetivos - Concordancia
+    {
+        question: "¿Cómo concordaría 'πιστός' con 'ἀδελφός' en dativo singular?",
+        options: ["πιστῷ ἀδελφῷ", "πιστὸν ἀδελφόν", "πιστοῦ ἀδελφοῦ", "πιστὴ ἀδελφή"],
+        answer: 0
+    },
+    {
+        question: "¿Cuál es la forma correcta para concordar 'ἅγιος' con 'πνεύματα' (neutro plural)?",
+        options: ["ἅγια πνεύματα", "ἁγίους πνεύματα", "ἁγίων πνευμάτων", "ἁγίοις πνεύμασι"],
+        answer: 0
+    },
+    
+    // Adjetivos irregulares y especiales
+    {
+        question: "¿Cuál es la forma femenina singular de 'πολύς'?",
+        options: ["πολλή", "πολύ", "πολεῖ", "πολλοί"],
+        answer: 0
+    },
+    {
+        question: "¿Cómo se declina 'μέγας' en acusativo femenino singular?",
+        options: ["μεγάλην", "μέγαν", "μεγάλη", "μεγάλης"],
+        answer: 0
+    },
+    {
+        question: "¿Qué forma corresponde al nominativo masculino plural de 'οὗτος'?",
+        options: ["οὗτοι", "ταῦτα", "αὕτη", "τούτων"],
+        answer: 0
+    },
+    
+    // Preposiciones (solo las esenciales)
+    {
+        question: "¿Qué caso usa normalmente la preposición 'ἀπό'?",
+        options: ["Genitivo", "Dativo", "Acusativo", "Nominativo"],
+        answer: 0
+    },
+    {
+        question: "¿Qué significa 'διὰ' con genitivo?",
+        options: [
+            "A través de",
+            "A causa de",
+            "Hacia",
+            "Con"
+        ],
+        answer: 1
+    },
+    {
+        question: "¿Qué preposición griega significa 'sobre' y rige dativo?",
+        options: ["ὑπέρ", "ἐπί", "περί", "μετά"],
+        answer: 1
+    },
+    {
+        question: "¿Qué significa 'πρός' con acusativo?",
+        options: ["Desde", "Con", "Hacia", "En"],
+        answer: 2
+    },
+    {
+        question: "¿Qué preposición puede significar 'en' o 'entre' con dativo?",
+        options: ["ἐν", "σύν", "παρά", "ἀνά"],
+        answer: 0
+    },
+    {
+        question: "¿Qué caso usarías con 'χωρίς' para decir 'sin fe'?",
+        options: ["Genitivo", "Dativo", "Acusativo", "Nominativo"],
+        answer: 0
+    }
+];
         // Estado del juego
         let currentPlayer = 1;
         let playerPositions = { 1: 0, 2: 0 };
