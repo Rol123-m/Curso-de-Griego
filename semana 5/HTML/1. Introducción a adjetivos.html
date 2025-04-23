@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendiendo Griego Koiné: Adjetivos en Español</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .pronunciation {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .note {
+      background-color: #fffde7;
+      padding: 15px;
+      border-left: 5px solid #ffc107;
+      margin: 20px 0;
+    }
+  </style>
+  <script>
+    // Verificar autenticación al cargar la página
+    if(!localStorage.getItem('authenticated')) {
+        window.location.href = "../index.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Aprendiendo Griego Koiné: Adjetivos en Español</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>Introducción a los Adjetivos</h2>
+      <div class="pronunciation">
+        <p>Un adjetivo es una palabra que modifica a un sustantivo o pronombre. El adjetivo dice algo con respecto al sustantivo, ya sea atributiva o predicativamente.</p>
+        
+        <h3>Características principales:</h3>
+        <ul>
+          <li>Modifican sustantivos o pronombres</li>
+          <li>Concuerdan en género y número con el sustantivo que modifican</li>
+          <li>Pueden aparecer antes o después del sustantivo</li>
+          <li>Cumplen diferentes funciones gramaticales</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Funciones de los Adjetivos</h2>
+      <div class="rules">
+        <h3>1. Función Atributiva</h3>
+        <p>Un adjetivo atributivo otorga una cualidad (un atributo) a la palabra que modifica. Este es el uso normal del adjetivo.</p>
+        <ul>
+          <li>Ejemplo: "Ella aprendió <strong>griego moderno</strong>."</li>
+          <li>El adjetivo <strong>moderno</strong> modifica al sustantivo <strong>griego</strong>. Está describiéndolo.</li>
+          <li>El término que modifica se llama <strong>término principal</strong>.</li>
+        </ul>
+        
+        <h3>2. Adjetivo Sustantivado</h3>
+        <p>Un adjetivo sustantivado funciona como si fuera un sustantivo.</p>
+        <ul>
+          <li>Ejemplo: "<strong>Los buenos</strong>, <strong>los malos</strong> y <strong>los feos</strong> son bienvenidos aquí."</li>
+          <li>Ejemplo: "Fuera <strong>lo viejo</strong> y dentro <strong>lo nuevo</strong>."</li>
+          <li>En estos casos, el adjetivo no modifica a nada, sino que sustituye al sustantivo, cumpliendo su función.</li>
+        </ul>
+        
+        <h3>3. Función Predicativa</h3>
+        <p>Un adjetivo predicativo afirma algo sobre el sujeto, y el verbo "ser" (o "estar") está expreso o implícito.</p>
+        <ul>
+          <li>Ejemplo: "Los estudiantes <strong>son buenos</strong>."</li>
+          <li>Ejemplo: "Dios <strong>es verdadero</strong>."</li>
+          <li>En estos casos, el adjetivo está predicando algo con respecto al sujeto.</li>
+          <li>El verbo ser o estar es necesario para afirmar que un adjetivo cumple función predicativa.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Comparación con el Griego Koiné</h2>
+      <div class="note">
+        <p>En griego koiné, los adjetivos funcionan de manera similar al español, pero con algunas diferencias importantes:</p>
+        <ul>
+          <li>Los adjetivos griegos deben concordar en <strong>género, número y caso</strong> con el sustantivo que modifican.</li>
+          <li>El griego tiene tres géneros (masculino, femenino y neutro), a diferencia del español que tiene solo dos.</li>
+          <li>La posición del adjetivo en griego puede cambiar el énfasis de la frase.</li>
+          <li>El uso de artículos con adjetivos sustantivados es similar en ambos idiomas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ejemplos de Adjetivos en Griego Koiné</h2>
+      <div class="examples">
+        <table>
+          <tr>
+            <th>Adjetivo (Griego)</th>
+            <th>Transliteración</th>
+            <th>Significado</th>
+            <th>Ejemplo bíblico</th>
+          </tr>
+          <tr>
+            <td>ἀγαθός</td>
+            <td>agathos</td>
+            <td>bueno</td>
+            <td>ὁ ἀγαθὸς ἄνθρωπος (el hombre bueno)</td>
+          </tr>
+          <tr>
+            <td>μέγας</td>
+            <td>megas</td>
+            <td>grande</td>
+            <td>ἡ μεγάλη πόλις (la gran ciudad)</td>
+          </tr>
+          <tr>
+            <td>καλός</td>
+            <td>kalos</td>
+            <td>bueno, hermoso</td>
+            <td>τὸ καλὸν ἔργον (la buena obra)</td>
+          </tr>
+          <tr>
+            <td>πιστός</td>
+            <td>pistos</td>
+            <td>fiel</td>
+            <td>ὁ πιστὸς θεός (Dios es fiel - predicativo)</td>
+          </tr>
+          <tr>
+            <td>νέος</td>
+            <td>neos</td>
+            <td>nuevo</td>
+            <td>ὁ νέος ἄνθρωπος (el hombre nuevo)</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con Adjetivos</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> En la frase "El libro sagrado", ¿qué función cumple el adjetivo "sagrado"?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Atributiva</label>
+            <label><input type="radio" name="q1" value="b"> Sustantivada</label>
+            <label><input type="radio" name="q1" value="c"> Predicativa</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Cuál de estas frases contiene un adjetivo sustantivado?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> La casa grande</label>
+            <label><input type="radio" name="q2" value="b"> Los ricos y los pobres</label>
+            <label><input type="radio" name="q2" value="c"> El niño es inteligente</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> En griego koiné, ¿en qué tres aspectos debe concordar un adjetivo con el sustantivo que modifica?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> Género, número y tiempo</label>
+            <label><input type="radio" name="q3" value="b"> Género, número y caso</label>
+            <label><input type="radio" name="q3" value="c"> Persona, número y voz</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script src="../../auth.js"></script>
+  <script src="../../user-tooltip.js"></script>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'a', // Atributiva
+        q2: 'b', // Los ricos y los pobres
+        q3: 'b'  // Género, número y caso
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
