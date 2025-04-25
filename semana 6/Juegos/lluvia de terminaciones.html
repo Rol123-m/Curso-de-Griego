@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteoritos Griegos - Tercera Declinación</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a0a1a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      user-select: none;
+    }
+    
+    header {
+      background-color: #2a2a4a;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 100;
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      padding: 10px;
+    }
+    
+    .game-container {
+      position: relative;
+      width: 100%;
+      height: 55vh;
+      margin: 0 auto;
+      background-color: #12122a;
+      overflow: hidden;
+      border-bottom: 2px solid #4CAF50;
+    }
+    
+    .options-container {
+      display: flex;
+      justify-content: space-around;
+      padding: 15px;
+      background-color: #1a1a3a;
+      min-height: 100px;
+    }
+    
+    .option {
+      width: 30%;
+      padding: 10px;
+      background-color: #2a2a4a;
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: "New Athena Unicode", serif;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .option:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+    }
+    
+    .meteor {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #FF5722, #E91E63);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "New Athena Unicode", serif;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 0 20px #FF5722;
+      z-index: 10;
+    }
+    
+    .game-info {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      background-color: #2a2a4a;
+    }
+    
+    .info-box {
+      text-align: center;
+      padding: 5px;
+      min-width: 80px;
+    }
+    
+    .info-label {
+      font-weight: bold;
+      color: #4CAF50;
+      margin-bottom: 5px;
+      font-size: 0.9em;
+    }
+    
+    .info-value {
+      font-size: 1.2em;
+      background-color: #1a1a3a;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    
+    .controls {
+      text-align: center;
+      padding: 15px;
+      background-color: #1a1a3a;
+      position: sticky;
+      bottom: 0;
+      z-index: 200;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+    
+    button:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #1a1a3a;
+      font-size: 12px;
+      color: #aaa;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Animaciones */
+    @keyframes fall {
+      from { transform: translateY(-100px); }
+      to { transform: translateY(calc(55vh - 100px)); }
+    }
+    
+    .falling {
+      animation: fall linear forwards;
+    }
+    
+    /* Efectos de explosión */
+    .explosion {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,87,34,0));
+      border-radius: 50%;
+      z-index: 20;
+      animation: explode 0.5s forwards;
+    }
+    
+    @keyframes explode {
+      0% { transform: scale(0.1); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    
+    .meteor-barrier {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(233,30,99,0.7), transparent);
+      z-index: 5;
+      transition: height 0.5s;
+    }
+    
+    .game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(233,30,99,0.9);
+      padding: 20px 40px;
+      border-radius: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+      z-index: 30;
+      box-shadow: 0 0 30px rgba(233,30,99,0.7);
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Meteoritos Griegos - Tercera Declinación</h1>
+    <div class="game-info">
+      <div class="info-box">
+        <div class="info-label">Puntuación</div>
+        <div class="info-value" id="score">0</div>
+      </div>
+      <div class="info-box">
+        <div class="info-label">Nivel</div>
+        <div class="info-value" id="level">1</div>
+      </div>
+      <div class="info-box">
+        <div class="info-label">Vidas</div>
+        <div class="info-value" id="lives">5</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="game-container" id="game-area">
+    <div class="meteor-barrier" id="meteor-barrier"></div>
+    <div class="game-over" id="game-over">
+      ¡Juego Terminado!<br>
+      <span style="font-size: 0.8em;">Puntuación: <span id="final-score">0</span></span><br>
+      <button onclick="location.reload()" style="margin-top: 10px;">Jugar de nuevo</button>
+    </div>
+  </div>
+
+  <div class="options-container" id="options-container"></div>
+
+  <div class="controls">
+    <button id="start-btn">Comenzar Juego</button>
+    <button id="help-btn">Ayuda</button>
+  </div>
+
+  <footer>
+    @Copyright Sección educativa del ministerio: "Vivos para Servir"
+  </footer>
+
+  <script>
+    const wordForms = [
+      { root: "σαρκ", correct: "σάρξ", options: ["σάρξ", "σαρκό", "σαρκί"] },
+      { root: "σαρκ", correct: "σαρκός", options: ["σαρκός", "σάρκα", "σαρκῶν"] },
+      { root: "σαρκ", correct: "σαρκί", options: ["σαρκί", "σάρκες", "σαρξί"] },
+      { root: "σαρκ", correct: "σάρκα", options: ["σάρκα", "σαρκί", "σαρκός"] },
+      { root: "ὀνοματ", correct: "ὄνομα", options: ["ὄνομα", "ὀνόματι", "ὀνόματος"] },
+      { root: "ὀνοματ", correct: "ὀνόματος", options: ["ὀνόματος", "ὀνόματι", "ὀνόμασι"] },
+      { root: "ὀνοματ", correct: "ὀνόματι", options: ["ὀνόματι", "ὀνόματα", "ὀνόματος"] },
+      { root: "τιν", correct: "τίς", options: ["τίς", "τινός", "τινί"] },
+      { root: "φυλακ", correct: "φύλαξ", options: ["φύλαξ", "φυλακός", "φύλακα"] }
+    ];
+
+    let score = 0;
+    let level = 1;
+    let lives = 5;
+    let gameActive = false;
+    let currentMeteor = null;
+    let meteorInterval;
+    let levelInterval;
+
+    const elements = {
+      gameArea: document.getElementById('game-area'),
+      optionsContainer: document.getElementById('options-container'),
+      scoreDisplay: document.getElementById('score'),
+      levelDisplay: document.getElementById('level'),
+      livesDisplay: document.getElementById('lives'),
+      startBtn: document.getElementById('start-btn'),
+      meteorBarrier: document.getElementById('meteor-barrier'),
+      gameOver: document.getElementById('game-over'),
+      finalScore: document.getElementById('final-score')
+    };
+
+    elements.startBtn.addEventListener('click', startGame);
+    document.getElementById('help-btn').addEventListener('click', () => {
+      alert('Selecciona la terminación correcta para cada raíz griega. ¡Cuidado con los meteoritos acumulados!');
+    });
+
+    function startGame() {
+      resetGame();
+      elements.startBtn.disabled = true;
+      gameActive = true;
+      createNewMeteor();
+      meteorInterval = setInterval(createNewMeteor, 3000);
+      levelInterval = setInterval(levelUp, 30000);
+    }
+
+    function resetGame() {
+      // Limpiar estado del juego
+      clearInterval(meteorInterval);
+      clearInterval(levelInterval);
+      elements.gameArea.innerHTML = '<div class="meteor-barrier" id="meteor-barrier"></div>';
+      elements.optionsContainer.innerHTML = '';
+      elements.gameOver.style.display = 'none';
+      
+      // Reiniciar variables
+      score = 0;
+      level = 1;
+      lives = 5;
+      currentMeteor = null;
+      
+      // Actualizar displays
+      elements.scoreDisplay.textContent = score;
+      elements.levelDisplay.textContent = level;
+      elements.livesDisplay.textContent = lives;
+      elements.meteorBarrier.style.height = '0px';
+      elements.startBtn.disabled = false;
+    }
+
+    function createNewMeteor() {
+      if (!gameActive || currentMeteor) return;
+
+      const data = wordForms[Math.floor(Math.random() * wordForms.length)];
+      currentMeteor = createMeteorElement(data);
+      elements.gameArea.appendChild(currentMeteor.element);
+      generateOptions(data.options, data.correct);
+      
+      currentMeteor.element.addEventListener('animationend', () => {
+        if (!currentMeteor.hit) handleMeteorLanding();
+      });
+    }
+
+    function createMeteorElement(data) {
+      const meteor = document.createElement('div');
+      meteor.className = 'meteor falling';
+      meteor.textContent = data.root;
+      meteor.style.left = `${Math.random() * (elements.gameArea.offsetWidth - 80)}px`;
+      meteor.style.animationDuration = `${8 / (1 + level * 0.1)}s`;
+      
+      return {
+        element: meteor,
+        correct: data.correct,
+        hit: false
+      };
+    }
+
+    function generateOptions(options, correct) {
+      elements.optionsContainer.innerHTML = '';
+      options.sort(() => Math.random() - 0.5).forEach(option => {
+        const btn = document.createElement('div');
+        btn.className = 'option';
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(option, correct);
+        elements.optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected, correct) {
+      if (!gameActive || !currentMeteor) return;
+
+      if (selected === correct) {
+        score += 10;
+        currentMeteor.hit = true;
+        destroyMeteor(true);
+      } else {
+        score = Math.max(0, score - 5);
+        elements.optionsContainer.childNodes.forEach(btn => {
+          btn.style.backgroundColor = btn.textContent === correct ? '#4CAF50' : 
+                                    btn.textContent === selected ? '#f44336' : '';
+        });
+      }
+      
+      elements.scoreDisplay.textContent = score;
+      setTimeout(() => {
+        if (gameActive) {
+          elements.optionsContainer.innerHTML = '';
+          currentMeteor = null;
+        }
+      }, 1000);
+    }
+
+    function destroyMeteor(success) {
+      if (currentMeteor) {
+        if (success) {
+          const explosion = document.createElement('div');
+          explosion.className = 'explosion';
+          explosion.style.left = currentMeteor.element.offsetLeft + 'px';
+          explosion.style.top = currentMeteor.element.offsetTop + 'px';
+          elements.gameArea.appendChild(explosion);
+          setTimeout(() => explosion.remove(), 500);
+        }
+        currentMeteor.element.remove();
+      }
+    }
+
+    function handleMeteorLanding() {
+      if (!gameActive) return;
+
+      lives--;
+      elements.livesDisplay.textContent = lives;
+      elements.meteorBarrier.style.height = `${parseInt(elements.meteorBarrier.style.height) + 15 || 15}px`;
+      
+      if (lives <= 0 || parseInt(elements.meteorBarrier.style.height) > elements.gameArea.offsetHeight * 0.8) {
+        endGame();
+      }
+      
+      currentMeteor = null;
+    }
+
+    function levelUp() {
+      if (!gameActive) return;
+      level++;
+      elements.levelDisplay.textContent = level;
+      score += 20;
+      elements.scoreDisplay.textContent = score;
+    }
+
+    function endGame() {
+      gameActive = false;
+      clearInterval(meteorInterval);
+      clearInterval(levelInterval);
+      elements.gameOver.style.display = 'block';
+      elements.finalScore.textContent = score;
+      elements.startBtn.disabled = false;
+    }
+  </script>
+</body>
+</html>
