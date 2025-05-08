@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de Pronombres Personales - Griego Koiné</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2980b9;
+            --accent: #e74c3c;
+            --background: #f8f9fa;
+            --text: #2c3e50;
+            --card-bg: #ffffff;
+            --correct: #2ecc71;
+            --incorrect: #e74c3c;
+            --highlight: #f1c40f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui;
+            background-color: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .game-container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            flex-grow: 1;
+            margin: 0 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .score-display {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .question-container {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .prompt {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+        }
+
+        .greek {
+            font-family: "New Athena Unicode", "Galatia SIL", "Gentium Plus", serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option {
+            padding: 1.2rem;
+            background-color: white;
+            border: 2px solid #dfe6e9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .option.correct {
+            background-color: rgba(46, 204, 113, 0.2);
+            border-color: var(--correct);
+            color: var(--correct);
+        }
+
+        .option.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-color: var(--incorrect);
+            color: var(--incorrect);
+        }
+
+        .feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correct {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: var(--correct);
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--incorrect);
+            display: block;
+        }
+
+        .next-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .next-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .next-btn:active {
+            transform: translateY(0);
+        }
+
+        .results-screen {
+            text-align: center;
+            display: none;
+        }
+
+        .results-screen h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .final-score {
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .restart-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .case-indicator {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--highlight);
+            color: #2c3e50;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Práctica de Pronombres Personales</h1>
+        <p>Primera y segunda persona en griego koiné - Todos los casos (excepto vocativo)</p>
+    </header>
+
+    <div class="game-container">
+        <div class="progress-container">
+            <div class="score-display">Puntuación: <span id="score">0</span></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <div class="question-count"><span id="current-q">1</span>/<span id="total-qs">20</span></div>
+        </div>
+
+        <div class="question-container" id="question-container">
+            <div class="case-indicator" id="case-indicator">Nominativo Singular</div>
+            <div class="prompt" id="prompt">Traduce: <strong>Yo</strong> (nominativo singular)</div>
+            
+            <div class="options-grid" id="options-grid">
+                <!-- Las opciones se generarán dinámicamente -->
+            </div>
+            
+            <div class="feedback" id="feedback"></div>
+            <button class="next-btn" id="next-btn">Siguiente</button>
+        </div>
+
+        <div class="results-screen" id="results-screen">
+            <h2>¡Práctica completada! 🎉</h2>
+            <p>Has terminado el ejercicio de pronombres personales</p>
+            <div class="final-score" id="final-score">Puntuación: 18/20</div>
+            <p id="result-message">¡Excelente trabajo! Dominas los pronombres personales.</p>
+            <button class="restart-btn" id="restart-btn">Volver a Practicar</button>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los pronombres personales
+        const pronouns = {
+            firstPerson: {
+                singular: {
+                    nominative: "ἐγώ",
+                    genitive: "ἐμοῦ",
+                    dative: "ἐμοί",
+                    accusative: "ἐμέ"
+                },
+                plural: {
+                    nominative: "ἡμεῖς",
+                    genitive: "ἡμῶν",
+                    dative: "ἡμῖν",
+                    accusative: "ἡμᾶς"
+                }
+            },
+            secondPerson: {
+                singular: {
+                    nominative: "σύ",
+                    genitive: "σοῦ",
+                    dative: "σοί",
+                    accusative: "σέ"
+                },
+                plural: {
+                    nominative: "ὑμεῖς",
+                    genitive: "ὑμῶν",
+                    dative: "ὑμῖν",
+                    accusative: "ὑμᾶς"
+                }
+            }
+        };
+
+        // Traducciones y descripciones
+        const translations = {
+            firstPerson: {
+                singular: {
+                    nominative: "yo",
+                    genitive: "de mí/mío",
+                    dative: "a mí/para mí",
+                    accusative: "me (a mí)"
+                },
+                plural: {
+                    nominative: "nosotros/nosotras",
+                    genitive: "de nosotros/nuestro",
+                    dative: "a nosotros/para nosotros",
+                    accusative: "nos (a nosotros)"
+                }
+            },
+            secondPerson: {
+                singular: {
+                    nominative: "tú",
+                    genitive: "de ti/tuyo",
+                    dative: "a ti/para ti",
+                    accusative: "te (a ti)"
+                },
+                plural: {
+                    nominative: "vosotros/vosotras",
+                    genitive: "de vosotros/vuestro",
+                    dative: "a vosotros/para vosotros",
+                    accusative: "os (a vosotros)"
+                }
+            }
+        };
+
+        const caseNames = {
+            nominative: "Nominativo",
+            genitive: "Genitivo",
+            dative: "Dativo",
+            accusative: "Acusativo"
+        };
+
+        // Variables del juego
+        let currentQuestion = 0;
+        let score = 0;
+        let questions = [];
+        const totalQuestions = 20;
+
+        // Elementos del DOM
+        const questionContainer = document.getElementById('question-container');
+        const resultsScreen = document.getElementById('results-screen');
+        const promptElement = document.getElementById('prompt');
+        const caseIndicator = document.getElementById('case-indicator');
+        const optionsGrid = document.getElementById('options-grid');
+        const feedbackElement = document.getElementById('feedback');
+        const nextButton = document.getElementById('next-btn');
+        const scoreElement = document.getElementById('score');
+        const progressFill = document.getElementById('progress');
+        const currentQElement = document.getElementById('current-q');
+        const totalQsElement = document.getElementById('total-qs');
+        const finalScoreElement = document.getElementById('final-score');
+        const resultMessageElement = document.getElementById('result-message');
+        const restartButton = document.getElementById('restart-btn');
+
+        // Inicializar el juego
+        function initGame() {
+            currentQuestion = 0;
+            score = 0;
+            scoreElement.textContent = score;
+            totalQsElement.textContent = totalQuestions;
+            progressFill.style.width = '0%';
+            
+            // Generar preguntas aleatorias
+            questions = generateQuestions(totalQuestions);
+            
+            // Mostrar la primera pregunta
+            showQuestion();
+            
+            // Mostrar contenedor de pregunta y ocultar resultados
+            questionContainer.style.display = 'block';
+            resultsScreen.style.display = 'none';
+        }
+
+        // Generar preguntas aleatorias
+        function generateQuestions(count) {
+            const generatedQuestions = [];
+            
+            for (let i = 0; i < count; i++) {
+                // Elegir aleatoriamente persona (1ª o 2ª), número (singular/plural) y caso
+                const person = Math.random() < 0.5 ? 'firstPerson' : 'secondPerson';
+                const number = Math.random() < 0.5 ? 'singular' : 'plural';
+                const cases = ['nominative', 'genitive', 'dative', 'accusative'];
+                const randomCase = cases[Math.floor(Math.random() * cases.length)];
+                
+                // Crear pregunta
+                const question = {
+                    person,
+                    number,
+                    case: randomCase,
+                    correctAnswer: pronouns[person][number][randomCase],
+                    translation: translations[person][number][randomCase],
+                    prompt: `Traduce: <strong>${translations[person][number][randomCase]}</strong> (${caseNames[randomCase]} ${number === 'singular' ? 'singular' : 'plural'})`
+                };
+                
+                generatedQuestions.push(question);
+            }
+            
+            return generatedQuestions;
+        }
+
+        // Mostrar la pregunta actual
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            
+            // Actualizar elementos de la interfaz
+            promptElement.innerHTML = question.prompt;
+            caseIndicator.textContent = `${caseNames[question.case]} ${question.number === 'singular' ? 'Singular' : 'Plural'}`;
+            currentQElement.textContent = currentQuestion + 1;
+            
+            // Generar opciones de respuesta
+            generateOptions(question);
+            
+            // Reiniciar estado de la interfaz
+            feedbackElement.style.display = 'none';
+            feedbackElement.className = 'feedback';
+            nextButton.style.display = 'none';
+        }
+
+        // Generar opciones de respuesta
+        function generateOptions(question) {
+            optionsGrid.innerHTML = '';
+            
+            // Obtener la respuesta correcta
+            const correctAnswer = question.correctAnswer;
+            
+            // Crear un array con posibles respuestas incorrectas
+            let incorrectOptions = [];
+            
+            // Obtener pronombres de todas las personas, números y casos para opciones incorrectas
+            Object.keys(pronouns).forEach(person => {
+                Object.keys(pronouns[person]).forEach(number => {
+                    Object.keys(pronouns[person][number]).forEach(caseType => {
+                        const option = pronouns[person][number][caseType];
+                        if (option !== correctAnswer && !incorrectOptions.includes(option)) {
+                            incorrectOptions.push(option);
+                        }
+                    });
+                });
+            });
+            
+            // Mezclar las opciones incorrectas y tomar 3
+            incorrectOptions = shuffleArray(incorrectOptions).slice(0, 3);
+            
+            // Añadir la respuesta correcta y mezclar
+            const allOptions = shuffleArray([...incorrectOptions, correctAnswer]);
+            
+            // Crear botones para cada opción
+            allOptions.forEach(option => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerHTML = `<span class="greek">${option}</span>`;
+                optionElement.addEventListener('click', () => selectAnswer(option, correctAnswer));
+                optionsGrid.appendChild(optionElement);
+            });
+        }
+
+        // Seleccionar respuesta
+        function selectAnswer(selectedOption, correctAnswer) {
+            // Deshabilitar todos los botones de opción
+            const allOptions = document.querySelectorAll('.option');
+            allOptions.forEach(option => {
+                option.style.pointerEvents = 'none';
+                if (option.textContent.trim() === correctAnswer) {
+                    option.classList.add('correct');
+                }
+            });
+            
+            // Marcar la opción seleccionada
+            const selectedElement = Array.from(allOptions).find(
+                opt => opt.textContent.trim() === selectedOption
+            );
+            selectedElement.classList.add('selected');
+            
+            // Verificar si la respuesta es correcta
+            const isCorrect = selectedOption === correctAnswer;
+            
+            // Actualizar puntuación
+            if (isCorrect) {
+                score++;
+                scoreElement.textContent = score;
+            }
+            
+            // Mostrar retroalimentación
+            feedbackElement.textContent = isCorrect 
+                ? '¡Correcto! 🎉' 
+                : `Incorrecto. La respuesta correcta es: <span class="greek">${correctAnswer}</span>`;
+            feedbackElement.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedbackElement.style.display = 'block';
+            
+            // Mostrar botón de siguiente
+            nextButton.style.display = 'block';
+        }
+
+        // Siguiente pregunta
+        function nextQuestion() {
+            currentQuestion++;
+            
+            // Actualizar barra de progreso
+            progressFill.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+            
+            // Verificar si hemos terminado
+            if (currentQuestion >= totalQuestions) {
+                showResults();
+            } else {
+                showQuestion();
+            }
+        }
+
+        // Mostrar resultados finales
+        function showResults() {
+            questionContainer.style.display = 'none';
+            resultsScreen.style.display = 'block';
+            
+            // Calcular porcentaje
+            const percentage = (score / totalQuestions) * 100;
+            
+            // Mostrar puntuación
+            finalScoreElement.textContent = `Puntuación: ${score}/${totalQuestions}`;
+            
+            // Mostrar mensaje según el resultado
+            let message;
+            if (percentage >= 90) {
+                message = "¡Excelente trabajo! Dominas los pronombres personales.";
+            } else if (percentage >= 70) {
+                message = "¡Buen trabajo! Vas por buen camino con los pronombres.";
+            } else if (percentage >= 50) {
+                message = "No está mal, pero necesitas más práctica con los pronombres.";
+            } else {
+                message = "Sigue practicando. Revisa los pronombres y vuelve a intentarlo.";
+            }
+            
+            resultMessageElement.textContent = message;
+        }
+
+        // Función para mezclar array (Fisher-Yates)
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // Event listeners
+        nextButton.addEventListener('click', nextQuestion);
+        restartButton.addEventListener('click', initGame);
+
+        // Iniciar el juego al cargar la página
+        window.addEventListener('load', initGame);
+    </script>
+</body>
+</html>

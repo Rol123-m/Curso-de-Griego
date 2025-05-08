@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendiendo Griego: Las Ocho Reglas de los Sustantivos</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .definition {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .tip {
+      background-color: #e1f5fe;
+      padding: 15px;
+      border-left: 5px solid #0288d1;
+      margin: 20px 0;
+    }
+    .note {
+      background-color: #f3e5f5;
+      padding: 15px;
+      border-left: 5px solid #9c27b0;
+      margin: 20px 0;
+    }
+    .greek {
+      font-family: "New Athena Unicode", "Galatia SIL", "Gentium", "Cardo", serif;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Aprendiendo Griego: Las Ocho Reglas de los Sustantivos</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>Las Ocho Reglas de los Sustantivos</h2>
+      <div class="rules">
+        <ol>
+          <li><strong>Regla de las Declinaciones</strong>
+            <ul>
+              <li>Los temas que terminan en alfa (α) o eta (η) pertenecen a la primera declinación.</li>
+              <li>Los temas que terminan en ómicron (ο) pertenecen a la segunda declinación.</li>
+              <li>Los temas consonánticos pertenecen a la tercera declinación.</li>
+            </ul>
+          </li>
+          
+          <li><strong>Regla de los Neutros (Nominativo = Acusativo)</strong>
+            <ul>
+              <li>Todos los sustantivos neutros tienen la misma forma en nominativo y acusativo (singular y plural).</li>
+              <li>Ejemplo: <span class="greek">τὸ ὄνομα</span> (nom.) → <span class="greek">τὸ ὄνομα</span> (acus.).</li>
+            </ul>
+          </li>
+          
+          <li><strong>Regla del Plural Neutro</strong>
+            <ul>
+              <li>Casi todos los neutros terminan en -α en nominativo y acusativo plural.</li>
+              <li>En la segunda declinación, el -α reemplaza al ómicron temático (<span class="greek">τὸ ἔργον</span> → <span class="greek">τὰ ἔργα</span>).</li>
+              <li>En la tercera declinación, el -α es la terminación de caso (<span class="greek">τὸ ὄνομα</span> → <span class="greek">τὰ ὀνόματα</span>).</li>
+            </ul>
+          </li>
+          
+          <li><strong>Regla del Iota Subscrito (Dativo Singular)</strong>
+            <ul>
+              <li>En el dativo singular, el iota (ι) se subscrive si es posible (solo en vocales largas: α, η, ω).</li>
+              <li>Ejemplos:
+                <ul>
+                  <li><span class="greek">λόγῳ</span> (2ª decl., <span class="greek">λογο + ι</span> → <span class="greek">λόγῳ</span>).</li>
+                  <li><span class="greek">γραφῇ</span> (1ª decl., <span class="greek">γραφη + ι</span> → <span class="greek">γραφῇ</span>).</li>
+                </ul>
+              </li>
+              <li>No ocurre en la tercera declinación (ej. <span class="greek">πατρί</span>, <span class="greek">πατρ + ι</span>).</li>
+            </ul>
+          </li>
+          
+          <li><strong>Regla de los Cambios Vocálicos</strong>
+            <ul>
+              <li>Ablaut (cambio de longitud vocálica):
+                <ul>
+                  <li>Contracción: Dos vocales se fusionan en una vocal o diptongo.
+                    <ul>
+                      <li>Ejemplo: <span class="greek">γραφη + ων</span> → <span class="greek">γραφῶν</span> (la η + ω se contrae a ῶ).</li>
+                    </ul>
+                  </li>
+                  <li>Alargamiento compensatorio: Una vocal se alarga para compensar la pérdida de una letra.
+                    <ul>
+                      <li>Ejemplo: <span class="greek">λογο + νς</span> → <span class="greek">λόγος</span> → <span class="greek">λόγους</span> (la ο se alarga a ου).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <li><strong>Regla del Genitivo y Dativo (Masculino = Neutro)</strong>
+            <ul>
+              <li>En genitivo y dativo (singular y plural), las formas masculinas y neutras son idénticas.</li>
+              <li>Ejemplo (2ª decl.):
+                <ul>
+                  <li>Gen. sg.: <span class="greek">λόγου</span> (masc.) / <span class="greek">ἔργου</span> (neutro).</li>
+                  <li>Dat. sg.: <span class="greek">λόγῳ</span> (masc.) / <span class="greek">ἔργῳ</span> (neutro).</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <li><strong>Regla del "Cuadrado de las Oclusivas" (Nominativo Singular y Dativo Plural)</strong>
+            <ul>
+              <li>Las oclusivas (labiales, velares, dentales) + sigma (ς) se transforman:
+                <ul>
+                  <li>Labial (π, β, φ) + σ → ψ (<span class="greek">γραφ + ς</span> → <span class="greek">γραψ</span>).</li>
+                  <li>Velar (κ, γ, χ) + σ → ξ (<span class="greek">φυλακ + ς</span> → <span class="greek">φύλαξ</span>).</li>
+                  <li>Dental (τ, δ, θ) + σ → σ (la dental desaparece: <span class="greek">πατ + ς</span> → <span class="greek">πας</span>).</li>
+                </ul>
+              </li>
+              <li>El grupo -ντ + ς → ς (<span class="greek">παντ + ς</span> → <span class="greek">πᾶς</span>).</li>
+              <li>Lo que ocurre en el nominativo singular (3ª decl.) también pasa en el dativo plural:
+                <ul>
+                  <li>Ejemplo: <span class="greek">σάρξ</span> (nom. sg., <span class="greek">σαρκ + ς</span> → <span class="greek">σάρξ</span>) → <span class="greek">σαρξί</span> (dat. pl., <span class="greek">σαρκ + σι</span> → <span class="greek">σαρξί</span>).</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <li><strong>Regla de la Tau Final</strong>
+            <ul>
+              <li>La tau (τ) no puede terminar una palabra y se elimina cuando no hay terminación de caso.</li>
+              <li>Ejemplo: <span class="greek">ὄνομα</span> (nom. sg., de <span class="greek">ὀνοματ + –</span> → <span class="greek">ὀνοματ</span> → <span class="greek">ὄνομα</span>).</li>
+            </ul>
+          </li>
+        </ol>
+        
+        <div class="note">
+          <h3>Notas importantes:</h3>
+          <ul>
+            <li>Estas reglas son fundamentales para la declinación correcta de los sustantivos en griego antiguo.</li>
+            <li>El iota subscrito solo ocurre en vocales largas (α, η, ω) en el dativo singular.</li>
+            <li>Los neutros siempre siguen patrones especiales que difieren de los masculinos y femeninos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ejemplos de Aplicación de las Reglas</h2>
+      <div class="examples">
+        <table>
+          <thead>
+            <tr>
+              <th>Regla</th>
+              <th>Ejemplo</th>
+              <th>Transformación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Iota subscrito</td>
+              <td><span class="greek">γραφη + ι</span></td>
+              <td><span class="greek">γραφῇ</span></td>
+            </tr>
+            <tr>
+              <td>Cuadrado de oclusivas</td>
+              <td><span class="greek">φυλακ + ς</span></td>
+              <td><span class="greek">φύλαξ</span></td>
+            </tr>
+            <tr>
+              <td>Plural neutro</td>
+              <td><span class="greek">τὸ ἔργον</span> (pl.)</td>
+              <td><span class="greek">τὰ ἔργα</span></td>
+            </tr>
+            <tr>
+              <td>Tau final</td>
+              <td><span class="greek">ὀνοματ</span> (nom. sg.)</td>
+              <td><span class="greek">ὄνομα</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con las Reglas de los Sustantivos</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿A qué declinación pertenece un sustantivo cuyo tema termina en ómicron (ο)?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Primera declinación</label>
+            <label><input type="radio" name="q1" value="b"> Segunda declinación</label>
+            <label><input type="radio" name="q1" value="c"> Tercera declinación</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Qué ocurre con los sustantivos neutros en nominativo y acusativo?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Tienen formas diferentes</label>
+            <label><input type="radio" name="q2" value="b"> Tienen la misma forma</label>
+            <label><input type="radio" name="q2" value="c"> Solo coinciden en singular</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Qué terminación tienen casi todos los neutros en nominativo y acusativo plural?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> -οι</label>
+            <label><input type="radio" name="q3" value="b"> -α</label>
+            <label><input type="radio" name="q3" value="c"> -ες</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 4:</strong> ¿Qué ocurre cuando una dental (τ, δ, θ) se encuentra con una sigma (ς)?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q4" value="a"> Se convierte en ψ</label>
+            <label><input type="radio" name="q4" value="b"> Se convierte en ξ</label>
+            <label><input type="radio" name="q4" value="c"> La dental desaparece</label>
+          </div>
+          <div class="result" id="result4"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 5:</strong> ¿En qué casos las formas masculinas y neutras son idénticas?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q5" value="a"> Nominativo y acusativo</label>
+            <label><input type="radio" name="q5" value="b"> Genitivo y dativo</label>
+            <label><input type="radio" name="q5" value="c"> Solo en plural</label>
+          </div>
+          <div class="result" id="result5"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // Segunda declinación
+        q2: 'b', // Tienen la misma forma
+        q3: 'b', // -α
+        q4: 'c', // La dental desaparece
+        q5: 'b'  // Genitivo y dativo
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
