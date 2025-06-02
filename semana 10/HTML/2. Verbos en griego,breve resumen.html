@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gramática Griega</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .definition {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .tip {
+      background-color: #e1f5fe;
+      padding: 15px;
+      border-left: 5px solid #0288d1;
+      margin: 20px 0;
+    }
+    .note {
+      background-color: #f3e5f5;
+      padding: 15px;
+      border-left: 5px solid #9c27b0;
+      margin: 20px 0;
+    }
+    .warning {
+      background-color: #ffebee;
+      padding: 15px;
+      border-left: 5px solid #f44336;
+      margin: 20px 0;
+    }
+    .biblical {
+      background-color: #fce4ec;
+      padding: 15px;
+      border-left: 5px solid #e91e63;
+      margin: 20px 0;
+    }
+    .greek {
+      font-family: "New Athena Unicode", "Galatia SIL", "Gentium", "Cardo", serif;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Gramática Griega</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>No memorices las formas todavía</h2>
+      <div class="warning">
+        <p>No intentes aprender ahora las formas griegas que aparecen en este capítulo. Solo se incluyen para familiarizarte con los conceptos. Empezarás a aprender las formas reales en el próximo capítulo.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Concordancia Verbal</h2>
+      <div class="definition">
+        <p>En griego, el verbo concuerda con su sujeto mediante desinencias personales, es decir, terminaciones que se añaden al verbo.</p>
+        <div class="examples">
+          <h3>Ejemplos:</h3>
+          <ul class="greek">
+            <li><strong>-ω</strong> es una terminación de primera persona singular, así que <strong>λέγω</strong> significa "yo digo".</li>
+            <li><strong>-ουσι</strong> es una terminación de tercera persona plural, así que <strong>λέγουσι</strong> significa "ellos dicen".</li>
+          </ul>
+        </div>
+        <div class="note">
+          <p>El lexema verbal <span class="greek">ἀκου-</span> significa "oír".</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Persona Verbal</h2>
+      <div class="rules">
+        <p>Como en español, hay tres personas:</p>
+        <ol class="greek">
+          <li><strong>Primera persona:</strong> el que habla (<strong>ἐγώ</strong> "yo", <strong>ἡμεῖς</strong> "nosotros").
+            <div class="examples">
+              <ul>
+                <li><strong>εἰμί</strong> ("yo soy")</li>
+                <li><strong>ἐσμέν</strong> ("nosotros somos")</li>
+                <li><strong>ἀκούω</strong> ("yo oigo")</li>
+                <li><strong>ἀκούομεν</strong> ("nosotros oímos")</li>
+              </ul>
+            </div>
+          </li>
+          <li><strong>Segunda persona:</strong> el interlocutor (<strong>σύ</strong> "tú", <strong>ὑμεῖς</strong> "vosotros").
+            <div class="examples">
+              <ul>
+                <li><strong>εἶ</strong> ("tú eres")</li>
+                <li><strong>ἐστέ</strong> ("vosotros sois")</li>
+                <li><strong>ἀκούεις</strong> ("tú oyes")</li>
+                <li><strong>ἀκούετε</strong> ("vosotros oís")</li>
+              </ul>
+            </div>
+          </li>
+          <li><strong>Tercera persona:</strong> aquello de lo que se habla (<strong>αὐτός</strong> "él", <strong>λόγοι</strong> "palabras").
+            <div class="examples">
+              <ul>
+                <li><strong>ἐστίν</strong> ("él es")</li>
+                <li><strong>εἰσίν</strong> ("ellos son")</li>
+                <li><strong>ἀκούει</strong> ("él oye")</li>
+                <li><strong>ἀκούουσι</strong> ("ellos oyen")</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="tip">
+        <p>El verbo no siempre necesita un sujeto explícito, pues la desinencia ya indica la persona.</p>
+        <p class="greek">Ejemplo: <strong>ἐγὼ λέγω</strong> y <strong>λέγω</strong> significan lo mismo: "yo digo".</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Número (Singular y Plural)</h2>
+      <div class="rules">
+        <p>Las terminaciones cambian según si el sujeto es singular o plural:</p>
+        <div class="examples greek">
+          <ul>
+            <li><strong>Primera persona singular:</strong> <strong>ἀκούω</strong> ("yo oigo")</li>
+            <li><strong>Primera persona plural:</strong> <strong>ἀκούομεν</strong> ("nosotros oímos")</li>
+            <li><strong>Tercera persona singular:</strong> <strong>ἀκούει</strong> ("él oye")</li>
+            <li><strong>Tercera persona plural:</strong> <strong>ἀκούουσι</strong> ("ellos oyen")</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tiempo y Aspecto</h2>
+      <div class="definition">
+        <p>En griego, el término "tiempo verbal" (tense) incluye dos conceptos: aspecto (tipo de acción) y tiempo (cuándo ocurre). Para evitar confusiones:</p>
+        <ul>
+          <li><strong>Tiempo:</strong> se refiere a la forma del verbo (presente, futuro, aoristo)</li>
+          <li><strong>Aspecto:</strong> describe cómo ocurre la acción (continua, puntual, completada)</li>
+        </ul>
+      </div>
+      <div class="note">
+        <p>Ejemplo: El aoristo indica una acción no definida (aspecto) que normalmente ocurre en el pasado (tiempo).</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Los Aspectos en Griego</h2>
+      <div class="definition">
+        <p>El aspecto es la clave para entender los verbos griegos. Hay tres tipos principales:</p>
+        <ol>
+          <li><strong>Aspecto continuo (imperfectivo):</strong> Acción en progreso.
+            <div class="examples">
+              <ul>
+                <li>"Estoy comiendo" (griego: presente)</li>
+              </ul>
+            </div>
+            <div class="biblical greek">
+              <p>En Marcos 8:34, Jesús dice: "Si alguien quiere seguirme, niéguese a sí mismo, tome su cruz y <strong>ἀκολουθείτω</strong> mí".</p>
+              <p>"Sígame" es continuo: implica un seguimiento diario y constante.</p>
+            </div>
+          </li>
+          <li><strong>Aspecto indefinido (aoristo):</strong> Acción como un hecho simple, sin detallar su duración.
+            <div class="examples">
+              <ul>
+                <li>"Comí" (griego: aoristo)</li>
+              </ul>
+            </div>
+            <div class="biblical greek">
+              <p>En Marcos 15:19, los soldados "le golpeaban la cabeza" (continuo) y "escupían" (<strong>ἐνέπτυον</strong>, también continuo: lo hicieron repetidamente).</p>
+            </div>
+          </li>
+          <li><strong>Aspecto perfectivo:</strong> Indica una acción completada con efectos presentes (se verá en el Capítulo 25)</li>
+        </ol>
+      </div>
+      <div class="biblical greek">
+        <p>Nota: En Lucas 23:34, Jesús "decía" (<strong>ἔλεγεν</strong>, imperfecto) "Padre, perdónalos" una y otra vez, mostrando persistencia.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Voces Verbales</h2>
+      <div class="rules">
+        <p>El griego distingue entre:</p>
+        <ul class="greek">
+          <li><strong>Activa:</strong> El sujeto realiza la acción (<strong>ἐσθίω</strong> = "yo como")</li>
+          <li><strong>Pasiva:</strong> El sujeto recibe la acción (<strong>ἐσθίομαι</strong> = "yo soy comido")</li>
+          <li><strong>Media:</strong> Similar a la activa, pero con matices (se explicará en el Capítulo 25)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con la Gramática Griega</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Qué significa la terminación -ουσι en un verbo griego?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Primera persona singular</label>
+            <label><input type="radio" name="q1" value="b"> Segunda persona plural</label>
+            <label><input type="radio" name="q1" value="c"> Tercera persona plural</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Qué aspecto verbal expresa una acción en progreso?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Aoristo</label>
+            <label><input type="radio" name="q2" value="b"> Perfectivo</label>
+            <label><input type="radio" name="q2" value="c"> Imperfectivo</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Cuál de estas formas es activa?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> λέγομαι</label>
+            <label><input type="radio" name="q3" value="b"> λέγω</label>
+            <label><input type="radio" name="q3" value="c"> λέγεσθαι</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'c', // Tercera persona plural
+        q2: 'c', // Imperfectivo
+        q3: 'b'  // λέγω
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

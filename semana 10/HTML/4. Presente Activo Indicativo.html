@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presente Activo Indicativo en Griego</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .definition {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .tip {
+      background-color: #e1f5fe;
+      padding: 15px;
+      border-left: 5px solid #0288d1;
+      margin: 20px 0;
+    }
+    .note {
+      background-color: #f3e5f5;
+      padding: 15px;
+      border-left: 5px solid #9c27b0;
+      margin: 20px 0;
+    }
+    .warning {
+      background-color: #ffebee;
+      padding: 15px;
+      border-left: 5px solid #f44336;
+      margin: 20px 0;
+    }
+    .review {
+      background-color: #fff8e1;
+      padding: 15px;
+      border-left: 5px solid #ffc107;
+      margin: 20px 0;
+    }
+    .greek {
+      font-family: "New Athena Unicode", "Galatia SIL", "Gentium", "Cardo", serif;
+      font-size: 1.1em;
+    }
+    .structure {
+      background-color: #e0f7fa;
+      padding: 15px;
+      border-left: 5px solid #00bcd4;
+      margin: 20px 0;
+    }
+    .components {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+    .component {
+      padding: 5px 10px;
+      margin: 0 5px;
+      border-radius: 3px;
+    }
+    .root {
+      background-color: #ffecb3;
+    }
+    .connector {
+      background-color: #c8e6c9;
+    }
+    .ending {
+      background-color: #bbdefb;
+    }
+    .paradigm {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-left: 5px solid #607d8b;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Presente Activo Indicativo en Griego</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>Concepto Básico</h2>
+      <div class="definition">
+        <p>El presente activo indicativo en griego funciona de manera similar al español: describe una acción que ocurre en el presente. Puede expresar:</p>
+        <ul>
+          <li><strong>Acción continua:</strong> "Estoy estudiando" (proceso en desarrollo)</li>
+          <li><strong>Acción simple/indefinida:</strong> "Estudio" (hecho general)</li>
+        </ul>
+      </div>
+      <div class="biblical">
+        <p><strong>Importante:</strong> El "presente" se define desde la perspectiva del autor bíblico, no del lector. Un presente en el texto puede no serlo para nosotros.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Estructura del Verbo en Presente</h2>
+      <div class="structure">
+        <p>El verbo en presente se compone de tres partes:</p>
+        <ul>
+          <li>Raíz del presente (tema verbal)</li>
+          <li>Vocal de unión</li>
+          <li>Desinencia personal activa</li>
+        </ul>
+        <p><strong>Fórmula:</strong></p>
+        <div class="components">
+          <span class="component root">Raíz</span> + 
+          <span class="component connector">Vocal de unión</span> + 
+          <span class="component ending">Desinencia</span> → Verbo conjugado
+        </div>
+        <div class="examples greek">
+          <p><strong>Ejemplo:</strong></p>
+          <p><strong>λυ</strong> + <strong>ο</strong> + <strong>μεν</strong> → <strong>λύομεν</strong> ("nosotros liberamos")</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>La Raíz del Presente</h2>
+      <div class="definition">
+        <p>La raíz (o tema verbal) es la forma más básica del verbo en un tiempo específico.</p>
+        <div class="examples greek">
+          <p><strong>Ejemplo:</strong> En <strong>λύετε</strong> ("vosotros liberáis"), la raíz es <strong>λυ-</strong> (liberar).</p>
+        </div>
+        <div class="note">
+          <p>En el capítulo 20 se profundizará en los temas verbales según el tiempo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>La Vocal de Unión</h2>
+      <div class="definition">
+        <p>Es una vocal que facilita la pronunciación al unir la raíz y la desinencia. En el modo indicativo:</p>
+        <ul>
+          <li>Si la desinencia empieza con μ (mu) o ν (nu), la vocal es ο (ómicron).
+            <div class="examples greek">
+              <p><strong>Ejemplo:</strong> λεγ + ο + μεν → <strong>λέγομεν</strong> ("nosotros decimos")</p>
+            </div>
+          </li>
+          <li>En otros casos, la vocal es ε (épsilon).
+            <div class="examples greek">
+              <p><strong>Ejemplo:</strong> λεγ + ε + τε → <strong>λέγετε</strong> ("vosotros decís")</p>
+            </div>
+          </li>
+          <li>Si no hay desinencia, puede ser ο o ε.
+            <div class="examples greek">
+              <p><strong>Ejemplo:</strong> λεγ + ο + – → <strong>λέγω</strong> ("yo digo")</p>
+            </div>
+          </li>
+        </ul>
+        <div class="tip">
+          <p><strong>Función:</strong> Hace más fluida la pronunciación (ej. <span class="greek">λέγομεν</span> suena mejor que <span class="greek">λέγμεν</span>).</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Las Desinencias Personales</h2>
+      <div class="definition">
+        <p>Indican persona (1.ª, 2.ª, 3.ª) y número (singular/plural). Su uso tiene dos ventajas clave:</p>
+        <ol>
+          <li><strong>Identifican el sujeto aunque no esté explícito.</strong>
+            <div class="examples greek">
+              <p><strong>Ejemplo:</strong> <strong>λέγεις</strong> = "tú dices" (2.ª persona singular)</p>
+            </div>
+          </li>
+          <li><strong>Confirman la concordancia entre sujeto y verbo.</strong>
+            <div class="examples greek">
+              <p>Si encuentras <strong>σύ</strong> (tú) y <strong>ἄνθρωπος</strong> (hombre, 3.ª persona) en una oración, el verbo <strong>λέγεις</strong> revela que el sujeto es <strong>σύ</strong>.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="note">
+          <p><strong>Desventaja:</strong> Hay que memorizar más terminaciones, pero el beneficio excede el esfuerzo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Desinencias Primarias</h2>
+      <div class="definition">
+        <p>En este capítulo, trabajamos con las desinencias primarias, usadas en:</p>
+        <ul>
+          <li>El presente activo</li>
+          <li>Otros tiempos que se verán hasta el capítulo 20</li>
+        </ul>
+        <div class="note">
+          <p>Las desinencias secundarias (para tiempos pasados) se explicarán en el capítulo 21.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Voz Activa</h2>
+      <div class="definition">
+        <p>El presente activo usa sus propias desinencias, distintas a las del medio o pasivo (capítulo 18).</p>
+        <div class="examples greek">
+          <ul>
+            <li><strong>Activa:</strong> El sujeto realiza la acción (ej. <strong>γράφω</strong>, "yo escribo")</li>
+          </ul>
+        </div>
+        <div class="note">
+          <p>Más adelante: Se contrastará con la voz media (sujeto que actúa sobre sí mismo) y pasiva (sujeto que recibe la acción).</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Resumen Práctico</h2>
+      <div class="review">
+        <ol>
+          <li><strong>Estructura:</strong> Raíz + Vocal + Desinencia → Verbo conjugado</li>
+          <li><strong>Claves:</strong>
+            <ul>
+              <li>El aspecto (continuo o simple) depende del contexto</li>
+              <li>Las vocales de unión (ο/ε) siguen reglas fijas</li>
+              <li>Las desinencias identifican persona y número</li>
+            </ul>
+          </li>
+          <li><strong>Ejemplo de análisis (parsing):</strong>
+            <div class="examples greek">
+              <p><strong>λύομεν:</strong></p>
+              <ul>
+                <li>1.ª persona plural, presente activo indicativo de λύω (liberar), significa "nosotros liberamos"</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>¡Atención!</h2>
+      <div class="warning">
+        <ul>
+          <li>No confundas tiempo (presente, pasado) con aspecto (cómo ocurre la acción)</li>
+          <li>Practica con verbos como <span class="greek">λέγω</span> (decir), <span class="greek">γράφω</span> (escribir), o <span class="greek">ἀκούω</span> (oír) para familiarizarte con las terminaciones</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con el Presente Activo</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Qué vocal de unión usarías con la desinencia -μεν?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> ε</label>
+            <label><input type="radio" name="q1" value="b"> ο</label>
+            <label><input type="radio" name="q1" value="c"> α</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Qué aspecto puede expresar el presente activo en griego?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Solo acción puntual</label>
+            <label><input type="radio" name="q2" value="b"> Solo acción continua</label>
+            <label><input type="radio" name="q2" value="c"> Acción continua o simple según contexto</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Qué información nos da la desinencia -εις en un verbo griego?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> 1.ª persona singular</label>
+            <label><input type="radio" name="q3" value="b"> 2.ª persona singular</label>
+            <label><input type="radio" name="q3" value="c"> 3.ª persona plural</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // ο
+        q2: 'c', // Acción continua o simple según contexto
+        q3: 'b'  // 2.ª persona singular
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
