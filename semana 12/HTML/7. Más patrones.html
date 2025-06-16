@@ -1,0 +1,337 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendiendo Griego Koiné: Patrones Verbales</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    h3 {
+      color: #2E7D32;
+    }
+    .pattern {
+      margin-bottom: 30px;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 20px;
+    }
+    .pronunciation {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .formula {
+      font-family: monospace;
+      font-size: 1.1em;
+      color: #D32F2F;
+    }
+    .root {
+      font-weight: bold;
+      color: #7B1FA2;
+    }
+    .note {
+      background-color: #E1F5FE;
+      padding: 10px;
+      border-left: 3px solid #0288D1;
+      margin: 10px 0;
+    }
+    .tip {
+      background-color: #FFF3E0;
+      padding: 10px;
+      border-left: 3px solid #FFA000;
+      margin: 10px 0;
+    }
+  </style>
+  <script>
+    // Verificar autenticación al cargar la página
+    if(!localStorage.getItem('authenticated')) {
+        window.location.href = "../index.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Aprendiendo Griego Koiné: Patrones Verbales</h1>
+  </header>
+  <div class="container">
+    <section class="pattern">
+      <h2>Patrón 1: Raíz no modificada</h2>
+      <div class="pronunciation">
+        <p>Verbos que no alteran su raíz al formar el tema temporal de presente. Muchos verbos "regulares" pertenecen a este grupo (aprendido en Capítulo 19):</p>
+        
+        <h3>Raíces terminadas en iota/upsilon:</h3>
+        <p class="formula">\<span class="root">ἀκου</span> → ἀκούω → ἀκούσω</p>
+        
+        <h3>Verbos contractos:</h3>
+        <p class="formula">\<span class="root">ποιε</span> → ποιέω → ποιήσω</p>
+        
+        <h3>Raíces terminadas en oclusiva:</h3>
+        <p class="formula">\<span class="root">βλεπ</span> → βλέπω → βλέψω</p>
+      </div>
+    </section>
+
+    <section class="pattern">
+      <h2>Patrón 2: Raíces diferentes</h2>
+      <div class="rules">
+        <p>Algunos verbos usan raíces totalmente distintas en presente y futuro. Ejemplo:</p>
+        <ul>
+          <li>Presente: <span class="formula">ὁράω</span> ("yo veo", raíz <span class="root">\ὁρα</span>)</li>
+          <li>Futuro: <span class="formula">ὄψομαι</span> (raíz <span class="root">\ὀπ</span> + σ → ψ según reglas normales)</li>
+        </ul>
+        
+        <h3>Explicación:</h3>
+        <p>El futuro de <span class="formula">ὁράω</span> cayó en desuso, al igual que el presente de <span class="formula">ὄψομαι</span>. Ambas formas "se fusionaron" funcionando como una sola palabra.</p>
+        
+        <h3>Datos clave:</h3>
+        <ul>
+          <li>Solo 9 verbos en el NT siguen este patrón (ej. MBG v-8).</li>
+          <li>Tres ejemplos comunes:
+            <table>
+              <tr>
+                <th>Presente</th>
+                <th>Futuro</th>
+              </tr>
+              <tr>
+                <td><span class="formula">ἔρχομαι</span> ("vengo")<br><span class="root">\ἐρχ</span></td>
+                <td><span class="formula">ἐλεύσομαι</span> ("vendré")<br><span class="root">\ἐλευθ</span></td>
+              </tr>
+              <tr>
+                <td><span class="formula">λέγω</span> ("digo")<br><span class="root">\λεγ</span></td>
+                <td><span class="formula">ἐρῶ</span> ("diré")<br><span class="root">\ἐρ</span></td>
+              </tr>
+              <tr>
+                <td><span class="formula">ὁράω</span> ("veo")<br><span class="root">\ὁρα</span></td>
+                <td><span class="formula">ὄψομαι</span> ("veré")<br><span class="root">\ὀπ</span></td>
+              </tr>
+            </table>
+          </li>
+        </ul>
+        
+        <div class="tip">
+          <h3>Consejo:</h3>
+          <ul>
+            <li>Crea fichas de vocabulario separadas para cada raíz.</li>
+            <li>Cuando un verbo es deponente en un tiempo pero no en otro, suele usar raíces diferentes (ej. <span class="root">\ὁρα</span> vs <span class="root">\ὀπ</span>).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="pattern">
+      <h2>Patrón 3: Futuros líquidos</h2>
+      <div class="examples">
+        <p>Técnicamente son parte del Patrón 4, pero se estudian por separado por su complejidad morfológica.</p>
+        
+        <h3>20.9 Características:</h3>
+        <ul>
+          <li>Usan un formante temporal ligeramente distinto.</li>
+          <li>Los temas de presente y futuro suelen variar sutilmente.</li>
+        </ul>
+        
+        <h3>20.10 ¿Qué son las consonantes líquidas?</h3>
+        <p>Λ, μ, ν, ρ se llaman "líquidas" porque:</p>
+        <ul>
+          <li>λ, ρ: El aire fluye alrededor de la lengua.</li>
+          <li>μ, ν: El sonido resuena en la nariz.</li>
+        </ul>
+        <p>Un verbo es "líquido" si su raíz termina en una de estas consonantes.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con Patrones Verbales</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Qué caracteriza al Patrón 1?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Usa raíces diferentes en presente y futuro</label>
+            <label><input type="radio" name="q1" value="b"> No modifica la raíz en el presente</label>
+            <label><input type="radio" name="q1" value="c"> Solo aplica a verbos contractos</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Cuántos verbos en el NT siguen el Patrón 2?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> 9</label>
+            <label><input type="radio" name="q2" value="b"> 15</label>
+            <label><input type="radio" name="q2" value="c"> 23</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Qué consonantes se consideran líquidas?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> λ, μ, ν, ρ</label>
+            <label><input type="radio" name="q3" value="b"> π, β, φ</label>
+            <label><input type="radio" name="q3" value="c"> κ, γ, χ</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script src="../../auth.js"></script>
+  <script src="../../user-tooltip.js"></script>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // No modifica la raíz en el presente
+        q2: 'a', // 9
+        q3: 'a'  // λ, μ, ν, ρ
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

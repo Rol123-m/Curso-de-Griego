@@ -1,0 +1,335 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendiendo Griego Koiné: Patrón 1 del Futuro Activo</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    h3 {
+      color: #2E7D32;
+    }
+    .pronunciation {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .highlight {
+      background-color: #FFF9C4;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .formula {
+      font-family: monospace;
+      font-size: 1.1em;
+      color: #D32F2F;
+    }
+    .note {
+      background-color: #E1F5FE;
+      padding: 10px;
+      border-left: 3px solid #0288D1;
+      margin: 10px 0;
+    }
+    .pattern-box {
+      background-color: #F5F5F5;
+      border: 1px solid #E0E0E0;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+  </style>
+  <script>
+    // Verificar autenticación al cargar la página
+    if(!localStorage.getItem('authenticated')) {
+        window.location.href = "../index.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Aprendiendo Griego Koiné: Patrón 1 del Futuro Activo</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>19.17 Introducción</h2>
+      <div class="pronunciation">
+        <p>Los verbos griegos siguen <strong>cuatro patrones</strong> para formar su raíz futura. Estos patrones también se aplican en otros tiempos verbales, por lo que son esenciales de aprender. En este capítulo, nos enfocamos en el <strong>Patrón 1</strong>; los demás se verán más adelante.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>19.18 Característica principal</h2>
+      <div class="rules">
+        <p>Los verbos del <strong>Patrón 1</strong> usan <strong>la misma raíz</strong> en presente y en futuro activo. Es decir, sus raíces temporales (presente y futuro) son idénticas a la raíz léxica original. Aunque la forma final del verbo puede modificarse por el formante temporal (sigma, σ) u otros cambios fonéticos, la raíz subyacente permanece igual.</p>
+        
+        <div class="pattern-box">
+          <p><strong>Ejemplo básico:</strong></p>
+          <p>Presente: <span class="formula">λύω</span> (libero) → Futuro: <span class="formula">λύσω</span> (liberaré).</p>
+          <p>Raíz: <span class="formula">λυ-</span> (igual en ambos tiempos).</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>19.19 Tres categorías del Patrón 1</h2>
+      <div class="examples">
+        <p>Estas categorías ya te son familiares:</p>
+        
+        <h3>1. Raíces terminadas en iota (ι) o upsilon (υ)</h3>
+        <div class="pattern-box">
+          <p>Presente: <span class="formula">ἀκούω</span> (escucho) ← Raíz: <span class="formula">ἀκου-</span>.</p>
+          <p>Futuro: <span class="formula">ἀκούσω</span> (escucharé).</p>
+        </div>
+        
+        <h3>2. Verbos contractos</h3>
+        <div class="pattern-box">
+          <p>Presente: <span class="formula">ποιέω</span> (hago) ← Raíz: <span class="formula">ποιε-</span>.</p>
+          <p>Futuro: <span class="formula">ποιήσω</span> (haré) <span class="highlight">(ε + σ → ησ)</span>.</p>
+        </div>
+        
+        <h3>3. Raíces terminadas en oclusiva (π, β, φ, κ, γ, χ, τ, δ, θ)</h3>
+        <div class="pattern-box">
+          <p>Presente: <span class="formula">βλέπω</span> (veo) ← Raíz: <span class="formula">βλεπ-</span>.</p>
+          <p>Futuro: <span class="formula">βλέψω</span> (veré) <span class="highlight">(π + σ → ψ)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Importancia práctica</h2>
+      <div class="rules">
+        <p>Al avanzar en griego, reconocer estos patrones te permitirá:</p>
+        <ul>
+          <li><strong>Identificar tiempos verbales</strong> rápidamente (ej. si ves <span class="formula">-σω</span>, sabrás que es futuro activo del Patrón 1).</li>
+          <li><strong>Analizar verbos</strong> (parsing) con mayor precisión. Por ejemplo:
+            <p><span class="formula">γράψω</span>: Sabiendo que es del Patrón 1 (raíz <span class="formula">γραφ-</span> + σ → ψ), deduces que es futuro activo de <span class="formula">γράφω</span> ("escribiré").</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Resumen del Patrón 1</h2>
+      <div class="note">
+        <ul>
+          <li>✔ <strong>Raíz compartida:</strong> Presente y futuro activo usan la misma raíz.</li>
+          <li>✔ <strong>Tres categorías:</strong>
+            <ul>
+              <li>Raíces con <span class="formula">ι/υ</span> (ej. <span class="formula">ἀκούω → ἀκούσω</span>).</li>
+              <li>Verbos contractos (ej. <span class="formula">ποιέω → ποιήσω</span>).</li>
+              <li>Raíces con oclusivas (ej. <span class="formula">βλέπω → βλέψω</span>).</li>
+            </ul>
+          </li>
+          <li>✔ <strong>Clave para el análisis:</strong> Si un verbo sigue este patrón, su formación es predecible.</li>
+        </ul>
+        <p><strong>Ejemplo integrador:</strong></p>
+        <p><span class="formula">φυλάσσω</span> (proteger) → Futuro: <span class="formula">φυλάξω</span> (protegeré).</p>
+        <p>Raíz: <span class="formula">φυλακ-</span> (oclusiva velar: κ + σ → ξ).</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con el Patrón 1</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Qué característica define al Patrón 1 de formación del futuro?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Usa raíces diferentes en presente y futuro</label>
+            <label><input type="radio" name="q1" value="b"> Usa la misma raíz en presente y futuro</label>
+            <label><input type="radio" name="q1" value="c"> Solo se aplica a verbos contractos</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Cómo se forma el futuro de un verbo con raíz terminada en κ (como φυλακ-)?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> κ + σ → ψ</label>
+            <label><input type="radio" name="q2" value="b"> κ + σ → ξ</label>
+            <label><input type="radio" name="q2" value="c"> κ + σ → σ</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Cuál sería el futuro de πιστεύω (creer) según el Patrón 1?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> πιστεύσω</label>
+            <label><input type="radio" name="q3" value="b"> πιστεύξω</label>
+            <label><input type="radio" name="q3" value="c"> πιστεύψω</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script src="../../auth.js"></script>
+  <script src="../../user-tooltip.js"></script>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // Usa la misma raíz en presente y futuro
+        q2: 'b', // κ + σ → ξ
+        q3: 'a'  // πιστεύσω
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendiendo Griego Koiné: Futuro Medio Indicativo Líquido</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    h3 {
+      color: #2E7D32;
+    }
+    .pronunciation {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .formula {
+      font-family: monospace;
+      font-size: 1.1em;
+      color: #D32F2F;
+    }
+    .note {
+      background-color: #E1F5FE;
+      padding: 10px;
+      border-left: 3px solid #0288D1;
+      margin: 10px 0;
+    }
+    .footnote {
+      font-size: 0.8em;
+      color: #666;
+    }
+    .contraction {
+      background-color: #FFF9C4;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .summary-box {
+      background-color: #F5F5F5;
+      border: 1px solid #E0E0E0;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+  </style>
+  <script>
+    // Verificar autenticación al cargar la página
+    if(!localStorage.getItem('authenticated')) {
+        window.location.href = "../index.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Aprendiendo Griego Koiné: Futuro Medio Indicativo Líquido</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>20.13 Futuro Medio Indicativo Líquido</h2>
+      <div class="pronunciation">
+        <p class="formula">Raíz de futuro activo + Formante temporal (εσ) + Vocal de conexión + Terminaciones pasivas primarias</p>
+        <p>Ejemplo:</p>
+        <p class="formula">μεν + εσ + ο + μεθα → μενοῦμεθα</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>20.14 Paradigma: Futuro Medio Indicativo Líquido</h2>
+      <div class="examples">
+        <table>
+          <tr>
+            <th>Forma líquida</th>
+            <th>Traducción</th>
+            <th>Verbo contracto (comparativo)</th>
+            <th>Verbo regular (comparativo)</th>
+          </tr>
+          <tr>
+            <td>1 sg μενοῦμαι</td>
+            <td>Yo permaneceré</td>
+            <td>ποιοῦμαι (haré)</td>
+            <td>μένομαι (permanezco)</td>
+          </tr>
+          <tr>
+            <td>2 sg μενῇ</td>
+            <td>Tú permanecerás</td>
+            <td>ποιῇ (harás)</td>
+            <td>μένῃ (permaneces)</td>
+          </tr>
+          <tr>
+            <td>3 sg μενεῖται</td>
+            <td>Él/Ella permanecerá</td>
+            <td>ποιεῖται (hará)</td>
+            <td>μένεται (permanece)</td>
+          </tr>
+          <tr>
+            <td>1 pl μενούμεθα</td>
+            <td>Nosotros permaneceremos</td>
+            <td>ποιούμεθα (haremos)</td>
+            <td>μενόμεθα (permanecemos)</td>
+          </tr>
+          <tr>
+            <td>2 pl μενεῖσθε</td>
+            <td>Vosotros permaneceréis</td>
+            <td>ποιεῖσθε (haréis)</td>
+            <td>μένεσθε (permanecéis)</td>
+          </tr>
+          <tr>
+            <td>3 pl μενοῦνται</td>
+            <td>Ellos permanecerán</td>
+            <td>ποιοῦνται (harán)</td>
+            <td>μένονται (permanecen)</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>20.15 Distinción de verbos contractos épsilon</h2>
+      <div class="rules">
+        <p>El futuro líquido se parece al presente contracto épsilon (ej. <span class="formula">ποιεῖτε</span>). ¿Cómo distinguirlos? Ejemplo con <span class="formula">μενεῖς</span>:</p>
+        <ul>
+          <li>Memoriza la forma léxica: <span class="formula">μένω</span> (no existe <span class="formula">μενέω</span>).</li>
+          <li>Identifica la consonante líquida final: La raíz <span class="formula">μεν-</span> termina en nu (ν) → <span class="formula">μενεῖς</span> es futuro líquido.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>20.16 Acentos diacríticos</h2>
+      <div class="rules">
+        <p>El acento circunflejo ( ῀ ) ayuda a identificar futuros líquidos:</p>
+        <ul>
+          <li>Siempre lleva circunflejo en las vocales contraídas (<span class="formula">μενοῦμαι, μενεῖτε</span>).</li>
+          <li>Excepción: 1a persona plural medio (<span class="formula">μενούμεθα</span>) → acento agudo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>20.17 Contraste presente/futuro en líquidos</h2>
+      <div class="examples">
+        <table>
+          <tr>
+            <th>Presente</th>
+            <th>Futuro líquido</th>
+            <th>Cambio clave</th>
+          </tr>
+          <tr>
+            <td>μένω (acento agudo)</td>
+            <td>μενῶ (circunflejo)</td>
+            <td>Acento diferente</td>
+          </tr>
+          <tr>
+            <td>μένομεν (sin contraer)</td>
+            <td>μενοῦμεν (contraído)</td>
+            <td>Contracción solo en futuro</td>
+          </tr>
+          <tr>
+            <td>μενόμεθα</td>
+            <td>μενούμεθα</td>
+            <td>Vocal temática conservada</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Modificaciones de raíz</h2>
+      <div class="pronunciation">
+        <p>Junto con el formante temporal diferente, la raíz de futuro en verbos líquidos suele diferir de su raíz de presente por varias razones. Todos los ejemplos hasta el vocabulario de este capítulo muestran estos cambios:</p>
+        
+        <table>
+          <tr>
+            <th>Presente</th>
+            <th>Futuro líquido</th>
+            <th>Tipo de modificación</th>
+          </tr>
+          <tr>
+            <td>ἀποστέλλω</td>
+            <td>ἀποστελῶ</td>
+            <td>Consonante duplicada eliminada (λλ → λ)</td>
+          </tr>
+          <tr>
+            <td>βάλλω</td>
+            <td>βαλῶ</td>
+            <td>Consonante duplicada eliminada (λλ → λ)</td>
+          </tr>
+          <tr>
+            <td>ἐκβάλλω</td>
+            <td>ἐκβαλῶ</td>
+            <td>Consonante duplicada eliminada (λλ → λ)</td>
+          </tr>
+          <tr>
+            <td>αἴρω</td>
+            <td>ἀρῶ</td>
+            <td>Iota (ι) añadido</td>
+          </tr>
+          <tr>
+            <td>ἀποκτείνω</td>
+            <td>ἀποκτενῶ</td>
+            <td>Iota (ι) añadido</td>
+          </tr>
+          <tr>
+            <td>ἐγείρω</td>
+            <td>ἐγερῶ</td>
+            <td>Iota (ι) añadido</td>
+          </tr>
+          <tr>
+            <td>λέγω</td>
+            <td>ἐρῶ</td>
+            <td>Raíz diferente (ἐρ vs λεγ)</td>
+          </tr>
+        </table>
+        
+        <p>Solo dos verbos líquidos vistos hasta ahora no modifican su raíz en futuro<span class="footnote">⁷</span>:</p>
+        <blockquote>
+          <span class="formula">κρίνω → κρινῶ</span><br>
+          <span class="formula">μένω → μενῶ</span>
+        </blockquote>
+      </div>
+    </section>
+
+    <section>
+      <h2>20.19 Clave mnemotécnica</h2>
+      <div class="note">
+        <p>"Las consonantes (no las vocales) portan el significado de la palabra". Si enfocas un verbo por sus consonantes base, los cambios vocálicos serán menos problemáticos:</p>
+        <ul>
+          <li>Ejemplo: <span class="formula">γινώσκω</span> (raíz <span class="formula">γνω</span>) → futuro <span class="formula">γνώσομαι</span></li>
+          <li>Las consonantes esenciales (γ-ν) se mantienen en ambas formas.</li>
+        </ul>
+        <p>(<span class="formula">γινώσκω</span> es vocabulario de este capítulo)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Repaso de medio tiempo</h2>
+      <div class="summary-box">
+        <p>Has avanzado mucho. Paremos para consolidar:</p>
+        <ul>
+          <li><strong>Raíz verbal:</strong> Forma más básica del verbo.</li>
+          <li><strong>Tema temporal:</strong> Forma básica en un tiempo específico (derivada de la raíz).</li>
+          <li>Todos los tiempos derivan de la raíz, no del presente. ¡El presente es el tiempo más irregular!</li>
+          <li><strong>Patrón 1:</strong> Raíz no modificada en presente. Presente y futuro comparten misma raíz.</li>
+          <li><strong>Patrón 2:</strong> Se usan raíces diferentes para distintos tiempos.</li>
+          <li><strong>Patrón 3 (verbos líquidos):</strong>
+            <ul>
+              <li>Raíz termina en líquida (λ, μ, ν, ρ).</li>
+              <li>Usan εσ como formante temporal futuro.</li>
+              <li>Sigma (σ) desaparece ante vocal de conexión → contracción vocálica.</li>
+              <li>A veces cambia la vocal temática.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con el Futuro Medio Líquido</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Qué caracteriza a los verbos líquidos?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Terminan en vocales</label>
+            <label><input type="radio" name="q1" value="b"> Su raíz termina en λ, μ, ν o ρ</label>
+            <label><input type="radio" name="q1" value="c"> Siempre son contractos</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Qué acento lleva normalmente el futuro líquido?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Acento agudo</label>
+            <label><input type="radio" name="q2" value="b"> Acento circunflejo</label>
+            <label><input type="radio" name="q2" value="c"> No lleva acento</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Cuál es la forma correcta del futuro medio líquido para "ellos permanecerán"?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> μενεῖσθε</label>
+            <label><input type="radio" name="q3" value="b"> μενοῦνται</label>
+            <label><input type="radio" name="q3" value="c"> μενεῖται</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script src="../../auth.js"></script>
+  <script src="../../user-tooltip.js"></script>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // Su raíz termina en λ, μ, ν o ρ
+        q2: 'b', // Acento circunflejo
+        q3: 'b'  // μενοῦνται
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendiendo Griego Koiné: Futuro de εἰμί</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    h3 {
+      color: #2E7D32;
+    }
+    .pronunciation {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .highlight {
+      background-color: #FFF9C4;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .formula {
+      font-family: monospace;
+      font-size: 1.1em;
+      color: #D32F2F;
+    }
+    .note {
+      background-color: #E1F5FE;
+      padding: 10px;
+      border-left: 3px solid #0288D1;
+      margin: 10px 0;
+    }
+    .summary-box {
+      background-color: #F5F5F5;
+      border: 1px solid #E0E0E0;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+    .footnote {
+      font-size: 0.8em;
+      color: #666;
+    }
+  </style>
+  <script>
+    // Verificar autenticación al cargar la página
+    if(!localStorage.getItem('authenticated')) {
+        window.location.href = "../index.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Aprendiendo Griego Koiné: Futuro de εἰμί</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>Futuro de εἰμί (ser/estar)</h2>
+      <div class="pronunciation">
+        <p>El futuro de <span class="formula">εἰμί</span> es de voz media deponente. Su raíz es <span class="formula">ἐσ-</span>. Memoriza este paradigma:</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Paradigma del Futuro de εἰμί</h2>
+      <div class="examples">
+        <table>
+          <tr>
+            <th>Forma</th>
+            <th>Traducción</th>
+            <th>Futuro medio (comparativo)</th>
+          </tr>
+          <tr>
+            <td>1 sg ἔσομαι</td>
+            <td>Yo seré/estaré</td>
+            <td>πορεύσομαι (iré)</td>
+          </tr>
+          <tr>
+            <td>2 sg ἔσῃ</td>
+            <td>Tú serás/estarás</td>
+            <td>πορεύσῃ (irás)</td>
+          </tr>
+          <tr>
+            <td>3 sg ἔσται<span class="footnote">⁵</span></td>
+            <td>Él/Ella/Ello será</td>
+            <td>πορεύσεται (irá)</td>
+          </tr>
+          <tr>
+            <td>1 pl ἐσόμεθα</td>
+            <td>Nosotros seremos</td>
+            <td>πορευσόμεθα (iremos)</td>
+          </tr>
+          <tr>
+            <td>2 pl ἔσεσθε</td>
+            <td>Vosotros seréis</td>
+            <td>πορεύσεσθε (iréis)</td>
+          </tr>
+          <tr>
+            <td>3 pl ἔσονται</td>
+            <td>Ellos serán</td>
+            <td>πορεύσονται (irán)</td>
+          </tr>
+        </table>
+        <p class="footnote">⁵ Nota: La forma ἔσται es contracta de ἔσεται</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Resumen del Futuro en Griego Koiné</h2>
+      <div class="summary-box">
+        <ol>
+          <li>El futuro indica una acción posterior. Usa generalmente aspecto indefinido.</li>
+          <li>Usa el formante temporal sigma (σ). El activo lleva terminaciones activas primarias; el medio, pasivas primarias. Todos los futuros medios vistos son deponentes (significado activo).</li>
+          <li>Los verbos contractos alargan su vocal ante un formante temporal (α/ε → η; ο → ω).</li>
+          <li>El Cuadrado de Oclusivas es crucial:
+            <ul>
+              <li>Labiales (π,β,φ) + σ → ψ</li>
+              <li>Velares (κ,γ,χ) + σ → ξ</li>
+              <li>Dentales (τ,δ,θ) + σ → σ</li>
+            </ul>
+          </li>
+          <li>Muchos verbos usan la misma raíz en presente y futuro:
+            <ul>
+              <li>Raíces en ι/υ (ej. <span class="formula">ἀκούω/ἀκούσω</span>)</li>
+              <li>Verbos contractos (ej. <span class="formula">Ποιέω/ποιήσω</span>)</li>
+              <li>Raíces en oclusiva (ej. <span class="formula">Βλέπω/βλέψω</span>)</li>
+            </ul>
+          </li>
+          <li>Un verbo deponente en un tiempo no necesariamente lo es en otro (ej. <span class="formula">Γινώσκω</span> es activo en presente pero deponente en futuro: <span class="formula">γνώσομαι</span>).</li>
+          <li><strong>Memoriza el futuro de εἰμί</strong> (<span class="formula">ἔσομαι, ἔσῃ, ἔσται</span>, etc.).</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con el Futuro de εἰμί</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Cuál es la raíz del futuro de εἰμί?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> εἰ-</label>
+            <label><input type="radio" name="q1" value="b"> ἐσ-</label>
+            <label><input type="radio" name="q1" value="c"> ἐμ-</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Cómo se dice "ellos serán" en griego?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> ἔσομαι</label>
+            <label><input type="radio" name="q2" value="b"> ἔσονται</label>
+            <label><input type="radio" name="q2" value="c"> ἔσται</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Qué tipo de voz tiene el futuro de εἰμί?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> Activa</label>
+            <label><input type="radio" name="q3" value="b"> Media deponente</label>
+            <label><input type="radio" name="q3" value="c"> Pasiva</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script src="../../auth.js"></script>
+  <script src="../../user-tooltip.js"></script>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // ἐσ-
+        q2: 'b', // ἔσονται
+        q3: 'b'  // Media deponente
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
