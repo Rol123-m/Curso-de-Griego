@@ -1,0 +1,391 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendiendo Griego Koiné: Imperfecto Medio/Pasivo</title>
+  <link rel="stylesheet" href="../../circle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .pronunciation {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .note {
+      background-color: #fffde7;
+      padding: 15px;
+      border-left: 5px solid #ffc107;
+      margin: 20px 0;
+    }
+    .paradigm {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-left: 5px solid #9e9e9e;
+      margin: 20px 0;
+    }
+    .formula {
+      font-family: monospace;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #e8f5e9;
+      border-radius: 5px;
+    }
+    .observation {
+      background-color: #f3e5f5;
+      padding: 15px;
+      border-left: 5px solid #9c27b0;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Aprendiendo Griego Koiné: Imperfecto Medio/Pasivo</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>Esquema del Imperfecto Medio/Pasivo Indicativo</h2>
+      <div class="paradigm">
+        <p>El imperfecto medio/pasivo se forma con los siguientes elementos:</p>
+        
+        <div class="formula">
+          Aumento + Tema de presente + Vocal de conexión + Desinencias pasivas secundarias
+        </div>
+        
+        <div class="formula">
+          ἐ + λυ + ο + μην → <strong>ἐλυόμην</strong>
+        </div>
+        
+        <h3>Componentes explicados:</h3>
+        <ol>
+          <li><strong>Aumento (ἐ-)</strong>: Marca de tiempo pasado</li>
+          <li><strong>Tema de presente (λυ-)</strong>: Raíz verbal del presente</li>
+          <li><strong>Vocal de conexión (ο/ε)</strong>: Varía según la persona</li>
+          <li><strong>Desinencias pasivas secundarias (-μην, -σο, -το, etc.)</strong>: Indican persona, número y voz</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>Paradigma del Imperfecto Medio/Pasivo Indicativo</h2>
+      <div class="examples">
+        <p>(La traducción corresponde al sentido pasivo):</p>
+        
+        <table>
+          <tr>
+            <th>Forma</th>
+            <th>Traducción</th>
+            <th>Vocal conexión</th>
+            <th>Desinencia</th>
+            <th>Presente pasivo correspondiente</th>
+          </tr>
+          <tr>
+            <td>1ª sg <strong>ἐλυόμην</strong></td>
+            <td>"Yo era/estaba siendo soltado"</td>
+            <td>ο</td>
+            <td>μην</td>
+            <td>λύομαι</td>
+          </tr>
+          <tr>
+            <td>2ª sg <strong>ἐλύου</strong></td>
+            <td>"Tú eras/estabas siendo soltado"</td>
+            <td>ε</td>
+            <td>σο</td>
+            <td>λύῃ</td>
+          </tr>
+          <tr>
+            <td>3ª sg <strong>ἐλύετο</strong></td>
+            <td>"Él/Ella era/estaba siendo soltado"</td>
+            <td>ε</td>
+            <td>το</td>
+            <td>λύεται</td>
+          </tr>
+          <tr>
+            <td>1ª pl <strong>ἐλυόμεθα</strong></td>
+            <td>"Nosotros éramos/estábamos siendo soltados"</td>
+            <td>ο</td>
+            <td>μεθα</td>
+            <td>λυόμεθα</td>
+          </tr>
+          <tr>
+            <td>2ª pl <strong>ἐλύεσθε</strong></td>
+            <td>"Vosotros erais/estabais siendo soltados"</td>
+            <td>ε</td>
+            <td>σθε</td>
+            <td>λύεσθε</td>
+          </tr>
+          <tr>
+            <td>3ª pl <strong>ἐλύοντο</strong></td>
+            <td>"Ellos eran/estaban siendo soltados"</td>
+            <td>ο</td>
+            <td>ντο</td>
+            <td>λύονται</td>
+          </tr>
+        </table>
+        
+        <div class="observation">
+          <p>🔹 <strong>Observación:</strong> Las desinencias secundarias no son muy distintas de las primarias. Por eso es clave entender la estructura interna del verbo griego; de lo contrario, las similitudes no serían tan evidentes. La vocal de conexión es visible en casi todas las formas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Comparación entre Presente e Imperfecto Medio/Pasivo</h2>
+      <div class="rules">
+        <h3>Relación entre desinencias primarias y secundarias</h3>
+        <p>Las desinencias secundarias del imperfecto medio/pasivo son versiones modificadas de las primarias del presente:</p>
+        
+        <table>
+          <tr>
+            <th>Persona</th>
+            <th>Presente (Primarias)</th>
+            <th>Imperfecto (Secundarias)</th>
+            <th>Similitudes</th>
+          </tr>
+          <tr>
+            <td>1ª sg</td>
+            <td>-ομαι</td>
+            <td>-ομην</td>
+            <td>Misma vocal temática (ο)</td>
+          </tr>
+          <tr>
+            <td>2ª sg</td>
+            <td>-ῃ</td>
+            <td>-ου</td>
+            <td>Ambas formas contraídas</td>
+          </tr>
+          <tr>
+            <td>3ª sg</td>
+            <td>-εται</td>
+            <td>-ετο</td>
+            <td>Misma vocal temática (ε)</td>
+          </tr>
+          <tr>
+            <td>1ª pl</td>
+            <td>-ομεθα</td>
+            <td>-ομεθα</td>
+            <td>Idénticas</td>
+          </tr>
+          <tr>
+            <td>2ª pl</td>
+            <td>-εσθε</td>
+            <td>-εσθε</td>
+            <td>Idénticas</td>
+          </tr>
+          <tr>
+            <td>3ª pl</td>
+            <td>-ονται</td>
+            <td>-οντο</td>
+            <td>Misma vocal temática (ο)</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con el Imperfecto Medio/Pasivo</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Qué elemento distingue claramente al imperfecto medio/pasivo del presente?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> El tema de futuro</label>
+            <label><input type="radio" name="q1" value="b"> El aumento (ἐ-)</label>
+            <label><input type="radio" name="q1" value="c"> La terminación -σι</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Qué desinencia corresponde a la 3ª persona plural del imperfecto medio/pasivo?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> -ντο</label>
+            <label><input type="radio" name="q2" value="b"> -το</label>
+            <label><input type="radio" name="q2" value="c"> -σο</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Cómo se traduce ἐλυόμην?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> "Yo soltaba"</label>
+            <label><input type="radio" name="q3" value="b"> "Yo era soltado"</label>
+            <label><input type="radio" name="q3" value="c"> "Yo solté"</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script src="../../auth.js"></script>
+  <script src="../../user-tooltip.js"></script>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // El aumento (ἐ-)
+        q2: 'a', // -ντο
+        q3: 'b'  // "Yo era soltado"
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
