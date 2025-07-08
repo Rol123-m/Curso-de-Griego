@@ -1,0 +1,466 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen - Aoristo Segundo en Griego Koiné</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+      margin-right: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .correct {
+      background-color: #dff0d8;
+      color: #3c763d;
+    }
+    .incorrect {
+      background-color: #f2dede;
+      color: #a94442;
+    }
+    .score {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e8f5e9;
+      border-left: 5px solid #4CAF50;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+    .greek {
+      font-family: "New Athena Unicode", "Galatia SIL", "Gentium Plus", serif;
+      font-size: 1.2em;
+    }
+    .note {
+      background-color: #fffde7;
+      padding: 15px;
+      border-left: 5px solid #ffc107;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Examen - Aoristo Segundo (Activo y Medio)</h1>
+  </header>
+
+  <div class="container">
+    <h2>Examen sobre el Aoristo Segundo</h2>
+    <p>Responde las siguientes preguntas seleccionando la opción correcta. Al finalizar, haz clic en "Comprobar Respuestas" para ver tu nota.</p>
+
+    <!-- Pregunta 1 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 1:</strong> ¿Qué aspecto verbal describe el aoristo en griego?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q1" value="a"> Acción continua o repetida</label>
+        <label><input type="radio" name="q1" value="b"> Acción puntual o indefinida</label>
+        <label><input type="radio" name="q1" value="c"> Acción futura</label>
+      </div>
+      <div class="result" id="result1"></div>
+    </div>
+
+    <!-- Pregunta 2 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 2:</strong> ¿Qué diferencia hay entre primer y segundo aoristo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q2" value="a"> El primer aoristo usa -σα- y el segundo modifica la raíz</label>
+        <label><input type="radio" name="q2" value="b"> El primer aoristo es para verbos activos y el segundo para pasivos</label>
+        <label><input type="radio" name="q2" value="c"> No hay diferencia de significado</label>
+      </div>
+      <div class="result" id="result2"></div>
+    </div>
+
+    <!-- Pregunta 3 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 3:</strong> ¿Cómo se forma el aoristo segundo activo de <span class="greek">λαμβάνω</span>?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q3" value="a"> λαμβάνω → ἐλάμβανον</label>
+        <label><input type="radio" name="q3" value="b"> λαμβάνω → ἔλαβον</label>
+        <label><input type="radio" name="q3" value="c"> λαμβάνω → λήμψομαι</label>
+      </div>
+      <div class="result" id="result3"></div>
+    </div>
+
+    <!-- Pregunta 4 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 4:</strong> ¿Qué elemento NO forma parte del aoristo segundo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q4" value="a"> Aumento</label>
+        <label><input type="radio" name="q4" value="b"> Formante -σα-</label>
+        <label><input type="radio" name="q4" value="c"> Desinencias secundarias</label>
+      </div>
+      <div class="result" id="result4"></div>
+    </div>
+
+    <!-- Pregunta 5 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 5:</strong> ¿Qué verbo tiene un aoristo segundo medio deponente?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q5" value="a"> λύω</label>
+        <label><input type="radio" name="q5" value="b"> γίνομαι</label>
+        <label><input type="radio" name="q5" value="c"> λαμβάνω</label>
+      </div>
+      <div class="result" id="result5"></div>
+    </div>
+
+    <!-- Pregunta 6 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 6:</strong> ¿Cómo se identifica un aoristo medio deponente en el léxico?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q6" value="a"> Porque la tercera forma termina en -ομην</label>
+        <label><input type="radio" name="q6" value="b"> Porque tiene significado pasivo</label>
+        <label><input type="radio" name="q6" value="c"> Porque usa desinencias primarias</label>
+      </div>
+      <div class="result" id="result6"></div>
+    </div>
+
+    <!-- Pregunta 7 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 7:</strong> ¿Qué desinencias usa el aoristo segundo medio?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q7" value="a"> Primarias activas</label>
+        <label><input type="radio" name="q7" value="b"> Secundarias medias/pasivas</label>
+        <label><input type="radio" name="q7" value="c"> Futuras activas</label>
+      </div>
+      <div class="result" id="result7"></div>
+    </div>
+
+    <!-- Pregunta 8 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 8:</strong> ¿Cómo se traduce <span class="greek">ἔλαβον</span>?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q8" value="a"> Yo tomo</label>
+        <label><input type="radio" name="q8" value="b"> Yo tomaba</label>
+        <label><input type="radio" name="q8" value="c"> Yo tomé</label>
+      </div>
+      <div class="result" id="result8"></div>
+    </div>
+
+    <!-- Pregunta 9 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 9:</strong> ¿Qué diferencia hay entre <span class="greek">ἐγενόμην</span> y <span class="greek">ἐγενήθην</span>?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q9" value="a"> El primero es medio deponente, el segundo pasivo</label>
+        <label><input type="radio" name="q9" value="b"> El primero es activo, el segundo medio</label>
+        <label><input type="radio" name="q9" value="c"> No hay diferencia</label>
+      </div>
+      <div class="result" id="result9"></div>
+    </div>
+
+    <!-- Pregunta 10 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 10:</strong> ¿Qué caracteriza la raíz del aoristo segundo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q10" value="a"> Es la raíz verbal original sin modificaciones</label>
+        <label><input type="radio" name="q10" value="b"> Siempre es igual a la raíz del presente</label>
+        <label><input type="radio" name="q10" value="c"> Nunca cambia respecto al presente</label>
+      </div>
+      <div class="result" id="result10"></div>
+    </div>
+
+    <!-- Pregunta 11 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 11:</strong> ¿Qué verbo muestra un cambio drástico en su aoristo segundo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q11" value="a"> λέγω → εἶπον</label>
+        <label><input type="radio" name="q11" value="b"> γίνομαι → ἐγενόμην</label>
+        <label><input type="radio" name="q11" value="c"> λαμβάνω → ἔλαβον</label>
+      </div>
+      <div class="result" id="result11"></div>
+    </div>
+
+    <!-- Pregunta 12 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 12:</strong> ¿Qué elemento ayuda a distinguir entre imperfecto y aoristo segundo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q12" value="a"> La raíz verbal</label>
+        <label><input type="radio" name="q12" value="b"> Las desinencias personales</label>
+        <label><input type="radio" name="q12" value="c"> El aumento</label>
+      </div>
+      <div class="result" id="result12"></div>
+    </div>
+
+    <!-- Pregunta 13 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 13:</strong> ¿Qué tiempo verbal es equivalente al aoristo en español?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q13" value="a"> Pretérito perfecto simple</label>
+        <label><input type="radio" name="q13" value="b"> Pretérito imperfecto</label>
+        <label><input type="radio" name="q13" value="c"> Futuro imperfecto</label>
+      </div>
+      <div class="result" id="result13"></div>
+    </div>
+
+    <!-- Pregunta 14 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 14:</strong> ¿Qué forma corresponde al aoristo segundo medio de <span class="greek">γίνομαι</span>?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q14" value="a"> γίνομαι</label>
+        <label><input type="radio" name="q14" value="b"> ἐγενόμην</label>
+        <label><input type="radio" name="q14" value="c"> γενήσομαι</label>
+      </div>
+      <div class="result" id="result14"></div>
+    </div>
+
+    <!-- Pregunta 15 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 15:</strong> ¿Qué caracteriza a los verbos deponentes medios?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q15" value="a"> Tienen forma media pero significado activo</label>
+        <label><input type="radio" name="q15" value="b"> Siempre son pasivos</label>
+        <label><input type="radio" name="q15" value="c"> No tienen aoristo</label>
+      </div>
+      <div class="result" id="result15"></div>
+    </div>
+
+    <!-- Pregunta 16 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 16:</strong> ¿Qué información NO proporciona el aoristo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q16" value="a"> Que la acción ocurrió en el pasado</label>
+        <label><input type="radio" name="q16" value="b"> Que la acción fue continua</label>
+        <label><input type="radio" name="q16" value="c"> Que la acción ocurrió</label>
+      </div>
+      <div class="result" id="result16"></div>
+    </div>
+
+    <!-- Pregunta 17 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 17:</strong> ¿Qué verbo tiene un cambio vocálico en su aoristo segundo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q17" value="a"> λείπω → ἔλιπον</label>
+        <label><input type="radio" name="q17" value="b"> βάλλω → ἔβαλον</label>
+        <label><input type="radio" name="q17" value="c"> λαμβάνω → ἔλαβον</label>
+      </div>
+      <div class="result" id="result17"></div>
+    </div>
+
+    <!-- Pregunta 18 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 18:</strong> ¿Qué estrategia es útil para aprender los aoristos segundos?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q18" value="a"> Memorizar las seis formas principales de cada verbo</label>
+        <label><input type="radio" name="q18" value="b"> Ignorar los verbos irregulares</label>
+        <label><input type="radio" name="q18" value="c"> Solo aprender los verbos activos</label>
+      </div>
+      <div class="result" id="result18"></div>
+    </div>
+
+    <!-- Pregunta 19 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 19:</strong> ¿Qué forma corresponde al aoristo segundo activo de <span class="greek">ἔρχομαι</span>?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q19" value="a"> ἦλθον</label>
+        <label><input type="radio" name="q19" value="b"> ἐρχόμην</label>
+        <label><input type="radio" name="q19" value="c"> ἐλεύσομαι</label>
+      </div>
+      <div class="result" id="result19"></div>
+    </div>
+
+    <!-- Pregunta 20 -->
+    <div class="quiz-question">
+      <p><strong>Pregunta 20:</strong> ¿Qué deberías hacer al encontrar un verbo con desinencias secundarias?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q20" value="a"> Verificar si tiene aumento para identificar el tiempo</label>
+        <label><input type="radio" name="q20" value="b"> Asumir que es tiempo presente</label>
+        <label><input type="radio" name="q20" value="c"> Ignorar las desinencias</label>
+      </div>
+      <div class="result" id="result20"></div>
+    </div>
+
+    <button onclick="checkAnswers()">Comprobar Respuestas</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+
+  <script>
+    const answers = {
+      q1: 'b', q2: 'a', q3: 'b', q4: 'b', q5: 'b',
+      q6: 'a', q7: 'b', q8: 'c', q9: 'a', q10: 'a',
+      q11: 'a', q12: 'a', q13: 'a', q14: 'b', q15: 'a',
+      q16: 'b', q17: 'a', q18: 'a', q19: 'a', q20: 'a'
+    };
+
+    let reportData = [];
+    const totalQuestions = Object.keys(answers).length;
+
+    function getAnswerText(question, value) {
+        if (!value) return 'Sin respuesta';
+        const selector = `input[name="${question}"][value="${value}"]`;
+        const input = document.querySelector(selector);
+        return input ? input.parentElement.textContent.trim() : 'Respuesta no válida';
+    }
+
+    function generateReport(score) {
+        const percentage = (score / totalQuestions) * 100;
+        const date = new Date().toLocaleString();
+        
+        let report = `REPORTE DE EXAMEN - Aoristo Segundo (Activo y Medio)\n`;
+        report += `Fecha: ${date}\n`;
+        report += `----------------------------------------\n\n`;
+        
+        reportData.forEach((item, index) => {
+            report += `Pregunta ${index + 1}:\n`;
+            report += `• Enunciado: ${item.questionText}\n`;
+            report += `• Tu respuesta: ${item.studentAnswer}\n`;
+            report += `• Respuesta correcta: ${item.correctAnswer}\n`;
+            report += `• Estado: ${item.isCorrect ? '✅ Correcto' : '❌ Incorrecto'}\n\n`;
+        });
+
+        report += `----------------------------------------\n`;
+        report += `Puntuación final: ${score}/${totalQuestions}\n`;
+        report += `Porcentaje: ${percentage.toFixed(1)}%\n`;
+        report += `Resultado: ${percentage >= 70 ? 'APROBADO' : 'REPROBADO'}\n`;
+        report += `\nMinisterio "Vivos para Servir" - Sección Educativa`;
+
+        return report;
+    }
+
+    function downloadReport() {
+        const score = reportData.filter(item => item.isCorrect).length;
+        const blob = new Blob([generateReport(score)], 
+            { type: 'text/plain;charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `reporte-examen-aoristo-${new Date().toISOString().slice(0,10)}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }
+
+    function checkAnswers() {
+        reportData = [];
+        let score = 0;
+        
+        for (const [question, correctAnswer] of Object.entries(answers)) {
+            const questionElement = document.querySelector(`[name="${question}"]`).closest('.quiz-question');
+            const questionText = questionElement.querySelector('p').textContent.replace(/Pregunta \d+:/, '').trim();
+            
+            const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            const studentAnswer = selectedOption ? selectedOption.value : null;
+            const isCorrect = studentAnswer === correctAnswer;
+            
+            if (isCorrect) score++;
+            
+            reportData.push({
+                questionText: questionText,
+                studentAnswer: getAnswerText(question, studentAnswer),
+                correctAnswer: getAnswerText(question, correctAnswer),
+                isCorrect: isCorrect
+            });
+
+            const resultElement = document.getElementById(`result${question.slice(1)}`);
+            if (selectedOption) {
+                resultElement.textContent = isCorrect ? "¡Correcto!" : "Incorrecto";
+                resultElement.className = `result ${isCorrect ? 'correct' : 'incorrect'}`;
+            } else {
+                resultElement.textContent = "No respondió";
+                resultElement.className = "result";
+            }
+        }
+
+        const percentage = (score / totalQuestions) * 100;
+        const scoreElement = document.getElementById('score');
+        scoreElement.innerHTML = `
+            <p>Tu nota: ${score} / ${totalQuestions}</p>
+            <p>${percentage >= 70 ? '¡Felicidades! Has aprobado el examen.' : 'Necesitas mejorar. Sigue estudiando.'}</p>
+            <button onclick="downloadReport()" id="download-btn">Descargar Reporte</button>
+        `;
+        scoreElement.className = "score";
+    }
+  </script>
+</body>
+</html>
