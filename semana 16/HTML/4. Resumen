@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen Clave: Primer Aoristo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .definition {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .tip {
+      background-color: #e1f5fe;
+      padding: 15px;
+      border-left: 5px solid #0288d1;
+      margin: 20px 0;
+    }
+    .note {
+      background-color: #f3e5f5;
+      padding: 15px;
+      border-left: 5px solid #9c27b0;
+      margin: 20px 0;
+    }
+    .review {
+      background-color: #fff8e1;
+      padding: 15px;
+      border-left: 5px solid #ffc107;
+      margin: 20px 0;
+    }
+    .biblical {
+      background-color: #fce4ec;
+      padding: 15px;
+      border-left: 5px solid #e91e63;
+      margin: 20px 0;
+    }
+    .paradigm {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-left: 5px solid #607d8b;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+    .strategy {
+      background-color: #e8eaf6;
+      padding: 15px;
+      border-left: 5px solid #3949ab;
+      margin: 20px 0;
+    }
+    .formula {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+    .comparison {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .illustration {
+      text-align: center;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+    }
+    .important {
+      background-color: #ffebee;
+      padding: 15px;
+      border-left: 5px solid #f44336;
+      margin: 20px 0;
+    }
+    .deponent {
+      background-color: #e8eaf6;
+      padding: 15px;
+      border-left: 5px solid #3f51b5;
+      margin: 20px 0;
+    }
+    .summary-item {
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .summary-icon {
+      font-size: 2rem;
+      margin-right: 15px;
+      min-width: 60px;
+      text-align: center;
+    }
+    .summary-content {
+      flex: 1;
+    }
+    .summary-1 { background-color: #e8f5e9; border-left: 5px solid #4CAF50; }
+    .summary-2 { background-color: #e3f2fd; border-left: 5px solid #2196F3; }
+    .summary-3 { background-color: #fff8e1; border-left: 5px solid #ffc107; }
+    .summary-4 { background-color: #f3e5f5; border-left: 5px solid #9c27b0; }
+    .summary-5 { background-color: #e8eaf6; border-left: 5px solid #3f51b5; }
+    .summary-6 { background-color: #fce4ec; border-left: 5px solid #e91e63; }
+    .analogy {
+      background-color: #e0f2f1;
+      padding: 15px;
+      border-left: 5px solid #009688;
+      margin: 20px 0;
+      text-align: center;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Resumen Clave: Primer Aoristo</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>Todo lo que Necesitas Saber del Primer Aoristo (por ahora)</h2>
+      
+      <div class="summary-item summary-1">
+        <div class="summary-icon">🧱</div>
+        <div class="summary-content">
+          <h3>1. Formación Básica</h3>
+          <p>Aumento + Raíz Verbal + Formativo -σα- + Terminaciones Secundarias (Activas o Medias).</p>
+        </div>
+      </div>
+
+      <div class="summary-item summary-2">
+        <div class="summary-icon">📖</div>
+        <div class="summary-content">
+          <h3>2. Traducción Fundamental</h3>
+          <p>Se traduce generalmente como un pretérito perfecto simple (pasado simple) en español ("desató", "amó", "escribió").</p>
+        </div>
+      </div>
+
+      <div class="summary-item summary-3">
+        <div class="summary-icon">💡</div>
+        <div class="summary-content">
+          <h3>3. Idea Central</h3>
+          <p>El aoristo no indica por sí mismo duración ni repetición. Presenta la acción como un todo completo, un simple hecho. El contexto define el matiz.</p>
+        </div>
+      </div>
+
+      <div class="summary-item summary-4">
+        <div class="summary-icon">🔤</div>
+        <div class="summary-content">
+          <h3>4. Cambios Fonéticos</h3>
+          <ul>
+            <li><strong>Verbos Contractos</strong> (ej: ἀγαπάω -> ἠγάπησα): Alargan la vocal.</li>
+            <li><strong>Raíces con Oclusiva:</strong>
+              <ul>
+                <li>Labiales -> ψ (γράφω -> ἔγραψα)</li>
+                <li>Guturales -> ξ (πνίγω -> ἔπνιξa)</li>
+                <li>Dentales -> σ (πεῖθω -> ἔπεισα)</li>
+              </ul>
+            </li>
+            <li><strong>Aoristo Líquido</strong> (raíz en λ, μ, ν, ρ): Usan -α- en lugar de -σα- (μένω -> ἔμεινα).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="summary-item summary-5">
+        <div class="summary-icon">🎭</div>
+        <div class="summary-content">
+          <h3>5. Voz Media</h3>
+          <p>Usa terminaciones medias (ej: -σάμην, -σω, -σατο). Indica que el sujeto actúa en interés propio o sobre sí mismo.</p>
+        </div>
+      </div>
+
+      <div class="summary-item summary-6">
+        <div class="summary-icon">🎭</div>
+        <div class="summary-content">
+          <h3>6. Verbos Deponentes</h3>
+          <p>Son verbos que siempre se conjugan en medio/pasivo pero se traducen en voz activa (ej: ἠρξάμην = "comencé", no "me comencé"). ¡Hay que memorizarlos!</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ilustración Final: El Aoristo es una Cámara</h2>
+      <div class="analogy">
+        <p>Piensa en el tiempo aoristo como un fotógrafo. Su trabajo no es filmar una escena (eso sería el imperfecto, mostrando duración). Su trabajo es tomar una fotografía de la acción. La foto captura el evento como un todo completo, congelado en el tiempo: "él corrió", "ella escribió", "ellos llegaron". La foto no te dice si corrió rápido o lento, ni cuántas veces escribió, solo te muestra el hecho de que sucedió. El contexto (el álbum de fotos) te da la historia completa.</p>
+      </div>
+      
+      <div class="illustration">
+        <p>📸 <strong>El Aoristo como Fotografía</strong> 📸</p>
+        <p>Acción completa y puntual vs. Acción en desarrollo</p>
+        <p>AORISTO (foto) ←→ IMPERFECTO (video)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Repaso Final: Pon a Prueba tu Conocimiento</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Cuál es la traducción más común del aoristo en español?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Pretérito imperfecto</label>
+            <label><input type="radio" name="q1" value="b"> Pretérito perfecto simple</label>
+            <label><input type="radio" name="q1" value="c"> Futuro imperfecto</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Qué sucede con las raíces que terminan en consonantes labiales al formar el aoristo?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Se convierten en ξ</label>
+            <label><input type="radio" name="q2" value="b"> Se convierten en ψ</label>
+            <label><input type="radio" name="q2" value="c"> Desaparecen</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> Según la analogía presentada, ¿a qué se compara el aoristo?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> Un video</label>
+            <label><input type="radio" name="q3" value="b"> Una fotografía</label>
+            <label><input type="radio" name="q3" value="c"> Una película</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 4:</strong> ¿Qué son los verbos deponentes?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q4" value="a"> Verbos que solo existen en aoristo</label>
+            <label><input type="radio" name="q4" value="b"> Verbos que se conjugan en medio pero tienen significado activo</label>
+            <label><input type="radio" name="q4" value="c"> Verbos irregulares sin forma en presente</label>
+          </div>
+          <div class="result" id="result4"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // Pretérito perfecto simple
+        q2: 'b', // Se convierten en ψ
+        q3: 'b', // Una fotografía
+        q4: 'b'  // Verbos que se conjugan en medio pero tienen significado activo
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

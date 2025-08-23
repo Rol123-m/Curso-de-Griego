@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primer Aoristo Medio: Acción con un Toque Personal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+    }
+    img {
+      width: 170px;
+      height: 140px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      margin-left: 300px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+    .definition {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .rules {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .rules ul {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 10px;
+    }
+    .examples {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #2196F3;
+      margin: 20px 0;
+    }
+    .quiz {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background-color: #f1f1f1;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      display: flex;
+      width: 100%;
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+    #foot {
+      text-align: center;
+      margin-left: 300px;
+      font-size: 16;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .tip {
+      background-color: #e1f5fe;
+      padding: 15px;
+      border-left: 5px solid #0288d1;
+      margin: 20px 0;
+    }
+    .note {
+      background-color: #f3e5f5;
+      padding: 15px;
+      border-left: 5px solid #9c27b0;
+      margin: 20px 0;
+    }
+    .review {
+      background-color: #fff8e1;
+      padding: 15px;
+      border-left: 5px solid #ffc107;
+      margin: 20px 0;
+    }
+    .biblical {
+      background-color: #fce4ec;
+      padding: 15px;
+      border-left: 5px solid #e91e63;
+      margin: 20px 0;
+    }
+    .paradigm {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-left: 5px solid #607d8b;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+    .strategy {
+      background-color: #e8eaf6;
+      padding: 15px;
+      border-left: 5px solid #3949ab;
+      margin: 20px 0;
+    }
+    .formula {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #ff9800;
+      margin: 20px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+    .comparison {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      margin: 20px 0;
+    }
+    .illustration {
+      text-align: center;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+    }
+    .important {
+      background-color: #ffebee;
+      padding: 15px;
+      border-left: 5px solid #f44336;
+      margin: 20px 0;
+    }
+    .deponent {
+      background-color: #e8eaf6;
+      padding: 15px;
+      border-left: 5px solid #3f51b5;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/QtgrGy8X/verde.png" alt="Logo del ministerio Vivos para servir">
+    <h1>Primer Aoristo Medio: Acción con un Toque Personal</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>Visión general</h2>
+      <div class="review">
+        <p>En esta lección aprenderás:</p>
+        <ul>
+          <li>La diferencia entre voz activa y media</li>
+          <li>Cómo se forma el primer aoristo medio</li>
+          <li>El paradigma completo del primer aoristo medio</li>
+          <li>El secreto de los verbos deponentes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Introducción: Voz Activa vs. Voz Media</h2>
+      <div class="comparison">
+        <p>Hasta ahora hemos visto la voz activa (el sujeto realiza la acción). La voz media añade un matiz crucial: el sujeto realiza la acción de alguna manera para sí mismo, por sí mismo, o en interés propio. A veces la acción "se queda" con el sujeto.</p>
+        
+        <p>Piensa en la diferencia en español:</p>
+        <ul>
+          <li><strong>Activa:</strong> "Yo lavé el auto". (La acción sale del sujeto y recae en el objeto).</li>
+          <li><strong>Media:</strong> "Yo me lavé". (La acción recae sobre el sujeto mismo, hay un interés personal).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>7.1 ¿Cómo se Forma? La Fórmula es Casi Idéntica</h2>
+      <div class="formula">
+        <p>La fórmula es la misma del activo, pero cambiando las terminaciones personales por las de la voz media. El formativo -σα- sigue siendo la clave.</p>
+        <p>Aumento + Raíz Verbal + -σα- + Terminaciones Medias Secundarias</p>
+      </div>
+      
+      <div class="illustration">
+        <p><strong>Ilustración de la formación:</strong></p>
+        <p>[ἐ-] + [λυ] + [σα] + [μην] = ἐλυσάμην (yo me desaté)</p>
+        <p>(Aumento) (Raíz) (Formativo) (Terminación media)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>7.2 Paradigma Completo del Primer Aoristo Medio (λύω - desatar)</h2>
+      <div class="paradigm">
+        <table>
+          <tr>
+            <th>Persona</th>
+            <th>Griego</th>
+            <th>Transliteración</th>
+            <th>Traducción Literal</th>
+            <th>Traducción Natural</th>
+            <th>Análisis</th>
+          </tr>
+          <tr>
+            <td>1ª Sing.</td>
+            <td>ἐλυσάμην</td>
+            <td>e-ly-sá-mēn</td>
+            <td>Yo me desaté</td>
+            <td>Me solté, me desaté a mí mismo</td>
+            <td>Raíz + σα + 1sg media</td>
+          </tr>
+          <tr>
+            <td>2ª Sing.</td>
+            <td>ἐλύσω</td>
+            <td>e-lý-sō</td>
+            <td>Tú te desataste</td>
+            <td>Te soltaste</td>
+            <td>Raíz + σα + 2sg media</td>
+          </tr>
+          <tr>
+            <td>3ª Sing.</td>
+            <td>ἐλύσατο</td>
+            <td>e-lý-sa-to</td>
+            <td>Él/Ella se desató</td>
+            <td>Se soltó</td>
+            <td>Raíz + σα + 3sg media</td>
+          </tr>
+          <tr>
+            <td>1ª Plural</td>
+            <td>ἐλυσάμεθα</td>
+            <td>e-ly-sá-me-tha</td>
+            <td>Nosotros nos desatamos</td>
+            <td>Nos soltamos</td>
+            <td>Raíz + σα + 1pl media</td>
+          </tr>
+          <tr>
+            <td>2ª Plural</td>
+            <td>ἐλύσασθε</td>
+            <td>e-lý-sas-the</td>
+            <td>Vosotros os desatasteis</td>
+            <td>Os soltasteis</td>
+            <td>Raíz + σα + 2pl media</td>
+          </tr>
+          <tr>
+            <td>3ª Plural</td>
+            <td>ἐλύσαντο</td>
+            <td>e-lý-san-to</td>
+            <td>Ellos se desataron</td>
+            <td>Se soltaron</td>
+            <td>Raíz + σα + 3pl media</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>7.3 El Gran Secreto: Los Verbos Deponentes</h2>
+      <div class="important">
+        <p>📌 <strong>Nota IMPORTANTÍSIMA:</strong> Muchos verbos en griego siempre se conjugan en voz media (o pasiva) pero se traducen con un significado activo. A estos verbos se les llama DEPONENTES.</p>
+        <p>La forma media no indica voz media para ellos; simplemente es su forma activa. Es esencial memorizar los deponentes más comunes.</p>
+      </div>
+      
+      <div class="deponent">
+        <p><strong>Ejemplos Clave de Aoristos Medios Deponentes (¡Se traducen como activos!):</strong></p>
+        
+        <table>
+          <tr>
+            <th>Verbo (Presente)</th>
+            <th>Aoristo Medio</th>
+            <th>Traducción</th>
+            <th>Ejemplo en el NT</th>
+          </tr>
+          <tr>
+            <td>ἄρχομαι (comienzo)</td>
+            <td>ἠρξάμην</td>
+            <td>comencé, empecé</td>
+            <td>Hechos 1:1: "El primer relato ἠρξάμην (yo comencé) a hacer, oh Teófilo, acerca de todas las cosas que Jesús empezó (ἤρξατο - aor. medio) a hacer y a enseñar".</td>
+          </tr>
+          <tr>
+            <td>γίνομαι (llegar a ser)</td>
+            <td>ἐγενόμην</td>
+            <td>me convertí, llegué a ser</td>
+            <td>1 Corintios 9:22: "me he hecho (γέγονα - perfecto) de todo para todos". (El aoristo ἐγενόμην es muy común).</td>
+          </tr>
+          <tr>
+            <td>πορεύομαι (voy)</td>
+            <td>ἐπορεύθην</td>
+            <td>fui, viajé</td>
+            <td>Mateo 2:9: "Ellos fueron (ἐπορεύθησαν - aor. medio) y vieron al niño".</td>
+          </tr>
+          <tr>
+            <td>δύναμαι (puedo)</td>
+            <td>ἠδυνήθην</td>
+            <td>pude, fui capaz</td>
+            <td>Romanos 8:39: "...nos podrá separar (δυνήσεται - futuro medio) del amor de Dios".</td>
+          </tr>
+        </table>
+        
+        <div class="tip">
+          <p><strong>¿Cómo saber si es un verdadero medio o un deponente?</strong></p>
+          <ol>
+            <li>Consulta un léxico. Te dirá si un verbo es deponente.</li>
+            <li>Contexto. "Me desaté" (verdadero medio) tiene sentido. "Me comencé" no tiene sentido en español; por lo tanto, "comencé" debe ser deponente.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Practica con el Primer Aoristo Medio</h2>
+      <div class="quiz">
+        <div class="quiz-question">
+          <p><strong>Pregunta 1:</strong> ¿Qué matiz añade la voz media respecto a la voz activa?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> El sujeto recibe la acción de otro</label>
+            <label><input type="radio" name="q1" value="b"> El sujeto realiza la acción para sí mismo o en interés propio</label>
+            <label><input type="radio" name="q1" value="c"> La acción se realiza en el futuro</label>
+          </div>
+          <div class="result" id="result1"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 2:</strong> ¿Qué elemento se mantiene igual en la formación del aoristo medio comparado con el activo?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Las terminaciones personales</label>
+            <label><input type="radio" name="q2" value="b"> El formativo -σα-</label>
+            <label><input type="radio" name="q2" value="c"> El tiempo del aumento</label>
+          </div>
+          <div class="result" id="result2"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Pregunta 3:</strong> ¿Qué son los verbos deponentes?</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> Verbos que solo existen en voz media</label>
+            <label><input type="radio" name="q3" value="b"> Verbos que se conjugan en voz media pero tienen significado activo</label>
+            <label><input type="radio" name="q3" value="c"> Verbos que no tienen forma de aoristo</label>
+          </div>
+          <div class="result" id="result3"></div>
+        </div>
+
+        <button onclick="checkAnswers()">Comprobar Respuestas</button>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="">
+    <p id="foot"> @Copyright Sección educativa del ministerio: "Vivos para Servir"</p>
+  </footer>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b', // El sujeto realiza la acción para sí mismo o en interés propio
+        q2: 'b', // El formativo -σα-
+        q3: 'b'  // Verbos que se conjugan en voz media pero tienen significado activo
+      };
+
+      for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result${question.slice(1)}`);
+        if (selectedOption) {
+          if (selectedOption.value === answers[question]) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.className = "result correct";
+          } else {
+            resultElement.textContent = "Incorrecto. La respuesta correcta es: " + answers[question];
+            resultElement.className = "result incorrect";
+          }
+        } else {
+          resultElement.textContent = "Por favor, selecciona una respuesta.";
+          resultElement.className = "result";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
