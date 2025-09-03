@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolidación: Griego Koiné - Aoristo y Futuro Pasivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --transition-speed: 0.4s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 15px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+            display: none;
+        }
+        
+        .content-section.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .quiz-container {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .question {
+            margin-bottom: 1.2rem;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .option {
+            padding: 8px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .option:hover {
+            background-color: #e8f4fc;
+            border-color: var(--secondary-color);
+        }
+        
+        .option.selected {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .option.correct {
+            background-color: #2ecc71;
+            color: white;
+            border-color: #2ecc71;
+        }
+        
+        .option.incorrect {
+            background-color: #e74c3c;
+            color: white;
+            border-color: #e74c3c;
+        }
+        
+        .check-btn, .next-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .check-btn:hover, .next-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 12px;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .result.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .result.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .vocabulary-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .app-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 0.8rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .app-link:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #7f8c8d;
+            font-size: 0.8rem;
+        }
+        
+        .highlight {
+            background-color: #fff8e1;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--secondary-color);
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.9rem;
+        }
+        
+        .roman-numeral {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        
+        .sub-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 1rem 0;
+        }
+        
+        .sub-nav-btn {
+            background-color: #e8f4fc;
+            border: 1px solid var(--secondary-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .sub-nav-btn:hover, .sub-nav-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                flex-direction: column;
+                display: none;
+                gap: 5px;
+                margin-top: 10px;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }
+            
+            .content-section {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            table {
+                font-size: 0.8rem;
+                display: block;
+                overflow-x: auto;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            .sub-nav {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            h3 {
+                font-size: 1rem;
+            }
+            
+            p, .option, .check-btn, .result {
+                font-size: 0.85rem;
+            }
+            
+            .app-link {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            th, td {
+                padding: 6px 8px;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Estilos específicos para tablets */
+            .container {
+                padding: 15px;
+            }
+            
+            header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .nav-btn {
+                padding: 7px 14px;
+                font-size: 0.85rem;
+            }
+            
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo Vivos para Servir" class="logo">
+            </div>
+            <h1>Consolidación: Griego Koiné</h1>
+
+            <nav id="mainNav">
+                <button class="nav-btn active" data-target="intro">Introducción</button>
+                <button class="nav-btn" data-target="exegesis">Curiosidad Exegética</button>
+                <button class="nav-btn" data-target="objetivos">Objetivos</button>
+                <button class="nav-btn" data-target="comparacion">Comparación Español</button>
+                <button class="nav-btn" data-target="aoristo1">Aoristo 1ª Conj.</button>
+                <button class="nav-btn" data-target="aoristo2">Aoristo 2ª Conj.</button>
+                <button class="nav-btn" data-target="futuro1">Futuro 1ª Conj.</button>
+                <button class="nav-btn" data-target="diferencias">Diferencias</button>
+                <button class="nav-btn" data-target="deponentes">Futuros Deponentes</button>
+                <button class="nav-btn" data-target="futuro2">Futuro 2ª Conj.</button>
+                <button class="nav-btn" data-target="resumen">Resumen</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sección de Introducción -->
+        <section id="intro" class="content-section active">
+            <h2>El Aoristo y Futuro Pasivo Indicativo</h2>
+            
+            <div class="sub-nav">
+                <button class="sub-nav-btn active" data-target="intro">Introducción</button>
+                <button class="sub-nav-btn" data-target="exegesis">Curiosidad Exegética</button>
+                <button class="sub-nav-btn" data-target="objetivos">Objetivos</button>
+                <button class="sub-nav-btn" data-target="comparacion">Comparación Español</button>
+            </div>
+            
+            <p>Ya has aprendido el aoristo y futuro en voz activa y media. Ahora estudiaremos el aoristo y futuro pasivo. Ambos tiempos se forman a partir de la misma raíz (la sexta forma principal), por lo que es natural estudiarlos juntos. La gramática de este capítulo es sencilla y estás a punto de completar la Tabla Maestra de Verbos.</p>
+            
+            <h3>Visión General</h3>
+            <p>En este capítulo aprenderás que:</p>
+            <ul>
+                <li>El aoristo pasivo y el futuro pasivo se forman a partir de la <strong>misma raíz temporal</strong>, la cual se encuentra en <strong>sexto lugar</strong> en la entrada léxica del verbo.</li>
+                <li>El <strong>aoristo pasivo</strong> se forma con un <strong>aumento</strong>, la <strong>raíz del aoristo pasivo</strong>, la <strong>terminación temporal (θη o η)</strong> y <strong>desinencias activas secundarias</strong>.</li>
+                <li>El <strong>futuro pasivo</strong> se forma con la <strong>raíz del aoristo pasivo (sin aumento)</strong>, la <strong>terminación temporal (θησ o ησ)</strong>, la <strong>vocal de conexión</strong> y <strong>desinencias primarias de medio/pasivo</strong>.</li>
+            </ul>
+            
+            <div class="quiz-container">
+                <h3>Cuestionario: Introducción</h3>
+                
+                <div class="question">
+                    <p>1. ¿De qué forma principal se derivan el aoristo pasivo y el futuro pasivo?</p>
+                    <div class="options">
+                        <div class="option" data-correct="false">Primera</div>
+                        <div class="option" data-correct="false">Tercera</div>
+                        <div class="option" data-correct="true">Sexta</div>
+                        <div class="option" data-correct="false">Cuarta</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>2. ¿Qué elemento NO lleva el futuro pasivo en su formación?</p>
+                    <div class="options">
+                        <div class="option" data-correct="true">Aumento</div>
+                        <div class="option" data-correct="false">Terminación temporal</div>
+                        <div class="option" data-correct="false">Vocal de conexión</div>
+                        <div class="option" data-correct="false">Desinencias</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>3. ¿Qué tipo de desinencias utiliza el aoristo pasivo?</p>
+                    <div class="options">
+                        <div class="option" data-correct="false">Primarias de medio/pasivo</div>
+                        <div class="option" data-correct="true">Secundarias activas</div>
+                        <div class="option" data-correct="false">Primarias activas</div>
+                        <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                    </div>
+                </div>
+                
+                <button class="check-btn">Verificar Respuestas</button>
+                <div class="result"></div>
+            </div>
+            
+            <div class="vocabulary-section">
+                <h3>Recurso de Vocabulario</h3>
+                <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+                <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+            </div>
+        </section>
+
+        <!-- Sección Curiosidad Exegética -->
+        <section id="exegesis" class="content-section">
+            <h2><span class="roman-numeral">I.</span> Curiosidad Exegética: El "Pasivo Divino" (Passivum Divinum/Θεῖον Παθητικόν)</h2>
+            
+            <div class="sub-nav">
+                <button class="sub-nav-btn" data-target="intro">Introducción</button>
+                <button class="sub-nav-btn active" data-target="exegesis">Curiosidad Exegética</button>
+                <button class="sub-nav-btn" data-target="objetivos">Objetivos</button>
+                <button class="sub-nav-btn" data-target="comparacion">Comparación Español</button>
+            </div>
+            
+            <h3>La Huella Digital de Dios: Cuando el Griego Oculta al Sujeto para Revelar al Autor.</h3>
+            
+            <h4>¿De qué se trata?</h4>
+            <p>Imagina que estás leyendo el Evangelio de Mateo y llegas a las Bienaventuranzas: "Bienaventurados los que lloran, porque ellos serán consolados" (Mateo 5:4). En griego, "serán consolados" es <span class="highlight">paraklēthēsontai</span> (παρακληθήσονται). Es un verbo en voz pasiva, futuro, 3ª persona del plural.</p>
+            
+            <p>La pregunta crucial es: <strong>¿Y quién los consolará?</strong> El texto no lo dice explícitamente. El sujeto que realiza la acción (el agente) está omitido. Esto no es un descuido del autor. Es una elección teológica y literaria profundamente significativa conocida como el <span class="highlight">Passivum Divinum</span> o "Pasivo Divino".</p>
+            
+            <h4>¿Por qué es tan interesante e importante?</h4>
+            
+            <h5>1. Una Cuestión de Reverencia (Circunlocución):</h5>
+            <p>En la tradición judía, de donde surge el Nuevo Testamento, existía un enorme respeto (temor reverencial) por el nombre de Dios (YHWH). Evitaban pronunciarlo o escribirlo directamente para no violar el mandamiento de "no tomar el nombre de Dios en vano" (Éxodo 20:7). El <span class="highlight">passivum divinum</span> era una forma elegante de eludir la mención directa de Dios como sujeto, atribuyéndole la acción de forma indirecta pero inconfundible. Es una forma de decir "Dios" sin decir "Dios".</p>
+            
+            <h5>2. La "Firma" de Dios en la Gramática:</h5>
+            <p>Cada vez que te encuentras con un verbo pasivo sin un agente explícito en un contexto teológico o narrativo de los evangelios, es como si el autor estuviera poniendo la "huella digital" de Dios. Es un código gramatical que todos los lectores contemporáneos entenderían:</p>
+            
+            <ul>
+                <li>"Serán consolados" = <strong>Dios</strong> los consolará.</li>
+                <li>"El reino de los cielos ha sido preparado para vosotros" (Mateo 25:34) = <strong>Dios</strong> lo ha preparado.</li>
+                <li>"Se le dará al que tiene" (Mateo 13:12) = <strong>Dios</strong> se lo dará.</li>
+                <li>"Sé limpio" (Marcos 1:41 - ¡Imperativo pasivo!) = Que <strong>Dios</strong> te limpie / Que seas limpiado (por Dios).</li>
+            </ul>
+            
+            <h5>3. No es una Regla Absoluta, sino una Herramienta Hermenéutica:</h5>
+            <p>Es vital recordar que no <em>todo</em> pasivo sin agente se refiere a Dios. A veces el agente es obvio por el contexto (p. ej., "fue arrestado" probablemente se refiera a los soldados). La clave está en el <strong>contexto</strong>. Si la acción es algo que, en la teología judía y cristiana, solo puede realizar Dios (perdonar pecados, dar el reino, juzgar, preparar la herencia eterna), entonces el <span class="highlight">passivum divinum</span> es la interpretación más probable.</p>
+            
+            <h4>Ejemplo para tu análisis (Mateo 7:1-2):</h4>
+            <p>"No juzguéis, para que no seáis juzgados (ἵνα μὴ κριθῆτε - <span class="highlight">hina mē krithēte</span>). Porque con el juicio con que juzgáis, seréis juzgados (κριθήσεσθε - <span class="highlight">krithēsesthe</span>)".</p>
+            
+            <p><strong>¿Quién ejecutará ese juicio sobre el que juzga?</strong> La gramática lo oculta. La teología lo revela: es el juicio de Dios. El uso del pasivo divino aquí intensifica la advertencia. No es una simple reciprocidad humana ("otros te juzgarán"), es una declaración sobre la retribución divina.</p>
+            
+            <div class="note">
+                <p><strong>Conclusión para el Estudiante de Koiné:</strong><br>
+                La próxima vez que analices un verbo en voz pasiva y te preguntes <strong>"¿por quién?"</strong>, no lo veas como una información faltante, sino como una invitación a hacer teología. El <span class="highlight">passivum divinum</span> es un recordatorio elegante de que, en la narrativa del Nuevo Testamento, el actor principal, aunque a veces no sea nombrado explícitamente, es siempre Dios. Dominar este matiz te permitirá leer el texto griego con la profundidad y matiz con la que fue escrito.</p>
+            </div>
+            
+            <div class="quiz-container">
+                <h3>Cuestionario: Pasivo Divino</h3>
+                
+                <div class="question">
+                    <p>1. ¿Qué caracteriza al "Pasivo Divino" en el griego del Nuevo Testamento?</p>
+                    <div class="options">
+                        <div class="option" data-correct="false">Siempre incluye el nombre de Dios explícitamente</div>
+                        <div class="option" data-correct="true">Oculta el sujeto para referirse indirectamente a Dios</div>
+                        <div class="option" data-correct="false">Solo se usa en el libro de Apocalipsis</div>
+                        <div class="option" data-correct="false">Es una forma gramatical incorrecta pero aceptada</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>2. ¿Qué caso de uso del pasivo divino se menciona en Mateo 5:4?</p>
+                    <div class="options">
+                        <div class="option" data-correct="false">Serán juzgados</div>
+                        <div class="option" data-correct="true">Serán consolados</div>
+                        <div class="option" data-correct="false">Serán salvados</div>
+                        <div class="option" data-correct="false">Serán perdonados</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>3. ¿Cuál es la principal razón teológica para usar el pasivo divino?</p>
+                    <div class="options">
+                        <div class="option" data-correct="false">Demostrar conocimiento del griego</div>
+                        <div class="option" data-correct="false">Hacer el texto más difícil de entender</div>
+                        <div class="option" data-correct="true">Mostrar reverencia al no mencionar directamente a Dios</div>
+                        <div class="option" data-correct="false">Seguir reglas gramaticales estrictas</div>
+                    </div>
+                </div>
+                
+                <button class="check-btn">Verificar Respuestas</button>
+                <div class="result"></div>
+            </div>
+            
+            <div class="vocabulary-section">
+                <h3>Recurso de Vocabulario</h3>
+                <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+                <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+            </div>
+        </section>
+
+         <section id="objetivos" class="content-section">
+        <h2><span class="roman-numeral">II.</span> Objetivos de aprendizaje</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="exegesis">Curiosidad Exegética</button>
+            <button class="sub-nav-btn active" data-target="objetivos">Objetivos</button>
+            <button class="sub-nav-btn" data-target="comparacion">Comparación Español</button>
+            <button class="sub-nav-btn" data-target="aoristo1">Aoristo 1ª Conj.</button>
+        </div>
+        
+        <p>Al final de este capítulo, serás capaz de:</p>
+        <ul>
+            <li>Identificar y traducir las formas del aoristo pasivo y futuro pasivo indicativo.</li>
+            <li>Comprender el concepto de "pasivo teológico" y su importancia exegética.</li>
+            <li>Reconocer la formación de estos tiempos a partir de la sexta forma principal del verbo.</li>
+            <li>Distinguir entre la primera y la segunda conjugación para el aoristo y futuro pasivo.</li>
+        </ul>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Objetivos de Aprendizaje</h3>
+            
+            <div class="question">
+                <p>1. ¿Cuál de estos NO es un objetivo de este capítulo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Identificar formas de aoristo y futuro pasivo</div>
+                    <div class="option" data-correct="false">Comprender el concepto de pasivo teológico</div>
+                    <div class="option" data-correct="true">Aprender el modo subjuntivo</div>
+                    <div class="option" data-correct="false">Distinguir entre conjugaciones</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿De qué forma principal se derivan los tiempos estudiados en este capítulo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Primera</div>
+                    <div class="option" data-correct="false">Tercera</div>
+                    <div class="option" data-correct="true">Sexta</div>
+                    <div class="option" data-correct="false">Cuarta</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿Qué concepto exegético importante se estudia en este capítulo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">La metáfora del Reino</div>
+                    <div class="option" data-correct="true">El pasivo teológico o divino</div>
+                    <div class="option" data-correct="false">La escatología paulina</div>
+                    <div class="option" data-correct="false">La cristología joánica</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Comparación con el Español -->
+    <section id="comparacion" class="content-section">
+        <h2><span class="roman-numeral">III.</span> Comparación con el Español</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="objetivos">Objetivos</button>
+            <button class="sub-nav-btn active" data-target="comparacion">Comparación Español</button>
+            <button class="sub-nav-btn" data-target="aoristo1">Aoristo 1ª Conj.</button>
+            <button class="sub-nav-btn" data-target="aoristo2">Aoristo 2ª Conj.</button>
+        </div>
+        
+        <ul>
+            <li><strong>Pasado Pasivo:</strong> Se forma con el verbo auxiliar "ser" ("fui", "fuiste", "fue") + el participio pasado del verbo.
+                <ul>
+                    <li><em>Ejemplo:</em> "Yo <strong>fui salvado</strong> por Jesús".</li>
+                </ul>
+            </li>
+            <li><strong>Futuro Pasivo:</strong> Se forma con el verbo auxiliar "ser" en futuro ("seré", "serás", "será") + el participio pasado del verbo.
+                <ul>
+                    <li><em>Ejemplo:</em> "Tú <strong>serás salvado</strong> por la fe".</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Comparación con el Español</h3>
+            
+            <div class="question">
+                <p>1. ¿Cómo se forma el pasado pasivo en español?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">Verbo "ser" + participio pasado</div>
+                    <div class="option" data-correct="false">Verbo "haber" + participio pasado</div>
+                    <div class="option" data-correct="false">Verbo "estar" + participio pasado</div>
+                    <div class="option" data-correct="false">Solo con el participio pasado</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿Qué auxiliar se usa para el futuro pasivo en español?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Haber</div>
+                    <div class="option" data-correct="true">Ser</div>
+                    <div class="option" data-correct="false">Estar</div>
+                    <div class="option" data-correct="false">Tener</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. "Ellos serán bendecidos" es un ejemplo de:</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Pasado pasivo</div>
+                    <div class="option" data-correct="true">Futuro pasivo</div>
+                    <div class="option" data-correct="false">Presente pasivo</div>
+                    <div class="option" data-correct="false">Pluscuamperfecto pasivo</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Aoristo Pasivo de Primera Conjugación -->
+    <section id="aoristo1" class="content-section">
+        <h2><span class="roman-numeral">IV.</span> Aoristo Pasivo de Primera Conjugación (Primer Aoristo Pasivo)</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="comparacion">Comparación Español</button>
+            <button class="sub-nav-btn active" data-target="aoristo1">Aoristo 1ª Conj.</button>
+            <button class="sub-nav-btn" data-target="aoristo2">Aoristo 2ª Conj.</button>
+            <button class="sub-nav-btn" data-target="futuro1">Futuro 1ª Conj.</button>
+        </div>
+        
+        <h3>1. Traducción:</h3>
+        <p>El aoristo pasivo se traduce con el verbo auxiliar "fue" o "fueron" y designa un evento de aspecto indefinido, normalmente en tiempo pasado.</p>
+        <ul>
+            <li><em>Ejemplo:</em> ἐλυθην = "Yo <strong>fui liberado</strong>".</li>
+            <li><em>Ejemplo Bíblico:</em> τότε <strong>ἐπληρώθη</strong> τὸ ῥηθὲν διὰ Ἰερεμίου τοῦ προφήτου (Mat 2:17). Entonces <strong>se cumplió</strong> lo dicho por el profeta Jeremías.</li>
+        </ul>
+        
+        <h3>2. Formación:</h3>
+        <p><strong>Aumento</strong> + <strong>Raíz de Aoristo Pasivo</strong> + <strong>Formativo del tiempo (θη)</strong> + <strong>Desinencias Activas Secundarias</strong></p>
+        <p>ἐ + λυ + θη + ν → <strong>ἐλύθην</strong> (Yo fui liberado)</p>
+        <p>Como la terminación temporal <strong>θη</strong> ya termina en vocal, las vocales de conexión (ο/ε) no son necesarias.</p>
+        <div class="note">
+            <p>Nota crucial: el aoristo pasivo usa <strong>desinencias activas</strong>. Muy Importante.</p>
+        </div>
+        
+        <h3>3. Paradigma: Verbo λύω (Aoristo Pasivo)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Griego</th>
+                    <th>Traducción</th>
+                    <th>Desinencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1a sg.</td>
+                    <td>ἐλύθην</td>
+                    <td>Yo fui liberado/a</td>
+                    <td>-ν</td>
+                </tr>
+                <tr>
+                    <td>2a sg.</td>
+                    <td>ἐλύθης</td>
+                    <td>Tú fuiste liberado/a</td>
+                    <td>-ς</td>
+                </tr>
+                <tr>
+                    <td>3a sg.</td>
+                    <td>ἐλύθη</td>
+                    <td>Él/Ella/Ello fue liberado/a</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>1a pl.</td>
+                    <td>ἐλύθημεν</td>
+                    <td>Nosotros fuimos liberados</td>
+                    <td>-μεν</td>
+                </tr>
+                <tr>
+                    <td>2a pl.</td>
+                    <td>ἐλύθητε</td>
+                    <td>Vosotros fuisteis liberados</td>
+                    <td>-τε</td>
+                </tr>
+                <tr>
+                    <td>3a pl.</td>
+                    <td>ἐλύθησαν</td>
+                    <td>Ellos fueron liberados</td>
+                    <td>-σαν</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>4. Aumento:</h3>
+        <p>La raíz del aoristo pasivo lleva aumento, que normalmente indica tiempo pasado.</p>
+        
+        <h3>5. Raíz Temporal:</h3>
+        <p>La raíz del primer aoristo pasivo generalmente es la misma que la del presente. Si es diferente, el verbo suele tener un segundo aoristo pasivo. Esta raíz es la <strong>sexta forma</strong> en la entrada léxica.</p>
+        <ul>
+            <li><em>Ejemplo:</em> <strong>ἄγω</strong> (yo conduzco): (ἦγον), ἄξω, ἤγαγον, --, --, <strong>ἤχθην</strong></li>
+        </ul>
+        
+        <h3>6. Terminación Temporal (θη):</h3>
+        <p>Es fácil de identificar porque nunca varía. Casi siempre que veas <strong>θη</strong>, puedes asumir que el verbo está en aoristo pasivo.</p>
+        
+        <h3>7. Desinencias Activas Secundarias:</h3>
+        <p>Es fundamental recordar que el aoristo pasivo usa desinencias activas, no pasivas.</p>
+        
+        <h3>8. Raíces que terminan en Oclusiva:</h3>
+        <p>Las oclusivas (sonidos mudos) cambian ante la theta (θ) de la terminación temporal:</p>
+        <ul>
+            <li>π, β, φ + θ → φθ (Ej: *βλεπ + θη → ἐβλέφθην)</li>
+            <li>κ, γ, χ + θ → χθ (Ej: *αγ + θη → ἤχθην)</li>
+            <li>τ, δ, θ + θ → σθ (Ej: *βαπτιδ + θη → ἐβαπτίσθην)</li>
+        </ul>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Aoristo Pasivo 1ª Conjugación</h3>
+            
+            <div class="question">
+                <p>1. ¿Qué desinencias utiliza el aoristo pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Primarias de medio/pasivo</div>
+                    <div class="option" data-correct="true">Secundarias activas</div>
+                    <div class="option" data-correct="false">Primarias activas</div>
+                    <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿Qué indica la terminación temporal θη en griego?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Futuro activo</div>
+                    <div class="option" data-correct="false">Presente pasivo</div>
+                    <div class="option" data-correct="true">Aoristo pasivo</div>
+                    <div class="option" data-correct="false">Perfecto activo</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿Qué sucede cuando una raíz termina en una oclusiva (π, β, φ) ante la theta (θ)?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Se convierte en σθ</div>
+                    <div class="option" data-correct="false">Se convierte en χθ</div>
+                    <div class="option" data-correct="true">Se convierte en φθ</div>
+                    <div class="option" data-correct="false">Permanece igual</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Aoristo Pasivo de Segunda Conjugación -->
+    <section id="aoristo2" class="content-section">
+        <h2><span class="roman-numeral">V.</span> Aoristo Pasivo de Segunda Conjugación (Segundo Aoristo Pasivo)</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="aoristo1">Aoristo 1ª Conj.</button>
+            <button class="sub-nav-btn active" data-target="aoristo2">Aoristo 2ª Conj.</button>
+            <button class="sub-nav-btn" data-target="futuro1">Futuro 1ª Conj.</button>
+            <button class="sub-nav-btn" data-target="diferencias">Diferencias</button>
+        </div>
+        
+        <h3>1. Formación:</h3>
+        <p><strong>Aumento</strong> + <strong>Raíz de Aoristo Pasivo</strong> + <strong>Formativo del tiempo (η)</strong> + <strong>Desinencias Activas Secundarias</strong></p>
+        <p>ἐ + γραφ + η + μεν → <strong>ἐγράφημεν</strong> (Nosotros fuimos escritos)</p>
+        
+        <p>El paradigma usa γράφω. En este caso, la raíz es la misma que la del presente (γράφω → ἐγράφην). Esto enfatiza la importancia de conocer las desinencias para no confundirlo con un imperfecto. <strong>El Nuevo Testamento tiene solo 32 palabras en segundo aoristo pasivo.</strong></p>
+        
+        <h3>2. Paradigma: Verbo γράφω (Aoristo Pasivo)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Griego</th>
+                    <th>Traducción</th>
+                    <th>Desinencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1a sg.</td>
+                    <td>ἐγράφην</td>
+                    <td>Yo fui escrito</td>
+                    <td>-ν</td>
+                </tr>
+                <tr>
+                    <td>2a sg.</td>
+                    <td>ἐγράφης</td>
+                    <td>Tú fuiste escrito</td>
+                    <td>-ς</td>
+                </tr>
+                <tr>
+                    <td>3a sg.</td>
+                    <td>ἐγράφη</td>
+                    <td>Él/Ella/Ello fue escrito</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>1a pl.</td>
+                    <td>ἐγράφημεν</td>
+                    <td>Nosotros fuimos escritos</td>
+                    <td>-μεν</td>
+                </tr>
+                <tr>
+                    <td>2a pl.</td>
+                    <td>ἐγράφητε</td>
+                    <td>Vosotros fuisteis escritos</td>
+                    <td>-τε</td>
+                </tr>
+                <tr>
+                    <td>3a pl.</td>
+                    <td>ἐγράφησαν</td>
+                    <td>Ellos fueron escritos</td>
+                    <td>-σαν</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>La raíz del aoristo pasivo puede ser igual a la del presente, igual a la del aoristo activo, o diferente a ambas. Por eso es vital reconocer la terminación temporal (<strong>η</strong> en lugar de <strong>θη</strong>) y las desinencias.</p>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Aoristo Pasivo 2ª Conjugación</h3>
+            
+            <div class="question">
+                <p>1. ¿Cuántas palabras en segundo aoristo pasivo hay en el Nuevo Testamento?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Más de 100</div>
+                    <div class="option" data-correct="false">Aproximadamente 75</div>
+                    <div class="option" data-correct="true">Solo 32</div>
+                    <div class="option" data-correct="false">Menos de 10</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿Qué terminación temporal identifica al segundo aoristo pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">θη</div>
+                    <div class="option" data-correct="true">η</div>
+                    <div class="option" data-correct="false">θησ</div>
+                    <div class="option" data-correct="false">ησ</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿Por qué es importante conocer bien las desinencias en el segundo aoristo pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Porque son completamente diferentes a todos los otros tiempos</div>
+                    <div class="option" data-correct="true">Para no confundirlo con un imperfecto</div>
+                    <div class="option" data-correct="false">Porque son irregulares en cada verbo</div>
+                    <div class="option" data-correct="false">Porque indican modo en lugar de tiempo</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Futuro Pasivo de Primera Conjugación -->
+    <section id="futuro1" class="content-section">
+        <h2><span class="roman-numeral">VI.</span> Futuro Pasivo de Primera Conjugación</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="aoristo2">Aoristo 2ª Conj.</button>
+            <button class="sub-nav-btn active" data-target="futuro1">Futuro 1ª Conj.</button>
+            <button class="sub-nav-btn" data-target="diferencias">Diferencias</button>
+            <button class="sub-nav-btn" data-target="deponentes">Futuros Deponentes</button>
+        </div>
+        
+        <h3>1. Traducción:</h3>
+        <p>El futuro pasivo se traduce con el verbo auxiliar "seré", "serás", "será", etc., refiriéndose casi siempre a un evento futuro.</p>
+        <ul>
+            <li><em>Ejemplo:</em> λυθήσομαι = "Yo <strong>seré liberado</strong>".</li>
+        </ul>
+        
+        <h3>2. Formación:</h3>
+        <p><strong>Raíz de Aoristo Pasivo (Sin Aumento)</strong> + <strong>Formativo del tiempo (θησ)</strong> + <strong>Vocal de Conexión</strong> + <strong>Desinencias Primarias de Medio/Pasivo</strong></p>
+        <p>λυ + θησ + ο + μαι → <strong>λυθήσομαι</strong> (Yo seré liberado)</p>
+        
+        <h3>3. Resumen de formaciones clave:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiempo/Voz</th>
+                    <th>Terminación Temporal</th>
+                    <th>Desinencias</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Futuro Activo</td>
+                    <td>σ</td>
+                    <td>Prim. Activas</td>
+                </tr>
+                <tr>
+                    <td>Futuro Medio</td>
+                    <td>σ</td>
+                    <td>Prim. Mid/Pass</td>
+                </tr>
+                <tr>
+                    <td>Aoristo Pasivo</td>
+                    <td><strong>θη</strong></td>
+                    <td><strong>Sec. Activas</strong></td>
+                </tr>
+                <tr>
+                    <td>Futuro Pasivo</td>
+                    <td><strong>θησ</strong></td>
+                    <td><strong>Prim. Mid/Pass</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>4. Paradigma: Verbo λύω (Futuro Pasivo)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Griego</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1a sg.</td>
+                    <td>λυθήσομαι</td>
+                    <td>Yo seré liberado/a</td>
+                </tr>
+                <tr>
+                    <td>2a sg.</td>
+                    <td>λυθήσῃ</td>
+                    <td>Tú serás liberado/a</td>
+                </tr>
+                <tr>
+                    <td>3a sg.</td>
+                    <td>λυθήσεται</td>
+                    <td>Él/Ella/Ello será liberado/a</td>
+                </tr>
+                <tr>
+                    <td>1a pl.</td>
+                    <td>λυθησόμεθα</td>
+                    <td>Nosotros seremos liberados</td>
+                </tr>
+                <tr>
+                    <td>2a pl.</td>
+                    <td>λυθήσεσθε</td>
+                    <td>Vosotros seréis liberados</td>
+                </tr>
+                <tr>
+                    <td>3a pl.</td>
+                    <td>λυθήσονται</td>
+                    <td>Ellos serán liberados</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Futuro Pasivo 1ª Conjugación</h3>
+            
+            <div class="question">
+                <p>1. ¿Qué terminación temporal identifica al futuro pasivo de primera conjugación?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">θη</div>
+                    <div class="option" data-correct="true">θησ</div>
+                    <div class="option" data-correct="false">η</div>
+                    <div class="option" data-correct="false">ησ</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿Qué tipo de desinencias utiliza el futuro pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Secundarias activas</div>
+                    <div class="option" data-correct="true">Primarias de medio/pasivo</div>
+                    <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                    <div class="option" data-correct="false">Primarias activas</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿El futuro pasivo lleva aumento?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">No, porque indica tiempo futuro</div>
+                    <div class="option" data-correct="false">Sí, siempre lleva aumento</div>
+                    <div class="option" data-correct="false">Solo en la primera persona</div>
+                    <div class="option" data-correct="false">Depende del verbo</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Diferencias entre Futuro y Aoristo Pasivo -->
+    <section id="diferencias" class="content-section">
+        <h2><span class="roman-numeral">VII.</span> Diferencias entre Futuro y Aoristo Pasivo</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="futuro1">Futuro 1ª Conj.</button>
+            <button class="sub-nav-btn active" data-target="diferencias">Diferencias</button>
+            <button class="sub-nav-btn" data-target="deponentes">Futuros Deponentes</button>
+            <button class="sub-nav-btn" data-target="futuro2">Futuro 2ª Conj.</button>
+        </div>
+        
+        <ol>
+            <li><strong>Aumento:</strong> El futuro pasivo <strong>no</strong> lleva aumento (indica tiempo futuro, no pasado).</li>
+            <li><strong>Formativo del tiempo:</strong> Es <strong>θησ</strong> (futuro) vs. <strong>θη</strong> (aoristo).</li>
+            <li><strong>Desinencias:</strong> El futuro pasivo usa desinencias <strong>primarias de medio/pasivo</strong>, el aoristo pasivo usa <strong>secundarias activas</strong>.</li>
+            <li><strong>-θησαν:</strong> La forma de 3a persona plural <strong>-θησαν</strong> es siempre de <strong>aoristo pasivo</strong>. Es la única vez en el primer aoristo pasivo que aparece una sigma después de θη. En todos los demás casos, <strong>θησ</strong> indica futuro pasivo.</li>
+        </ol>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Diferencias entre Futuro y Aoristo Pasivo</h3>
+            
+            <div class="question">
+                <p>1. ¿Cuál de estas es una diferencia clave entre futuro y aoristo pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">El aoristo pasivo no lleva aumento</div>
+                    <div class="option" data-correct="true">El futuro pasivo no lleva aumento</div>
+                    <div class="option" data-correct="false">El futuro pasivo usa desinencias secundarias activas</div>
+                    <div class="option" data-correct="false">El aoristo pasivo usa desinencias primarias de medio/pasivo</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿Qué indica la terminación -θησαν?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Futuro pasivo de 3a persona plural</div>
+                    <div class="option" data-correct="true">Aoristo pasivo de 3a persona plural</div>
+                    <div class="option" data-correct="false">Presente pasivo de 3a persona plural</div>
+                    <div class="option" data-correct="false">Perfecto pasivo de 3a persona plural</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿Qué tipo de desinencias usa el aoristo pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Primarias de medio/pasivo</div>
+                    <div class="option" data-correct="true">Secundarias activas</div>
+                    <div class="option" data-correct="false">Primarias activas</div>
+                    <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Futuros Deponentes -->
+    <section id="deponentes" class="content-section">
+        <h2><span class="roman-numeral">VIII.</span> Futuros Deponentes</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="diferencias">Diferencias</button>
+            <button class="sub-nav-btn active" data-target="deponentes">Futuros Deponentes</button>
+            <button class="sub-nav-btn" data-target="futuro2">Futuro 2ª Conj.</button>
+            <button class="sub-nav-btn" data-target="resumen">Resumen</button>
+        </div>
+        
+        <p>La única forma de construir un futuro pasivo es usando la raíz del aoristo pasivo. Existen dos tipos de futuros deponentes:</p>
+        <ol>
+            <li><strong>Deponentes medios:</strong> Se construyen sobre la raíz del futuro activo (ej: γενήσομαι).</li>
+            <li><strong>Deponentes pasivos:</strong> Se construyen sobre la raíz del aoristo pasivo (ej: φοβηθήσομαι, "temeré").</li>
+        </ol>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Futuros Deponentes</h3>
+            
+            <div class="question">
+                <p>1. ¿Sobre qué raíz se construyen los futuros deponentes pasivos?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Raíz del presente</div>
+                    <div class="option" data-correct="false">Raíz del futuro activo</div>
+                    <div class="option" data-correct="true">Raíz del aoristo pasivo</div>
+                    <div class="option" data-correct="false">Raíz del perfecto</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿Qué tipo de futuro deponente se construye sobre la raíz del futuro activo?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">Deponentes medios</div>
+                    <div class="option" data-correct="false">Deponentes pasivos</div>
+                    <div class="option" data-correct="false">Deponentes activos</div>
+                    <div class="option" data-correct="false">Deponentes mixtos</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿Cómo se traduce φοβηθήσομαι?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Seré temido</div>
+                    <div class="option" data-correct="true">Temeré</div>
+                    <div class="option" data-correct="false">Habré temido</div>
+                    <div class="option" data-correct="false">Estaré temiendo</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Futuro Pasivo de Segunda Conjugación -->
+    <section id="futuro2" class="content-section">
+        <h2><span class="roman-numeral">IX.</span> Futuro Pasivo de Segunda Conjugación</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="deponentes">Futuros Deponentes</button>
+            <button class="sub-nav-btn active" data-target="futuro2">Futuro 2ª Conj.</button>
+            <button class="sub-nav-btn" data-target="resumen">Resumen</button>
+        </div>
+        
+        <h3>1. Formación:</h3>
+        <p>Es igual al primero, pero la terminación temporal es <strong>ησ</strong>.</p>
+        <p><strong>Raíz de Aoristo Pasivo (Sin Aumento)</strong> + <strong>Formativo del tiempo (ησ)</strong> + <strong>Vocal de Conexión</strong> + <strong>Desinencias Primarias de Medio/Pasivo</strong></p>
+        <p>ἀποσταл + ησ + ο + μαι → <strong>ἀποσταλήσομαι</strong> (Yo seré enviado)</p>
+        
+        <h3>2. Paradigma: Verbo ἀποστέλλω (Futuro Pasivo)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Griego</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1a sg.</td>
+                    <td>ἀποσταλήσομαι</td>
+                    <td>Yo seré enviado</td>
+                </tr>
+                <tr>
+                    <td>2a sg.</td>
+                    <td>ἀποσταλήσῃ</td>
+                    <td>Tú serás enviado</td>
+                </tr>
+                <tr>
+                    <td>3a sg.</td>
+                    <td>ἀποσταλήσεται</td>
+                    <td>Él/Ella/Ello será enviado</td>
+                </tr>
+                <tr>
+                    <td>1a pl.</td>
+                    <td>ἀποσταλησόμεθa</td>
+                    <td>Nosotros seremos enviados</td>
+                </tr>
+                <tr>
+                    <td>2a pl.</td>
+                    <td>ἀποσταλήσεσθε</td>
+                    <td>Vosotros seréis enviados</td>
+                </tr>
+                <tr>
+                    <td>3a pl.</td>
+                    <td>ἀποσταλήσονται</td>
+                    <td>Ellos serán enviados</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Futuro Pasivo 2ª Conjugación</h3>
+            
+            <div class="question">
+                <p>1. ¿Qué terminación temporal identifica al futuro pasivo de segunda conjugación?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">θη</div>
+                    <div class="option" data-correct="false">θησ</div>
+                    <div class="option" data-correct="false">η</div>
+                    <div class="option" data-correct="true">ησ</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿El futuro pasivo de segunda conjugación lleva aumento?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">No, al igual que el de primera conjugación</div>
+                    <div class="option" data-correct="false">Sí, a diferencia del de primera conjugación</div>
+                    <div class="option" data-correct="false">Solo en verbos irregulares</div>
+                    <div class="option" data-correct="false">Depende de la persona</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿Qué tipo de desinencias utiliza el futuro pasivo de segunda conjugación?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Secundarias activas</div>
+                    <div class="option" data-correct="true">Primarias de medio/pasivo</div>
+                    <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                    <div class="option" data-correct="false">Primarias activas</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+
+    <!-- Sección Resumen Final -->
+    <section id="resumen" class="content-section">
+        <h2><span class="roman-numeral">X.</span> Resumen Final</h2>
+        
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="futuro2">Futuro 2ª Conj.</button>
+            <button class="sub-nav-btn active" data-target="resumen">Resumen</button>
+        </div>
+        
+        <ol>
+            <li>El <strong>aoristo pasivo</strong> y el <strong>futuro pasivo</strong> se forman a partir de la <strong>misma raíz</strong> (6ta forma principal).</li>
+            <li>El <strong>aoristo pasivo</strong> se forma con: Aumento + Raíz de Aoristo Pasivo + Term. Temp. (<strong>θη</strong>/η) + <strong>Desinencias Secundarias Activas</strong>.</li>
+            <li>El <strong>futuro pasivo</strong> se forma con: Raíz de Aoristo Pasivo (sin aumento) + Term. Temp. (<strong>θησ</strong>/ησ) + Vocal Conex. + <strong>Desinencias Primarias de Medio/Pasivo</strong>.</li>
+        </ol>
+        
+        <h3>Tabla Maestra de Verbos (Resumen para este capítulo)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiempo / Voz</th>
+                    <th>Aum/Redup</th>
+                    <th>Raíz</th>
+                    <th>Term. Temp.</th>
+                    <th>Voc. Con.</th>
+                    <th>Desinencias</th>
+                    <th>Paradigma 1a p.s.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1o Futuro Pasivo</td>
+                    <td>--</td>
+                    <td>Aoristo Pas</td>
+                    <td><strong>θησ</strong></td>
+                    <td>ο/ε</td>
+                    <td>Prim. Mid/Pass</td>
+                    <td>λυθήσομαι</td>
+                </tr>
+                <tr>
+                    <td>2o Futuro Pasivo</td>
+                    <td>--</td>
+                    <td>Aoristo Pas</td>
+                    <td><strong>ησ</strong></td>
+                    <td>ο/ε</td>
+                    <td>Prim. Mid/Pass</td>
+                    <td>ἀποσταλήσομαι</td>
+                </tr>
+                <tr>
+                    <td>1o Aoristo Pasivo</td>
+                    <td>ἐ</td>
+                    <td>Aoristo Pas</td>
+                    <td><strong>θη</strong></td>
+                    <td>--</td>
+                    <td>Sec. Activas</td>
+                    <td>ἐλύθην</td>
+                </tr>
+                <tr>
+                    <td>2o Aoristo Pasivo</td>
+                    <td>ἐ</td>
+                    <td>Aoristo Pas</td>
+                    <td><strong>η</strong></td>
+                    <td>--</td>
+                    <td>Sec. Activas</td>
+                    <td>ἐγрάφην</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Vocabulario</h3>
+        <ul>
+            <li><strong>ἄγω</strong>: Yo conduzco, llevo, arresto (67; *ἀγ) (ἦγον), ἄξω, ἤγαγον, --, --, <strong>ἤχθην</strong></li>
+            <li><strong>αἷμα, -ατος, τό</strong>: sangre (97; *αἱματ)</li>
+            <li><strong>ἕκαστος, -η, -ον</strong>: cada, cada uno (82; *ἑκαστο)</li>
+            <li><strong>ἱμάτιον, -ου, τό</strong>: prenda de vestir, manto (60; *ἱματιο)</li>
+            <li><strong>ὄρος, -ους, τό</strong>: montaña, monte (63; *ὀро)</li>
+            <li><strong>ὑπάγω</strong>: Yo me voy, parto (79; ὑπ + *αγ) (ὑπῆγον), -, -, -, -, -</li>
+            <li><strong>φοβέομαι</strong>: Yo temo, me awe (95; *φοβε) (ἐφοβούμην), -, -, -, -, <strong>ἐφοβήθην</strong> (Es un deponente: la forma <strong>ἐφοβήθην</strong> es de aoristo pasivo pero con significado activo: "temí").</li>
+            <li><strong>χαίρω</strong>: Yo me alegro, regocijo (74; *χαρ) (ἔχαιρον), -, -, -, -, <strong>ἐχάρην</strong> (Es un deponente: la forma <strong>ἐχάρην</strong> es de aoristo pasivo pero con significado activo: "me alegré").</li>
+        </ul>
+        
+        <p><strong>Conteo de palabras del NT:</strong> 138,162<br>
+        <strong>Palabras aprendidas hasta ahora:</strong> 266<br>
+        <strong>Porcentaje del NT cubierto:</strong> 76.9%</p>
+        
+        <div class="quiz-container">
+            <h3>Cuestionario: Resumen Final</h3>
+            
+            <div class="question">
+                <p>1. ¿De qué forma principal se derivan el aoristo pasivo y el futuro pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Primera</div>
+                    <div class="option" data-correct="false">Tercera</div>
+                    <div class="option" data-correct="true">Sexta</div>
+                    <div class="option" data-correct="false">Cuarta</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. ¿Qué desinencias utiliza el aoristo pasivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Primarias de medio/pasivo</div>
+                    <div class="option" data-correct="true">Secundarias activas</div>
+                    <div class="option" data-correct="false">Primarias activas</div>
+                    <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>3. ¿Qué porcentaje del NT se cubre con las palabras aprendidas hasta ahora?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">50.2%</div>
+                    <div class="option" data-correct="false">63.5%</div>
+                    <div class="option" data-correct="true">76.9%</div>
+                    <div class="option" data-correct="false">82.3%</div>
+                </div>
+            </div>
+            
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <h3>Recurso de Vocabulario</h3>
+            <p>Amplía tu vocabulario con la app de nuestro ministerio:</p>
+            <a href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/" class="app-link">Vivos para Servir - App de Vocabulario</a>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 Ministerio Vivos para Servir - Curso de Griego Koiné</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Navegación entre secciones principales
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const contentSections = document.querySelectorAll('.content-section');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        // Navegación entre subsecciones
+        const subNavButtons = document.querySelectorAll('.sub-nav-btn');
+        
+        // Función para cambiar de sección principal
+        function changeSection(targetId) {
+            // Desactivar todos los botones y secciones
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            contentSections.forEach(section => section.classList.remove('active'));
+            
+            // Activar el botón y sección seleccionados
+            document.querySelector(`.nav-btn[data-target="${targetId}"]`).classList.add('active');
+            document.getElementById(targetId).classList.add('active');
+            
+            // Cerrar menú móvil si está abierto
+            if (window.innerWidth <= 768) {
+                mainNav.classList.remove('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Función para cambiar de subsección
+        function changeSubSection(targetId) {
+            // Desactivar todos los botones de subnavegación
+            subNavButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Activar el botón seleccionado
+            document.querySelector(`.sub-nav-btn[data-target="${targetId}"]`).classList.add('active');
+            
+            // Cambiar a la sección principal correspondiente
+            changeSection(targetId);
+        }
+        
+        // Event listeners para botones de navegación principal
+        navButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                changeSection(targetId);
+            });
+        });
+        
+        // Event listeners para botones de subnavegación
+        subNavButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                changeSubSection(targetId);
+            });
+        });
+        
+        // Menú móvil
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Funcionalidad de los cuestionarios
+        const checkButtons = document.querySelectorAll('.check-btn');
+        
+        checkButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const quizContainer = this.parentElement;
+                const options = quizContainer.querySelectorAll('.option');
+                const result = quizContainer.querySelector('.result');
+                
+                let correctAnswers = 0;
+                let totalQuestions = 0;
+                
+                // Verificar cada pregunta
+                quizContainer.querySelectorAll('.question').forEach(question => {
+                    totalQuestions++;
+                    const selectedOption = question.querySelector('.option.selected');
+                    
+                    if (selectedOption && selectedOption.getAttribute('data-correct') === 'true') {
+                        correctAnswers++;
+                    }
+                });
+                
+                // Mostrar resultado
+                if (correctAnswers === totalQuestions) {
+                    result.textContent = `¡Perfecto! ${correctAnswers}/${totalQuestions} respuestas correctas.`;
+                    result.className = 'result correct';
+                } else {
+                    result.textContent = `${correctAnswers}/${totalQuestions} respuestas correctas. Sigue practicando.`;
+                    result.className = 'result incorrect';
+                }
+                
+                // Mostrar respuestas correctas e incorrectas
+                options.forEach(option => {
+                    if (option.getAttribute('data-correct') === 'true') {
+                        option.classList.add('correct');
+                    } else if (option.classList.contains('selected')) {
+                        option.classList.add('incorrect');
+                    }
+                });
+            });
+        });
+        
+        // Selección de opciones en los cuestionarios
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Limpiar selecciones previas en esta pregunta
+                const question = this.closest('.question');
+                question.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Seleccionar la opción clickeada
+                this.classList.add('selected');
+            });
+        });
+        
+        // Cerrar menú móvil al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768 && 
+                !mainNav.contains(event.target) && 
+                !mobileMenuBtn.contains(event.target) &&
+                mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body> 
+</html> 

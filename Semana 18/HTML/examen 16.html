@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen: Aoristo y Futuro Pasivo - Griego Koiné</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --transition-speed: 0.4s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 15px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .exam-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        
+        .student-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .question {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        
+        .question-number {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .option {
+            padding: 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .option:hover {
+            background-color: #e8f4fc;
+            border-color: var(--secondary-color);
+        }
+        
+        .option.selected {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .option.correct {
+            background-color: var(--correct-color);
+            color: white;
+            border-color: var(--correct-color);
+        }
+        
+        .option.incorrect {
+            background-color: var(--incorrect-color);
+            color: white;
+            border-color: var(--incorrect-color);
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-check {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-download {
+            background-color: var(--accent-color);
+        }
+        
+        .btn-download:hover {
+            background-color: #c0392b;
+        }
+        
+        .result-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-top: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .score-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .correct-answers {
+            color: var(--correct-color);
+            font-weight: bold;
+        }
+        
+        .incorrect-answers {
+            color: var(--incorrect-color);
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--secondary-color);
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #7f8c8d;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .student-data {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo Vivos para Servir" class="logo">
+            </div>
+            <h1>Examen: Aoristo y Futuro Pasivo</h1>
+            <p>Ministerio Vivos para Servir - Curso de Griego Koiné</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="exam-info">
+            <h2>Instrucciones</h2>
+            <p>Responde las 20 preguntas de selección múltiple sobre el aoristo y futuro pasivo en griego koiné. Al finalizar, haz clic en "Verificar Respuestas" para evaluar tu examen y luego podrás descargar un reporte con tus resultados.</p>
+            
+            <div class="student-data">
+                <div class="form-group">
+                    <label for="student-name">Nombre del Estudiante:</label>
+                    <input type="text" id="student-name" placeholder="Ingresa tu nombre completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="week">Semana de Clases:</label>
+                    <input type="text" id="week" value="Semana 18" readonly>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><strong>Nota:</strong> Este examen evalúa tu comprensión del aoristo y futuro pasivo en griego koiné, incluyendo el concepto de "pasivo divino" y sus aplicaciones exegéticas.</p>
+            </div>
+        </div>
+
+        <div id="exam-questions">
+            <!-- Pregunta 1 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">1</span>
+                    ¿Qué es el "Passivum Divinum" o "Pasivo Divino"?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Una forma verbal que siempre incluye el nombre de Dios explícitamente</div>
+                    <div class="option" data-correct="true">Una construcción pasiva que oculta el sujeto para referirse indirectamente a Dios</div>
+                    <div class="option" data-correct="false">Un error gramatical común en el griego koiné</div>
+                    <div class="option" data-correct="false">Una forma verbal que solo aparece en el libro de Apocalipsis</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">2</span>
+                    ¿En qué pasaje bíblico se encuentra el ejemplo "serán consolados" como ejemplo de pasivo divino?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Juan 3:16</div>
+                    <div class="option" data-correct="true">Mateo 5:4</div>
+                    <div class="option" data-correct="false">Romanos 8:28</div>
+                    <div class="option" data-correct="false">Hechos 2:38</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">3</span>
+                    ¿Cuál es la principal razón teológica para el uso del pasivo divino?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Demostrar el conocimiento griego de los escritores</div>
+                    <div class="option" data-correct="true">Mostrar reverencia al no mencionar directamente el nombre de Dios</div>
+                    <div class="option" data-correct="false">Hacer el texto más difícil de interpretar</div>
+                    <div class="option" data-correct="false">Seguir reglas gramaticales complejas</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">4</span>
+                    ¿De qué forma principal del verbo se derivan el aoristo pasivo y el futuro pasivo?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Primera forma (presente)</div>
+                    <div class="option" data-correct="false">Tercera forma (aoristo activo)</div>
+                    <div class="option" data-correct="true">Sexta forma (aoristo pasivo)</div>
+                    <div class="option" data-correct="false">Cuarta forma (perfecto)</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">5</span>
+                    ¿Qué elemento NO lleva el futuro pasivo en su formación?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Terminación temporal</div>
+                    <div class="option" data-correct="true">Aumento</div>
+                    <div class="option" data-correct="false">Vocal de conexión</div>
+                    <div class="option" data-correct="false">Desinencias</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 6 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">6</span>
+                    ¿Qué tipo de desinencias utiliza el aoristo pasivo?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Primarias de medio/pasivo</div>
+                    <div class="option" data-correct="true">Secundarias activas</div>
+                    <div class="option" data-correct="false">Primarias activas</div>
+                    <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 7 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">7</span>
+                    ¿Cómo se forma el pasado pasivo en español?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Verbo "haber" + participio pasado</div>
+                    <div class="option" data-correct="true">Verbo "ser" + participio pasado</div>
+                    <div class="option" data-correct="false">Verbo "estar" + participio pasado</div>
+                    <div class="option" data-correct="false">Solo con el participio pasado</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 8 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">8</span>
+                    ¿Qué auxiliar se usa para el futuro pasivo en español?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Haber</div>
+                    <div class="option" data-correct="true">Ser</div>
+                    <div class="option" data-correct="false">Estar</div>
+                    <div class="option" data-correct="false">Tener</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 9 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">9</span>
+                    ¿Qué indica la terminación temporal θη en griego?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Futuro activo</div>
+                    <div class="option" data-correct="false">Presente pasivo</div>
+                    <div class="option" data-correct="true">Aoristo pasivo</div>
+                    <div class="option" data-correct="false">Perfecto activo</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 10 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">10</span>
+                    ¿Qué sucede cuando una raíz termina en una oclusiva labial (π, β, φ) ante la theta (θ)?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Se convierte en σθ</div>
+                    <div class="option" data-correct="false">Se convierte en χθ</div>
+                    <div class="option" data-correct="true">Se convierte en φθ</div>
+                    <div class="option" data-correct="false">Permanece igual</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 11 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">11</span>
+                    ¿Cuántas palabras en segundo aoristo pasivo hay en el Nuevo Testamento?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Más de 100</div>
+                    <div class="option" data-correct="false">Aproximadamente 75</div>
+                    <div class="option" data-correct="true">Solo 32</div>
+                    <div class="option" data-correct="false">Menos de 10</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 12 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">12</span>
+                    ¿Qué terminación temporal identifica al segundo aoristo pasivo?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">θη</div>
+                    <div class="option" data-correct="true">η</div>
+                    <div class="option" data-correct="false">θησ</div>
+                    <div class="option" data-correct="false">ησ</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 13 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">13</span>
+                    ¿Qué terminación temporal identifica al futuro pasivo de primera conjugación?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">θη</div>
+                    <div class="option" data-correct="true">θησ</div>
+                    <div class="option" data-correct="false">η</div>
+                    <div class="option" data-correct="false">ησ</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 14 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">14</span>
+                    ¿Qué tipo de desinencias utiliza el futuro pasivo?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Secundarias activas</div>
+                    <div class="option" data-correct="true">Primarias de medio/pasivo</div>
+                    <div class="option" data-correct="false">Secundarias de medio/pasivo</div>
+                    <div class="option" data-correct="false">Primarias activas</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 15 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">15</span>
+                    ¿El futuro pasivo lleva aumento?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Sí, siempre lleva aumento</div>
+                    <div class="option" data-correct="true">No, porque indica tiempo futuro</div>
+                    <div class="option" data-correct="false">Solo en la primera persona</div>
+                    <div class="option" data-correct="false">Depende del verbo</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 16 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">16</span>
+                    ¿Qué indica la terminación -θησαν?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Futuro pasivo de 3a persona plural</div>
+                    <div class="option" data-correct="true">Aoristo pasivo de 3a persona plural</div>
+                    <div class="option" data-correct="false">Presente pasivo de 3a persona plural</div>
+                    <div class="option" data-correct="false">Perfecto pasivo de 3a persona plural</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 17 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">17</span>
+                    ¿Sobre qué raíz se construyen los futuros deponentes pasivos?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">Raíz del presente</div>
+                    <div class="option" data-correct="false">Raíz del futuro activo</div>
+                    <div class="option" data-correct="true">Raíz del aoristo pasivo</div>
+                    <div class="option" data-correct="false">Raíz del perfecto</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 18 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">18</span>
+                    ¿Qué tipo de futuro deponente se construye sobre la raíz del futuro activo?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="true">Deponentes medios</div>
+                    <div class="option" data-correct="false">Deponentes pasivos</div>
+                    <div class="option" data-correct="false">Deponentes activos</div>
+                    <div class="option" data-correct="false">Deponentes mixtos</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 19 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">19</span>
+                    ¿Qué terminación temporal identifica al futuro pasivo de segunda conjugación?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">θη</div>
+                    <div class="option" data-correct="false">θησ</div>
+                    <div class="option" data-correct="false">η</div>
+                    <div class="option" data-correct="true">ησ</div>
+                </div>
+            </div>
+
+            <!-- Pregunta 20 -->
+            <div class="question">
+                <div class="question-text">
+                    <span class="question-number">20</span>
+                    ¿Qué porcentaje del Nuevo Testamento se cubre con las 266 palabras aprendidas hasta ahora?
+                </div>
+                <div class="options">
+                    <div class="option" data-correct="false">50.2%</div>
+                    <div class="option" data-correct="false">63.5%</div>
+                    <div class="option" data-correct="true">76.9%</div>
+                    <div class="option" data-correct="false">82.3%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="check-answers" class="btn btn-check">
+                <i class="fas fa-check-circle"></i> Verificar Respuestas
+            </button>
+            <button id="download-report" class="btn btn-download" disabled>
+                <i class="fas fa-download"></i> Descargar Reporte
+            </button>
+        </div>
+
+        <div id="result-container" class="result-container">
+            <h2>Resultados del Examen</h2>
+            <div class="score" id="final-score">0/20</div>
+            <div class="score-text">
+                Has respondido correctamente <span class="correct-answers" id="correct-answers">0</span> de 20 preguntas.
+            </div>
+            <p id="score-message"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ministerio Vivos para Servir - Curso de Griego Koiné</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkButton = document.getElementById('check-answers');
+            const downloadButton = document.getElementById('download-report');
+            const resultContainer = document.getElementById('result-container');
+            const finalScore = document.getElementById('final-score');
+            const correctAnswers = document.getElementById('correct-answers');
+            const scoreMessage = document.getElementById('score-message');
+            const studentNameInput = document.getElementById('student-name');
+            const weekInput = document.getElementById('week');
+            
+            let examResults = [];
+            let totalCorrect = 0;
+            
+            // Selección de opciones
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Deseleccionar otras opciones en la misma pregunta
+                    const question = this.closest('.question');
+                    question.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Seleccionar esta opción
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Verificar respuestas
+            checkButton.addEventListener('click', function() {
+                if (!studentNameInput.value.trim()) {
+                    alert('Por favor, ingresa tu nombre antes de verificar las respuestas.');
+                    return;
+                }
+                
+                totalCorrect = 0;
+                examResults = [];
+                const questions = document.querySelectorAll('.question');
+                
+                questions.forEach((question, index) => {
+                    const selectedOption = question.querySelector('.option.selected');
+                    const options = question.querySelectorAll('.option');
+                    
+                    // Encontrar la respuesta correcta
+                    let correctOption = null;
+                    options.forEach(option => {
+                        if (option.getAttribute('data-correct') === 'true') {
+                            correctOption = option;
+                        }
+                    });
+                    
+                    // Verificar si la respuesta es correcta
+                    const isCorrect = selectedOption === correctOption;
+                    
+                    if (isCorrect) {
+                        totalCorrect++;
+                    }
+                    
+                    // Almacenar resultados
+                    examResults.push({
+                        question: index + 1,
+                        selected: selectedOption ? selectedOption.textContent : 'Sin respuesta',
+                        correct: correctOption.textContent,
+                        isCorrect: isCorrect
+                    });
+                    
+                    // Mostrar retroalimentación visual
+                    options.forEach(option => {
+                        if (option.getAttribute('data-correct') === 'true') {
+                            option.classList.add('correct');
+                        } else if (option.classList.contains('selected') && !isCorrect) {
+                            option.classList.add('incorrect');
+                        }
+                    });
+                });
+                
+                // Mostrar resultados
+                finalScore.textContent = `${totalCorrect}/20`;
+                correctAnswers.textContent = totalCorrect;
+                
+                // Mostrar mensaje según el puntaje
+                if (totalCorrect >= 18) {
+                    scoreMessage.textContent = '¡Excelente! Dominas el contenido del aoristo y futuro pasivo.';
+                    scoreMessage.style.color = 'var(--correct-color)';
+                } else if (totalCorrect >= 14) {
+                    scoreMessage.textContent = 'Buen trabajo. Revisa los temas donde tuviste dificultades.';
+                    scoreMessage.style.color = 'var(--secondary-color)';
+                } else {
+                    scoreMessage.textContent = 'Necesitas repasar el contenido. ¡Sigue estudiando!';
+                    scoreMessage.style.color = 'var(--incorrect-color)';
+                }
+                
+                resultContainer.style.display = 'block';
+                downloadButton.disabled = false;
+                
+                // Scroll to results
+                resultContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Descargar reporte
+            downloadButton.addEventListener('click', function() {
+                const studentName = studentNameInput.value.trim();
+                const date = new Date().toLocaleDateString('es-ES');
+                const week = weekInput.value;
+                
+                let reportContent = `MINISTERIO VIVOS PARA SERVIR\n`;
+                reportContent += `Curso de Griego Koiné - Examen Semana 18\n`;
+                reportContent += `=============================================\n\n`;
+                reportContent += `Estudiante: ${studentName}\n`;
+                reportContent += `Fecha: ${date}\n`;
+                reportContent += `Semana: ${week}\n`;
+                reportContent += `Calificación: ${totalCorrect}/20 (${(totalCorrect/20*100).toFixed(1)}%)\n\n`;
+                reportContent += `RESULTADOS POR PREGUNTA:\n`;
+                reportContent += `-----------------------------------------\n\n`;
+                
+                examResults.forEach(result => {
+                    reportContent += `Pregunta ${result.question}:\n`;
+                    reportContent += `  Tu respuesta: ${result.selected}\n`;
+                    reportContent += `  Respuesta correcta: ${result.correct}\n`;
+                    reportContent += `  Estado: ${result.isCorrect ? 'CORRECTA' : 'INCORRECTA'}\n\n`;
+                });
+                
+                reportContent += `-----------------------------------------\n`;
+                reportContent += `RESUMEN:\n`;
+                reportContent += `  Preguntas correctas: ${totalCorrect}\n`;
+                reportContent += `  Preguntas incorrectas: ${20 - totalCorrect}\n`;
+                reportContent += `  Porcentaje de acierto: ${(totalCorrect/20*100).toFixed(1)}%\n\n`;
+                reportContent += `=============================================\n`;
+                reportContent += `Ministerio Vivos para Servir - Para la gloria de Dios`;
+                
+                // Crear y descargar archivo
+                const blob = new Blob([reportContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Examen_Griego_${studentName.replace(/\s+/g, '_')}.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        });
+    </script>
+</body>
+</html>
