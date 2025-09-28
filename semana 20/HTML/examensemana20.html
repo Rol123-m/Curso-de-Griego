@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Examen: Participios — Semana 20 | Griego Koiné</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{
+            --primary-color:#2c3e50;
+            --secondary-color:#3498db;
+            --accent-color:#e74c3c;
+            --light-color:#ecf0f1;
+            --dark-color:#2c3e50;
+            --correct-color:#2ecc71;
+            --incorrect-color:#e74c3c;
+            --transition-speed:.4s;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif}
+        body{background:#f5f7fa;color:var(--dark-color);line-height:1.6;padding-bottom:2rem}
+        .container{max-width:900px;margin:0 auto;padding:16px}
+        header{background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));color:#fff;padding:1rem 0;text-align:center;border-bottom:6px solid rgba(255,255,255,.06);box-shadow:0 6px 20px rgba(0,0,0,.08);margin-bottom:1.2rem}
+        .logo{width:72px;height:72px;border-radius:50%;border:3px solid #fff;object-fit:cover;display:inline-block;margin-bottom:.6rem}
+        header h1{font-size:1.5rem;margin-bottom:.2rem}
+        header p{opacity:.95}
+        .exam-info{background:#fff;padding:1.1rem;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06);margin-bottom:1rem}
+        .student-data{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:.6rem}
+        label{display:block;font-weight:700;color:var(--primary-color);margin-bottom:6px}
+        input[type="text"]{width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:1rem}
+        .note{background:#e8f4fc;border-left:4px solid var(--secondary-color);padding:.8rem;border-radius:4px;margin-top:.8rem;font-size:.95rem}
+        .question{background:#fff;border-radius:10px;padding:1.05rem;margin-bottom:12px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+        .question-number{display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--secondary-color);color:#fff;text-align:center;line-height:32px;font-weight:800;margin-right:10px}
+        .question-text{font-weight:700;color:var(--primary-color);margin-bottom:.6rem}
+        .options{display:grid;grid-template-columns:1fr;gap:8px}
+        .option{padding:10px;border-radius:8px;background:#f8f9fa;border:1px solid #ddd;cursor:pointer;transition:all .15s ease}
+        .option:hover{background:#eef7ff;border-color:var(--secondary-color)}
+        .option.selected{background:var(--secondary-color);color:#fff;border-color:var(--secondary-color)}
+        .option.correct{background:var(--correct-color);color:#fff;border-color:var(--correct-color)}
+        .option.incorrect{background:var(--incorrect-color);color:#fff;border-color:var(--incorrect-color)}
+        .actions{display:flex;justify-content:center;gap:12px;margin-top:14px}
+        .btn{padding:12px 18px;border-radius:8px;border:none;cursor:pointer;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:8px}
+        .btn-check{background:var(--secondary-color)}
+        .btn-download{background:var(--accent-color)}
+        .btn:disabled{opacity:.6;cursor:not-allowed}
+        .result-container{background:#fff;padding:1rem;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.04);margin-top:14px;display:none;text-align:center}
+        .score{font-size:1.8rem;font-weight:800;color:var(--primary-color);margin-bottom:.4rem}
+        .score-text{font-size:1rem;margin-bottom:.6rem}
+        footer{text-align:center;padding:1rem;color:#7f8c8d;margin-top:18px;font-size:.9rem}
+        @media(max-width:760px){
+            .student-data{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img class="logo" src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo Vivos para Servir">
+    <h1>Examen: Participios — Semana 20</h1>
+    <p>Ministerio Vivos para Servir — Curso de Griego Koiné</p>
+</header>
+
+<div class="container">
+    <div class="exam-info">
+        <h2>Instrucciones</h2>
+        <p>Responde las 20 preguntas de selección múltiple sobre los participios (semana 20). Este examen es <strong>autoevaluable</strong>. Después de verificar, podrás descargar un archivo .txt con tu reporte de resultados.</p>
+
+        <div class="student-data">
+            <div>
+                <label for="student-name">Nombre del estudiante</label>
+                <input id="student-name" type="text" placeholder="Tu nombre completo">
+            </div>
+            <div>
+                <label for="week">Semana</label>
+                <input id="week" type="text" value="Semana 20" readonly>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Importante:</strong> antes de verificar, asegúrate de seleccionar una opción por pregunta. Si dejas alguna sin seleccionar será contada como sin respuesta.
+        </div>
+    </div>
+
+    <div id="questions">
+        <!-- 20 preguntas -->
+        <!-- Q1 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">1</span> ¿Cuál es la característica definitoria de un participio en griego?</div>
+            <div class="options">
+                <div class="option" data-correct="true">Es una forma verbal que también funciona como adjetivo (verbo-adjetivo)</div>
+                <div class="option" data-correct="false">Es una forma verbal finita que indica persona</div>
+                <div class="option" data-correct="false">Es exclusivamente adjetivo</div>
+                <div class="option" data-correct="false">Es un sustantivo verbal idéntico al gerundio</div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">2</span> ¿Qué aspectos principales expresan los participios griegos?</div>
+            <div class="options">
+                <div class="option" data-correct="false">Presente, futuro, pluscuamperfecto</div>
+                <div class="option" data-correct="true">Presente (proceso), aoristo (acción puntual), perfecto (estado resultante)</div>
+                <div class="option" data-correct="false">Solo pasado y presente</div>
+                <div class="option" data-correct="false">Modo indicativo y subjuntivo</div>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">3</span> ¿Qué morfemas participiales son muy comunes en koiné para formar participios?</div>
+            <div class="options">
+                <div class="option" data-correct="true">-ντ (nt) y -οτ (ot)</div>
+                <div class="option" data-correct="false">-μαι y -σο</div>
+                <div class="option" data-correct="false">-ειν y -σι</div>
+                <div class="option" data-correct="false">-κεν y -θη</div>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">4</span> Si un participio concuerda en caso, número y género con un sustantivo cercano, ¿cuál es su función más probable?</div>
+            <div class="options">
+                <div class="option" data-correct="true">Adjetival (modifica al sustantivo)</div>
+                <div class="option" data-correct="false">Adverbial (modifica al verbo)</div>
+                <div class="option" data-correct="false">Sustantiva por defecto</div>
+                <div class="option" data-correct="false">Infinitiva</div>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">5</span> ¿Qué negación se usa normalmente con participios en griego?</div>
+            <div class="options">
+                <div class="option" data-correct="true">μή</div>
+                <div class="option" data-correct="false">οὐ</div>
+                <div class="option" data-correct="false">οὐκ</div>
+                <div class="option" data-correct="false">μήν</div>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">6</span> El participio ἐρχόμενος en Juan 1:29 se traduce mejor como:</div>
+            <div class="options">
+                <div class="option" data-correct="false">«Habiendo venido» (aoristo)</div>
+                <div class="option" data-correct="true">«Que venía» (presente: acción en curso)</div>
+                <div class="option" data-correct="false">«Había venido» (perfecto)</div>
+                <div class="option" data-correct="false">«Vendrá» (futuro)</div>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">7</span> ¿Qué función expresa con frecuencia un participio adverbial?</div>
+            <div class="options">
+                <div class="option" data-correct="false">Concordancia con sujeto gramatical</div>
+                <div class="option" data-correct="true">Circunstancia: tiempo, causa, condición, concesión, etc.</div>
+                <div class="option" data-correct="false">Objeto directo del verbo principal</div>
+                <div class="option" data-correct="false">Función pronominal</div>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">8</span> ¿Cuál es la diferencia esencial entre participio y gerundio en relación con el griego koiné?</div>
+            <div class="options">
+                <div class="option" data-correct="false">El gerundio existe en griego y el participio no</div>
+                <div class="option" data-correct="true">El griego no tiene gerundio; usa participios o infinitivos según la función</div>
+                <div class="option" data-correct="false">El participio siempre funciona como sustantivo en griego</div>
+                <div class="option" data-correct="false">Gerundio y participio son exactamente lo mismo en griego</div>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">9</span> El participio perfecto (ej. λελυκώς) comunica principalmente:</div>
+            <div class="options">
+                <div class="option" data-correct="false">Una acción aún en progreso</div>
+                <div class="option" data-correct="true">Una acción completada cuyos efectos se mantienen en el presente</div>
+                <div class="option" data-correct="false">Un mandato</div>
+                <div class="option" data-correct="false">Un propósito</div>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">10</span> ¿Qué indica la forma διδάσκοντα en la frase ἔβλεψε τὸν ἄνθρωπον τὸν διδάσκοντα τὴν κοινήν?</div>
+            <div class="options">
+                <div class="option" data-correct="true">Que el participio es acusativo y modifica a ἄνθρωπον (adjetival)</div>
+                <div class="option" data-correct="false">Que el participio es nominativo y modifica al sujeto ἔβλεψε</div>
+                <div class="option" data-correct="false">Que es un infinitivo sustantivado</div>
+                <div class="option" data-correct="false">Que es una forma pasiva</div>
+            </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">11</span> ¿Cuál de estas voces puede aparecer en participios en koiné?</div>
+            <div class="options">
+                <div class="option" data-correct="false">Solo la activa</div>
+                <div class="option" data-correct="false">Solo la pasiva</div>
+                <div class="option" data-correct="false">Solo la media</div>
+                <div class="option" data-correct="true">Activa, media y pasiva (y deponentes)</div>
+            </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">12</span> En la frase ὁ πιστεύων, el participio se ha vuelto:</div>
+            <div class="options">
+                <div class="option" data-correct="true">Sustantivado (funciona como un sustantivo: «el que cree»)</div>
+                <div class="option" data-correct="false">Infinitivo</div>
+                <div class="option" data-correct="false">Adverbio</div>
+                <div class="option" data-correct="false">Partícula</div>
+            </div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">13</span> ¿Qué debe identificarse primero al analizar un participio (parsing)?</div>
+            <div class="options">
+                <div class="option" data-correct="false">La ortografía moderna</div>
+                <div class="option" data-correct="true">Tiempo/aspecto y voz (lado verbal), luego caso/num/género (lado adjetival)</div>
+                <div class="option" data-correct="false">Solo el caso</div>
+                <div class="option" data-correct="false">La traducción literal palabra por palabra</div>
+            </div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">14</span> ¿Cuál es la función típica de una frase participial que incluye un objeto directo y un adverbio?</div>
+            <div class="options">
+                <div class="option" data-correct="false">Indicar posesión</div>
+                <div class="option" data-correct="true">Formar una frase participial adverbial compleja (ej.: «habiendo estudiado diligentemente…»)</div>
+                <div class="option" data-correct="false">Sustituir la cláusula principal</div>
+                <div class="option" data-correct="false">Ser un verbo copulativo</div>
+            </div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">15</span> Si un verbo compuesto forma participio, ¿qué parte se reduplica para el perfecto?</div>
+            <div class="options">
+                <div class="option" data-correct="true">La parte verbal del compuesto (igual que en imperfecto/aoristo)</div>
+                <div class="option" data-correct="false">La preposición únicamente</div>
+                <div class="option" data-correct="false">La desinencia personal</div>
+                <div class="option" data-correct="false">Ninguna, los compuestos no hacen participios</div>
+            </div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">16</span> ¿Cuál es la mejor traducción de πεποιηκότες (perfecto participio) en un contexto como «πεποιηκότες ἔργα»?</div>
+            <div class="options">
+                <div class="option" data-correct="false">«Están haciendo obras»</div>
+                <div class="option" data-correct="true">«Habiendo hecho obras / que han hecho obras (y el estado continúa)»</div>
+                <div class="option" data-correct="false">«Harán obras»</div>
+                <div class="option" data-correct="false">«Fueron hechos obras»</div>
+            </div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">17</span> ¿Qué determina si un participio debe traducirse como «mientras…» en lugar de «habiendo…»?</div>
+            <div class="options">
+                <div class="option" data-correct="false">El orden de las palabras solo</div>
+                <div class="option" data-correct="true">El aspecto (presente = «mientras», aoristo = «habiendo»), y el contexto</div>
+                <div class="option" data-correct="false">La presencia de la partícula ἄν</div>
+                <div class="option" data-correct="false">Siempre es arbitrario</div>
+            </div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">18</span> ¿Cuál de los siguientes es un ejemplo claro de participio deponente?</div>
+            <div class="options">
+                <div class="option" data-correct="false">λύων (activo)</div>
+                <div class="option" data-correct="true">ἐρχόμενος (medio/deponente con sentido activo: «viniendo»)</div>
+                <div class="option" data-correct="false">ἀκουόμενος (pasivo)</div>
+                <div class="option" data-correct="false">λελυκώς (perfecto)</div>
+            </div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">19</span> En el Credo Apostólico, «τὸν συλληφθέντα ἐκ πνεύματος ἁγίου», συλληφθέντα es:</div>
+            <div class="options">
+                <div class="option" data-correct="true">Aoristo participio pasivo, acusativo («concebido»)</div>
+                <div class="option" data-correct="false">Presente participio activo</div>
+                <div class="option" data-correct="false">Perfecto participio medio</div>
+                <div class="option" data-correct="false">Infinitivo sustantivado</div>
+            </div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="question">
+            <div class="question-text"><span class="question-number">20</span> ¿Cuál es la práctica recomendada cuando encuentras un participio desconocido en un pasaje?</div>
+            <div class="options">
+                <div class="option" data-correct="false">Ignorarlo y seguir leyendo</div>
+                <div class="option" data-correct="true">Identificar su aspecto/voz y el sustantivo (si concuerda), luego decidir si es adjetival o adverbial</div>
+                <div class="option" data-correct="false">Traducirlo siempre como presente</div>
+                <div class="option" data-correct="false">Sustituirlo por un infinitivo</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button id="check-answers" class="btn btn-check"><i class="fas fa-check-circle"></i> Verificar Respuestas</button>
+        <button id="download-report" class="btn btn-download" disabled><i class="fas fa-download"></i> Descargar Reporte (.txt)</button>
+    </div>
+
+    <div id="result" class="result-container" aria-live="polite">
+        <h2>Resultados</h2>
+        <div class="score" id="final-score">0/20</div>
+        <div class="score-text">Respuestas correctas: <strong id="correct-count">0</strong> de 20.</div>
+        <p id="final-message"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Ministerio Vivos para Servir — Curso de Griego Koiné</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const checkBtn = document.getElementById('check-answers');
+    const downloadBtn = document.getElementById('download-report');
+    const questions = document.querySelectorAll('.question');
+    const studentNameInput = document.getElementById('student-name');
+    const weekInput = document.getElementById('week');
+    const resultBox = document.getElementById('result');
+    const finalScoreEl = document.getElementById('final-score');
+    const correctCountEl = document.getElementById('correct-count');
+    const finalMsgEl = document.getElementById('final-message');
+
+    let examResults = [];
+    let totalCorrect = 0;
+
+    // Option selection behavior
+    document.querySelectorAll('.option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            const q = opt.closest('.question');
+            q.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+        });
+    });
+
+    // Verify answers
+    checkBtn.addEventListener('click', () => {
+        const studentName = studentNameInput.value.trim();
+        if (!studentName) {
+            alert('Ingresa tu nombre antes de verificar las respuestas.');
+            studentNameInput.focus();
+            return;
+        }
+
+        examResults = [];
+        totalCorrect = 0;
+
+        questions.forEach((q, idx) => {
+            const opts = q.querySelectorAll('.option');
+            const selected = q.querySelector('.option.selected');
+            let correctOpt = null;
+            opts.forEach(o => { if (o.getAttribute('data-correct') === 'true') correctOpt = o; });
+
+            const chosenText = selected ? selected.textContent.trim() : 'Sin respuesta';
+            const correctText = correctOpt ? correctOpt.textContent.trim() : '—';
+            const isCorrect = selected === correctOpt;
+
+            if (isCorrect) totalCorrect++;
+
+            // store result
+            examResults.push({
+                question: idx + 1,
+                selected: chosenText,
+                correct: correctText,
+                isCorrect: isCorrect
+            });
+
+            // visual feedback
+            opts.forEach(o => {
+                o.classList.remove('correct','incorrect');
+                if (o.getAttribute('data-correct') === 'true') o.classList.add('correct');
+                if (o.classList.contains('selected') && !isCorrect) o.classList.add('incorrect');
+            });
+        });
+
+        // Show results
+        finalScoreEl.textContent = `${totalCorrect}/20`;
+        correctCountEl.textContent = totalCorrect;
+
+        if (totalCorrect >= 18) {
+            finalMsgEl.textContent = '¡Excelente! Dominio del tema.';
+            finalMsgEl.style.color = 'var(--correct-color)';
+        } else if (totalCorrect >= 14) {
+            finalMsgEl.textContent = 'Buen trabajo. Revisa las preguntas incorrectas.';
+            finalMsgEl.style.color = 'var(--secondary-color)';
+        } else {
+            finalMsgEl.textContent = 'Necesitas repasar los participios. Sigue practicando.';
+            finalMsgEl.style.color = 'var(--incorrect-color)';
+        }
+
+        resultBox.style.display = 'block';
+        downloadBtn.disabled = false;
+        resultBox.scrollIntoView({behavior:'smooth'});
+    });
+
+    // Download report
+    downloadBtn.addEventListener('click', () => {
+        const studentName = studentNameInput.value.trim() || 'Sin_Nombre';
+        const week = weekInput.value || 'Semana_20';
+        const date = new Date().toLocaleString('es-ES');
+        let report = '';
+        report += 'MINISTERIO VIVOS PARA SERVIR\n';
+        report += 'Curso de Griego Koiné — Examen Semana 20 (Participios)\n';
+        report += '=============================================\n\n';
+        report += `Estudiante: ${studentName}\n`;
+        report += `Fecha: ${date}\n`;
+        report += `Semana: ${week}\n`;
+        report += `Calificación: ${totalCorrect}/20 (${(totalCorrect/20*100).toFixed(1)}%)\n\n`;
+        report += 'RESULTADOS POR PREGUNTA:\n';
+        report += '-----------------------------------------\n\n';
+
+        examResults.forEach(r => {
+            report += `Pregunta ${r.question}:\n`;
+            report += `  Tu respuesta: ${r.selected}\n`;
+            report += `  Respuesta correcta: ${r.correct}\n`;
+            report += `  Estado: ${r.isCorrect ? 'CORRECTA' : 'INCORRECTA'}\n\n`;
+        });
+
+        report += '-----------------------------------------\n';
+        report += 'RESUMEN:\n';
+        report += `  Correctas: ${totalCorrect}\n`;
+        report += `  Incorrectas: ${20 - totalCorrect}\n`;
+        report += `  Porcentaje: ${(totalCorrect/20*100).toFixed(1)}%\n\n`;
+        report += 'Notas: Repasa aspectos, voz, morfemas participiales, y la distinción entre uso adverbial y adjetival.\n\n';
+        report += 'Ministerio Vivos para Servir — Para la gloria de Dios\n';
+
+        const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const safeName = studentName.replace(/\s+/g,'_').replace(/[^\w\-]/g,'') || 'Estudiante';
+        a.download = `Examen_Participios_Semana20_${safeName}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+});
+</script>
+</body>
+</html>

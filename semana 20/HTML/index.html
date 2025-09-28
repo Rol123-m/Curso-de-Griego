@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 20 — Participios | Curso Griego Koiné</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{
+            --primary-color:#2c3e50;
+            --secondary-color:#3498db;
+            --accent-color:#e74c3c;
+            --light-color:#ecf0f1;
+            --dark-color:#2c3e50;
+            --transition-speed:0.4s;
+            --card-radius:10px;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
+        body{background:#f5f7fa;color:var(--dark-color);line-height:1.6;}
+        .container{max-width:1200px;margin:0 auto;padding:15px;}
+        header{background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));color:#fff;padding:1rem 0;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1);margin-bottom:1.5rem;position:relative;border-bottom:6px solid rgba(255,255,255,.06)}
+        .header-content{display:flex;flex-direction:column;align-items:center;padding:0 15px}
+        .logo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 4px 8px rgba(0,0,0,.2);margin-bottom:.7rem}
+        header h1{font-size:1.8rem;margin-bottom:.6rem}
+        .mobile-menu-btn{display:none;position:absolute;top:14px;right:14px;background:transparent;border:none;color:white;font-size:1.4rem;cursor:pointer}
+        nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;width:100%;transition:all .3s ease}
+        .nav-btn{background:rgba(255,255,255,.15);border:none;color:white;padding:8px 15px;border-radius:20px;cursor:pointer;transition:all .3s;font-weight:700;font-size:.95rem}
+        .nav-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.25)}
+        .nav-btn.active{background:white;color:var(--primary-color)}
+        .content-section{background:white;border-radius:var(--card-radius);padding:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,.08);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:opacity var(--transition-speed) ease,transform var(--transition-speed) ease;display:none}
+        .content-section.active{opacity:1;transform:translateY(0);display:block}
+        h2{color:var(--primary-color);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--secondary-color);font-size:1.5rem}
+        h3{color:var(--secondary-color);margin:1rem 0 .6rem;font-size:1.1rem}
+        p{margin-bottom:.9rem;font-size:1rem}
+        .sub-nav{display:flex;flex-wrap:wrap;gap:6px;margin:.8rem 0}
+        .sub-nav-btn{background:#e8f4fc;border:1px solid var(--secondary-color);color:var(--primary-color);padding:6px 10px;border-radius:15px;cursor:pointer;font-size:.85rem}
+        .sub-nav-btn.active{background:var(--secondary-color);color:#fff}
+        table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #ddd}
+        th{background:var(--primary-color);color:#fff}
+        tr:nth-child(even){background:#f9f9f9}
+        .quiz-container{background:#f8f9fa;border-radius:8px;padding:1.2rem;margin-top:1rem;border-left:4px solid var(--secondary-color)}
+        .question{margin-bottom:1rem}
+        .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.6rem}
+        .option{padding:8px;background:#fff;border:1px solid #ddd;border-radius:6px;cursor:pointer;transition:all .15s;font-size:.95rem}
+        .option:hover{background:#e8f4fc;border-color:var(--secondary-color)}
+        .option.selected{background:var(--secondary-color);color:#fff;border-color:var(--secondary-color)}
+        .option.correct{background:#2ecc71;color:#fff}
+        .option.incorrect{background:#e74c3c;color:#fff}
+        .check-btn,.next-btn{background:var(--secondary-color);color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;margin-top:8px}
+        .check-btn:hover,.next-btn:hover{background:#2980b9;transform:translateY(-2px)}
+        .result{margin-top:10px;font-weight:700;padding:8px;border-radius:6px;font-size:.95rem}
+        .result.correct{background:#d4edda;color:#155724}
+        .result.incorrect{background:#f8d7da;color:#721c24}
+        .vocabulary-section{background:linear-gradient(135deg,#f8f9fa,#e9ecef);padding:1.1rem;border-radius:8px;margin-top:1rem;text-align:center}
+        .app-link{display:inline-block;background:var(--accent-color);color:white;text-decoration:none;padding:10px 18px;border-radius:25px;font-weight:700;margin-top:.6rem}
+        .note{background:#e8f4fc;border-left:4px solid var(--secondary-color);padding:.8rem;margin:.8rem 0;border-radius:0 6px 6px 0}
+        .highlight{background:#fff8e1;padding:2px 6px;border-radius:3px;font-weight:700}
+        footer{text-align:center;padding:1.2rem 0;color:#7f8c8d;font-size:.85rem}
+        /* responsive */
+        @media(max-width:768px){
+            .mobile-menu-btn{display:block}
+            nav{display:none;flex-direction:column}
+            nav.active{display:flex}
+            .nav-btn{width:100%;border-radius:6px}
+            .options{grid-template-columns:1fr}
+            table{display:block;overflow-x:auto}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        <img class="logo" src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo">
+        <h1>Semana 20 — Introducción a los Participios</h1>
+        <nav id="mainNav">
+            <button class="nav-btn active" data-target="intro">Introducción</button>
+            <button class="nav-btn" data-target="concepto">Concepto & Visión</button>
+            <button class="nav-btn" data-target="formacion">Formación</button>
+            <button class="nav-btn" data-target="aspecto">Aspecto</button>
+            <button class="nav-btn" data-target="usos">Usos (Adverbial/Adjetival)</button>
+            <button class="nav-btn" data-target="voz">Voz y Negación</button>
+            <button class="nav-btn" data-target="ejemplos">Ejemplos Bíblicos</button>
+            <button class="nav-btn" data-target="ejercicios">Ejercicios</button>
+            <button class="nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="nav-btn" data-target="credo">Credo (Análisis)</button>
+            <button class="nav-btn" data-target="resumen">Resumen & Tarea</button>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- INTRO -->
+    <section id="intro" class="content-section active">
+        <h2>Introducción: ¿Por qué estudiar participios?</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn active" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn" data-target="concepto">Concepto</button>
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+        </div>
+
+        <p>Los <strong>participios</strong> son omnipresentes en el griego del Nuevo Testamento. Son formas verbales que actúan simultáneamente como verbos y como adjetivos. Dominar los participios te permite captar relaciones temporales, causales, condicionales y descriptivas dentro del texto bíblico — cosas que en traducciones muchas veces desaparecen.</p>
+
+        <h3>Objetivos de la sección</h3>
+        <ul>
+            <li>Comprender el carácter híbrido (verbo–adjetivo) del participio.</li>
+            <li>Reconocer los tres aspectos: presente, aoristo y perfecto.</li>
+            <li>Identificar su función adverbial o adjetival en un pasaje.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Nota pedagógica:</strong> No memorices formas todavía. Primero aprende a <em>ver</em> la función: ¿modifica al verbo principal (circunstancia) o a un sustantivo (descripción)? Luego estudia las formas.
+        </div>
+
+        <div class="quiz-container">
+            <h3>Mini-quiz: Intro</h3>
+            <div class="question">
+                <p>1. ¿Qué característica define mejor al participio?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Es un verbo finito</div>
+                    <div class="option" data-correct="true">Es un verbo-adjetivo (verbal + adjetival)</div>
+                    <div class="option" data-correct="false">Es un sustantivo</div>
+                    <div class="option" data-correct="false">Solo es adjetivo</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Cuál de estos tiempos NO es participio?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Presente</div>
+                    <div class="option" data-correct="false">Aoristo</div>
+                    <div class="option" data-correct="false">Perfecto</div>
+                    <div class="option" data-correct="true">Futuro (como participio)</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+
+    </section>
+
+    <!-- CONCEPTO -->
+    <section id="concepto" class="content-section">
+        <h2>Concepto y diferencias con español/inglés</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn active" data-target="concepto">Concepto</button>
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto</button>
+        </div>
+
+        <h3>¿Qué es un participio?</h3>
+        <p>Un participio es una forma verbal que conserva marca de <strong>tiempo/aspecto</strong> y <strong>voz</strong>, pero no desinencias de persona (no es finito). Además, funciona como <strong>adjetivo</strong> y concuerda en <strong>caso, número y género</strong> con el sustantivo que modifica.</p>
+
+        <h3>Comparación práctica</h3>
+        <table>
+            <thead><tr><th>Idioma</th><th>Ejemplo - función</th><th>Comentario</th></tr></thead>
+            <tbody>
+                <tr><td>Español</td><td>«Mientras <em>comía</em>, oró»</td><td>Participio/gerundio que marca circunstancia temporal</td></tr>
+                <tr><td>Inglés</td><td>«<em>Seeing</em> is believing»</td><td>Formas -ing; cuando actúan como sustantivo (gerundio) el griego prefiere infinitivo</td></tr>
+                <tr><td>Griego</td><td>«ὁ <em>πιστεύων</em> ἔχει ζωὴν»</td><td>Participio presente sustantivado = «el que cree»</td></tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>Pedagogía:</strong> recuerda que el griego NO tiene gerundio; donde en español/inglés hay gerundio a veces el griego usa <em>infinitivo</em> o participio según la función.
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Concepto</h3>
+            <div class="question">
+                <p>1. En griego, ¿con qué concuerda el participio cuando actúa como adjetivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">Caso, número y género</div>
+                    <div class="option" data-correct="false">Persona, número y género</div>
+                    <div class="option" data-correct="false">Sólo número</div>
+                    <div class="option" data-correct="false">Sólo caso</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- FORMACION -->
+    <section id="formacion" class="content-section">
+        <h2>Formación: morfemas y patrones</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn" data-target="voz">Voz y Negación</button>
+            <button class="sub-nav-btn" data-target="usos">Usos</button>
+        </div>
+
+        <h3>Estructura general</h3>
+        <p>La formación típica: <strong>tallo verbal</strong> + <strong>vocal de enlace (si procede)</strong> + <strong>morfema participial (ej. -ντ, -οτ)</strong> + <strong>desinencias de caso</strong>.</p>
+
+        <h3>Ejemplos de formación</h3>
+        <table>
+            <thead><tr><th>Verbo</th><th>Tallo</th><th>Participo</th><th>Traducción</th></tr></thead>
+            <tbody>
+                <tr><td>λύω</td><td>λυ</td><td>λύοντες</td><td>«los que sueltan / soltando» (presente)</td></tr>
+                <tr><td>πιστεύω</td><td>πιστευ</td><td>πιστεύσαντες</td><td>«habiendo creído» (aoristo)</td></tr>
+                <tr><td>ποιέω</td><td>πεποιη</td><td>πεποιηκότες</td><td>«los que han hecho» (perfecto)</td></tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>Tip:</strong> memoriza los morfemas frecuentes (-ντ, -οτ) y aprende a reconocer el tallo verbal. Al principio céntrate en detectar la raíz antes de preocuparte por todas las desinencias.
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Formación</h3>
+            <div class="question">
+                <p>1. ¿Cuál de estos es un morfema participial habitual?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">-ντ</div>
+                    <div class="option" data-correct="false">-σ</div>
+                    <div class="option" data-correct="false">-μαι</div>
+                    <div class="option" data-correct="false">-νται</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- ASPECTO -->
+    <section id="aspecto" class="content-section">
+        <h2>Aspecto: presente, aoristo, perfecto</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn active" data-target="aspecto">Aspecto</button>
+            <button class="sub-nav-btn" data-target="ejemplos">Ejemplos</button>
+        </div>
+
+        <h3>¿Qué significa 'aspecto'?</h3>
+        <p>El aspecto describe la <strong>manera</strong> en que la acción se concibe: si es continua, puntual o completada con efecto presente. Los participios se centran en aspecto más que en tiempo cronológico.</p>
+
+        <table>
+            <thead><tr><th>Aspecto</th><th>Participio</th><th>Significado</th></tr></thead>
+            <tbody>
+                <tr><td>Presente</td><td>λύων</td><td>Acción en curso / proceso («estando soltando»)</td></tr>
+                <tr><td>Aoristo</td><td>λύσας</td><td>Acción puntual («habiendo soltado»)</td></tr>
+                <tr><td>Perfecto</td><td>λελυκώς</td><td>Acción terminada con efecto presente («ya suelto»)</td></tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>Pedagogía:</strong> al traducir, pregúntate si la frase enfatiza la continuidad, la simple culminación o el estado resultante. Eso te ayudará a elegir la mejor equivalencia en español.
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Aspecto</h3>
+            <div class="question">
+                <p>1. ¿Qué participio expresa estado resultante?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Presente</div>
+                    <div class="option" data-correct="true">Perfecto</div>
+                    <div class="option" data-correct="false">Aoristo</div>
+                    <div class="option" data-correct="false">Futuro</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- USOS -->
+    <section id="usos" class="content-section">
+        <h2>Usos fundamentales: adverbial vs adjetival</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto</button>
+            <button class="sub-nav-btn active" data-target="usos">Usos</button>
+            <button class="sub-nav-btn" data-target="voz">Voz</button>
+        </div>
+
+        <h3>Participio adverbial</h3>
+        <p>Modifica el verbo principal (expresa tiempo, causa, condición, concesión, propósito, etc.). Se traduce por una frase circunstancial: «mientras..., habiendo..., porque...»</p>
+        <p><strong>Ejemplo:</strong> <em>πορευθέντες οὖν μαθητεύσατε πάντα τὰ ἔθνη</em> (Mt 28:19) — «Id, <strong>habiendo ido</strong>, haced discípulos...»</p>
+
+        <h3>Participio adjetival</h3>
+        <p>Modifica un sustantivo; suele equivaler a una oración de relativo: «el que...», «la que...»</p>
+        <p><strong>Ejemplo:</strong> <em>ὁ πιστεύων εἰς τὸν υἱόν</em> — «el que cree en el Hijo» (sustantivación del participio).</p>
+
+        <div class="note">
+            <strong>Consejo:</strong> Si la forma concuerda en caso con un sustantivo cercano, casi siempre es adjetival; si no, suele ser adverbial y relacionarse con la acción.
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Usos</h3>
+            <div class="question">
+                <p>1. ¿Cómo suele traducirse un participio adverbial?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">Como frase circunstancial (mientras, habiendo, porque)</div>
+                    <div class="option" data-correct="false">Como adjetivo simple sin relación al verbo</div>
+                    <div class="option" data-correct="false">Siempre como oración de relativo</div>
+                    <div class="option" data-correct="false">Como sustantivo</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- VOZ -->
+    <section id="voz" class="content-section">
+        <h2>Voz del participio y negación</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="usos">Usos</button>
+            <button class="sub-nav-btn active" data-target="voz">Voz</button>
+            <button class="sub-nav-btn" data-target="ejemplos">Ejemplos</button>
+        </div>
+
+        <h3>Voces posibles</h3>
+        <ul>
+            <li><strong>Activa:</strong> el sujeto realiza la acción (<em>ἀκούοντες</em> — oyendo).</li>
+            <li><strong>Pasiva:</strong> el sujeto recibe la acción (<em>ἀκουόμενοι</em> — siendo oídos).</li>
+            <li><strong>Media / Deponente:</strong> formas medias que se traducen activamente en significado (<em>ἐρχόμενοι</em> — viniendo).</li>
+        </ul>
+
+        <h3>Negación</h3>
+        <p>La negación de un participio se hace normalmente con <strong>μή</strong>, no con οὐ (que es para formas finitas de indicativo).</p>
+        <p>Ejemplo: <em>μὴ φοβοῦμενοι</em> — «no temiendo»</p>
+
+        <div class="note">
+            <strong>Atención:</strong> identificar la voz cambia la traducción: <em>βαπτιζόμενος</em> = «el que es bautizado», mientras que <em>βαπτίζων</em> = «el que bautiza».
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Voz & Negación</h3>
+            <div class="question">
+                <p>1. ¿Con qué palabra se niega normalmente un participio?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">μή</div>
+                    <div class="option" data-correct="false">οὐ</div>
+                    <div class="option" data-correct="false">οὖν</div>
+                    <div class="option" data-correct="false">ἵνα</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+
+    </section>
+
+    <!-- EJEMPLOS -->
+    <section id="ejemplos" class="content-section">
+        <h2>Ejemplos bíblicos y análisis</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="voz">Voz</button>
+            <button class="sub-nav-btn active" data-target="ejemplos">Ejemplos</button>
+            <button class="sub-nav-btn" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <h3>Participio presente (proceso)</h3>
+        <p><strong>Juan 1:29</strong> — <em>βλέπει τὸν Ἰησοῦν ἐρχόμενον</em> — «Vio a Jesús <strong>que venía</strong>».</p>
+        <p>Análisis: <em>ἐρχόμενον</em> = presente, medio/deponente, acusativo singular masculino, de <em>ἔρχομαι</em>. Es adjetival porque concuerda con <em>τὸν Ἰησοῦν</em>.</p>
+
+        <h3>Participio aoristo (acción puntual / previa)</h3>
+        <p><strong>Mateo 28:19</strong> — <em>πορευθέντες οὖν μαθητεύσατε πάντα τὰ ἔθνη</em> — «Id, <strong>habiendo ido</strong>, haced discípulos...»</p>
+        <p>El participio aoristo indica la acción completada que contextualiza la orden principal.</p>
+
+        <h3>Participio perfecto (estado resultante)</h3>
+        <p><strong>Mateo 25:34 (paráfrasis)</strong> — participios perfectos pasivos como <em>εὐλογημένοι</em> ilustran estado resultante «los que han sido bendecidos».</p>
+
+        <div class="note">
+            <strong>Ejercicio breve:</strong> al leer una frase en griego, subraya el participio y pregúntate: ¿con qué sustantivo concuerda? ¿modifica al verbo o al sustantivo?
+        </div>
+
+    </section>
+
+    <!-- EJERCICIOS -->
+    <section id="ejercicios" class="content-section">
+        <h2>Ejercicios progresivos</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="ejemplos">Ejemplos</button>
+            <button class="sub-nav-btn active" data-target="ejercicios">Ejercicios</button>
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+        </div>
+
+        <h3>A. Identificación</h3>
+        <p>Subraya el participio en cada frase y di si es adjetival o adverbial:</p>
+        <ol>
+            <li>Ἰωάννης βλέπει τὸν Ἰησοῦν τὸν ἐρχόμενον.</li>
+            <li>Πορευθέντες οὖν, ἐποίησαν κηρύγματα.</li>
+            <li>Μὴ φοβοῦμενοι, προσεύχονται κάθε νύχτα.</li>
+        </ol>
+
+        <h3>B. Traducción</h3>
+        <p>Traduce al español (intenta mantener el matiz):</p>
+        <ol>
+            <li>Ὁ πιστεύων εἰς τὸν υἱόν ἔχει ζωὴν αἰώνιον.</li>
+            <li>Ἦλθεν πρὸς αὐτὸν ὁ τυφλὸς κράζων.</li>
+            <li>Μὴ λαβόντες τὰς ἐπαγγελίας, ἐβάσταντο ἐλπίδα.</li>
+        </ol>
+
+        <h3>C. Parsing (análisis completo)</h3>
+        <p>Analiza estos participios siguiendo los 8 pasos (tiempo, voz, forma, caso, número, género, léxema, traducción):</p>
+        <ul>
+            <li>διδάσκοντα</li>
+            <li>ἐληλυθότα</li>
+            <li>ἀκούσας</li>
+        </ul>
+
+        <h3>D. Producción</h3>
+        <p>Escribe en griego (intenta usar formas simples):</p>
+        <ol>
+            <li>Una oración con participio presente adverbial.</li>
+            <li>Una oración con participio aoristo adjetival.</li>
+            <li>Una breve frase usando participio perfecto (estado resultante).</li>
+        </ol>
+
+        <div class="quiz-container">
+            <h3>Auto-check rápido</h3>
+            <p>Marca la respuesta correcta:</p>
+            <div class="question">
+                <p>1. Un participio que indica acción completada con efecto presente es:</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Presente</div>
+                    <div class="option" data-correct="true">Perfecto</div>
+                    <div class="option" data-correct="false">Aoristo</div>
+                    <div class="option" data-correct="false">Futuro</div>
+                </div>
+            </div>
+
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+
+    </section>
+
+    <!-- VOCABULARIO -->
+    <section id="vocabulario" class="content-section">
+        <h2>Vocabulario práctico (participios frecuentes)</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="ejercicios">Ejercicios</button>
+            <button class="sub-nav-btn active" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn" data-target="credo">Credo</button>
+        </div>
+
+        <table>
+            <thead><tr><th>Verbo</th><th>Partic. común</th><th>Traducción</th></tr></thead>
+            <tbody>
+                <tr><td>διδάσκω</td><td>διδάσκων / διδάσκοντα</td><td>enseñando / que enseña</td></tr>
+                <tr><td>πορεύομαι</td><td>πορευθέντες</td><td>habiendo ido</td></tr>
+                <tr><td>ἀκούω</td><td>ἀκούων</td><td>oyendo</td></tr>
+                <tr><td>γράφω</td><td>γράψας</td><td>habiendo escrito</td></tr>
+                <tr><td>λέγω</td><td>εἰπών</td><td>habiendo dicho</td></tr>
+                <tr><td>λαμβάνω</td><td>λαβών</td><td>habiendo tomado</td></tr>
+                <tr><td>πιστεύω</td><td>πιστεύων</td><td>creyendo / el que cree</td></tr>
+            </tbody>
+        </table>
+
+        <div class="vocabulary-section">
+            <h3>Recurso de práctica</h3>
+            <p>Usa tu app de vocabulario para repasar estas formas y sus participios.</p>
+            <a class="app-link" href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/">App de Vocabulario — Vivos para Servir</a>
+        </div>
+
+    </section>
+
+    <!-- CREDO -->
+    <section id="credo" class="content-section">
+        <h2>El Credo Apostólico — Análisis participial</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn active" data-target="credo">Credo</button>
+            <button class="sub-nav-btn" data-target="resumen">Resumen</button>
+        </div>
+
+        <p>El Credo contiene varios participios que son excelentes para practicar. A continuación analizamos las frases más didácticas:</p>
+
+        <h3>1. <em>τὸν συλληφθέντα ἐκ πνεύματος ἁγίου</em></h3>
+        <p><strong>Participio:</strong> <em>συλληφθέντα</em> — aoristo pasivo, acusativo singular masculino, de <em>συλλαμβάνω</em>. Traducción: «concebido» o «habiendo sido concebido».</p>
+
+        <h3>2. <em>παθόντα ἐπὶ Ποντίου Πιλάτου</em></h3>
+        <p><strong>Participio:</strong> <em>παθόντα</em> — aoristo participio activo, acusativo singular masculino, de <em>πάσχω</em>. Traducción: «que padeció»</p>
+
+        <h3>3. <em>σταυρωθέντα, θανόντα, καὶ ταφέντα</em></h3>
+        <p>Tres participios aoristos pasivos que describen acciones infligidas sobre el sujeto: «fue crucificado, muerto y sepultado» (formas pasivas que describen lo ocurrido).</p>
+
+        <div class="note">
+            <strong>Actividad:</strong> localiza cada participio del Credo en el texto griego y anota su tiempo, voz y caso. Esto te dará práctica constante en análisis participial.
+        </div>
+
+    </section>
+
+    <!-- RESUMEN -->
+    <section id="resumen" class="content-section">
+        <h2>Resumen final & tarea</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="credo">Credo</button>
+            <button class="sub-nav-btn active" data-target="resumen">Resumen</button>
+        </div>
+
+        <h3>Puntos clave</h3>
+        <ol>
+            <li>El participio es un <strong>verbo–adjetivo</strong>: tiene tiempo/aspecto y voz, y concuerda en caso/número/género.</li>
+            <li>Prioriza el <strong>aspecto</strong> (presente: proceso; aoristo: acción puntual; perfecto: estado resultante).</li>
+            <li>Funciona como <strong>adjetivo</strong> (modifica sustantivo) o como <strong>adverbio</strong> (modifica verbo).</li>
+            <li>La negación de participios usa <strong>μή</strong>.</li>
+            <li>Práctica recomendada: subraya participios en un pasaje y haz el análisis de sus 8 elementos (tiempo, voz, forma, caso, número, género, léxema, traducción).</li>
+        </ol>
+
+        <h3>Tarea de la semana (recomendada)</h3>
+        <ol>
+            <li>Analiza todos los participios de Juan 1:29–34 (anota los 8 elementos para cada uno).</li>
+            <li>Traduce Mateo 28:19 prestando atención a <em>πορευθέντες</em> y su relación con la orden principal.</li>
+            <li>Escribe 3 oraciones originales en griego: una con participio presente adverbial, otra con participio aoristo adjetival, y otra con participio perfecto.</li>
+            <li>Memoriza los participios del Credo Apostólico señalados en la sección anterior.</li>
+        </ol>
+
+        <div class="vocabulary-section">
+            <h3>Recapitulación rápida</h3>
+            <p>Repasa el vocabulario y los paradigmas en la app o en tus tarjetas. Recomendación: 10 minutos diarios durante 7 días.</p>
+            <a class="app-link" href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/">Practicar vocabulario</a>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Ministerio Vivos para Servir — Curso de Griego Koiné • Semana 20</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    // Navegación principal
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.content-section');
+    const mainNav = document.getElementById('mainNav');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+    function changeSection(target){
+        navButtons.forEach(b=>b.classList.remove('active'));
+        sections.forEach(s=>s.classList.remove('active'));
+        const btn = document.querySelector('.nav-btn[data-target="'+target+'"]');
+        if(btn) btn.classList.add('active');
+        const section = document.getElementById(target);
+        if(section) section.classList.add('active');
+        if(window.innerWidth <= 768) mainNav.classList.remove('active');
+        window.scrollTo(0,0);
+    }
+
+    navButtons.forEach(btn=>{
+        btn.addEventListener('click', function(){ changeSection(this.dataset.target); });
+    });
+
+    // Sub-navegación (usa mismos botones con atribut data-target hacia secciones)
+    const subNavButtons = document.querySelectorAll('.sub-nav-btn');
+    subNavButtons.forEach(btn=>{
+        btn.addEventListener('click', function(){
+            // activar visualmente el subbotón
+            const group = this.parentElement;
+            group.querySelectorAll('.sub-nav-btn').forEach(x=>x.classList.remove('active'));
+            this.classList.add('active');
+            // cambiar sección principal si existe target
+            if(this.dataset.target) changeSection(this.dataset.target);
+        });
+    });
+
+    // Menú móvil
+    mobileMenuBtn.addEventListener('click', function(){
+        mainNav.classList.toggle('active');
+    });
+
+    // Quiz functionality (reusable)
+    function setupQuizzes(){
+        document.querySelectorAll('.check-btn').forEach(btn=>{
+            btn.addEventListener('click', function(){
+                const quiz = this.closest('.quiz-container');
+                const options = quiz.querySelectorAll('.option');
+                const result = quiz.querySelector('.result');
+                let total=0, correct=0;
+                // compute per question group
+                const questions = quiz.querySelectorAll('.question');
+                questions.forEach(q=>{
+                    total++;
+                    const selected = q.querySelector('.option.selected');
+                    if(selected && selected.getAttribute('data-correct') === 'true') correct++;
+                });
+                if(total === 0) {
+                    result.textContent = 'No hay preguntas.';
+                    result.className = 'result';
+                    return;
+                }
+                if(correct === total){
+                    result.textContent = '¡Perfecto! ' + correct + '/' + total + ' correctas.';
+                    result.className = 'result correct';
+                } else {
+                    result.textContent = correct + '/' + total + ' correctas. Sigue practicando.';
+                    result.className = 'result incorrect';
+                }
+                // marcar respuestas
+                quiz.querySelectorAll('.option').forEach(opt=>{
+                    if(opt.getAttribute('data-correct') === 'true') opt.classList.add('correct');
+                    else if(opt.classList.contains('selected')) opt.classList.add('incorrect');
+                });
+            });
+        });
+
+        // seleccionar opción
+        document.querySelectorAll('.option').forEach(opt=>{
+            opt.addEventListener('click', function(){
+                const q = this.closest('.question');
+                q.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    }
+
+    setupQuizzes();
+
+    // Close mobile menu by clicking outside
+    document.addEventListener('click', function(e){
+        if(window.innerWidth <= 768 && mainNav.classList.contains('active') && !mainNav.contains(e.target) && !mobileMenuBtn.contains(e.target)){
+            mainNav.classList.remove('active');
+        }
+    });
+
+    // Accessibility: keyboard navigation for options (Enter)
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'Enter'){
+            const el = document.activeElement;
+            if(el && el.classList && el.classList.contains('option')){
+                el.click();
+            }
+            if(el && el.classList && el.classList.contains('check-btn')){
+                el.click();
+            }
+        }
+    });
+
+});
+</script>
+</body>
+</html>
