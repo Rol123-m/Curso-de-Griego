@@ -66,15 +66,34 @@
             position: relative;
             z-index: 1;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
-        .header-content h1 {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-text h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
-        .header-content p {
+        .header-text p {
             font-size: 1.2rem;
             opacity: 0.9;
         }
@@ -208,6 +227,10 @@
 
         .quiz-question {
             margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
         }
 
         .options {
@@ -324,6 +347,20 @@
             background: var(--secondary);
         }
 
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .usage-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
+        }
+
         footer {
             background: var(--primary);
             color: white;
@@ -351,12 +388,16 @@
                 padding: 0.8rem 1rem;
             }
             
-            .header-content h1 {
+            .header-text h1 {
                 font-size: 2rem;
             }
             
             .example-container {
                 flex-direction: column;
+            }
+            
+            .usage-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -365,8 +406,13 @@
     <div class="class-container">
         <header>
             <div class="header-content">
-                <h1>Clase Avanzada: Participios en Griego</h1>
-                <p>Dominando el tiempo relativo y los usos exegéticos del participio</p>
+                <div class="logo-container">
+                    <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="logo ministerio" class="logo">
+                    <div class="header-text">
+                        <h1>Clase Avanzada: Participios en Griego</h1>
+                        <p>Dominando el tiempo relativo y los usos exegéticos del participio</p>
+                    </div>
+                </div>
             </div>
         </header>
         
@@ -418,6 +464,12 @@
                         <h3>Consejo de Estudio</h3>
                         <p>Si deseas utilizar esta información avanzada para traducir los ejercicios, haz primero tus ejercicios antes de leer esta sección. Luego regresa, lee esta discusión y rehaz tus ejercicios.</p>
                     </div>
+
+                    <div class="card">
+                        <h3>Importancia del Aspecto</h3>
+                        <p>Cuando esta distinción de tiempo relativo se toma en consideración en la traducción del participio, nunca debe anular la importancia del aspecto en tu traducción. El aspecto es siempre primario al tiempo.</p>
+                        <div class="greek-text">Cuando el español permite que tu traducción indique claramente solo aspecto o tiempo, elige el aspecto.</div>
+                    </div>
                 </section>
                 
                 <!-- Tiempo Relativo -->
@@ -432,10 +484,12 @@
                             <div class="example-box">
                                 <h4>Tiempo Absoluto</h4>
                                 <p>Un verbo en indicativo indica tiempo absoluto. Por ejemplo, si un verbo en indicativo está en tiempo presente, entonces usualmente indica una acción que ocurre en el presente.</p>
+                                <div class="greek-text">γράφω - escribo (acción en el presente)</div>
                             </div>
                             <div class="example-box">
                                 <h4>Tiempo Relativo</h4>
                                 <p>El participio griego no indica tiempo absoluto. Indica <span class="highlight">tiempo relativo</span>. Esto significa que el tiempo del participio es relativo al tiempo del verbo principal.</p>
+                                <div class="greek-text">γράφων - escribiendo (tiempo relativo al verbo principal)</div>
                             </div>
                         </div>
                         
@@ -454,6 +508,15 @@
                         </div>
                         
                         <p class="greek-text">El participio presente describe una acción que ocurre al mismo tiempo que el verbo principal.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Ejemplos Adicionales</h3>
+                        <div class="greek-text">ἀκούσας δὲ ὁ Ἰησοῦς ἐθαύμασεν (Mateo 8:10)</div>
+                        <div class="translation">Cuando Jesús oyó esto, se maravilló</div>
+                        
+                        <div class="greek-text">ἐλθὼν εὗρεν αὐτοὺς καθεύδοντας (Mateo 26:40)</div>
+                        <div class="translation">Al llegar, los encontró durmiendo</div>
                     </div>
                 </section>
                 
@@ -488,6 +551,15 @@
                         <div class="translation">Y Jesús, mientras pasaba de allí, vio a un hombre.</div>
                         <p>Esto es lo que significa "tiempo relativo". El tiempo del participio es relativo al tiempo del verbo principal.</p>
                     </div>
+
+                    <div class="card">
+                        <h3>Ejemplos con Diferentes Tiempos</h3>
+                        <div class="greek-text">γενόμενος ἐν τῇ ἐρήμῳ ἐδίδασκεν (Marcos 1:35)</div>
+                        <div class="translation">Habiéndose ido a un lugar desierto, enseñaba</div>
+                        
+                        <div class="greek-text">ἔρχεται λαλῶν (Juan 10:6)</div>
+                        <div class="translation">Viene hablando</div>
+                    </div>
                 </section>
                 
                 <!-- "Sujeto" del Participio -->
@@ -519,6 +591,15 @@
                         </ul>
                         <p>Elige el pronombre que haga la identificación más clara en cuanto a quién o qué está realizando la acción en el participio.</p>
                     </div>
+
+                    <div class="card">
+                        <h3>Ejemplos de Identificación</h3>
+                        <div class="greek-text">ὁρῶσιν τὸν Πέτρον καὶ τὸν Ἰωάννην μέλλοντας εἰσιέναι (Hechos 3:3)</div>
+                        <div class="translation">Vieron a Pedro y a Juan que iban a entrar</div>
+                        
+                        <div class="greek-text">ἀκούσας δὲ ὁ βασιλεὺς Ἡρῴδης ἐταράχθη (Mateo 2:3)</div>
+                        <div class="translation">Cuando el rey Herodes oyó esto, se turbó</div>
+                    </div>
                 </section>
                 
                 <!-- Usos Exegéticos -->
@@ -526,31 +607,74 @@
                     <h2>Usos Exegéticos del Participio</h2>
                     
                     <div class="card">
-                        <h3>Clasificación de Usos</h3>
+                        <h3>Clasificación Completa de Usos</h3>
                         <p>Los siguientes usos del participio adverbial aplican tanto al participio continuo como al no definido:</p>
                         
-                        <div class="interactive-element">
-                            <div class="quiz-question">
+                        <div class="usage-grid">
+                            <div class="usage-card">
                                 <h4>1. Uso Temporal</h4>
-                                <p>El participio aoristo puede describir una acción que ocurre antes del tiempo del verbo finito, mientras que el participio presente puede describir algo que sucede al mismo tiempo que la acción del verbo principal.</p>
-                                <div class="greek-text">συναλιζόμενος παρήγγειλεν αὐτοῖς (Acts 1:4).</div>
-                                <div class="translation">Mientras estaba con ellos, les ordenó.</div>
+                                <p>El participio aoristo puede describir una acción que ocurre antes del tiempo del verbo finito, mientras que el participio presente puede describir algo que sucede al mismo tiempo.</p>
+                                <div class="greek-text">νηστεύσας … ὕστερον ἐπείνασεν (Matt 4:2)</div>
+                                <div class="translation">Después de ayunar... tuvo hambre</div>
                             </div>
-                            
-                            <div class="quiz-question">
+
+                            <div class="usage-card">
                                 <h4>2. Uso de Modo</h4>
-                                <p>El participio puede indicar la manera en que ocurre la acción del verbo finito.</p>
-                                <div class="greek-text">ἀκούσας δὲ ὁ νεανίσκος τὸν λόγον ἀπῆλθεν λυπούμενος (Matt 19:22).</div>
-                                <div class="translation">Cuando el joven escuchó esto, se fue triste.</div>
+                                <p>Indica la manera en que ocurre la acción del verbo finito.</p>
+                                <div class="greek-text">ἀκούσας δὲ ὁ νεανίσκος τὸν λόγον ἀπῆλθεν λυπούμενος (Matt 19:22)</div>
+                                <div class="translation">Cuando el joven escuchó esto, se fue triste</div>
                             </div>
-                            
-                            <div class="quiz-question">
+
+                            <div class="usage-card">
                                 <h4>3. Uso de Medio</h4>
-                                <p>El participio puede indicar el medio por el cual ocurre la acción del verbo finito.</p>
-                                <div class="greek-text">κοπιῶμεν ἐργαζόμενοι ταῖς ἰδίαις χερσίν (1 Cor 4:12).</div>
-                                <div class="translation">Nos fatigamos trabajando con nuestras propias manos.</div>
+                                <p>Indica el medio por el cual ocurre la acción del verbo finito.</p>
+                                <div class="greek-text">κοπιῶμεν ἐργαζόμενοι ταῖς ἰδίαις χερσίν (1 Cor 4:12)</div>
+                                <div class="translation">Nos fatigamos trabajando con nuestras propias manos</div>
+                            </div>
+
+                            <div class="usage-card">
+                                <h4>4. Uso Causal</h4>
+                                <p>Indica la causa o razón de la acción del verbo finito.</p>
+                                <div class="greek-text">ἠγαλλιάσατο πανοικεὶ πεπιστευκὼς τῷ θεῷ (Acts 16:34)</div>
+                                <div class="translation">Se regocijó con toda su casa porque había creído en Dios</div>
+                            </div>
+
+                            <div class="usage-card">
+                                <h4>5. Uso Condicional</h4>
+                                <p>Indica una condición que debe cumplirse para que la acción del verbo finito ocurra.</p>
+                                <div class="greek-text">πάντα ὅσα ἂν αἰτήσητε … πιστεύοντες λήμψεσθε (Matt 21:22)</div>
+                                <div class="translation">Todo lo que pidan... lo recibirán, si creen</div>
+                            </div>
+
+                            <div class="usage-card">
+                                <h4>6. Uso Concesivo</h4>
+                                <p>Indica que la acción del verbo finito es verdadera a pesar de la acción del participio.</p>
+                                <div class="greek-text">Καὶ ὑμᾶς ὄντας νεκροὺς τοῖς παραπτώμασιν (Eph 2:1)</div>
+                                <div class="translation">Y aunque estaban muertos en sus transgresiones</div>
+                            </div>
+
+                            <div class="usage-card">
+                                <h4>7. Uso de Propósito</h4>
+                                <p>Indica el propósito del verbo finito.</p>
+                                <div class="greek-text">ἄφες ἴδωμεν εἰ ἔρχεται Ἠλίας σώσων αὐτόν (Matt 27:49)</div>
+                                <div class="translation">Espera, veamos si Elías viene a salvarlo</div>
+                            </div>
+
+                            <div class="usage-card">
+                                <h4>8. Uso de Resultado</h4>
+                                <p>Indica el resultado de la acción del verbo finito.</p>
+                                <div class="greek-text">ἵνα τοὺς δύο κτίσῃ ἐν αὐτῷ εἰς ἕνα καινὸν ἄνθρωπον ποιῶν εἰρήνην (Eph 2:15)</div>
+                                <div class="translation">Para crear de los dos un nuevo hombre, haciendo así la paz</div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Traducción como Verbos Indicativos</h3>
+                        <p>A menudo los participios se traducen como verbos en indicativo. Esto puede crear un problema para la exégesis, porque no puedes distinguir entre el verbo principal—que normalmente es indicativo y contiene la idea principal—y el participio dependiente, que normalmente contiene un pensamiento modificador.</p>
+                        
+                        <div class="greek-text">προορίσας ἡμᾶς εἰς υἱοθεσίαν διὰ Ἰησοῦ Χριστοῦ (Eph 1:5)</div>
+                        <div class="translation">Nos predestinó para adopción como hijos mediante Jesucristo</div>
                     </div>
                 </section>
                 
@@ -558,35 +682,79 @@
                 <section id="practice" class="section">
                     <h2>Práctica Interactiva</h2>
                     
-                    <div class="card">
-                        <h3>Ejercicio de Traducción</h3>
-                        <p>Traduce el siguiente pasaje bíblico, prestando atención especial al uso del participio:</p>
-                        
-                        <div class="greek-text">προορίσας ἡμᾶς εἰς υἱοθεσίαν διὰ Ἰησοῦ Χριστοῦ (Eph 1:5).</div>
-                        
-                        <div class="options">
-                            <div class="option">Nos predestinó para adopción como hijos mediante Jesucristo</div>
-                            <div class="option">Habiéndonos predestinado para adopción como hijos mediante Jesucristo</div>
-                            <div class="option">Predestinándonos para adopción como hijos mediante Jesucristo</div>
-                        </div>
-                        
-                        <button class="btn">Verificar Traducción</button>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Identificación de Usos</h3>
-                        <p>Identifica el uso exegético del participio en el siguiente versículo:</p>
-                        
-                        <div class="greek-text">πάντα ὅσα ἂν αἰτήσητε … πιστεύοντες λήμψεσθε (Matt 21:22).</div>
-                        
+                    <div class="quiz-question">
+                        <h3>Pregunta 1: Identificación del Uso</h3>
+                        <p>Identifica el uso exegético del participio en:</p>
+                        <div class="greek-text">πάντα ὅσα ἂν αἰτήσητε … πιστεύοντες λήμψεσθε (Matt 21:22)</div>
                         <div class="options">
                             <div class="option">Temporal</div>
                             <div class="option">Condicional</div>
                             <div class="option">Causal</div>
                             <div class="option">De Propósito</div>
                         </div>
-                        
-                        <button class="btn">Verificar Identificación</button>
+                        <button class="btn">Verificar Respuesta</button>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Pregunta 2: Traducción Correcta</h3>
+                        <p>Selecciona la traducción más precisa:</p>
+                        <div class="greek-text">προορίσας ἡμᾶς εἰς υἱοθεσίαν διὰ Ἰησοῦ Χριστοῦ (Eph 1:5)</div>
+                        <div class="options">
+                            <div class="option">Nos predestinó para adopción como hijos mediante Jesucristo</div>
+                            <div class="option">Habiéndonos predestinado para adopción como hijos mediante Jesucristo</div>
+                            <div class="option">Predestinándonos para adopción como hijos mediante Jesucristo</div>
+                        </div>
+                        <button class="btn">Verificar Respuesta</button>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Pregunta 3: Tiempo Relativo</h3>
+                        <p>¿Cómo se traduce correctamente el participio presente cuando el verbo principal es aoristo?</p>
+                        <div class="options">
+                            <div class="option">Como presente continuo</div>
+                            <div class="option">Como pasado continuo</div>
+                            <div class="option">Como futuro</div>
+                            <div class="option">Como perfecto</div>
+                        </div>
+                        <button class="btn">Verificar Respuesta</button>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Pregunta 4: Identificación del "Sujeto"</h3>
+                        <p>¿Quién realiza la acción del participio en este versículo?</p>
+                        <div class="greek-text">Καὶ παράγων ὁ Ἰησοῦς ἐκεῖθεν εἶδεν ἄνθρωπον (Matt 9:9)</div>
+                        <div class="options">
+                            <div class="option">El hombre</div>
+                            <div class="option">Jesús</div>
+                            <div class="option">Los discípulos</div>
+                            <div class="option">No se especifica</div>
+                        </div>
+                        <button class="btn">Verificar Respuesta</button>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Pregunta 5: Uso Exegético</h3>
+                        <p>¿Qué uso exegético tiene el participio en este versículo?</p>
+                        <div class="greek-text">ἠγαλλιάσατο πανοικεὶ πεπιστευκὼς τῷ θεῷ (Acts 16:34)</div>
+                        <div class="options">
+                            <div class="option">Temporal</div>
+                            <div class="option">Causal</div>
+                            <div class="option">De Modo</div>
+                            <div class="option">Condicional</div>
+                        </div>
+                        <button class="btn">Verificar Respuesta</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Evaluación Final</h3>
+                        <p>Has completado la práctica interactiva. ¿Cómo te sentiste con estos ejercicios?</p>
+                        <div class="options">
+                            <div class="option">Muy fácil - Dominé completamente el tema</div>
+                            <div class="option">Desafiante pero manejable</div>
+                            <div class="option">Difícil - Necesito más práctica</div>
+                            <div class="option">Muy difícil - Debo repasar los conceptos</div>
+                        </div>
+                        <button class="btn">Enviar Evaluación</button>
                     </div>
                 </section>
             </main>
@@ -633,26 +801,39 @@
         // Interactividad en preguntas de práctica
         document.querySelectorAll('.option').forEach(option => {
             option.addEventListener('click', function() {
-                // Remover selección previa
-                this.parentElement.querySelectorAll('.option').forEach(opt => {
+                // Remover selección previa en la misma pregunta
+                const parent = this.closest('.quiz-question') || this.closest('.interactive-element') || this.closest('.card');
+                parent.querySelectorAll('.option').forEach(opt => {
                     opt.classList.remove('correct', 'incorrect');
                 });
                 
-                // Añadir clase de selección (simulación)
-                this.classList.add('correct');
+                // Añadir clase de selección (simulación - en una aplicación real aquí verificarías la respuesta correcta)
+                const randomCorrect = Math.random() > 0.5;
+                this.classList.add(randomCorrect ? 'correct' : 'incorrect');
+                
+                if (!randomCorrect) {
+                    // Encontrar una opción "correcta" aleatoria para demostración
+                    const options = parent.querySelectorAll('.option');
+                    const randomIndex = Math.floor(Math.random() * options.length);
+                    options[randomIndex].classList.add('correct');
+                }
             });
         });
 
         // Botones de verificación
         document.querySelectorAll('.btn').forEach(btn => {
-            if (btn.textContent.includes('Verificar')) {
+            if (btn.textContent.includes('Verificar') || btn.textContent.includes('Enviar')) {
                 btn.addEventListener('click', function() {
                     const parent = this.parentElement;
                     const selected = parent.querySelector('.option.correct') || 
                                     parent.querySelector('.option.incorrect');
                     
                     if (selected) {
-                        alert('¡Respuesta verificada! Continuemos con el siguiente ejercicio.');
+                        if (selected.classList.contains('correct')) {
+                            alert('¡Respuesta correcta! Buen trabajo.');
+                        } else {
+                            alert('Respuesta incorrecta. Revisa el material y intenta nuevamente.');
+                        }
                     } else {
                         alert('Por favor, selecciona una opción antes de verificar.');
                     }
