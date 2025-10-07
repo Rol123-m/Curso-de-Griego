@@ -2,69 +2,796 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juego 2 — Rompecabezas de Participios | Semana 21</title>
   <style>
-    body{font-family:Arial, sans-serif;background:#f4f7fa;margin:0;padding:0;color:#333}
-    header{background:linear-gradient(135deg,#2c3e50,#3498db);color:#fff;text-align:center;padding:1rem}
-    header img{width:70px;border-radius:50%;border:2px solid #fff}
-    header h1{margin:.5rem 0;font-size:1.4rem}
-    .container{max-width:800px;margin:20px auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.1);text-align:center}
-    .pieces{margin:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-    .piece{padding:10px 16px;background:#eef;border:1px solid #ccc;border-radius:6px;cursor:pointer}
-    .assembled{margin-top:15px;font-size:1.4rem;font-weight:bold}
-    button{background:#3498db;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:1rem;margin-top:15px}
-    button:hover{background:#2980b9}
-    .feedback{margin-top:10px;font-weight:bold}
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --success-color: #2ecc71;
+      --error-color: #e74c3c;
+      --warning-color: #f39c12;
+      --light-color: #f4f7fa;
+      --dark-color: #333;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #3498db, #2c3e50);
+      color: var(--dark-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .game-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .title-container h1 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .title-container p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .game-content {
+      padding: 2rem;
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      background: var(--light-color);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-container {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-color), var(--success-color));
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .score-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .score {
+      background: var(--primary-color);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .exercise-container {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      border-left: 5px solid var(--primary-color);
+    }
+
+    .exercise-title {
+      font-size: 1.4rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .pieces-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      min-height: 80px;
+      padding: 15px;
+      background: var(--light-color);
+      border-radius: 8px;
+    }
+
+    .piece {
+      padding: 12px 20px;
+      background: white;
+      border: 2px solid var(--primary-color);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      user-select: none;
+    }
+
+    .piece:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      background: #e8f4ff;
+    }
+
+    .piece.used {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .assembly-area {
+      min-height: 80px;
+      padding: 20px;
+      background: var(--light-color);
+      border: 2px dashed var(--primary-color);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .assembly-area.empty::before {
+      content: "Haz clic en las piezas para formar el participio";
+      color: #7f8c8d;
+      font-style: italic;
+    }
+
+    .assembled-piece {
+      padding: 12px 20px;
+      background: white;
+      border: 2px solid var(--primary-color);
+      border-radius: 8px;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .assembled-piece:hover {
+      background: #ffeaea;
+      border-color: var(--error-color);
+    }
+
+    .feedback {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+      display: none;
+    }
+
+    .feedback.correct {
+      background: rgba(46, 204, 113, 0.2);
+      color: var(--success-color);
+      border: 1px solid var(--success-color);
+      display: block;
+      animation: pulse 0.5s;
+    }
+
+    .feedback.incorrect {
+      background: rgba(231, 76, 60, 0.2);
+      color: var(--error-color);
+      border: 1px solid var(--error-color);
+      display: block;
+      animation: shake 0.5s;
+    }
+
+    .translation {
+      font-style: italic;
+      margin-top: 10px;
+      color: var(--secondary-color);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #1a252f;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .game-complete {
+      text-align: center;
+      padding: 40px 20px;
+      display: none;
+    }
+
+    .game-complete h2 {
+      font-size: 2.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+    }
+
+    .final-score {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 20px 0;
+    }
+
+    .performance-message {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: var(--secondary-color);
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary-color);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+      }
+      
+      .title-container h1 {
+        font-size: 1.5rem;
+      }
+      
+      .stats-bar {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .progress-container {
+        width: 100%;
+        margin: 0;
+      }
+      
+      .actions {
+        flex-direction: column;
+      }
+      
+      .piece, .assembled-piece {
+        padding: 10px 15px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .game-content {
+        padding: 1.5rem;
+      }
+      
+      .exercise-container {
+        padding: 15px;
+      }
+      
+      .piece, .assembled-piece {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
-<header>
-  <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="logo ministerio">
-  <h1>Juego 2 — Rompecabezas de Participios</h1>
-  <p>Semana 21: Participio Presente</p>
-</header>
+  <div class="game-container">
+    <header>
+      <div class="header-content">
+        <div class="logo-container">
+          <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="logo ministerio" class="logo">
+          <div class="title-container">
+            <h1>Juego 2 — Rompecabezas de Participios</h1>
+            <p>Semana 21: Participio Presente</p>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<div class="container">
-  <div id="game"></div>
-  <div class="assembled" id="assembled"></div>
-  <div class="feedback" id="feedback"></div>
-  <button id="next">Siguiente</button>
-</div>
+    <div class="game-content">
+      <div class="stats-bar">
+        <div class="progress-container">
+          <div class="progress-text">Progreso: <span id="current">0</span>/<span id="total">10</span></div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+          </div>
+        </div>
+        <div class="score-container">
+          Puntuación: <div class="score" id="score">0</div>
+        </div>
+      </div>
 
-<script>
-const exercises=[
- {parts:["λυ","ος","οντ"],answer:"λύοντος",translation:"del que desata"},
- {parts:["πιστευ","οντ","ι"],answer:"πιστεύοντι",translation:"al que cree"},
- {parts:["διδα","σκ","ων"],answer:"διδάσκων",translation:"enseñando"},
- {parts:["μεν","ων"],answer:"μένων",translation:"permaneciendo"},
- {parts:["τηρ","ουσ","α"],answer:"τηροῦσα",translation:"guardando"},
- {parts:["ἀκο","λουθ","ων"],answer:"ἀκολουθῶν",translation:"siguiendo"},
- {parts:["εἰσερχ","ομεν","ος"],answer:"εἰσερχόμενος",translation:"entrando"},
- {parts:["βλεπ","ουσ","ι"],answer:"βλέπουσι",translation:"viendo"},
- {parts:["γραφ","ομεν","ος"],answer:"γραφόμενος",translation:"siendo escrito"},
- {parts:["λεγ","οντ","ες"],answer:"λέγοντες",translation:"diciendo"},
+      <div class="exercise-container" id="exercise-container">
+        <div class="exercise-title">Arma el participio correcto</div>
+        
+        <div class="pieces-container" id="pieces-container">
+          <!-- Las piezas se generarán dinámicamente -->
+        </div>
+        
+        <div class="assembly-area empty" id="assembly-area">
+          <!-- Las piezas ensambladas aparecerán aquí -->
+        </div>
+        
+        <div class="feedback" id="feedback">
+          <div id="feedback-text"></div>
+          <div class="translation" id="translation"></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary" id="check-btn">
+          <span>✅</span> Comprobar
+        </button>
+        <button class="btn btn-secondary" id="reset-btn">
+          <span>🔄</span> Reiniciar
+        </button>
+        <button class="btn btn-primary" id="next-btn" disabled>
+          <span>⏭️</span> Siguiente
+        </button>
+      </div>
+
+      <div class="game-complete" id="game-complete">
+        <h2>¡Juego Completado!</h2>
+        <div class="final-score" id="final-score">0/10</div>
+        <div class="performance-message" id="performance-message"></div>
+        <button class="btn btn-primary" id="play-again-btn">
+          <span>🎮</span> Jugar de Nuevo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Datos del juego
+const exercises = [
+  {parts:["λυ","ος","οντ"], answer:"λύοντος", translation:"del que desata"},
+  {parts:["πιστευ","οντ","ι"], answer:"πιστεύοντι", translation:"al que cree"},
+  {parts:["διδα","σκ","ων"], answer:"διδάσκων", translation:"enseñando"},
+  {parts:["μεν","ων"], answer:"μένων", translation:"permaneciendo"},
+  {parts:["τηρ","ουσ","α"], answer:"τηροῦσα", translation:"guardando"},
+  {parts:["ἀκο","λουθ","ων"], answer:"ἀκολουθῶν", translation:"siguiendo"},
+  {parts:["εἰσερχ","ομεν","ος"], answer:"εἰσερχόμενος", translation:"entrando"},
+  {parts:["βλεπ","ουσ","ι"], answer:"βλέπουσι", translation:"viendo"},
+  {parts:["γραφ","ομεν","ος"], answer:"γραφόμενος", translation:"siendo escrito"},
+  {parts:["λεγ","οντ","ες"], answer:"λέγοντες", translation:"diciendo"},
 ];
 
-let current=0,assembled=[];
-const game=document.getElementById("game");
-const assembledEl=document.getElementById("assembled");
-const feedback=document.getElementById("feedback");
-function renderExercise(){
-  if(current>=exercises.length){
-    game.innerHTML="<h2>¡Juego completado!</h2>";
-    assembledEl.textContent="";feedback.textContent="";
-    return;
-  }
-  const ex=exercises[current];
-  assembled=[];assembledEl.textContent="";feedback.textContent="";
-  game.innerHTML="<h3>Arma el participio</h3><div class='pieces'>"+ex.parts.map((p,i)=>"<span class='piece' data-i='"+i+"'>"+p+"</span>").join("")+"</div>";
-  game.querySelectorAll(".piece").forEach(p=>{
-    p.onclick=()=>{assembled.push(p.textContent);assembledEl.textContent=assembled.join("");if(assembled.join("")===ex.answer){feedback.textContent="¡Correcto! "+ex.answer+" = "+ex.translation;feedback.style.color="green";}};
+// Estado del juego
+let gameState = {
+  currentExerciseIndex: 0,
+  score: 0,
+  totalExercises: exercises.length,
+  gameCompleted: false,
+  assembledPieces: [],
+  availablePieces: [],
+  isChecking: false
+};
+
+// Elementos DOM
+const exerciseContainer = document.getElementById('exercise-container');
+const piecesContainer = document.getElementById('pieces-container');
+const assemblyArea = document.getElementById('assembly-area');
+const feedback = document.getElementById('feedback');
+const feedbackText = document.getElementById('feedback-text');
+const translation = document.getElementById('translation');
+const scoreElement = document.getElementById('score');
+const currentElement = document.getElementById('current');
+const totalElement = document.getElementById('total');
+const progressElement = document.getElementById('progress');
+const checkButton = document.getElementById('check-btn');
+const resetButton = document.getElementById('reset-btn');
+const nextButton = document.getElementById('next-btn');
+const gameComplete = document.getElementById('game-complete');
+const finalScore = document.getElementById('final-score');
+const performanceMessage = document.getElementById('performance-message');
+const playAgainButton = document.getElementById('play-again-btn');
+
+// Inicializar el juego
+function initGame() {
+  totalElement.textContent = gameState.totalExercises;
+  updateProgress();
+  loadExercise();
+  
+  // Event listeners
+  checkButton.addEventListener('click', checkAnswer);
+  resetButton.addEventListener('click', resetExercise);
+  nextButton.addEventListener('click', nextExercise);
+  playAgainButton.addEventListener('click', restartGame);
+}
+
+// Cargar un ejercicio
+function loadExercise() {
+  const exercise = exercises[gameState.currentExerciseIndex];
+  
+  // Reiniciar estado del ejercicio
+  gameState.assembledPieces = [];
+  gameState.availablePieces = [...exercise.parts];
+  gameState.isChecking = false;
+  
+  // Mezclar las piezas para que no estén en orden
+  shuffleArray(gameState.availablePieces);
+  
+  // Actualizar la interfaz
+  renderPieces();
+  renderAssemblyArea();
+  
+  // Reiniciar estado de la interfaz
+  feedback.className = 'feedback';
+  feedbackText.textContent = '';
+  translation.textContent = '';
+  nextButton.disabled = true;
+  checkButton.disabled = false;
+  
+  // Actualizar el área de ensamblaje
+  updateAssemblyAreaState();
+}
+
+// Renderizar las piezas
+function renderPieces() {
+  piecesContainer.innerHTML = '';
+  
+  gameState.availablePieces.forEach((piece, index) => {
+    const pieceElement = document.createElement('div');
+    pieceElement.className = 'piece';
+    pieceElement.textContent = piece;
+    pieceElement.dataset.index = index;
+    
+    pieceElement.addEventListener('click', () => movePieceToAssembly(index));
+    
+    piecesContainer.appendChild(pieceElement);
   });
 }
-renderExercise();
-document.getElementById("next").onclick=()=>{current++;renderExercise();}
-</script>
+
+// Renderizar el área de ensamblaje
+function renderAssemblyArea() {
+  assemblyArea.innerHTML = '';
+  
+  gameState.assembledPieces.forEach((piece, index) => {
+    const assembledPiece = document.createElement('div');
+    assembledPiece.className = 'assembled-piece';
+    assembledPiece.textContent = piece;
+    assembledPiece.dataset.index = index;
+    
+    // Permitir devolver la pieza al área de piezas
+    assembledPiece.addEventListener('click', () => movePieceToPieces(index));
+    
+    assemblyArea.appendChild(assembledPiece);
+  });
+  
+  updateAssemblyAreaState();
+}
+
+// Actualizar el estado del área de ensamblaje
+function updateAssemblyAreaState() {
+  if (gameState.assembledPieces.length === 0) {
+    assemblyArea.classList.add('empty');
+  } else {
+    assemblyArea.classList.remove('empty');
+  }
+}
+
+// Mover pieza al área de ensamblaje
+function movePieceToAssembly(pieceIndex) {
+  if (gameState.isChecking) return;
+  
+  const piece = gameState.availablePieces[pieceIndex];
+  gameState.assembledPieces.push(piece);
+  gameState.availablePieces.splice(pieceIndex, 1);
+  
+  renderPieces();
+  renderAssemblyArea();
+}
+
+// Mover pieza al área de piezas
+function movePieceToPieces(pieceIndex) {
+  if (gameState.isChecking) return;
+  
+  const piece = gameState.assembledPieces[pieceIndex];
+  gameState.availablePieces.push(piece);
+  gameState.assembledPieces.splice(pieceIndex, 1);
+  
+  renderPieces();
+  renderAssemblyArea();
+}
+
+// Comprobar respuesta
+function checkAnswer() {
+  if (gameState.isChecking) return;
+  
+  gameState.isChecking = true;
+  const exercise = exercises[gameState.currentExerciseIndex];
+  const userAnswer = gameState.assembledPieces.join('');
+  
+  console.log('Respuesta usuario:', userAnswer);
+  console.log('Respuesta correcta:', exercise.answer);
+  
+  if (userAnswer === exercise.answer) {
+    // Respuesta correcta
+    gameState.score++;
+    scoreElement.textContent = gameState.score;
+    
+    feedback.className = 'feedback correct';
+    feedbackText.textContent = '¡Correcto!';
+    translation.textContent = `${exercise.answer} = ${exercise.translation}`;
+    
+    // Efecto de confeti para respuestas correctas
+    createConfetti();
+    
+    // Deshabilitar el botón de comprobar y habilitar el de siguiente
+    checkButton.disabled = true;
+    nextButton.disabled = false;
+  } else {
+    // Respuesta incorrecta
+    feedback.className = 'feedback incorrect';
+    feedbackText.textContent = 'Incorrecto. Inténtalo de nuevo.';
+    translation.textContent = `La respuesta correcta es: ${exercise.answer} = ${exercise.translation}`;
+    
+    // Permitir seguir intentando
+    gameState.isChecking = false;
+  }
+}
+
+// Reiniciar ejercicio actual
+function resetExercise() {
+  if (gameState.isChecking) return;
+  
+  const exercise = exercises[gameState.currentExerciseIndex];
+  gameState.availablePieces = [...exercise.parts];
+  shuffleArray(gameState.availablePieces);
+  gameState.assembledPieces = [];
+  
+  renderPieces();
+  renderAssemblyArea();
+  feedback.className = 'feedback';
+  feedbackText.textContent = '';
+  translation.textContent = '';
+  gameState.isChecking = false;
+  checkButton.disabled = false;
+  nextButton.disabled = true;
+}
+
+// Siguiente ejercicio
+function nextExercise() {
+  gameState.currentExerciseIndex++;
+  updateProgress();
+  
+  if (gameState.currentExerciseIndex >= gameState.totalExercises) {
+    endGame();
+  } else {
+    loadExercise();
+  }
+}
+
+// Actualizar progreso
+function updateProgress() {
+  const progress = ((gameState.currentExerciseIndex) / gameState.totalExercises) * 100;
+  progressElement.style.width = `${progress}%`;
+  currentElement.textContent = gameState.currentExerciseIndex;
+}
+
+// Finalizar juego
+function endGame() {
+  exerciseContainer.style.display = 'none';
+  gameComplete.style.display = 'block';
+  
+  finalScore.textContent = `${gameState.score}/${gameState.totalExercises}`;
+  
+  // Mensaje de rendimiento
+  const percentage = (gameState.score / gameState.totalExercises) * 100;
+  if (percentage >= 90) {
+    performanceMessage.textContent = '¡Excelente! Eres un experto en participios.';
+  } else if (percentage >= 70) {
+    performanceMessage.textContent = '¡Muy bien! Tienes un buen conocimiento de los participios.';
+  } else if (percentage >= 50) {
+    performanceMessage.textContent = 'Buen trabajo. Sigue practicando para mejorar.';
+  } else {
+    performanceMessage.textContent = 'Sigue practicando. ¡Puedes mejorar!';
+  }
+  
+  // Gran efecto de confeti al finalizar
+  createConfetti(50);
+}
+
+// Reiniciar juego
+function restartGame() {
+  gameState = {
+    currentExerciseIndex: 0,
+    score: 0,
+    totalExercises: exercises.length,
+    gameCompleted: false,
+    assembledPieces: [],
+    availablePieces: [],
+    isChecking: false
+  };
+  
+  scoreElement.textContent = '0';
+  exerciseContainer.style.display = 'block';
+  gameComplete.style.display = 'none';
+  
+  updateProgress();
+  loadExercise();
+}
+
+// Utilidad: Mezclar array
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Efecto de confeti
+function createConfetti(count = 20) {
+  for (let i = 0; i < count; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = `${Math.random() * 100}vw`;
+    confetti.style.backgroundColor = getRandomColor();
+    document.body.appendChild(confetti);
+    
+    // Animación
+    const animation = confetti.animate([
+      { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+      { transform: `translateY(${window.innerHeight}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
+    ], {
+      duration: 1000 + Math.random() * 2000,
+      easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+    });
+    
+    animation.onfinish = () => {
+      confetti.remove();
+    };
+  }
+}
+
+// Obtener color aleatorio para confeti
+function getRandomColor() {
+  const colors = ['#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Inicializar el juego cuando se carga la página
+document.addEventListener('DOMContentLoaded', initGame);
+  </script>
 </body>
 </html>
