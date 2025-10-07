@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Juego 2 — Rompecabezas de Participios | Semana 21</title>
+  <style>
+    body{font-family:Arial, sans-serif;background:#f4f7fa;margin:0;padding:0;color:#333}
+    header{background:linear-gradient(135deg,#2c3e50,#3498db);color:#fff;text-align:center;padding:1rem}
+    header img{width:70px;border-radius:50%;border:2px solid #fff}
+    header h1{margin:.5rem 0;font-size:1.4rem}
+    .container{max-width:800px;margin:20px auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.1);text-align:center}
+    .pieces{margin:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    .piece{padding:10px 16px;background:#eef;border:1px solid #ccc;border-radius:6px;cursor:pointer}
+    .assembled{margin-top:15px;font-size:1.4rem;font-weight:bold}
+    button{background:#3498db;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:1rem;margin-top:15px}
+    button:hover{background:#2980b9}
+    .feedback{margin-top:10px;font-weight:bold}
+  </style>
+</head>
+<body>
+<header>
+  <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="logo ministerio">
+  <h1>Juego 2 — Rompecabezas de Participios</h1>
+  <p>Semana 21: Participio Presente</p>
+</header>
+
+<div class="container">
+  <div id="game"></div>
+  <div class="assembled" id="assembled"></div>
+  <div class="feedback" id="feedback"></div>
+  <button id="next">Siguiente</button>
+</div>
+
+<script>
+const exercises=[
+ {parts:["λυ","ος","οντ"],answer:"λύοντος",translation:"del que desata"},
+ {parts:["πιστευ","οντ","ι"],answer:"πιστεύοντι",translation:"al que cree"},
+ {parts:["διδα","σκ","ων"],answer:"διδάσκων",translation:"enseñando"},
+ {parts:["μεν","ων"],answer:"μένων",translation:"permaneciendo"},
+ {parts:["τηρ","ουσ","α"],answer:"τηροῦσα",translation:"guardando"},
+ {parts:["ἀκο","λουθ","ων"],answer:"ἀκολουθῶν",translation:"siguiendo"},
+ {parts:["εἰσερχ","ομεν","ος"],answer:"εἰσερχόμενος",translation:"entrando"},
+ {parts:["βλεπ","ουσ","ι"],answer:"βλέπουσι",translation:"viendo"},
+ {parts:["γραφ","ομεν","ος"],answer:"γραφόμενος",translation:"siendo escrito"},
+ {parts:["λεγ","οντ","ες"],answer:"λέγοντες",translation:"diciendo"},
+];
+
+let current=0,assembled=[];
+const game=document.getElementById("game");
+const assembledEl=document.getElementById("assembled");
+const feedback=document.getElementById("feedback");
+function renderExercise(){
+  if(current>=exercises.length){
+    game.innerHTML="<h2>¡Juego completado!</h2>";
+    assembledEl.textContent="";feedback.textContent="";
+    return;
+  }
+  const ex=exercises[current];
+  assembled=[];assembledEl.textContent="";feedback.textContent="";
+  game.innerHTML="<h3>Arma el participio</h3><div class='pieces'>"+ex.parts.map((p,i)=>"<span class='piece' data-i='"+i+"'>"+p+"</span>").join("")+"</div>";
+  game.querySelectorAll(".piece").forEach(p=>{
+    p.onclick=()=>{assembled.push(p.textContent);assembledEl.textContent=assembled.join("");if(assembled.join("")===ex.answer){feedback.textContent="¡Correcto! "+ex.answer+" = "+ex.translation;feedback.style.color="green";}};
+  });
+}
+renderExercise();
+document.getElementById("next").onclick=()=>{current++;renderExercise();}
+</script>
+</body>
+</html>

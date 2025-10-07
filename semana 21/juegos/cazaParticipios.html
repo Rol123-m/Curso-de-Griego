@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Juego 1 — Caza-Participios | Semana 21</title>
+  <style>
+    body{font-family:Arial, sans-serif;background:#f4f7fa;margin:0;padding:0;color:#333}
+    header{background:linear-gradient(135deg,#2c3e50,#3498db);color:#fff;text-align:center;padding:1rem}
+    header img{width:70px;border-radius:50%;border:2px solid #fff}
+    header h1{margin:.5rem 0;font-size:1.4rem}
+    .container{max-width:900px;margin:20px auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+    .question{margin-bottom:20px}
+    .question p{font-size:1.1rem;margin-bottom:10px}
+    .options span{display:inline-block;margin:6px;padding:8px 14px;background:#eef;border-radius:6px;cursor:pointer;transition:.2s}
+    .options span:hover{background:#d0e6ff}
+    .options span.correct{background:#2ecc71;color:#fff}
+    .options span.incorrect{background:#e74c3c;color:#fff}
+    .score-box{text-align:center;margin-top:20px;font-size:1.2rem;font-weight:bold}
+    button{background:#3498db;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:1rem;margin-top:15px}
+    button:hover{background:#2980b9}
+  </style>
+</head>
+<body>
+<header>
+  <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="logo ministerio">
+  <h1>Juego 1 — Caza-Participios</h1>
+  <p>Semana 21: Participio Presente</p>
+</header>
+
+<div class="container">
+  <div id="game"></div>
+  <div class="score-box">Puntuación: <span id="score">0</span>/15</div>
+  <button id="restart">Reiniciar Juego</button>
+</div>
+
+<script>
+const texts=[
+ {ref:"Jn 1:29",text:["Ἴδε ὁ","ἀμνὸς","τοῦ θεοῦ","ὁ","αἴρων","τὴν ἁμαρτίαν","τοῦ κόσμου"],correct:"αἴρων",translation:"el que quita"},
+ {ref:"Jn 3:16",text:["πᾶς","ὁ","πιστεύων","εἰς αὐτὸν","μὴ ἀπόληται"],correct:"πιστεύων",translation:"el que cree"},
+ {ref:"Jn 8:12",text:["ὁ","ἀκολουθῶν","ἐμοὶ","οὐ μὴ περιπατήσει","ἐν τῇ σκοτίᾳ"],correct:"ἀκολουθῶν",translation:"el que sigue"},
+ {ref:"Jn 10:9",text:["εἰς ἐμὲ","εἰσερχόμενος","σωθήσεται"],correct:"εἰσερχόμενος",translation:"el que entra"},
+ {ref:"Jn 11:26",text:["πᾶς","ὁ","ζῶν","καὶ","πιστεύων","εἰς ἐμὲ"],correct:"ζῶν",translation:"el que vive"},
+ {ref:"Jn 11:26",text:["πᾶς","ὁ","ζῶν","καὶ","πιστεύων","εἰς ἐμὲ"],correct:"πιστεύων",translation:"el que cree"},
+ {ref:"Jn 14:21",text:["ὁ","ἔχων","τὰς ἐντολάς","μου","καὶ","τηρῶν","αὐτάς"],correct:"ἔχων",translation:"el que tiene"},
+ {ref:"Jn 14:21",text:["ὁ","ἔχων","τὰς ἐντολάς","μου","καὶ","τηρῶν","αὐτάς"],correct:"τηρῶν",translation:"el que guarda"},
+ {ref:"Jn 15:5",text:["ὁ","μένων","ἐν ἐμοὶ","καὶ ἐγὼ","ἐν αὐτῷ"],correct:"μένων",translation:"el que permanece"},
+ {ref:"Jn 15:6",text:["ἐὰν μή","τις","μένῃ","ἐν ἐμοί","ἐβλήθη","ὁ","μὴ","μένων","ἐν ἐμοί"],correct:"μένων",translation:"el que permanece"},
+ {ref:"1Jn 2:6",text:["ὁ","λέγων","ἐν αὐτῷ","μένειν"],correct:"λέγων",translation:"el que dice"},
+ {ref:"1Jn 3:6",text:["πᾶς","ὁ","μένων","ἐν αὐτῷ","οὐχ ἁμαρτάνει"],correct:"μένων",translation:"el que permanece"},
+ {ref:"1Jn 3:9",text:["πᾶς","ὁ","γεγεννημένος","ἐκ τοῦ θεοῦ","ἁμαρτίαν","οὐ","ποιεῖ"],correct:"γεγεννημένος",translation:"el que ha nacido (presente resultativo)"},
+ {ref:"Mc 5:36",text:["μὴ","φοβοῦ","μόνον","πίστευε"],correct:"πίστευε",translation:"cree"},
+ {ref:"Mc 9:23",text:["τῷ","πιστεύοντι","πάντα","δυνατά"],correct:"πιστεύοντι",translation:"al que cree"},
+];
+
+let current=0,score=0;
+const game=document.getElementById("game");
+const scoreEl=document.getElementById("score");
+function renderQuestion(){
+  if(current>=texts.length){
+    game.innerHTML="<h2>Juego terminado</h2><p>Tu puntuación: "+score+"/15</p>";
+    return;
+  }
+  const q=texts[current];
+  game.innerHTML="<div class='question'><p><strong>"+q.ref+"</strong></p><p>"+q.text.map(w=>"<span>"+w+"</span>").join(" ")+"</p></div>";
+  const spans=game.querySelectorAll("span");
+  spans.forEach(s=>{
+    s.addEventListener("click",()=>{
+      if(s.textContent===q.correct){
+        s.classList.add("correct");
+        score++;scoreEl.textContent=score;
+        alert("¡Correcto! "+q.correct+" = "+q.translation);
+      }else{
+        s.classList.add("incorrect");
+        alert("Incorrecto. El participio es: "+q.correct+" = "+q.translation);
+      }
+      current++;
+      setTimeout(renderQuestion,600);
+    });
+  });
+}
+renderQuestion();
+document.getElementById("restart").onclick=()=>{current=0;score=0;scoreEl.textContent=0;renderQuestion();}
+</script>
+</body>
+</html>

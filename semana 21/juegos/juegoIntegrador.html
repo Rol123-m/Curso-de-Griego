@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juegos de Participios - Semana 21 | Ministerio Vivos para Servir</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --success-color: #2ecc71;
+      --warning-color: #f39c12;
+      --danger-color: #e74c3c;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f4f7fa, #e1e8f0);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+    }
+    
+    .logo-container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.8);
+      box-shadow: 0 4px 8px rgba(0,0,0,.2);
+      margin-bottom: .7rem;
+    }
+    
+    header h1 {
+      margin: .5rem 0;
+      font-size: 1.6rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    }
+    
+    header p {
+      opacity: 0.9;
+      font-size: 1rem;
+    }
+    
+    .game-selector {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+      gap: 10px;
+    }
+    
+    .game-btn {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.4);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: bold;
+    }
+    
+    .game-btn.active {
+      background: white;
+      color: var(--primary-color);
+    }
+    
+    .game-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.3);
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,.08);
+    }
+    
+    .game-container {
+      display: none;
+    }
+    
+    .game-container.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--light-color);
+    }
+    
+    .score-box {
+      background: var(--light-color);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: var(--light-color);
+      border-radius: 4px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      background: var(--secondary-color);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+    
+    .question {
+      margin-bottom: 25px;
+      padding: 15px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .verse-ref {
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .verse-text {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      text-align: center;
+      margin: 15px 0;
+    }
+    
+    .word-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .word-option {
+      padding: 12px 18px;
+      background: #eef;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1.1rem;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .word-option:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+      border-color: var(--secondary-color);
+    }
+    
+    .word-option.correct {
+      background: var(--success-color);
+      color: white;
+      animation: pulse 0.5s;
+    }
+    
+    .word-option.incorrect {
+      background: var(--danger-color);
+      color: white;
+      animation: shake 0.5s;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    
+    .feedback {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
+    
+    .feedback.correct {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+      animation: slideIn 0.5s;
+    }
+    
+    .feedback.incorrect {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+      animation: slideIn 0.5s;
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+    
+    button {
+      background: var(--secondary-color);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    button:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    }
+    
+    button:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Rompecabezas Styles */
+    .puzzle-container {
+      text-align: center;
+    }
+    
+    .puzzle-instructions {
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    
+    .pieces-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 25px 0;
+    }
+    
+    .piece {
+      padding: 14px 20px;
+      background: #eef;
+      border: 2px solid #d1d9e6;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    
+    .piece:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+      border-color: var(--secondary-color);
+    }
+    
+    .piece.used {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .assembly-area {
+      min-height: 80px;
+      margin: 25px 0;
+      padding: 20px;
+      background: #f8fafc;
+      border: 2px dashed #d1d9e6;
+      border-radius: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+    }
+    
+    .assembly-area.active {
+      border-color: var(--secondary-color);
+      background: #f0f7ff;
+    }
+    
+    .assembled-piece {
+      padding: 12px 18px;
+      background: white;
+      border: 2px solid var(--secondary-color);
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      animation: popIn 0.3s;
+    }
+    
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .assembled-piece:hover {
+      background: #e1f0ff;
+    }
+    
+    .result-message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: none;
+    }
+    
+    .result-message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+      animation: slideIn 0.5s;
+    }
+    
+    .completion-screen {
+      text-align: center;
+      padding: 30px;
+    }
+    
+    .completion-icon {
+      font-size: 4rem;
+      color: var(--success-color);
+      margin-bottom: 20px;
+    }
+    
+    .completion-message {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .stat-box {
+      background: var(--light-color);
+      padding: 15px;
+      border-radius: 8px;
+      min-width: 120px;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--dark-color);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+      
+      .word-options {
+        gap: 8px;
+      }
+      
+      .word-option {
+        padding: 10px 14px;
+        font-size: 1rem;
+      }
+      
+      .verse-text {
+        font-size: 1.1rem;
+      }
+      
+      .controls {
+        flex-direction: column;
+      }
+      
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img class="logo" src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo Ministerio">
+      <h1>Juegos de Participios - Semana 21</h1>
+      <p>Participio Presente (Acción Continua)</p>
+    </div>
+    
+    <div class="game-selector">
+      <button class="game-btn active" data-game="caza-participios">Caza-Participios</button>
+      <button class="game-btn" data-game="rompecabezas">Rompecabezas</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Juego 1: Caza-Participios -->
+    <div id="caza-participios" class="game-container active">
+      <div class="game-header">
+        <h2>Caza-Participios</h2>
+        <div class="score-box">
+          <i class="fas fa-star"></i>
+          <span id="score">0</span>/<span id="total-questions">0</span>
+        </div>
+      </div>
+      
+      <div class="progress-bar">
+        <div class="progress" id="progress-bar"></div>
+      </div>
+      
+      <div id="game-content">
+        <!-- El contenido del juego se cargará aquí dinámicamente -->
+      </div>
+      
+      <div class="controls">
+        <button id="hint-btn">
+          <i class="fas fa-lightbulb"></i> Pista
+        </button>
+        <button id="next-btn" disabled>
+          <i class="fas fa-arrow-right"></i> Siguiente
+        </button>
+        <button id="restart-btn">
+          <i class="fas fa-redo"></i> Reiniciar
+        </button>
+      </div>
+    </div>
+    
+    <!-- Juego 2: Rompecabezas -->
+    <div id="rompecabezas" class="game-container">
+      <div class="game-header">
+        <h2>Rompecabezas de Participios</h2>
+        <div class="score-box">
+          <i class="fas fa-puzzle-piece"></i>
+          <span id="puzzle-score">0</span>/<span id="total-puzzles">0</span>
+        </div>
+      </div>
+      
+      <div class="progress-bar">
+        <div class="progress" id="puzzle-progress"></div>
+      </div>
+      
+      <div id="puzzle-content">
+        <!-- El contenido del rompecabezas se cargará aquí dinámicamente -->
+      </div>
+      
+      <div class="controls">
+        <button id="reset-puzzle">
+          <i class="fas fa-undo"></i> Reiniciar
+        </button>
+        <button id="check-puzzle">
+          <i class="fas fa-check"></i> Verificar
+        </button>
+        <button id="next-puzzle" disabled>
+          <i class="fas fa-arrow-right"></i> Siguiente
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Datos para Caza-Participios
+    const cazaParticipiosData = [
+      {ref:"Jn 1:29", text:["Ἴδε ὁ","ἀμνὸς","τοῦ θεοῦ","ὁ","αἴρων","τὴν ἁμαρτίαν","τοῦ κόσμου"], correct:"αἴρων", translation:"el que quita", hint:"Busca la palabra que indica una acción continua"},
+      {ref:"Jn 3:16", text:["πᾶς","ὁ","πιστεύων","εἰς αὐτὸν","μὴ ἀπόληται"], correct:"πιστεύων", translation:"el que cree", hint:"Esta palabra expresa fe continua"},
+      {ref:"Jn 8:12", text:["ὁ","ἀκολουθῶν","ἐμοὶ","οὐ μὴ περιπατήσει","ἐν τῇ σκοτίᾳ"], correct:"ἀκολουθῶν", translation:"el que sigue", hint:"Indica seguir de manera continua"},
+      {ref:"Jn 10:9", text:["εἰς ἐμὲ","εἰσερχόμενος","σωθήσεται"], correct:"εἰσερχόμενος", translation:"el que entra", hint:"Acción de entrar de forma continua"},
+      {ref:"Jn 11:26", text:["πᾶς","ὁ","ζῶν","καὶ","πιστεύων","εἰς ἐμὲ"], correct:"ζῶν", translation:"el que vive", hint:"Estado de vida continua"},
+      {ref:"Jn 11:26", text:["πᾶς","ὁ","ζῶν","καὶ","πιστεύων","εἰς ἐμὲ"], correct:"πιστεύων", translation:"el que cree", hint:"Fe en acción continua"},
+      {ref:"Jn 14:21", text:["ὁ","ἔχων","τὰς ἐντολάς","μου","καὶ","τηρῶν","αὐτάς"], correct:"ἔχων", translation:"el que tiene", hint:"Poseer de manera continua"},
+      {ref:"Jn 14:21", text:["ὁ","ἔχων","τὰς ἐντολάς","μου","καὶ","τηρῶν","αὐτάς"], correct:"τηρῶν", translation:"el que guarda", hint:"Guardar de forma continua"},
+      {ref:"Jn 15:5", text:["ὁ","μένων","ἐν ἐμοὶ","καὶ ἐγὼ","ἐν αὐτῷ"], correct:"μένων", translation:"el que permanece", hint:"Permanecer de manera continua"},
+      {ref:"Jn 15:6", text:["ἐὰν μή","τις","μένῃ","ἐν ἐμοί","ἐβλήθη","ὁ","μὴ","μένων","ἐν ἐμοί"], correct:"μένων", translation:"el que permanece", hint:"Permanecer de forma continua"},
+      {ref:"1Jn 2:6", text:["ὁ","λέγων","ἐν αὐτῷ","μένειν"], correct:"λέγων", translation:"el que dice", hint:"Acción de hablar continua"},
+      {ref:"1Jn 3:6", text:["πᾶς","ὁ","μένων","ἐν αὐτῷ","οὐχ ἁμαρτάνει"], correct:"μένων", translation:"el que permanece", hint:"Permanecer de manera continua"},
+      {ref:"1Jn 3:9", text:["πᾶς","ὁ","γεγεννημένος","ἐκ τοῦ θεοῦ","ἁμαρτίαν","οὐ","ποιεῖ"], correct:"γεγεννημένος", translation:"el que ha nacido", hint:"Estado resultativo de haber nacido"},
+      {ref:"Mc 5:36", text:["μὴ","φοβοῦ","μόνον","πίστευε"], correct:"πίστευε", translation:"cree", hint:"Imperativo de creer continuamente"},
+      {ref:"Mc 9:23", text:["τῷ","πιστεύοντι","πάντα","δυνατά"], correct:"πιστεύοντι", translation:"al que cree", hint:"Participio dativo - al que cree"},
+      // Ejemplos adicionales
+      {ref:"Mt 28:19", text:["πορευθέντες","οὖν","μαθητεύσατε","πάντα","τὰ","ἔθνη"], correct:"πορευθέντες", translation:"habiendo ido", hint:"Participio aoristo que precede a la acción principal"},
+      {ref:"Hch 2:38", text:["μετανοήσατε","καὶ","βαπτισθήτω","ἕκαστος","ὑμῶν"], correct:"βαπτισθήτω", translation:"sea bautizado", hint:"Imperativo pasivo - acción puntual"},
+      {ref:"Ro 12:2", text:["μὴ","συνσχηματίζεσθε","τῷ","αἰῶνι","τούτῳ"], correct:"συνσχηματίζεσθε", translation:"sean transformados", hint:"Imperativo presente - acción continua"}
+    ];
+
+    // Datos para Rompecabezas
+    const rompecabezasData = [
+      {parts:["λυ","ος","οντ"], answer:"λύοντος", translation:"del que desata", hint:"Genitivo singular masculino/neutro"},
+      {parts:["πιστευ","οντ","ι"], answer:"πιστεύοντι", translation:"al que cree", hint:"Dativo singular masculino/neutro"},
+      {parts:["διδα","σκ","ων"], answer:"διδάσκων", translation:"enseñando", hint:"Nominativo singular masculino"},
+      {parts:["μεν","ων"], answer:"μένων", translation:"permaneciendo", hint:"Nominativo singular masculino"},
+      {parts:["τηρ","ουσ","α"], answer:"τηροῦσα", translation:"guardando", hint:"Nominativo singular femenino"},
+      {parts:["ἀκο","λουθ","ων"], answer:"ἀκολουθῶν", translation:"siguiendo", hint:"Nominativo singular masculino"},
+      {parts:["εἰσερχ","ομεν","ος"], answer:"εἰσερχόμενος", translation:"entrando", hint:"Nominativo singular masculino (voz media/pasiva)"},
+      {parts:["βλεπ","ουσ","ι"], answer:"βλέπουσι", translation:"viendo", hint:"Dativo plural masculino/neutro (forma contracta)"},
+      {parts:["γραφ","ομεν","ος"], answer:"γραφόμενος", translation:"siendo escrito", hint:"Nominativo singular masculino (voz pasiva)"},
+      {parts:["λεγ","οντ","ες"], answer:"λέγοντες", translation:"diciendo", hint:"Nominativo plural masculino"},
+      // Ejemplos adicionales
+      {parts:["ἀγαπ","οντ","ων"], answer:"ἀγαπόντων", translation:"de los que aman", hint:"Genitivo plural masculino/neutro"},
+      {parts:["ποι","ουσ","αι"], answer:"ποιοῦσαι", translation:"haciendo", hint:"Nominativo plural femenino"},
+      {parts:["λαμβαν","ομεν","ος"], answer:"λαμβανόμενος", translation:"siendo tomado", hint:"Nominativo singular masculino (voz pasiva)"},
+      {parts:["φερ","οντ","α"], answer:"φέροντα", translation:"llevando", hint:"Acusativo singular masculino"},
+      {parts:["ἀκου","οντ","ων"], answer:"ἀκουόντων", translation:"de los que oyen", hint:"Genitivo plural masculino/neutro"}
+    ];
+
+    // Variables globales
+    let currentGame = 'caza-participios';
+    let currentQuestion = 0;
+    let score = 0;
+    let currentPuzzle = 0;
+    let puzzleScore = 0;
+    let usedHints = 0;
+
+    // Elementos DOM
+    const gameContainers = document.querySelectorAll('.game-container');
+    const gameBtns = document.querySelectorAll('.game-btn');
+    const gameContent = document.getElementById('game-content');
+    const puzzleContent = document.getElementById('puzzle-content');
+    const scoreEl = document.getElementById('score');
+    const totalQuestionsEl = document.getElementById('total-questions');
+    const progressBar = document.getElementById('progress-bar');
+    const puzzleScoreEl = document.getElementById('puzzle-score');
+    const totalPuzzlesEl = document.getElementById('total-puzzles');
+    const puzzleProgress = document.getElementById('puzzle-progress');
+    
+    // Botones
+    const hintBtn = document.getElementById('hint-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const restartBtn = document.getElementById('restart-btn');
+    const resetPuzzleBtn = document.getElementById('reset-puzzle');
+    const checkPuzzleBtn = document.getElementById('check-puzzle');
+    const nextPuzzleBtn = document.getElementById('next-puzzle');
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', function() {
+      totalQuestionsEl.textContent = cazaParticipiosData.length;
+      totalPuzzlesEl.textContent = rompecabezasData.length;
+      loadGame(currentGame);
+      setupEventListeners();
+    });
+
+    // Configurar event listeners
+    function setupEventListeners() {
+      // Selector de juegos
+      gameBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const game = this.dataset.game;
+          switchGame(game);
+        });
+      });
+
+      // Botones del juego Caza-Participios
+      hintBtn.addEventListener('click', showHint);
+      nextBtn.addEventListener('click', nextQuestion);
+      restartBtn.addEventListener('click', restartGame);
+
+      // Botones del juego Rompecabezas
+      resetPuzzleBtn.addEventListener('click', resetPuzzle);
+      checkPuzzleBtn.addEventListener('click', checkPuzzle);
+      nextPuzzleBtn.addEventListener('click', nextPuzzle);
+    }
+
+    // Cambiar entre juegos
+    function switchGame(game) {
+      currentGame = game;
+      
+      // Actualizar botones activos
+      gameBtns.forEach(btn => {
+        if (btn.dataset.game === game) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      // Mostrar juego activo
+      gameContainers.forEach(container => {
+        if (container.id === game) {
+          container.classList.add('active');
+        } else {
+          container.classList.remove('active');
+        }
+      });
+      
+      // Cargar el juego seleccionado
+      loadGame(game);
+    }
+
+    // Cargar juego
+    function loadGame(game) {
+      if (game === 'caza-participios') {
+        loadCazaParticipios();
+      } else if (game === 'rompecabezas') {
+        loadRompecabezas();
+      }
+    }
+
+    // ========== JUEGO CAZA-PARTICIPIOS ==========
+    function loadCazaParticipios() {
+      currentQuestion = 0;
+      score = 0;
+      usedHints = 0;
+      scoreEl.textContent = score;
+      updateProgressBar();
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      if (currentQuestion >= cazaParticipiosData.length) {
+        showCompletionScreen();
+        return;
+      }
+
+      const question = cazaParticipiosData[currentQuestion];
+      
+      // Crear HTML para la pregunta
+      let html = `
+        <div class="question">
+          <div class="verse-ref">
+            <i class="fas fa-book"></i> ${question.ref}
+          </div>
+          <div class="verse-text">
+            ${question.text.map(word => 
+              `<span class="word ${word === question.correct ? 'participio-target' : ''}">${word}</span>`
+            ).join(' ')}
+          </div>
+        </div>
+        <div class="word-options">
+          ${question.text.filter(word => 
+            word === question.correct || 
+            (Math.random() > 0.7 && word.length > 2 && !['ὁ', 'τὴν', 'τοῦ', 'τὰ', 'τῷ', 'αὐτὸν', 'ἐμοὶ', 'εἰς'].includes(word))
+          ).map(word => 
+            `<div class="word-option" data-word="${word}">${word}</div>`
+          ).join('')}
+        </div>
+        <div class="feedback" id="feedback"></div>
+      `;
+      
+      gameContent.innerHTML = html;
+      
+      // Añadir event listeners a las opciones
+      document.querySelectorAll('.word-option').forEach(option => {
+        option.addEventListener('click', handleWordSelection);
+      });
+      
+      // Actualizar estado de botones
+      nextBtn.disabled = true;
+      hintBtn.disabled = false;
+    }
+
+    function handleWordSelection(e) {
+      const selectedWord = e.target.dataset.word;
+      const correctWord = cazaParticipiosData[currentQuestion].correct;
+      const feedback = document.getElementById('feedback');
+      
+      // Deshabilitar todas las opciones
+      document.querySelectorAll('.word-option').forEach(option => {
+        option.removeEventListener('click', handleWordSelection);
+      });
+      
+      if (selectedWord === correctWord) {
+        // Respuesta correcta
+        e.target.classList.add('correct');
+        feedback.textContent = `¡Correcto! "${correctWord}" = ${cazaParticipiosData[currentQuestion].translation}`;
+        feedback.classList.add('correct');
+        score++;
+        scoreEl.textContent = score;
+      } else {
+        // Respuesta incorrecta
+        e.target.classList.add('incorrect');
+        
+        // Resaltar la respuesta correcta
+        document.querySelectorAll('.word-option').forEach(option => {
+          if (option.dataset.word === correctWord) {
+            option.classList.add('correct');
+          }
+        });
+        
+        feedback.textContent = `Incorrecto. La respuesta es "${correctWord}" = ${cazaParticipiosData[currentQuestion].translation}`;
+        feedback.classList.add('incorrect');
+      }
+      
+      // Habilitar botón siguiente
+      nextBtn.disabled = false;
+    }
+
+    function showHint() {
+      const hint = cazaParticipiosData[currentQuestion].hint;
+      usedHints++;
+      
+      // Mostrar pista
+      const feedback = document.getElementById('feedback');
+      feedback.textContent = `💡 Pista: ${hint}`;
+      feedback.classList.remove('correct', 'incorrect');
+      feedback.style.display = 'block';
+      
+      // Deshabilitar botón de pista
+      hintBtn.disabled = true;
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      updateProgressBar();
+      renderQuestion();
+    }
+
+    function restartGame() {
+      loadCazaParticipios();
+    }
+
+    function showCompletionScreen() {
+      const accuracy = Math.round((score / cazaParticipiosData.length) * 100);
+      
+      gameContent.innerHTML = `
+        <div class="completion-screen">
+          <div class="completion-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="completion-message">
+            ¡Juego Completado!
+          </div>
+          <div class="stats">
+            <div class="stat-box">
+              <div class="stat-value">${score}/${cazaParticipiosData.length}</div>
+              <div class="stat-label">Puntuación</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">${accuracy}%</div>
+              <div class="stat-label">Precisión</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">${usedHints}</div>
+              <div class="stat-label">Pistas usadas</div>
+            </div>
+          </div>
+          <p>Has completado el juego Caza-Participios. ¡Sigue practicando!</p>
+        </div>
+      `;
+      
+      nextBtn.disabled = true;
+      hintBtn.disabled = true;
+    }
+
+    // ========== JUEGO ROMECABEZAS ==========
+    function loadRompecabezas() {
+      currentPuzzle = 0;
+      puzzleScore = 0;
+      puzzleScoreEl.textContent = puzzleScore;
+      updatePuzzleProgress();
+      renderPuzzle();
+    }
+
+    function renderPuzzle() {
+      if (currentPuzzle >= rompecabezasData.length) {
+        showPuzzleCompletionScreen();
+        return;
+      }
+
+      const puzzle = rompecabezasData[currentPuzzle];
+      
+      // Mezclar las piezas
+      const shuffledParts = [...puzzle.parts].sort(() => Math.random() - 0.5);
+      
+      let html = `
+        <div class="puzzle-container">
+          <div class="puzzle-instructions">
+            <p>Arma el participio correcto arrastrando las piezas al área de ensamblaje</p>
+          </div>
+          <div class="pieces-container" id="pieces-container">
+            ${shuffledParts.map(part => 
+              `<div class="piece" draggable="true" data-part="${part}">${part}</div>`
+            ).join('')}
+          </div>
+          <div class="assembly-area" id="assembly-area">
+            <p>Arrastra las piezas aquí</p>
+          </div>
+          <div class="result-message" id="puzzle-result"></div>
+        </div>
+      `;
+      
+      puzzleContent.innerHTML = html;
+      
+      // Configurar drag and drop
+      setupDragAndDrop();
+      
+      // Actualizar estado de botones
+      nextPuzzleBtn.disabled = true;
+      checkPuzzleBtn.disabled = false;
+    }
+
+    function setupDragAndDrop() {
+      const pieces = document.querySelectorAll('.piece');
+      const assemblyArea = document.getElementById('assembly-area');
+      let assembledPieces = [];
+      
+      pieces.forEach(piece => {
+        piece.addEventListener('dragstart', function(e) {
+          e.dataTransfer.setData('text/plain', this.dataset.part);
+          setTimeout(() => this.classList.add('dragging'), 0);
+        });
+        
+        piece.addEventListener('dragend', function() {
+          this.classList.remove('dragging');
+        });
+      });
+      
+      assemblyArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.classList.add('active');
+      });
+      
+      assemblyArea.addEventListener('dragleave', function() {
+        this.classList.remove('active');
+      });
+      
+      assemblyArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.classList.remove('active');
+        
+        const part = e.dataTransfer.getData('text/plain');
+        
+        // Añadir pieza al área de ensamblaje
+        if (!assembledPieces.includes(part)) {
+          assembledPieces.push(part);
+          updateAssemblyArea(assembledPieces);
+          
+          // Marcar pieza como usada
+          document.querySelectorAll('.piece').forEach(p => {
+            if (p.dataset.part === part) {
+              p.classList.add('used');
+              p.draggable = false;
+            }
+          });
+        }
+      });
+      
+      // Permitir eliminar piezas del área de ensamblaje
+      assemblyArea.addEventListener('click', function(e) {
+        if (e.target.classList.contains('assembled-piece')) {
+          const part = e.target.dataset.part;
+          const index = assembledPieces.indexOf(part);
+          
+          if (index > -1) {
+            assembledPieces.splice(index, 1);
+            updateAssemblyArea(assembledPieces);
+            
+            // Reactivar pieza
+            document.querySelectorAll('.piece').forEach(p => {
+              if (p.dataset.part === part) {
+                p.classList.remove('used');
+                p.draggable = true;
+              }
+            });
+          }
+        }
+      });
+    }
+
+    function updateAssemblyArea(assembledPieces) {
+      const assemblyArea = document.getElementById('assembly-area');
+      
+      if (assembledPieces.length === 0) {
+        assemblyArea.innerHTML = '<p>Arrastra las piezas aquí</p>';
+      } else {
+        assemblyArea.innerHTML = assembledPieces.map(part => 
+          `<div class="assembled-piece" data-part="${part}">${part}</div>`
+        ).join('');
+      }
+    }
+
+    function checkPuzzle() {
+      const assembledPieces = Array.from(document.querySelectorAll('.assembled-piece'))
+        .map(piece => piece.dataset.part)
+        .join('');
+      
+      const correctAnswer = rompecabezasData[currentPuzzle].answer;
+      const resultMessage = document.getElementById('puzzle-result');
+      
+      if (assembledPieces === correctAnswer) {
+        resultMessage.textContent = `¡Correcto! "${correctAnswer}" = ${rompecabezasData[currentPuzzle].translation}`;
+        resultMessage.className = 'result-message success';
+        puzzleScore++;
+        puzzleScoreEl.textContent = puzzleScore;
+        
+        // Deshabilitar botón de verificar y habilitar siguiente
+        checkPuzzleBtn.disabled = true;
+        nextPuzzleBtn.disabled = false;
+      } else {
+        resultMessage.textContent = `Incorrecto. Inténtalo de nuevo. Pista: ${rompecabezasData[currentPuzzle].hint}`;
+        resultMessage.className = 'result-message';
+      }
+    }
+
+    function resetPuzzle() {
+      renderPuzzle();
+    }
+
+    function nextPuzzle() {
+      currentPuzzle++;
+      updatePuzzleProgress();
+      renderPuzzle();
+    }
+
+    function showPuzzleCompletionScreen() {
+      const accuracy = Math.round((puzzleScore / rompecabezasData.length) * 100);
+      
+      puzzleContent.innerHTML = `
+        <div class="completion-screen">
+          <div class="completion-icon">
+            <i class="fas fa-puzzle-piece"></i>
+          </div>
+          <div class="completion-message">
+            ¡Rompecabezas Completado!
+          </div>
+          <div class="stats">
+            <div class="stat-box">
+              <div class="stat-value">${puzzleScore}/${rompecabezasData.length}</div>
+              <div class="stat-label">Puntuación</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">${accuracy}%</div>
+              <div class="stat-label">Precisión</div>
+            </div>
+          </div>
+          <p>Has completado todos los rompecabezas. ¡Excelente trabajo!</p>
+        </div>
+      `;
+      
+      nextPuzzleBtn.disabled = true;
+      checkPuzzleBtn.disabled = true;
+    }
+
+    // Funciones auxiliares
+    function updateProgressBar() {
+      const progress = (currentQuestion / cazaParticipiosData.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePuzzleProgress() {
+      const progress = (currentPuzzle / rompecabezasData.length) * 100;
+      puzzleProgress.style.width = `${progress}%`;
+    }
+  </script>
+  
+  <!-- Font Awesome para iconos -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>

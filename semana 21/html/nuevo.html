@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Semana 21 — Participios Presentes (Curso de Griego Koiné)</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa7b2; --accent:#7dd3fc; --accent-2:#60a5fa; --glass: rgba(255,255,255,0.04);
+      --card-radius:16px; --pad:18px; --max:1000px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071124 0%,#071827 60%);color:#e6eef6}
+    .app{max-width:var(--max);margin:18px auto;padding:18px}
+
+    header{display:flex;align-items:center;gap:12px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo svg{width:62px;height:62px}
+    .brand{font-weight:700;font-size:18px;letter-spacing:0.2px}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    .topbar{display:flex;justify-content:space-between;align-items:center;margin:12px 0}
+    .hamb{display:flex;gap:8px;align-items:center}
+    .hamb button{background:transparent;border:0;color:var(--accent);font-weight:700;padding:8px;border-radius:10px;cursor:pointer}
+
+    .grid{display:grid;grid-template-columns:260px 1fr;gap:18px}
+    nav.side{background:var(--card);border-radius:var(--card-radius);padding:14px}
+    nav.side ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+    nav.side a{color:var(--accent);text-decoration:none;padding:10px;border-radius:10px;display:block}
+    nav.side a.active{background:linear-gradient(90deg,rgba(125,211,252,0.08),transparent);color:#cfffff}
+
+    main{background:transparent}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:var(--pad); border-radius:var(--card-radius);box-shadow:0 6px 20px rgba(2,6,23,0.6);margin-bottom:16px}
+    h1{margin:0;font-size:20px}
+    h2{margin:4px 0 12px;font-size:16px;color:var(--accent-2)}
+    p.lead{color:var(--muted);margin-top:8px}
+
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.03);text-align:left}
+
+    .example{background:var(--glass);padding:12px;border-radius:12px;color:#dff6ff;margin:6px 0}
+
+    .flash-row{display:flex;gap:12px;flex-wrap:wrap}
+    .card.small{flex:1 0 140px;min-width:120px;cursor:pointer}
+    .flip{perspective:1000px}
+    .flip-inner{position:relative;width:100%;height:120px;transition:transform .6s;transform-style:preserve-3d}
+    .flip.is-flipped .flip-inner{transform:rotateY(180deg)}
+    .flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center}
+    .flip-back{transform:rotateY(180deg);}
+
+    .quiz{margin-top:12px}
+    .mcq{margin-bottom:16px}
+    .mcq button{display:block;width:100%;margin:4px 0;padding:8px;border:0;border-radius:8px;cursor:pointer;color:#fff;background:#1e293b;text-align:left}
+    .mcq button.correct{background:#064e3b}
+    .mcq button.wrong{background:#7f1d1d}
+
+    footer{color:var(--muted);font-size:13px;padding:8px;text-align:center}
+
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr;}
+      nav.side{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#7dd3fc" />
+              <stop offset="1" stop-color="#60a5fa" />
+            </linearGradient>
+          </defs>
+          <rect rx="18" width="120" height="120" fill="#071827" />
+          <g transform="translate(18,16)">
+            <circle cx="24" cy="24" r="20" fill="url(#g1)" opacity="0.95"/>
+            <path d="M16 24 L24 16 L32 24 L24 32 Z" fill="#051827"/>
+            <path d="M46 6 v36" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div>
+          <div class="brand">Ministerio Vivos para Servir</div>
+          <div class="subtitle">Curso de Griego Koiné — Semana 21: Participios</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <nav class="side card">
+        <ul>
+          <li><a href="#intro" class="active">Introducción</a></li>
+          <li><a href="#exegesis">Ejemplo Exegético</a></li>
+          <li><a href="#formacion">Formación</a></li>
+          <li><a href="#paradigmas">Paradigmas</a></li>
+          <li><a href="#procedimiento">Procedimiento</a></li>
+          <li><a href="#usos">Usos</a></li>
+          <li><a href="#vocabulario">Vocabulario</a></li>
+          <li><a href="#ejercicios">Ejercicios</a></li>
+          <li><a href="#quiz">Cuestionario</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <section id="intro" class="card">
+          <h1>Introducción</h1>
+          <p class="lead">El participio presente en griego koiné indica <strong>acción continua</strong>. No señala tiempo absoluto, sino relativo al verbo principal.</p>
+          <div class="example">Se traduce habitualmente con <em>-ando / -iendo</em>: διδάσκων = enseñando.</div>
+        </section>
+
+        <section id="exegesis" class="card">
+          <h2>Ejemplo Exegético</h2>
+          <p>2 Cor 3:18 — «...todos nosotros, <strong>contemplando</strong> la gloria del Señor, <strong>somos transformados</strong>...»</p>
+          <div class="example">El participio <em>κατοπτριζόμενοι</em> indica que la transformación ocurre <strong>mientras se contempla</strong>. Acción en proceso.</div>
+        </section>
+
+        <section id="formacion" class="card">
+          <h2>Formación</h2>
+          <p class="lead">Estructura: <strong>tema presente + vocal de enlace + morfema participial + desinencia</strong></p>
+          <div class="example">Activo: ντ / -ουσα → λύων, λύουσα, λῦον <br> Medio/Pasivo: -μενος, -μενη, -μενον → λυόμενος...</div>
+        </section>
+
+        <section id="paradigmas" class="card">
+          <h2>Paradigmas</h2>
+          <h3>Activo — λύω</h3>
+          <table>
+            <tr><th></th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr>
+            <tr><td>Nom. sg</td><td>λύων</td><td>λύουσα</td><td>λῦον</td></tr>
+            <tr><td>Gen. sg</td><td>λύοντος</td><td>λυούσης</td><td>λύοντος</td></tr>
+          </table>
+
+          <h3>Medio/Pasivo — λύω</h3>
+          <table>
+            <tr><th></th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr>
+            <tr><td>Nom. sg</td><td>λυόμενος</td><td>λυομένη</td><td>λυόμενον</td></tr>
+            <tr><td>Gen. sg</td><td>λυομένου</td><td>λυομένης</td><td>λυομένου</td></tr>
+          </table>
+        </section>
+
+        <section id="procedimiento" class="card">
+          <h2>Procedimiento de traducción</h2>
+          <ol>
+            <li>Identificar aspecto (continuo).</li>
+            <li>Reconocer voz (activo, medio, pasivo).</li>
+            <li>Localizar sustantivo con el que concuerda.</li>
+            <li>Traducir con “-ando/-iendo”, o con “mientras/porque/aunque/si” según el contexto.</li>
+          </ol>
+        </section>
+
+        <section id="usos" class="card">
+          <h2>Usos adverbiales</h2>
+          <div class="example"><strong>Temporal:</strong> «Mientras pasaba, vio...» (Mc 2:14)</div>
+          <div class="example"><strong>Causal:</strong> «Porque era justo...» (Mt 1:19)</div>
+          <div class="example"><strong>Concesivo:</strong> «Aunque estabais muertos...» (Ef 2:1)</div>
+          <div class="example"><strong>Condicional:</strong> «Si creéis, recibiréis» (Mt 21:22)</div>
+        </section>
+
+        <section id="vocabulario" class="card">
+          <h2>Vocabulario</h2>
+          <p>Pulsa cada tarjeta para ver la traducción.</p>
+          <div class="flash-row">
+            <div class="card small flip">
+              <div class="flip-inner">
+                <div class="flip-face">ἀναβαίνω</div>
+                <div class="flip-face flip-back">subir, ascender</div>
+              </div>
+            </div>
+            <div class="card small flip">
+              <div class="flip-inner">
+                <div class="flip-face">ἀρχιερεύς</div>
+                <div class="flip-face flip-back">sumo sacerdote</div>
+              </div>
+            </div>
+            <div class="card small flip">
+              <div class="flip-inner">
+                <div class="flip-face">δεξιός</div>
+                <div class="flip-face flip-back">derecho (mano/lado)</div>
+              </div>
+            </div>
+            <div class="card small flip">
+              <div class="flip-inner">
+                <div class="flip-face">εὐαγγελίζω</div>
+                <div class="flip-face flip-back">anunciar buenas noticias</div>
+              </div>
+            </div>
+            <div class="card small flip">
+              <div class="flip-inner">
+                <div class="flip-face">θεωρέω</div>
+                <div class="flip-face flip-back">mirar, contemplar</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ejercicios" class="card">
+          <h2>Ejercicios</h2>
+          <ol>
+            <li>Traduce: ὁ ἄνθρωπος ἀπέθανε διδάσκων τὴν κοινήν.</li>
+            <li>Analiza λυομένην (caso, número, género, voz).</li>
+            <li>Identifica uso en Mt 1:19 «δίκαιος ὢν».</li>
+          </ol>
+        </section>
+
+        <section id="quiz" class="card">
+          <h2>Cuestionario Interactivo</h2>
+          <div class="quiz">
+            <div class="mcq">
+              <p>1. ¿Qué expresa principalmente el participio presente?</p>
+              <button data-correct="true">Acción continua</button>
+              <button>Tiempo presente absoluto</button>
+              <button>Acción completada</button>
+            </div>
+            <div class="mcq">
+              <p>2. Traducción preferida de διδάσκων:</p>
+              <button>Que enseñó</button>
+              <button data-correct="true">Enseñando</button>
+              <button>Será enseñado</button>
+            </div>
+            <div class="mcq">
+              <p>3. Uso de δίκαιος ὢν en Mt 1:19:</p>
+              <button>Temporal</button>
+              <button data-correct="true">Causal</button>
+              <button>Concesivo</button>
+            </div>
+          </div>
+          <div id="quizResult" style="margin-top:12px;color:var(--muted)"></div>
+        </section>
+      </main>
+    </div>
+
+    <footer>© Ministerio Vivos para Servir — Curso de Griego Koiné</footer>
+  </div>
+
+  <script>
+    // flashcards
+    document.querySelectorAll('.flip').forEach(card=>{
+      card.addEventListener('click',()=>card.classList.toggle('is-flipped'))
+    });
+    // nav
+    const navLinks=document.querySelectorAll('nav.side a');
+    navLinks.forEach(a=>a.addEventListener('click',()=>{
+      navLinks.forEach(l=>l.classList.remove('active'));
+      a.classList.add('active');
+    }));
+    // quiz
+    const buttons=document.querySelectorAll('.mcq button');
+    let score=0,answered=0;
+    buttons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        if(btn.dataset.done) return;
+        btn.dataset.done=true;
+        answered++;
+        if(btn.dataset.correct){
+          btn.classList.add('correct');score++;
+        }else{
+          btn.classList.add('wrong');
+        }
+        if(answered===3){
+          document.getElementById('quizResult').innerText="Has obtenido "+score+" de 3 correctas.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

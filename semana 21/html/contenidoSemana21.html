@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 21 — Participio Presente | Curso Griego Koiné</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{
+            --primary-color:#2c3e50;
+            --secondary-color:#3498db;
+            --accent-color:#e74c3c;
+            --light-color:#ecf0f1;
+            --dark-color:#2c3e50;
+            --transition-speed:0.4s;
+            --card-radius:10px;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
+        body{background:#f5f7fa;color:var(--dark-color);line-height:1.6;}
+        .container{max-width:1200px;margin:0 auto;padding:15px;}
+        header{background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));color:#fff;padding:1rem 0;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1);margin-bottom:1.5rem;position:relative;border-bottom:6px solid rgba(255,255,255,.06)}
+        .header-content{display:flex;flex-direction:column;align-items:center;padding:0 15px}
+        .logo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 4px 8px rgba(0,0,0,.2);margin-bottom:.7rem}
+        header h1{font-size:1.8rem;margin-bottom:.6rem}
+        .mobile-menu-btn{display:none;position:absolute;top:14px;right:14px;background:transparent;border:none;color:white;font-size:1.4rem;cursor:pointer}
+        nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;width:100%;transition:all .3s ease}
+        .nav-btn{background:rgba(255,255,255,.15);border:none;color:white;padding:8px 15px;border-radius:20px;cursor:pointer;transition:all .3s;font-weight:700;font-size:.95rem}
+        .nav-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.25)}
+        .nav-btn.active{background:white;color:var(--primary-color)}
+        .content-section{background:white;border-radius:var(--card-radius);padding:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,.08);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:opacity var(--transition-speed) ease,transform var(--transition-speed) ease;display:none}
+        .content-section.active{opacity:1;transform:translateY(0);display:block}
+        h2{color:var(--primary-color);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--secondary-color);font-size:1.5rem}
+        h3{color:var(--secondary-color);margin:1rem 0 .6rem;font-size:1.1rem}
+        p{margin-bottom:.9rem;font-size:1rem}
+        .sub-nav{display:flex;flex-wrap:wrap;gap:6px;margin:.8rem 0}
+        .sub-nav-btn{background:#e8f4fc;border:1px solid var(--secondary-color);color:var(--primary-color);padding:6px 10px;border-radius:15px;cursor:pointer;font-size:.85rem}
+        .sub-nav-btn.active{background:var(--secondary-color);color:#fff}
+        table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #ddd}
+        th{background:var(--primary-color);color:#fff}
+        tr:nth-child(even){background:#f9f9f9}
+        .quiz-container{background:#f8f9fa;border-radius:8px;padding:1.2rem;margin-top:1rem;border-left:4px solid var(--secondary-color)}
+        .question{margin-bottom:1rem}
+        .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.6rem}
+        .option{padding:8px;background:#fff;border:1px solid #ddd;border-radius:6px;cursor:pointer;transition:all .15s;font-size:.95rem}
+        .option:hover{background:#e8f4fc;border-color:var(--secondary-color)}
+        .option.selected{background:var(--secondary-color);color:#fff;border-color:var(--secondary-color)}
+        .option.correct{background:#2ecc71;color:#fff}
+        .option.incorrect{background:#e74c3c;color:#fff}
+        .check-btn,.next-btn{background:var(--secondary-color);color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;margin-top:8px}
+        .check-btn:hover,.next-btn:hover{background:#2980b9;transform:translateY(-2px)}
+        .result{margin-top:10px;font-weight:700;padding:8px;border-radius:6px;font-size:.95rem}
+        .result.correct{background:#d4edda;color:#155724}
+        .result.incorrect{background:#f8d7da;color:#721c24}
+        .vocabulary-section{background:linear-gradient(135deg,#f8f9fa,#e9ecef);padding:1.1rem;border-radius:8px;margin-top:1rem;text-align:center}
+        .app-link{display:inline-block;background:var(--accent-color);color:white;text-decoration:none;padding:10px 18px;border-radius:25px;font-weight:700;margin-top:.6rem}
+        .note{background:#e8f4fc;border-left:4px solid var(--secondary-color);padding:.8rem;margin:.8rem 0;border-radius:0 6px 6px 0}
+        .highlight{background:#fff8e1;padding:2px 6px;border-radius:3px;font-weight:700}
+        footer{text-align:center;padding:1.2rem 0;color:#7f8c8d;font-size:.85rem}
+        /* responsive */
+        @media(max-width:768px){
+            .mobile-menu-btn{display:block}
+            nav{display:none;flex-direction:column}
+            nav.active{display:flex}
+            .nav-btn{width:100%;border-radius:6px}
+            .options{grid-template-columns:1fr}
+            table{display:block;overflow-x:auto}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        <img class="logo" src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo">
+        <h1>Semana 21 — Participio Presente (Acción Continua)</h1>
+        <nav id="mainNav">
+            <button class="nav-btn active" data-target="intro">Introducción</button>
+            <button class="nav-btn" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="nav-btn" data-target="formacion">Formación</button>
+            <button class="nav-btn" data-target="paradigmas">Paradigmas</button>
+            <button class="nav-btn" data-target="traduccion">Traducción</button>
+            <button class="nav-btn" data-target="usos">Usos Adverbiales</button>
+            <button class="nav-btn" data-target="resumen">Resumen</button>
+            <button class="nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="nav-btn" data-target="ejercicios">Ejercicios</button>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- INTRO -->
+    <section id="intro" class="content-section active">
+        <h2>Introducción: El Participio Presente</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn active" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+        </div>
+
+        <p>El <strong>participio</strong> en griego koiné es una forma verbal muy versátil. Se lo puede considerar como un <strong>"verbo adjetival"</strong>, porque combina dos características esenciales:</p>
+        
+        <ol>
+            <li><strong>Del verbo:</strong> expresa aspecto (acción continua, puntual, etc.), voz (activa, media, pasiva) y significado léxico.</li>
+            <li><strong>Del adjetivo:</strong> concuerda en <strong>género, número y caso</strong> con el sustantivo o pronombre que modifica.</li>
+        </ol>
+
+        <p>El <strong>participio presente</strong> no expresa "tiempo presente" como en español, sino <strong>aspecto continuo</strong>. Esto significa que la acción está en progreso o en desarrollo, sin importar si el verbo principal está en pasado, presente o futuro.</p>
+
+        <div class="note">
+            <p><strong>👉 Por tanto:</strong></p>
+            <ul>
+                <li>El participio presente = <strong>acción en curso</strong>.</li>
+                <li>Se suele traducir con las terminaciones <strong>"-ando" o "-iendo"</strong>:
+                    <ul>
+                        <li>λύων → "desatando"</li>
+                        <li>διδάσκων → "enseñando"</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <p><strong>⚠️ Nota importante:</strong> El participio no indica tiempo absoluto, sino tiempo <strong>relativo</strong> al verbo principal. Ejemplo:</p>
+            <ul>
+                <li>Si el verbo principal está en pasado, el participio presente se traduce como <strong>pasado continuo</strong> ("mientras caminaba").</li>
+                <li>Si el verbo principal está en presente, el participio presente se traduce como <strong>presente continuo</strong> ("mientras camina").</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Mini-quiz: Introducción</h3>
+            <div class="question">
+                <p>1. ¿Qué aspecto expresa el participio presente?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Acción puntual</div>
+                    <div class="option" data-correct="true">Acción continua</div>
+                    <div class="option" data-correct="false">Estado resultante</div>
+                    <div class="option" data-correct="false">Acción futura</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Con qué concuerda el participio como adjetivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">Género, número y caso</div>
+                    <div class="option" data-correct="false">Persona, número y tiempo</div>
+                    <div class="option" data-correct="false">Solo número</div>
+                    <div class="option" data-correct="false">Solo género</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+
+    </section>
+
+    <!-- EJEMPLO EXEGÉTICO -->
+    <section id="ejemplo" class="content-section">
+        <h2>Ejemplo Exegético: 2 Corintios 3:18</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn active" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="sub-nav-btn" data-target="paradigmas">Paradigmas</button>
+        </div>
+
+        <p>"Todos nosotros, con el rostro descubierto, <strong>contemplando</strong> (κατοπτριζόμενοι) como en un espejo la gloria del Señor, <strong>somos transformados</strong> en la misma imagen de gloria en gloria."</p>
+
+        <h3>Análisis del participio</h3>
+        <ul>
+            <li>El participio <strong>κατοπτριζόμενοι</strong> proviene de un verbo que en voz media significa "mirarse en un espejo", y por extensión, "contemplar con atención".</li>
+            <li>Está en <strong>presente medio</strong>, por lo que indica una acción <strong>continua y reflexiva</strong>.</li>
+            <li>La acción principal es "somos transformados" (μεταμορφούμεθα).</li>
+            <li>El participio muestra el medio o la manera en que ocurre la transformación: <strong>mientras contemplamos a Cristo, somos transformados</strong>.</li>
+        </ul>
+
+        <div class="note">
+            <p><strong>👉 Principio exegético y pedagógico:</strong></p>
+            <p>El participio presente aquí enseña que la transformación cristiana no es un evento único y aislado, sino un proceso continuo, directamente relacionado con la contemplación constante de la gloria del Señor.</p>
+        </div>
+
+        <div class="note">
+            <p><strong>Aplicación práctica:</strong> en la enseñanza de los participios, este texto puede ilustrar cómo el aspecto verbal (acción continua) tiene implicaciones espirituales profundas.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Ejemplo Exegético</h3>
+            <div class="question">
+                <p>1. ¿Qué voz tiene el participio κατοπτριζόμενοι en 2 Corintios 3:18?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Activa</div>
+                    <div class="option" data-correct="true">Media</div>
+                    <div class="option" data-correct="false">Pasiva</div>
+                    <div class="option" data-correct="false">Futura</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- FORMACIÓN -->
+    <section id="formacion" class="content-section">
+        <h2>Formación del Participio Presente</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="sub-nav-btn active" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn" data-target="paradigmas">Paradigmas</button>
+        </div>
+
+        <h3>3.1 Estructura general</h3>
+        <p>El participio presente se forma con la siguiente estructura:</p>
+        <p><strong>Tema verbal del presente + vocal de enlace + morfema participial + desinencia de caso</strong></p>
+        <p>Ejemplo con λύω (<em>desatar</em>):</p>
+        <ul>
+            <li>λύ + ο + ντ + ες → λύοντες (<em>desatando</em>).</li>
+        </ul>
+
+        <h3>3.2 Morfemas básicos del participio</h3>
+        <ul>
+            <li><strong>Activo:</strong>
+                <ul>
+                    <li>masc./neutro: <strong>ντ</strong> (ej. λύοντες).</li>
+                    <li>femenino: <strong>ουσα</strong> (ej. λυοῦσα).</li>
+                </ul>
+            </li>
+            <li><strong>Medio/Pasivo:</strong>
+                <ul>
+                    <li>masc./fem./neutro: <strong>μενος / μενη / μενον</strong> (ej. λυόμενος, λυομένη, λυόμενον).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="note">
+            <p><strong>👉 Estos morfemas son como "marcas" que delatan que estamos frente a un participio. Memorizar estos patrones es clave para reconocerlos en el NT.</strong></p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Formación</h3>
+            <div class="question">
+                <p>1. ¿Cuál es el morfema participial para el masculino/neutro en voz activa?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">ντ</div>
+                    <div class="option" data-correct="false">ουσα</div>
+                    <div class="option" data-correct="false">μενος</div>
+                    <div class="option" data-correct="false">μενη</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- PARADIGMAS -->
+    <section id="paradigmas" class="content-section">
+        <h2>Paradigmas del Participio Presente</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn active" data-target="paradigmas">Paradigmas</button>
+            <button class="sub-nav-btn" data-target="traduccion">Traducción</button>
+        </div>
+
+        <h3>A. Participio Presente Activo (λύω)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caso</th>
+                    <th>Masc. sg.</th>
+                    <th>Fem. sg.</th>
+                    <th>Neut. sg.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nom.</td>
+                    <td>λύων (<em>desatando</em>)</td>
+                    <td>λύουσα</td>
+                    <td>λῦον</td>
+                </tr>
+                <tr>
+                    <td>Gen.</td>
+                    <td>λύοντος</td>
+                    <td>λυούσης</td>
+                    <td>λύοντος</td>
+                </tr>
+                <tr>
+                    <td>Dat.</td>
+                    <td>λύοντι</td>
+                    <td>λυούσῃ</td>
+                    <td>λύοντι</td>
+                </tr>
+                <tr>
+                    <td>Acus.</td>
+                    <td>λύοντα</td>
+                    <td>λυοῦσαν</td>
+                    <td>λῦον</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>Notas:</strong></p>
+            <ul>
+                <li>El masculino y neutro usan el morfema <strong>ντ</strong>, que al declinarse se adapta como un sustantivo de tercera declinación.</li>
+                <li>El femenino siempre usa el morfema <strong>ουσα</strong> y declina como un sustantivo de primera declinación.</li>
+            </ul>
+        </div>
+
+        <h3>B. Participio Presente Medio/Pasivo (λύω)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caso</th>
+                    <th>Masc. sg.</th>
+                    <th>Fem. sg.</th>
+                    <th>Neut. sg.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nom.</td>
+                    <td>λυόμενος</td>
+                    <td>λυομένη</td>
+                    <td>λυόμενον</td>
+                </tr>
+                <tr>
+                    <td>Gen.</td>
+                    <td>λυομένου</td>
+                    <td>λυομένης</td>
+                    <td>λυομένου</td>
+                </tr>
+                <tr>
+                    <td>Dat.</td>
+                    <td>λυομένῳ</td>
+                    <td>λυομένῃ</td>
+                    <td>λυομένῳ</td>
+                </tr>
+                <tr>
+                    <td>Acus.</td>
+                    <td>λυόμενον</td>
+                    <td>λυομένην</td>
+                    <td>λυόμενον</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>Notas:</strong></p>
+            <ul>
+                <li>La terminación es la típica de los adjetivos de 2-1-2.</li>
+                <li>Se traduce con "siendo..." en pasiva, o "haciéndose..." en media, según el contexto.</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Paradigmas</h3>
+            <div class="question">
+                <p>1. ¿Qué tipo de declinación sigue el femenino del participio presente activo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Tercera declinación</div>
+                    <div class="option" data-correct="true">Primera declinación</div>
+                    <div class="option" data-correct="false">Segunda declinación</div>
+                    <div class="option" data-correct="false">Declinación mixta</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- TRADUCCIÓN -->
+    <section id="traduccion" class="content-section">
+        <h2>Procedimiento de Traducción</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="paradigmas">Paradigmas</button>
+            <button class="sub-nav-btn active" data-target="traduccion">Traducción</button>
+            <button class="sub-nav-btn" data-target="usos">Usos Adverbiales</button>
+        </div>
+
+        <p>Cuando encuentres un participio:</p>
+        <ol>
+            <li><strong>Identifica el aspecto:</strong>
+                <ul>
+                    <li>Si proviene del tema presente → acción continua.</li>
+                </ul>
+            </li>
+            <li><strong>Identifica la voz:</strong>
+                <ul>
+                    <li>Activa, media o pasiva.</li>
+                </ul>
+            </li>
+            <li><strong>Busca el significado léxico del verbo.</strong></li>
+            <li><strong>Encuentra el sustantivo que modifica:</strong>
+                <ul>
+                    <li>Caso, número y género deben concordar.</li>
+                </ul>
+            </li>
+            <li><strong>Decide el mejor equivalente en español:</strong>
+                <ul>
+                    <li>Generalmente con "-ando/-iendo".</li>
+                    <li>O con "mientras", "porque", "aunque", "si".</li>
+                </ul>
+            </li>
+        </ol>
+
+        <div class="note">
+            <p><strong>Consejo práctico:</strong> Siempre analiza primero la concordancia del participio con el sustantivo que modifica. Esto te ayudará a identificar su función en la oración.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Traducción</h3>
+            <div class="question">
+                <p>1. ¿Qué terminaciones en español suelen corresponder al participio presente griego?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">-ando / -iendo</div>
+                    <div class="option" data-correct="false">-ado / -ido</div>
+                    <div class="option" data-correct="false">-ar / -er / -ir</div>
+                    <div class="option" data-correct="false">-ante / -ente</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- USOS ADVERBIALES -->
+    <section id="usos" class="content-section">
+        <h2>Usos Adverbiales del Participio</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="traduccion">Traducción</button>
+            <button class="sub-nav-btn active" data-target="usos">Usos Adverbiales</button>
+            <button class="sub-nav-btn" data-target="resumen">Resumen</button>
+        </div>
+
+        <p>El participio puede funcionar como una <strong>cláusula subordinada adverbial</strong>. Sus usos más frecuentes son:</p>
+
+        <ol>
+            <li><strong>Temporal (mientras, cuando):</strong>
+                <ul>
+                    <li>παράγων εἶδεν (Mc 2:14) → "<strong>Mientras pasaba</strong>, vio..."</li>
+                </ul>
+            </li>
+            <li><strong>Causal (porque):</strong>
+                <ul>
+                    <li>δίκαιος ὢν (Mt 1:19) → "<strong>Porque era</strong> justo..."</li>
+                </ul>
+            </li>
+            <li><strong>Concesivo (aunque):</strong>
+                <ul>
+                    <li>ὄντας νεκρούς (Ef 2:1) → "<strong>Aunque estabais</strong> muertos..."</li>
+                </ul>
+            </li>
+            <li><strong>Condicional (si):</strong>
+                <ul>
+                    <li>πιστεύοντες λήμψεσθε (Mt 21:22) → "Si creéis, recibiréis."</li>
+                </ul>
+            </li>
+            <li><strong>De modo o manera (haciendo):</strong>
+                <ul>
+                    <li>λυπούμενος ἀπῆλθεν (Mt 19:22) → "Se fue <strong>entristecido</strong>."</li>
+                </ul>
+            </li>
+            <li><strong>De propósito (para):</strong>
+                <ul>
+                    <li>σῶσον αὐτόν (Mt 27:49) → "Para salvarle."</li>
+                </ul>
+            </li>
+            <li><strong>De resultado (con el efecto de):</strong>
+                <ul>
+                    <li>ποιῶν εἰρήνην (Ef 2:15) → "Haciendo la paz."</li>
+                </ul>
+            </li>
+        </ol>
+
+        <div class="note">
+            <p><strong>👉 Este es un punto clave:</strong> el participio no se traduce siempre igual; su función depende del contexto.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Usos Adverbiales</h3>
+            <div class="question">
+                <p>1. ¿Qué uso adverbial tiene el participio en "δίκαιος ὢν" (Mt 1:19)?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Temporal</div>
+                    <div class="option" data-correct="true">Causal</div>
+                    <div class="option" data-correct="false">Concesivo</div>
+                    <div class="option" data-correct="false">Condicional</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- RESUMEN -->
+    <section id="resumen" class="content-section">
+        <h2>Resumen</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="usos">Usos Adverbiales</button>
+            <button class="sub-nav-btn active" data-target="resumen">Resumen</button>
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+        </div>
+
+        <ul>
+            <li>El participio presente <strong>expresa continuidad</strong>.</li>
+            <li>No se centra en el tiempo absoluto, sino en la acción en desarrollo.</li>
+            <li>Traducción habitual: "-ando / -iendo".</li>
+            <li>Se usa como cláusula adverbial (mientras, porque, aunque, si, etc.).</li>
+            <li>El aspecto es más importante que el tiempo en la exégesis.</li>
+        </ul>
+
+        <div class="note">
+            <p><strong>Consejo final:</strong> Practica identificando participios en textos bíblicos y analizando su función. Con el tiempo, reconocerás patrones y mejorarás tu comprensión del griego koiné.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Repaso Final</h3>
+            <div class="question">
+                <p>1. ¿Qué es más importante en el participio presente para la exégesis?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">El tiempo absoluto</div>
+                    <div class="option" data-correct="true">El aspecto (continuidad)</div>
+                    <div class="option" data-correct="false">La persona gramatical</div>
+                    <div class="option" data-correct="false">El modo verbal</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- VOCABULARIO -->
+    <section id="vocabulario" class="content-section">
+        <h2>Vocabulario de la Semana</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="resumen">Resumen</button>
+            <button class="sub-nav-btn active" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Palabra</th>
+                    <th>Significado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>ἀναβαίνω</td><td>subir, ascender</td></tr>
+                <tr><td>ἀρχιερεύς</td><td>sumo sacerdote</td></tr>
+                <tr><td>δεξιός</td><td>derecho (mano, lado)</td></tr>
+                <tr><td>εὐαγγελίζω</td><td>anunciar buenas noticias, predicar</td></tr>
+                <tr><td>θεωρέω</td><td>mirar, contemplar</td></tr>
+                <tr><td>κάθημαι</td><td>sentarse, residir</td></tr>
+                <tr><td>καταβαίνω</td><td>bajar, descender</td></tr>
+                <tr><td>παρακαλέω</td><td>llamar, exhortar, animar, consolar</td></tr>
+                <tr><td>πείθω</td><td>persuadir, convencer</td></tr>
+                <tr><td>τρεῖς, τρία</td><td>tres</td></tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>👉 Este vocabulario debe practicarse dentro de frases que incluyan participios para reforzar la lección.</strong></p>
+        </div>
+
+        <div class="vocabulary-section">
+            <h3>Recurso de práctica</h3>
+            <p>Usa tu app de vocabulario para repasar estas palabras y sus participios.</p>
+            <a class="app-link" href="https://rol123-m.github.io/Aplicacion-de-vocabulario-de-Griego-Koin-/">App de Vocabulario — Vivos para Servir</a>
+        </div>
+    </section>
+
+    <!-- EJERCICIOS -->
+    <section id="ejercicios" class="content-section">
+        <h2>Ejercicios</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn active" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <h3>1. Traducción simple</h3>
+        <p>Traduce la siguiente oración:</p>
+        <p>ὁ ἄνθρωπος ἀπέθανε διδάσκων τὴν κοινήν.</p>
+        <p><strong>Respuesta:</strong> El hombre murió <strong>enseñando</strong> el koiné.</p>
+
+        <h3>2. Identifica caso, número, género y voz</h3>
+        <p>Analiza los siguientes participios:</p>
+        <ul>
+            <li>λυομένῳ → Dativo, singular, masculino/neutro, voz media/pasiva</li>
+            <li>διδάσκοντες → Nominativo, plural, masculino, voz activa</li>
+            <li>θεωροῦσα → Nominativo, singular, femenino, voz activa</li>
+        </ul>
+
+        <h3>3. Traducción contextual</h3>
+        <p>Traduce la siguiente oración bíblica:</p>
+        <p>καὶ παραγὼν εἶδεν Λευὶν τὸν τοῦ Ἀλφαίου (Mc 2:14)</p>
+        <p><strong>Respuesta:</strong> Y <strong>pasando</strong>, vio a Leví, el hijo de Alfeo.</p>
+
+        <div class="quiz-container">
+            <h3>Evaluación Final</h3>
+            <div class="question">
+                <p>1. ¿Qué uso adverbial tiene el participio en "παραγὼν εἶδεν" (Mc 2:14)?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">Temporal</div>
+                    <div class="option" data-correct="false">Causal</div>
+                    <div class="option" data-correct="false">Concesivo</div>
+                    <div class="option" data-correct="false">Condicional</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Qué significa "διδάσκοντες" en la frase "οἱ μαθηταὶ ἦσαν διδάσκοντες"?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">enseñados</div>
+                    <div class="option" data-correct="true">enseñando</div>
+                    <div class="option" data-correct="false">enseñarán</div>
+                    <div class="option" data-correct="false">enseñaron</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2024 Curso de Griego Koiné | Todos los derechos reservados</p>
+</footer>
+
+<script>
+    // Navegación principal
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const contentSections = document.querySelectorAll('.content-section');
+    
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+            
+            // Actualizar botones activos
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Mostrar sección correspondiente
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                }
+            });
+        });
+    });
+    
+    // Navegación secundaria
+    const subNavButtons = document.querySelectorAll('.sub-nav-btn');
+    
+    subNavButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+            
+            // Actualizar botones activos
+            subNavButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Actualizar botones principales
+            navButtons.forEach(btn => {
+                if (btn.getAttribute('data-target') === targetId) {
+                    btn.click();
+                }
+            });
+        });
+    });
+    
+    // Menú móvil
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+    
+    // Sistema de cuestionarios
+    const checkButtons = document.querySelectorAll('.check-btn');
+    
+    checkButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const quizContainer = button.closest('.quiz-container');
+            const options = quizContainer.querySelectorAll('.option');
+            const result = quizContainer.querySelector('.result');
+            
+            let correctAnswers = 0;
+            let totalQuestions = 0;
+            
+            options.forEach(option => {
+                if (option.classList.contains('selected')) {
+                    if (option.getAttribute('data-correct') === 'true') {
+                        option.classList.add('correct');
+                        correctAnswers++;
+                    } else {
+                        option.classList.add('incorrect');
+                    }
+                    totalQuestions++;
+                }
+            });
+            
+            if (correctAnswers === totalQuestions && totalQuestions > 0) {
+                result.textContent = '¡Perfecto! Todas las respuestas son correctas.';
+                result.className = 'result correct';
+            } else if (totalQuestions > 0) {
+                result.textContent = `Respuestas correctas: ${correctAnswers} de ${totalQuestions}. Inténtalo de nuevo.`;
+                result.className = 'result incorrect';
+            } else {
+                result.textContent = 'Por favor, selecciona una respuesta.';
+                result.className = 'result incorrect';
+            }
+        });
+    });
+    
+    // Selección de opciones
+    const options = document.querySelectorAll('.option');
+    
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            const question = option.closest('.question');
+            const questionOptions = question.querySelectorAll('.option');
+            
+            questionOptions.forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            option.classList.add('selected');
+        });
+    });
+</script>
+</body>
+</html>
