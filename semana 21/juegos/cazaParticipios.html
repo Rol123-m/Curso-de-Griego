@@ -179,6 +179,20 @@
       padding: 15px;
       background: var(--light-color);
       border-radius: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .verse-word {
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .verse-word:hover {
+      background: rgba(52, 152, 219, 0.1);
     }
 
     .word-options {
@@ -425,7 +439,7 @@
       <div class="question-container" id="question-container">
         <div class="verse-reference" id="verse-reference">Juan 1:29</div>
         <div class="verse-text" id="verse-text">
-          <span class="verse-word">Ἴδε</span> <span class="verse-word">ὁ</span> <span class="verse-word">ἀμνὸς</span> <span class="verse-word">τοῦ</span> <span class="verse-word">θεοῦ</span> <span class="verse-word">ὁ</span> <span class="verse-word">αἴρων</span> <span class="verse-word">τὴν</span> <span class="verse-word">ἁμαρτίαν</span> <span class="verse-word">τοῦ</span> <span class="verse-word">κόσμου</span>
+          <!-- Las palabras se generarán dinámicamente -->
         </div>
         <div class="word-options" id="word-options">
           <!-- Las opciones se generarán dinámicamente -->
@@ -544,13 +558,18 @@
       // Actualizar la referencia del versículo
       verseReference.textContent = question.ref;
       
-      // Actualizar el texto del versículo
+      // Actualizar el texto del versículo con palabras separadas
       verseText.innerHTML = '';
       question.text.forEach(word => {
         const wordSpan = document.createElement('span');
         wordSpan.className = 'verse-word';
         wordSpan.textContent = word;
         verseText.appendChild(wordSpan);
+        
+        // Añadir espacio después de cada palabra (excepto la última)
+        if (word !== question.text[question.text.length - 1]) {
+          verseText.appendChild(document.createTextNode(' '));
+        }
       });
       
       // Crear opciones de palabras
