@@ -2,85 +2,778 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juego 1 — Caza-Participios | Semana 21</title>
   <style>
-    body{font-family:Arial, sans-serif;background:#f4f7fa;margin:0;padding:0;color:#333}
-    header{background:linear-gradient(135deg,#2c3e50,#3498db);color:#fff;text-align:center;padding:1rem}
-    header img{width:70px;border-radius:50%;border:2px solid #fff}
-    header h1{margin:.5rem 0;font-size:1.4rem}
-    .container{max-width:900px;margin:20px auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
-    .question{margin-bottom:20px}
-    .question p{font-size:1.1rem;margin-bottom:10px}
-    .options span{display:inline-block;margin:6px;padding:8px 14px;background:#eef;border-radius:6px;cursor:pointer;transition:.2s}
-    .options span:hover{background:#d0e6ff}
-    .options span.correct{background:#2ecc71;color:#fff}
-    .options span.incorrect{background:#e74c3c;color:#fff}
-    .score-box{text-align:center;margin-top:20px;font-size:1.2rem;font-weight:bold}
-    button{background:#3498db;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:1rem;margin-top:15px}
-    button:hover{background:#2980b9}
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --success-color: #2ecc71;
+      --error-color: #e74c3c;
+      --warning-color: #f39c12;
+      --light-color: #f4f7fa;
+      --dark-color: #333;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      color: var(--dark-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .game-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .title-container h1 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .title-container p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .game-content {
+      padding: 2rem;
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      background: var(--light-color);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-container {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-color), var(--success-color));
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .score-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .score {
+      background: var(--primary-color);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .question-container {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      border-left: 5px solid var(--primary-color);
+    }
+
+    .verse-reference {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .verse-reference::before {
+      content: "📖";
+    }
+
+    .verse-text {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      text-align: center;
+      padding: 15px;
+      background: var(--light-color);
+      border-radius: 8px;
+    }
+
+    .word-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .word-option {
+      padding: 12px 20px;
+      background: white;
+      border: 2px solid var(--primary-color);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .word-option:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      background: #e8f4ff;
+    }
+
+    .word-option.correct {
+      background: var(--success-color);
+      color: white;
+      border-color: var(--success-color);
+      animation: pulse 0.5s;
+    }
+
+    .word-option.incorrect {
+      background: var(--error-color);
+      color: white;
+      border-color: var(--error-color);
+      animation: shake 0.5s;
+    }
+
+    .feedback {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+      display: none;
+    }
+
+    .feedback.correct {
+      background: rgba(46, 204, 113, 0.2);
+      color: var(--success-color);
+      border: 1px solid var(--success-color);
+      display: block;
+    }
+
+    .feedback.incorrect {
+      background: rgba(231, 76, 60, 0.2);
+      color: var(--error-color);
+      border: 1px solid var(--error-color);
+      display: block;
+    }
+
+    .translation {
+      font-style: italic;
+      margin-top: 10px;
+      color: var(--secondary-color);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #1a252f;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .game-complete {
+      text-align: center;
+      padding: 40px 20px;
+      display: none;
+    }
+
+    .game-complete h2 {
+      font-size: 2.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+    }
+
+    .final-score {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 20px 0;
+    }
+
+    .performance-message {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: var(--secondary-color);
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary-color);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+      }
+      
+      .title-container h1 {
+        font-size: 1.5rem;
+      }
+      
+      .verse-text {
+        font-size: 1.2rem;
+      }
+      
+      .word-options {
+        gap: 8px;
+      }
+      
+      .word-option {
+        padding: 10px 15px;
+        font-size: 1rem;
+      }
+      
+      .stats-bar {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .progress-container {
+        width: 100%;
+        margin: 0;
+      }
+      
+      .actions {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .game-content {
+        padding: 1.5rem;
+      }
+      
+      .verse-text {
+        font-size: 1.1rem;
+        padding: 10px;
+      }
+      
+      .word-option {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
-<header>
-  <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="logo ministerio">
-  <h1>Juego 1 — Caza-Participios</h1>
-  <p>Semana 21: Participio Presente</p>
-</header>
+  <div class="game-container">
+    <header>
+      <div class="header-content">
+        <div class="logo-container">
+          <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="logo ministerio" class="logo">
+          <div class="title-container">
+            <h1>Juego 1 — Caza-Participios</h1>
+            <p>Semana 21: Participio Presente</p>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<div class="container">
-  <div id="game"></div>
-  <div class="score-box">Puntuación: <span id="score">0</span>/15</div>
-  <button id="restart">Reiniciar Juego</button>
-</div>
+    <div class="game-content">
+      <div class="stats-bar">
+        <div class="progress-container">
+          <div class="progress-text">Progreso: <span id="current">0</span>/<span id="total">15</span></div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+          </div>
+        </div>
+        <div class="score-container">
+          Puntuación: <div class="score" id="score">0</div>
+        </div>
+      </div>
 
-<script>
-const texts=[
- {ref:"Jn 1:29",text:["Ἴδε ὁ","ἀμνὸς","τοῦ θεοῦ","ὁ","αἴρων","τὴν ἁμαρτίαν","τοῦ κόσμου"],correct:"αἴρων",translation:"el que quita"},
- {ref:"Jn 3:16",text:["πᾶς","ὁ","πιστεύων","εἰς αὐτὸν","μὴ ἀπόληται"],correct:"πιστεύων",translation:"el que cree"},
- {ref:"Jn 8:12",text:["ὁ","ἀκολουθῶν","ἐμοὶ","οὐ μὴ περιπατήσει","ἐν τῇ σκοτίᾳ"],correct:"ἀκολουθῶν",translation:"el que sigue"},
- {ref:"Jn 10:9",text:["εἰς ἐμὲ","εἰσερχόμενος","σωθήσεται"],correct:"εἰσερχόμενος",translation:"el que entra"},
- {ref:"Jn 11:26",text:["πᾶς","ὁ","ζῶν","καὶ","πιστεύων","εἰς ἐμὲ"],correct:"ζῶν",translation:"el que vive"},
- {ref:"Jn 11:26",text:["πᾶς","ὁ","ζῶν","καὶ","πιστεύων","εἰς ἐμὲ"],correct:"πιστεύων",translation:"el que cree"},
- {ref:"Jn 14:21",text:["ὁ","ἔχων","τὰς ἐντολάς","μου","καὶ","τηρῶν","αὐτάς"],correct:"ἔχων",translation:"el que tiene"},
- {ref:"Jn 14:21",text:["ὁ","ἔχων","τὰς ἐντολάς","μου","καὶ","τηρῶν","αὐτάς"],correct:"τηρῶν",translation:"el que guarda"},
- {ref:"Jn 15:5",text:["ὁ","μένων","ἐν ἐμοὶ","καὶ ἐγὼ","ἐν αὐτῷ"],correct:"μένων",translation:"el que permanece"},
- {ref:"Jn 15:6",text:["ἐὰν μή","τις","μένῃ","ἐν ἐμοί","ἐβλήθη","ὁ","μὴ","μένων","ἐν ἐμοί"],correct:"μένων",translation:"el que permanece"},
- {ref:"1Jn 2:6",text:["ὁ","λέγων","ἐν αὐτῷ","μένειν"],correct:"λέγων",translation:"el que dice"},
- {ref:"1Jn 3:6",text:["πᾶς","ὁ","μένων","ἐν αὐτῷ","οὐχ ἁμαρτάνει"],correct:"μένων",translation:"el que permanece"},
- {ref:"1Jn 3:9",text:["πᾶς","ὁ","γεγεννημένος","ἐκ τοῦ θεοῦ","ἁμαρτίαν","οὐ","ποιεῖ"],correct:"γεγεννημένος",translation:"el que ha nacido (presente resultativo)"},
- {ref:"Mc 5:36",text:["μὴ","φοβοῦ","μόνον","πίστευε"],correct:"πίστευε",translation:"cree"},
- {ref:"Mc 9:23",text:["τῷ","πιστεύοντι","πάντα","δυνατά"],correct:"πιστεύοντι",translation:"al que cree"},
-];
+      <div class="question-container" id="question-container">
+        <div class="verse-reference" id="verse-reference">Juan 1:29</div>
+        <div class="verse-text" id="verse-text">
+          <span class="verse-word">Ἴδε</span> <span class="verse-word">ὁ</span> <span class="verse-word">ἀμνὸς</span> <span class="verse-word">τοῦ</span> <span class="verse-word">θεοῦ</span> <span class="verse-word">ὁ</span> <span class="verse-word">αἴρων</span> <span class="verse-word">τὴν</span> <span class="verse-word">ἁμαρτίαν</span> <span class="verse-word">τοῦ</span> <span class="verse-word">κόσμου</span>
+        </div>
+        <div class="word-options" id="word-options">
+          <!-- Las opciones se generarán dinámicamente -->
+        </div>
+        <div class="feedback" id="feedback">
+          <div id="feedback-text"></div>
+          <div class="translation" id="translation"></div>
+        </div>
+      </div>
 
-let current=0,score=0;
-const game=document.getElementById("game");
-const scoreEl=document.getElementById("score");
-function renderQuestion(){
-  if(current>=texts.length){
-    game.innerHTML="<h2>Juego terminado</h2><p>Tu puntuación: "+score+"/15</p>";
-    return;
-  }
-  const q=texts[current];
-  game.innerHTML="<div class='question'><p><strong>"+q.ref+"</strong></p><p>"+q.text.map(w=>"<span>"+w+"</span>").join(" ")+"</p></div>";
-  const spans=game.querySelectorAll("span");
-  spans.forEach(s=>{
-    s.addEventListener("click",()=>{
-      if(s.textContent===q.correct){
-        s.classList.add("correct");
-        score++;scoreEl.textContent=score;
-        alert("¡Correcto! "+q.correct+" = "+q.translation);
-      }else{
-        s.classList.add("incorrect");
-        alert("Incorrecto. El participio es: "+q.correct+" = "+q.translation);
+      <div class="actions">
+        <button class="btn btn-secondary" id="hint-btn">
+          <span>💡</span> Pista
+        </button>
+        <button class="btn btn-primary" id="next-btn">
+          <span>⏭️</span> Siguiente
+        </button>
+        <button class="btn btn-secondary" id="restart-btn">
+          <span>🔄</span> Reiniciar
+        </button>
+      </div>
+
+      <div class="game-complete" id="game-complete">
+        <h2>¡Juego Completado!</h2>
+        <div class="final-score" id="final-score">0/15</div>
+        <div class="performance-message" id="performance-message"></div>
+        <button class="btn btn-primary" id="play-again-btn">
+          <span>🎮</span> Jugar de Nuevo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Datos del juego
+    const gameData = [
+      {ref:"Jn 1:29", text:["Ἴδε", "ὁ", "ἀμνὸς", "τοῦ", "θεοῦ", "ὁ", "αἴρων", "τὴν", "ἁμαρτίαν", "τοῦ", "κόσμου"], correct:"αἴρων", translation:"el que quita"},
+      {ref:"Jn 3:16", text:["πᾶς", "ὁ", "πιστεύων", "εἰς", "αὐτὸν", "μὴ", "ἀπόληται"], correct:"πιστεύων", translation:"el que cree"},
+      {ref:"Jn 8:12", text:["ὁ", "ἀκολουθῶν", "ἐμοὶ", "οὐ", "μὴ", "περιπατήσει", "ἐν", "τῇ", "σκοτίᾳ"], correct:"ἀκολουθῶν", translation:"el que sigue"},
+      {ref:"Jn 10:9", text:["εἰς", "ἐμὲ", "εἰσερχόμενος", "σωθήσεται"], correct:"εἰσερχόμενος", translation:"el que entra"},
+      {ref:"Jn 11:26", text:["πᾶς", "ὁ", "ζῶν", "καὶ", "πιστεύων", "εἰς", "ἐμὲ"], correct:"ζῶν", translation:"el que vive"},
+      {ref:"Jn 11:26", text:["πᾶς", "ὁ", "ζῶν", "καὶ", "πιστεύων", "εἰς", "ἐμὲ"], correct:"πιστεύων", translation:"el que cree"},
+      {ref:"Jn 14:21", text:["ὁ", "ἔχων", "τὰς", "ἐντολάς", "μου", "καὶ", "τηρῶν", "αὐτάς"], correct:"ἔχων", translation:"el que tiene"},
+      {ref:"Jn 14:21", text:["ὁ", "ἔχων", "τὰς", "ἐντολάς", "μου", "καὶ", "τηρῶν", "αὐτάς"], correct:"τηρῶν", translation:"el que guarda"},
+      {ref:"Jn 15:5", text:["ὁ", "μένων", "ἐν", "ἐμοὶ", "καὶ", "ἐγὼ", "ἐν", "αὐτῷ"], correct:"μένων", translation:"el que permanece"},
+      {ref:"Jn 15:6", text:["ἐὰν", "μὴ", "τις", "μένῃ", "ἐν", "ἐμοί", "ἐβλήθη", "ὁ", "μὴ", "μένων", "ἐν", "ἐμοί"], correct:"μένων", translation:"el que permanece"},
+      {ref:"1Jn 2:6", text:["ὁ", "λέγων", "ἐν", "αὐτῷ", "μένειν"], correct:"λέγων", translation:"el que dice"},
+      {ref:"1Jn 3:6", text:["πᾶς", "ὁ", "μένων", "ἐν", "αὐτῷ", "οὐχ", "ἁμαρτάνει"], correct:"μένων", translation:"el que permanece"},
+      {ref:"1Jn 3:9", text:["πᾶς", "ὁ", "γεγεννημένος", "ἐκ", "τοῦ", "θεοῦ", "ἁμαρτίαν", "οὐ", "ποιεῖ"], correct:"γεγεννημένος", translation:"el que ha nacido (presente resultativo)"},
+      {ref:"Mc 5:36", text:["μὴ", "φοβοῦ", "μόνον", "πίστευε"], correct:"πίστευε", translation:"cree"},
+      {ref:"Mc 9:23", text:["τῷ", "πιστεύοντι", "πάντα", "δυνατά"], correct:"πιστεύοντι", translation:"al que cree"},
+    ];
+
+    // Estado del juego
+    let gameState = {
+      currentQuestion: 0,
+      score: 0,
+      totalQuestions: gameData.length,
+      gameCompleted: false,
+      currentOptions: [],
+      usedQuestions: new Set(),
+      hintUsed: false
+    };
+
+    // Elementos DOM
+    const questionContainer = document.getElementById('question-container');
+    const verseReference = document.getElementById('verse-reference');
+    const verseText = document.getElementById('verse-text');
+    const wordOptions = document.getElementById('word-options');
+    const feedback = document.getElementById('feedback');
+    const feedbackText = document.getElementById('feedback-text');
+    const translation = document.getElementById('translation');
+    const scoreElement = document.getElementById('score');
+    const currentElement = document.getElementById('current');
+    const totalElement = document.getElementById('total');
+    const progressElement = document.getElementById('progress');
+    const nextButton = document.getElementById('next-btn');
+    const hintButton = document.getElementById('hint-btn');
+    const restartButton = document.getElementById('restart-btn');
+    const gameComplete = document.getElementById('game-complete');
+    const finalScore = document.getElementById('final-score');
+    const performanceMessage = document.getElementById('performance-message');
+    const playAgainButton = document.getElementById('play-again-btn');
+
+    // Inicializar el juego
+    function initGame() {
+      totalElement.textContent = gameState.totalQuestions;
+      updateProgress();
+      loadQuestion();
+      
+      // Event listeners
+      nextButton.addEventListener('click', nextQuestion);
+      hintButton.addEventListener('click', showHint);
+      restartButton.addEventListener('click', restartGame);
+      playAgainButton.addEventListener('click', restartGame);
+    }
+
+    // Cargar una pregunta
+    function loadQuestion() {
+      // Si ya hemos usado todas las preguntas, mezclamos de nuevo
+      if (gameState.usedQuestions.size >= gameState.totalQuestions) {
+        gameState.usedQuestions.clear();
       }
-      current++;
-      setTimeout(renderQuestion,600);
-    });
-  });
-}
-renderQuestion();
-document.getElementById("restart").onclick=()=>{current=0;score=0;scoreEl.textContent=0;renderQuestion();}
-</script>
+      
+      // Seleccionar una pregunta aleatoria que no se haya usado
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * gameState.totalQuestions);
+      } while (gameState.usedQuestions.has(randomIndex));
+      
+      gameState.usedQuestions.add(randomIndex);
+      gameState.currentQuestion = randomIndex;
+      
+      const question = gameData[randomIndex];
+      
+      // Actualizar la referencia del versículo
+      verseReference.textContent = question.ref;
+      
+      // Actualizar el texto del versículo
+      verseText.innerHTML = '';
+      question.text.forEach(word => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'verse-word';
+        wordSpan.textContent = word;
+        verseText.appendChild(wordSpan);
+      });
+      
+      // Crear opciones de palabras
+      createWordOptions(question);
+      
+      // Reiniciar estado de la pregunta
+      feedback.className = 'feedback';
+      gameState.hintUsed = false;
+      hintButton.disabled = false;
+      nextButton.disabled = true;
+    }
+
+    // Crear opciones de palabras
+    function createWordOptions(question) {
+      wordOptions.innerHTML = '';
+      gameState.currentOptions = [];
+      
+      // Añadir la palabra correcta
+      gameState.currentOptions.push(question.correct);
+      
+      // Añadir palabras incorrectas (excluyendo la correcta)
+      const incorrectWords = [];
+      question.text.forEach(word => {
+        if (word !== question.correct && 
+            !incorrectWords.includes(word) && 
+            incorrectWords.length < 3) {
+          incorrectWords.push(word);
+        }
+      });
+      
+      // Si no hay suficientes palabras incorrectas, añadir algunas de otras preguntas
+      while (incorrectWords.length < 3) {
+        const randomQuestion = gameData[Math.floor(Math.random() * gameState.totalQuestions)];
+        const randomWord = randomQuestion.text[Math.floor(Math.random() * randomQuestion.text.length)];
+        if (randomWord !== question.correct && !incorrectWords.includes(randomWord)) {
+          incorrectWords.push(randomWord);
+        }
+      }
+      
+      gameState.currentOptions.push(...incorrectWords);
+      
+      // Mezclar las opciones
+      shuffleArray(gameState.currentOptions);
+      
+      // Crear elementos de opción
+      gameState.currentOptions.forEach(option => {
+        const optionElement = document.createElement('div');
+        optionElement.className = 'word-option';
+        optionElement.textContent = option;
+        optionElement.addEventListener('click', () => selectOption(option, optionElement, question));
+        wordOptions.appendChild(optionElement);
+      });
+    }
+
+    // Seleccionar una opción
+    function selectOption(selectedOption, element, question) {
+      // Deshabilitar todas las opciones
+      const allOptions = document.querySelectorAll('.word-option');
+      allOptions.forEach(opt => {
+        opt.style.pointerEvents = 'none';
+      });
+      
+      // Comprobar si es correcta
+      if (selectedOption === question.correct) {
+        element.classList.add('correct');
+        gameState.score++;
+        scoreElement.textContent = gameState.score;
+        
+        feedback.className = 'feedback correct';
+        feedbackText.textContent = '¡Correcto!';
+        translation.textContent = `${question.correct} = ${question.translation}`;
+        
+        // Efecto de confeti para respuestas correctas
+        createConfetti();
+      } else {
+        element.classList.add('incorrect');
+        
+        // Resaltar la opción correcta
+        allOptions.forEach(opt => {
+          if (opt.textContent === question.correct) {
+            opt.classList.add('correct');
+          }
+        });
+        
+        feedback.className = 'feedback incorrect';
+        feedbackText.textContent = 'Incorrecto';
+        translation.textContent = `La respuesta correcta es: ${question.correct} = ${question.translation}`;
+      }
+      
+      // Habilitar el botón de siguiente
+      nextButton.disabled = false;
+      hintButton.disabled = true;
+    }
+
+    // Mostrar pista
+    function showHint() {
+      if (gameState.hintUsed) return;
+      
+      const question = gameData[gameState.currentQuestion];
+      const options = document.querySelectorAll('.word-option');
+      
+      // Encontrar las opciones incorrectas
+      const incorrectOptions = [];
+      options.forEach(option => {
+        if (option.textContent !== question.correct) {
+          incorrectOptions.push(option);
+        }
+      });
+      
+      // Eliminar una opción incorrecta aleatoria
+      if (incorrectOptions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * incorrectOptions.length);
+        incorrectOptions[randomIndex].style.opacity = '0.3';
+        incorrectOptions[randomIndex].style.pointerEvents = 'none';
+      }
+      
+      gameState.hintUsed = true;
+      hintButton.disabled = true;
+    }
+
+    // Siguiente pregunta
+    function nextQuestion() {
+      gameState.currentQuestion++;
+      updateProgress();
+      
+      if (gameState.usedQuestions.size >= gameState.totalQuestions) {
+        endGame();
+      } else {
+        loadQuestion();
+      }
+    }
+
+    // Actualizar progreso
+    function updateProgress() {
+      const progress = (gameState.usedQuestions.size / gameState.totalQuestions) * 100;
+      progressElement.style.width = `${progress}%`;
+      currentElement.textContent = gameState.usedQuestions.size;
+    }
+
+    // Finalizar juego
+    function endGame() {
+      questionContainer.style.display = 'none';
+      gameComplete.style.display = 'block';
+      
+      finalScore.textContent = `${gameState.score}/${gameState.totalQuestions}`;
+      
+      // Mensaje de rendimiento
+      const percentage = (gameState.score / gameState.totalQuestions) * 100;
+      if (percentage >= 90) {
+        performanceMessage.textContent = '¡Excelente! Eres un experto en participios.';
+      } else if (percentage >= 70) {
+        performanceMessage.textContent = '¡Muy bien! Tienes un buen conocimiento de los participios.';
+      } else if (percentage >= 50) {
+        performanceMessage.textContent = 'Buen trabajo. Sigue practicando para mejorar.';
+      } else {
+        performanceMessage.textContent = 'Sigue practicando. ¡Puedes mejorar!';
+      }
+      
+      // Gran efecto de confeti al finalizar
+      createConfetti(50);
+    }
+
+    // Reiniciar juego
+    function restartGame() {
+      gameState = {
+        currentQuestion: 0,
+        score: 0,
+        totalQuestions: gameData.length,
+        gameCompleted: false,
+        currentOptions: [],
+        usedQuestions: new Set(),
+        hintUsed: false
+      };
+      
+      scoreElement.textContent = '0';
+      questionContainer.style.display = 'block';
+      gameComplete.style.display = 'none';
+      
+      updateProgress();
+      loadQuestion();
+    }
+
+    // Utilidad: Mezclar array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Efecto de confeti
+    function createConfetti(count = 20) {
+      for (let i = 0; i < count; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.backgroundColor = getRandomColor();
+        document.body.appendChild(confetti);
+        
+        // Animación
+        const animation = confetti.animate([
+          { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+          { transform: `translateY(${window.innerHeight}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
+        ], {
+          duration: 1000 + Math.random() * 2000,
+          easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+        });
+        
+        animation.onfinish = () => {
+          confetti.remove();
+        };
+      }
+    }
+
+    // Obtener color aleatorio para confeti
+    function getRandomColor() {
+      const colors = ['#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Inicializar el juego cuando se carga la página
+    document.addEventListener('DOMContentLoaded', initGame);
+  </script>
 </body>
 </html>
