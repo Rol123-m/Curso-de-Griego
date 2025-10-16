@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 25 — El Modo Subjuntivo | Curso Griego Koiné</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{
+            --primary-color:#2c3e50;
+            --secondary-color:#3498db;
+            --accent-color:#e74c3c;
+            --light-color:#ecf0f1;
+            --dark-color:#2c3e50;
+            --transition-speed:0.4s;
+            --card-radius:10px;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
+        body{background:#f5f7fa;color:var(--dark-color);line-height:1.6;}
+        .container{max-width:1200px;margin:0 auto;padding:15px;}
+        header{background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));color:#fff;padding:1rem 0;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1);margin-bottom:1.5rem;position:relative;border-bottom:6px solid rgba(255,255,255,.06)}
+        .header-content{display:flex;flex-direction:column;align-items:center;padding:0 15px}
+        .logo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 4px 8px rgba(0,0,0,.2);margin-bottom:.7rem}
+        header h1{font-size:1.8rem;margin-bottom:.6rem}
+        .mobile-menu-btn{display:none;position:absolute;top:14px;right:14px;background:transparent;border:none;color:white;font-size:1.4rem;cursor:pointer}
+        nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;width:100%;transition:all .3s ease}
+        .nav-btn{background:rgba(255,255,255,.15);border:none;color:white;padding:8px 15px;border-radius:20px;cursor:pointer;transition:all .3s;font-weight:700;font-size:.95rem}
+        .nav-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.25)}
+        .nav-btn.active{background:white;color:var(--primary-color)}
+        .content-section{background:white;border-radius:var(--card-radius);padding:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,.08);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:opacity var(--transition-speed) ease,transform var(--transition-speed) ease;display:none}
+        .content-section.active{opacity:1;transform:translateY(0);display:block}
+        h2{color:var(--primary-color);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--secondary-color);font-size:1.5rem}
+        h3{color:var(--secondary-color);margin:1rem 0 .6rem;font-size:1.1rem}
+        p{margin-bottom:.9rem;font-size:1rem}
+        .sub-nav{display:flex;flex-wrap:wrap;gap:6px;margin:.8rem 0}
+        .sub-nav-btn{background:#e8f4fc;border:1px solid var(--secondary-color);color:var(--primary-color);padding:6px 10px;border-radius:15px;cursor:pointer;font-size:.85rem}
+        .sub-nav-btn.active{background:var(--secondary-color);color:#fff}
+        table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #ddd}
+        th{background:var(--primary-color);color:#fff}
+        tr:nth-child(even){background:#f9f9f9}
+        .quiz-container{background:#f8f9fa;border-radius:8px;padding:1.2rem;margin-top:1rem;border-left:4px solid var(--secondary-color)}
+        .question{margin-bottom:1rem}
+        .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.6rem}
+        .option{padding:8px;background:#fff;border:1px solid #ddd;border-radius:6px;cursor:pointer;transition:all .15s;font-size:.95rem}
+        .option:hover{background:#e8f4fc;border-color:var(--secondary-color)}
+        .option.selected{background:var(--secondary-color);color:#fff;border-color:var(--secondary-color)}
+        .option.correct{background:#2ecc71;color:#fff}
+        .option.incorrect{background:#e74c3c;color:#fff}
+        .check-btn,.next-btn{background:var(--secondary-color);color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;margin-top:8px}
+        .check-btn:hover,.next-btn:hover{background:#2980b9;transform:translateY(-2px)}
+        .result{margin-top:10px;font-weight:700;padding:8px;border-radius:6px;font-size:.95rem}
+        .result.correct{background:#d4edda;color:#155724}
+        .result.incorrect{background:#f8d7da;color:#721c24}
+        .vocabulary-section{background:linear-gradient(135deg,#f8f9fa,#e9ecef);padding:1.1rem;border-radius:8px;margin-top:1rem;text-align:center}
+        .app-link{display:inline-block;background:var(--accent-color);color:white;text-decoration:none;padding:10px 18px;border-radius:25px;font-weight:700;margin-top:.6rem}
+        .note{background:#e8f4fc;border-left:4px solid var(--secondary-color);padding:.8rem;margin:.8rem 0;border-radius:0 6px 6px 0}
+        .highlight{background:#fff8e1;padding:2px 6px;border-radius:3px;font-weight:700}
+        footer{text-align:center;padding:1.2rem 0;color:#7f8c8d;font-size:.85rem}
+        /* responsive */
+        @media(max-width:768px){
+            .mobile-menu-btn{display:block}
+            nav{display:none;flex-direction:column}
+            nav.active{display:flex}
+            .nav-btn{width:100%;border-radius:6px}
+            .options{grid-template-columns:1fr}
+            table{display:block;overflow-x:auto}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        <img class="logo" src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo">
+        <h1>Semana 25 — El Modo Subjuntivo (ἡ ὑποτακτική)</h1>
+        <nav id="mainNav">
+            <button class="nav-btn active" data-target="intro">Introducción</button>
+            <button class="nav-btn" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="nav-btn" data-target="formacion">Formación</button>
+            <button class="nav-btn" data-target="hina">ἵνα + Subjuntivo</button>
+            <button class="nav-btn" data-target="ean">ἐάν + Subjuntivo</button>
+            <button class="nav-btn" data-target="hortatorio">Subjuntivo Hortatorio</button>
+            <button class="nav-btn" data-target="negacion">Negación Enfática</button>
+            <button class="nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="nav-btn" data-target="ejercicios">Ejercicios</button>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- INTRO -->
+    <section id="intro" class="content-section active">
+        <h2>Introducción: ¿Qué es el Modo Subjuntivo?</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn active" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+        </div>
+
+        <p>Hasta ahora solo hemos estudiado el <strong>modo indicativo</strong>. Si un verbo hace una <strong>afirmación</strong> o pregunta una <strong>cuestión factual</strong>, el verbo está en indicativo. Es el <strong>modo de la realidad</strong>. Dice "lo que es".</p>
+
+        <div class="note">
+            <p><strong>📝 Ejemplos de indicativo:</strong></p>
+            <ul>
+                <li>"El libro <strong>es</strong> rojo."</li>
+                <li>"<strong>Quiero</strong> aprender griego."</li>
+                <li>"¿Por qué <strong>fue</strong> el hebreo tan difícil?"</li>
+            </ul>
+        </div>
+
+        <p>El <strong>subjuntivo</strong> no describe lo que es, sino <strong>lo que podría o puede ser</strong>. Es el <strong>modo de la posibilidad</strong> (o probabilidad).</p>
+
+        <div class="note">
+            <p><strong>🎯 Ejemplos de subjuntivo:</strong></p>
+            <ul>
+                <li>"<strong>Puede que aprenda</strong> hebreo."</li>
+                <li>"<strong>Si estudiara</strong> regularmente, <strong>aprendería</strong> griego."</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <p><strong>🧩 Uso común en español:</strong></p>
+            <p>Un uso común del subjuntivo en español es en las cláusulas con "<strong>si</strong>" que expresan hipótesis.</p>
+            <p>"<strong>Si fuera</strong> rico, contrataría un tutor de griego."</p>
+            <p>(El hablante no es rico, es una posibilidad)</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Mini-quiz: Introducción</h3>
+            <div class="question">
+                <p>1. ¿Qué modo describe "lo que es"?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">Indicativo</div>
+                    <div class="option" data-correct="false">Subjuntivo</div>
+                    <div class="option" data-correct="false">Imperativo</div>
+                    <div class="option" data-correct="false">Optativo</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Qué modo describe "lo que podría ser"?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Indicativo</div>
+                    <div class="option" data-correct="true">Subjuntivo</div>
+                    <div class="option" data-correct="false">Infinitivo</div>
+                    <div class="option" data-correct="false">Participio</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- EJEMPLO EXEGÉTICO -->
+    <section id="ejemplo" class="content-section">
+        <h2>Importancia Exegética: Juan 10:28</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn active" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+        </div>
+
+        <p>Cuando escuchamos a alguien que nos importa y respetamos profundamente, no solo atendemos al significado superficial de sus palabras. También captamos su actitud, lo que sus palabras implican sobre nuestra relación con él, lo que más le importa y lo que enfatiza al hablar.</p>
+
+        <p>Un fascinante recurso del griego para mostrar <strong>énfasis</strong> es el uso de la <strong>doble negación οὐ μή</strong> con un verbo en <strong>subjuntivo</strong> para indicar una <strong>negación fuerte sobre el futuro</strong>.</p>
+
+        <h3>Ejemplo en Juan 10:27-28</h3>
+        <p><strong>Texto griego:</strong><br>
+        "κἀγὼ ζωὴν αἰώνιον δίδωμι αὐτοῖς, καὶ <strong>οὐ μὴ ἀπόλωνται</strong> εἰς τὸν αἰῶνα"</p>
+
+        <p><strong>Traducción NIV:</strong> "Yo les doy vida eterna, y <strong>no perecerán</strong> jamás"</p>
+
+        <h3>Análisis exegético</h3>
+        <p>El hablante usa el subjuntivo para sugerir una posibilidad futura, pero en la misma frase niega enfáticamente (con la doble negación) que tal cosa pueda suceder jamás.</p>
+
+        <p>No se usa solo un futuro indicativo con οὐ, sino la combinación enfática <strong>οὐ μὴ + subjuntivo aoristo</strong>. Esto <strong>niega enfáticamente incluso la posibilidad</strong> de que las ovejas de Jesús perezcan.</p>
+
+        <div class="note">
+            <p><strong>💡 Traducción enfática:</strong></p>
+            <p>"<strong>ciertamente no perecerán</strong>", "<strong>de ninguna manera perecerán</strong>"</p>
+        </div>
+
+        <div class="note">
+            <p><strong>📊 Estadística:</strong></p>
+            <p>Esta combinación linguística ocurre unas <strong>85 veces</strong> en el NT, a menudo en promesas significativas.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Ejemplo Exegético</h3>
+            <div class="question">
+                <p>1. ¿Qué construcción enfática encontramos en Juan 10:28?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">μή + indicativo</div>
+                    <div class="option" data-correct="true">οὐ μή + subjuntivo</div>
+                    <div class="option" data-correct="false">ἵνα + optativo</div>
+                    <div class="option" data-correct="false">εἰ + participio</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- ASPECTO VS TIEMPO -->
+    <section id="aspecto" class="content-section">
+        <h2>Aspecto (No Tiempo) en el Subjuntivo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="ejemplo">Ejemplo Exegético</button>
+            <button class="sub-nav-btn active" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+        </div>
+
+        <p><strong>Aspecto Clave:</strong> Un verbo griego solo tiene <strong>significado de tiempo absoluto</strong> (pasado, presente, futuro) en el <strong>modo indicativo</strong>.</p>
+
+        <p>El <strong>único significado</strong> que tiene un verbo en subjuntivo es de <strong>aspecto</strong>, al igual que el participio.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo de Subjuntivo</th>
+                    <th>Aspecto</th>
+                    <th>Significado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Subjuntivo Presente</strong></td>
+                    <td>Continuo</td>
+                    <td>Acción continua o repetitiva</td>
+                </tr>
+                <tr>
+                    <td><strong>Subjuntivo Aoristo</strong></td>
+                    <td>Indefinido</td>
+                    <td>Acción indefinida o puntual</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🔍 Terminología precisa:</strong></p>
+            <p>Es más preciso llamarlos <strong>"subjuntivo continuo"</strong> y <strong>"subjuntivo indefinido"</strong>, porque su verdadero significado es aspectual, no temporal.</p>
+        </div>
+
+        <h3>Ejemplos bíblicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis aspectual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>κύριε, <strong>ἐὰν θέλῃς</strong> δύνασαί με καθαρίσαι (Mt 8:2)</td>
+                    <td>Señor, <strong>si quieres</strong>, puedes limpiarme</td>
+                    <td><strong>θέλῃς</strong>: Subjuntivo presente (continuo). La "voluntad" del Señor se presenta como una disposición continua</td>
+                </tr>
+                <tr>
+                    <td>ἐπὰν δὲ <strong>εὕρητε</strong>, ἀπαγγείλατέ μοι (Mt 2:8)</td>
+                    <td><strong>Cuando hayan encontrado</strong>, avísenme</td>
+                    <td><strong>εὕρητε</strong>: Subjuntivo aoristo (indefinido). La acción de "encontrar" se ve como un evento único y completo</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Aspecto vs Tiempo</h3>
+            <div class="question">
+                <p>1. ¿Qué significado tiene un verbo en subjuntivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Tiempo absoluto</div>
+                    <div class="option" data-correct="true">Aspecto</div>
+                    <div class="option" data-correct="false">Modo</div>
+                    <div class="option" data-correct="false">Voz</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- FORMACIÓN -->
+    <section id="formacion" class="content-section">
+        <h2>Formación del Subjuntivo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="sub-nav-btn active" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn" data-target="hina">ἵνα + Subjuntivo</button>
+        </div>
+
+        <p><strong>¡Buenas noticias!</strong> El subjuntivo usa las <strong>mismas terminaciones primarias</strong> que el indicativo presente.</p>
+
+        <p>La <strong>"señal"</strong> del subjuntivo es la <strong>vocal de conexión alargada</strong>:</p>
+        <ul>
+            <li>La <strong>ο</strong> se alarga a <strong>ω</strong> (ej: λύ<strong>ω</strong>μεν)</li>
+            <li>La <strong>ε</strong> se alarga a <strong>η</strong> (ej: λύ<strong>η</strong>τε)</li>
+        </ul>
+
+        <h3>A. Subjuntivo Presente (Continuo)</h3>
+        <p><strong>Fórmula:</strong> Tema de Presente + Vocal de Conexión Alargada (ω/η) + Terminaciones Primarias.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Voz Activa</th>
+                    <th>Voz Media/Pasiva</th>
+                    <th>Verbo εἰμί (Subj.)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 sg</td>
+                    <td><strong>λύω</strong></td>
+                    <td><strong>λύωμαι</strong></td>
+                    <td><strong>ὦ</strong></td>
+                </tr>
+                <tr>
+                    <td>2 sg</td>
+                    <td><strong>λύῃς</strong></td>
+                    <td><strong>λύῃ</strong></td>
+                    <td><strong>ᾖς</strong></td>
+                </tr>
+                <tr>
+                    <td>3 sg</td>
+                    <td><strong>λύῃ</strong></td>
+                    <td><strong>λύηται</strong></td>
+                    <td><strong>ᾖ</strong></td>
+                </tr>
+                <tr>
+                    <td>1 pl</td>
+                    <td><strong>λύωμεν</strong></td>
+                    <td><strong>λυώμεθα</strong></td>
+                    <td><strong>ὦμεν</strong></td>
+                </tr>
+                <tr>
+                    <td>2 pl</td>
+                    <td><strong>λύητε</strong></td>
+                    <td><strong>λύησθε</strong></td>
+                    <td><strong>ἦτε</strong></td>
+                </tr>
+                <tr>
+                    <td>3 pl</td>
+                    <td><strong>λύωσι(ν)</strong></td>
+                    <td><strong>λύωνται</strong></td>
+                    <td><strong>ὦσι(ν)</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🔍 Nota importante:</strong></p>
+            <p>La terminación <strong>ῃ</strong> aparece en la 3a persona singular activa y la 2a persona singular media/pasiva.</p>
+        </div>
+
+        <h3>B. Subjuntivo Aoristo (Indefinido)</h3>
+        <p><strong>Fórmula:</strong> Tema de Aoristo (sin aumento) + (Formativo temporal) + Vocal de Conexión Alargada (ω/η) + Terminaciones Primarias.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Voz</th>
+                    <th>1er Aoristo (λύω)</th>
+                    <th>2do Aoristo (λαμβάνω)</th>
+                    <th>1er Aoristo Pasivo (λύω)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Activa</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1 sg</td>
+                    <td><strong>λύσω</strong></td>
+                    <td><strong>λάβω</strong></td>
+                    <td><strong>λυθῶ</strong></td>
+                </tr>
+                <tr>
+                    <td>2 sg</td>
+                    <td><strong>λύσῃς</strong></td>
+                    <td><strong>λάβῃς</strong></td>
+                    <td><strong>λυθῇς</strong></td>
+                </tr>
+                <tr>
+                    <td>3 sg</td>
+                    <td><strong>λύσῃ</strong></td>
+                    <td><strong>λάβῃ</strong></td>
+                    <td><strong>λυθῇ</strong></td>
+                </tr>
+                <tr>
+                    <td>1 pl</td>
+                    <td><strong>λύσωμεν</strong></td>
+                    <td><strong>λάβωμεν</strong></td>
+                    <td><strong>λυθῶμεν</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>⚠️ ¡Atención importante!</strong></p>
+            <p><strong>No existe un subjuntivo futuro.</strong> Si ves una forma como ἀγαπήσω, podría ser un subjuntivo aoristo (ἵνα ἀγαπήσω) o un futuro indicativo (ἀγαπήσω). ¡El contexto decide!</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Formación</h3>
+            <div class="question">
+                <p>1. ¿Cuál es la "señal" del subjuntivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">El aumento</div>
+                    <div class="option" data-correct="true">La vocal de conexión alargada</div>
+                    <div class="option" data-correct="false">La reduplicación</div>
+                    <div class="option" data-correct="false">El sufijo -σα</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- ἵνα + SUBJUNTIVO -->
+    <section id="hina" class="content-section">
+        <h2>ἵνα + Subjuntivo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn active" data-target="hina">ἵνα + Subjuntivo</button>
+            <button class="sub-nav-btn" data-target="ean">ἐάν + Subjuntivo</button>
+        </div>
+
+        <p><strong>ἵνα</strong> se usa casi siempre con el subjuntivo y suele indicar <strong>propósito</strong> (para que, a fin de que).</p>
+
+        <h3>Ejemplos bíblicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>τίς σοι ἔδωκεν τὴν ἐξουσίαν ταύτην <strong>ἵνα ταῦτα ποιῇς</strong>; (Mr 11:28)</td>
+                    <td>¿Quién te dio esta autoridad <strong>para que hagas</strong> estas cosas?</td>
+                    <td><strong>ἵνα</strong> + subjuntivo presente (propósito)</td>
+                </tr>
+                <tr>
+                    <td>ἐπηρώτησαν αὐτὸν ... <strong>ἵνα κατηγορήσωσιν</strong> αὐτοῦ (Mt 12:10)</td>
+                    <td>Le preguntaron ... <strong>para poder acusarlo</strong></td>
+                    <td><strong>ἵνα</strong> + subjuntivo aoristo (propósito)</td>
+                </tr>
+                <tr>
+                    <td>ἐκήρυξαν <strong>ἵνα μετανοῶσιν</strong> (Mr 6:12)</td>
+                    <td>Predicaron <strong>que debían arrepentirse</strong></td>
+                    <td><strong>ἵνα</strong> + subjuntivo (contenido)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>ἵνα μή (para que no)</h3>
+        <p>La frase <strong>ἵνα μή</strong> puede traducirse "<strong>para que no</strong>" o "<strong>no sea que</strong>".</p>
+
+        <div class="note">
+            <p><strong>📖 Ejemplo:</strong></p>
+            <p>οἱ πατέρες, μὴ ἐρεθίζετε τὰ τέκνα ὑμῶν, <strong>ἵνα μὴ ἀθυμῶσιν</strong> (Col 3:21)</p>
+            <p>"Padres, no provoquen a sus hijos, <strong>para que no se desanimen</strong>"</p>
+        </div>
+
+        <div class="note">
+            <p><strong>💡 Uso especial:</strong></p>
+            <p>A veces, la cláusula con ἵνα da el <strong>contenido</strong> de lo que se anuncia con el verbo principal.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: ἵνα + Subjuntivo</h3>
+            <div class="question">
+                <p>1. ¿Qué significado suele tener ἵνα + subjuntivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Tiempo</div>
+                    <div class="option" data-correct="true">Propósito</div>
+                    <div class="option" data-correct="false">Condición</div>
+                    <div class="option" data-correct="false">Causa</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- ἐάν + SUBJUNTIVO -->
+    <section id="ean" class="content-section">
+        <h2>ἐάν + Subjuntivo (Oraciones Condicionales)</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="hina">ἵνα + Subjuntivo</button>
+            <button class="sub-nav-btn active" data-target="ean">ἐάν + Subjuntivo</button>
+            <button class="sub-nav-btn" data-target="hortatorio">Subjuntivo Hortatorio</button>
+        </div>
+
+        <p>Esta combinación se usa en enunciados condicionales ("Si... entonces...").</p>
+
+        <h3>Terminología de las oraciones condicionales</h3>
+        <ul>
+            <li>La cláusula "si" se llama <strong>protasis</strong></li>
+            <li>La cláusula "entonces" se llama <strong>apodosis</strong></li>
+        </ul>
+
+        <p>Las oraciones condicionales con <strong>ἐάν</strong> y subjuntivo en la protasis se conocen como <strong>Condiciones de Tercera Clase</strong>.</p>
+
+        <h3>Tipos de condiciones de tercera clase</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Futura Más Probable</strong></td>
+                    <td>Condición específica en el futuro</td>
+                    <td>ταῦτά σοι πάντα δώσω, <strong>ἐὰν πεσὼν προσκυνήσῃς</strong> μοι (Mt 4:9)<br>"Todo esto te daré, <strong>si te postras y me adoras</strong>"</td>
+                </tr>
+                <tr>
+                    <td><strong>Presente General</strong></td>
+                    <td>Verdad general o axiomática</td>
+                    <td><strong>ἐάν τις περιπατῇ</strong> ἐν τῇ ἡμέρᾳ, οὐ προσκόπτει (Jn 11:9)<br>"<strong>Si alguien camina</strong> de día, no tropieza"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🔍 Diferencia clave:</strong></p>
+            <p>Aparte del tiempo del verbo en la apodosis, solo <strong>contexto</strong> puede decirte si el hablante está haciendo una declaración específica o enunciando una verdad general.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: ἐάν + Subjuntivo</h3>
+            <div class="question">
+                <p>1. ¿Qué tipo de oración forma ἐάν + subjuntivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Temporal</div>
+                    <div class="option" data-correct="true">Condicional</div>
+                    <div class="option" data-correct="false">Causal</div>
+                    <div class="option" data-correct="false">Concesiva</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- SUBJUNTIVO HORTATORIO -->
+    <section id="hortatorio" class="content-section">
+        <h2>Subjuntivo Hortatorio y Deliberativo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="ean">ἐάν + Subjuntivo</button>
+            <button class="sub-nav-btn active" data-target="hortatorio">Subjuntivo Hortatorio</button>
+            <button class="sub-nav-btn" data-target="negacion">Negación Enfática</button>
+        </div>
+
+        <h3>A. Subjuntivo Hortatorio (Exhortación)</h3>
+        <p>La <strong>primera persona del plural</strong> del subjuntivo se usa para exhortar o animar a un grupo a hacer algo. Suele ir al principio de la oración.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>προσευχώμεθα</strong>.</td>
+                    <td><strong>Oremos</strong>. / <strong>Vamos a orar</strong>.</td>
+                    <td>Subjuntivo hortatorio</td>
+                </tr>
+                <tr>
+                    <td><strong>διέλθωμεν</strong> εἰς τὸ πέραν (Mr 4:35)</td>
+                    <td><strong>Pasemos</strong> al otro lado.</td>
+                    <td>Subjuntivo hortatorio</td>
+                </tr>
+                <tr>
+                    <td><strong>ἐκβάλω</strong> τὸ κάρφος ἐκ τοῦ ὀφθαλμοῦ σου (Mt 7:4)</td>
+                    <td><strong>Deja que saque</strong> la paja de tu ojo.</td>
+                    <td>Subjuntivo hortatorio (1a persona singular)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>💡 Regla de traducción:</strong>
+            <p>Usa "<strong>Vamos a...</strong>" o "<strong>...emos</strong>" en tu traducción.</p>
+        </div>
+
+        <h3>B. Subjuntivo Deliberativo (Preguntas Retóricas)</h3>
+        <p>Cuando se hace una pregunta cuya respuesta es incierta o se reflexiona en voz alta, el verbo puede ir en subjuntivo.</p>
+
+        <div class="note">
+            <p><strong>📖 Ejemplo bíblico:</strong></p>
+            <p>μὴ οὖν μεριμνήσητε λέγοντες, <strong>τί φάγωμεν</strong>; ἤ: <strong>τί πίωμεν</strong>; ἤ: <strong>τί περιβαλώμεθα</strong>; (Mt 6:31)</p>
+            <p>"Por tanto, no se preocupen diciendo: '<strong>¿Qué vamos a comer</strong>?' o: '<strong>¿Qué vamos a beber</strong>?' o: '<strong>¿Con qué vamos a vestirnos</strong>?'"</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Subjuntivo Hortatorio</h3>
+            <div class="question">
+                <p>1. ¿Qué persona se usa normalmente para el subjuntivo hortatorio?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Segunda persona singular</div>
+                    <div class="option" data-correct="false">Tercera persona plural</div>
+                    <div class="option" data-correct="true">Primera persona plural</div>
+                    <div class="option" data-correct="false">Segunda persona plural</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- NEGACIÓN ENFÁTICA -->
+    <section id="negacion" class="content-section">
+        <h2>Negación y Preguntas con Subjuntivo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="hortatorio">Subjuntivo Hortatorio</button>
+            <button class="sub-nav-btn active" data-target="negacion">Negación Enfática</button>
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+        </div>
+
+        <h3>Negación del Subjuntivo</h3>
+        <p><strong>Regla básica:</strong></p>
+        <ul>
+            <li><strong>οὐ</strong> niega el <strong>indicativo</strong></li>
+            <li><strong>μή</strong> niega el <strong>subjuntivo</strong> y otros modos</li>
+        </ul>
+
+        <h3>Construcción Enfática: οὐ μή + Subjuntivo Aoristo</h3>
+        <p>Esta es una <strong>negación enfática del futuro</strong>. Los dos negativos no se cancelan; se refuerzan.</p>
+
+        <div class="note">
+            <p><strong>🎯 Significado:</strong> "<strong>de ninguna manera</strong>", "<strong>ciertamente no</strong>"</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción literal</th>
+                    <th>Traducción enfática</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>οὐ μὴ ἀπόλωνται</strong> (Jn 10:28)</td>
+                    <td>no puedan perecer</td>
+                    <td><strong>de ninguna manera perecerán</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>οὐ μὴ γεύσωνται</strong> θανάτου (Mr 9:1)</td>
+                    <td>no puedan probar la muerte</td>
+                    <td><strong>ciertamente no probarán</strong> la muerte</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Preguntas con Partículas de Negación</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo de Pregunta</th>
+                    <th>Partícula</th>
+                    <th>Respuesta Esperada</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neutra</td>
+                    <td>(sin partícula)</td>
+                    <td>Incierta</td>
+                    <td>σὺ εἶ ὁ βασιλεὺς τῶν Ἰουδαίων; (Mt 27:11)<br>"¿Eres tú el rey de los judíos?"</td>
+                </tr>
+                <tr>
+                    <td>Espera "SÍ"</td>
+                    <td><strong>οὐ</strong></td>
+                    <td>Afirmativa</td>
+                    <td>Διδάσκαλε, <strong>οὐ</strong> μέλει σοι ὅτι ἀπολλύμεθα; (Mr 4:38)<br>"Maestro, ¿no te importa que perezcamos?"</td>
+                </tr>
+                <tr>
+                    <td>Espera "NO"</td>
+                    <td><strong>μή</strong></td>
+                    <td>Negativa</td>
+                    <td><strong>μή</strong> πάντες ἀπόστολοι; (1 Co 12:29)<br>"¿Acaso todos son apóstoles?"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Negación y Preguntas</h3>
+            <div class="question">
+                <p>1. ¿Qué partícula se usa para negar el subjuntivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">οὐ</div>
+                    <div class="option" data-correct="true">μή</div>
+                    <div class="option" data-correct="false">οὐδέ</div>
+                    <div class="option" data-correct="false">μηδέ</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- VOCABULARIO -->
+    <section id="vocabulario" class="content-section">
+        <h2>Vocabulario Esencial - Semana 25</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="negacion">Negación Enfática</button>
+            <button class="sub-nav-btn active" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Palabra griega</th>
+                    <th>Significado</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>λίθος, -ου, ὁ</strong></td>
+                    <td>piedra</td>
+                    <td>Sustantivo masculino</td>
+                </tr>
+                <tr>
+                    <td><strong>τοιοῦτος, -αύτη, -οῦτον</strong></td>
+                    <td>tal, de tal clase</td>
+                    <td>Adjetivo demostrativo. Concuerda con el sustantivo que modifica</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Palabras clave que introducen subjuntivo</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Palabra</th>
+                    <th>Significado</th>
+                    <th>Uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ἵνα</strong></td>
+                    <td>para que, a fin de que</td>
+                    <td>+ subjuntivo (propósito)</td>
+                </tr>
+                <tr>
+                    <td><strong>ἐάν</strong></td>
+                    <td>si</td>
+                    <td>+ subjuntivo (condición)</td>
+                </tr>
+                <tr>
+                    <td><strong>ὅταν</strong> (ὅτε + ἄν)</td>
+                    <td>cuando(quiera)</td>
+                    <td>+ subjuntivo</td>
+                </tr>
+                <tr>
+                    <td><strong>ἕως ἄν</strong></td>
+                    <td>hasta que</td>
+                    <td>+ subjuntivo</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="vocabulary-section">
+            <h3>Práctica con App</h3>
+            <p>Practica estas palabras con nuestra aplicación de vocabulario:</p>
+            <a href="#" class="app-link">Abrir App de Vocabulario</a>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Vocabulario</h3>
+            <div class="question">
+                <p>1. ¿Qué significa λίθος?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">libro</div>
+                    <div class="option" data-correct="true">piedra</div>
+                    <div class="option" data-correct="false">luz</div>
+                    <div class="option" data-correct="false">pan</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- EJERCICIOS -->
+    <section id="ejercicios" class="content-section">
+        <h2>Ejercicios de Traducción</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn active" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <h3>Ejercicio 1: Identifica el uso del subjuntivo</h3>
+        <p>En cada ejemplo, identifica el uso del subjuntivo:</p>
+        <ol>
+            <li><strong>ἵνα πιστεύσητε</strong> (Juan 20:31)<br>
+                <strong>Uso:</strong> Propósito (con ἵνα)<br>
+                <strong>Traducción:</strong> para que crean</li>
+            <li><strong>ἐὰν ὁμολογῶμεν</strong> τὰς ἁμαρτίας ἡμῶν (1 Juan 1:9)<br>
+                <strong>Uso:</strong> Condición (con ἐάν)<br>
+                <strong>Traducción:</strong> si confesamos nuestros pecados</li>
+            <li><strong>διέλθωμεν</strong> εἰς τὸ πέραν (Marcos 4:35)<br>
+                <strong>Uso:</strong> Hortatorio<br>
+                <strong>Traducción:</strong> pasemos al otro lado</li>
+        </ol>
+
+        <h3>Ejercicio 2: Traduce al español</h3>
+        <p>Traduce las siguientes frases:</p>
+        <ol>
+            <li>ὁ <strong>πιστεύων</strong> εἰς ἐμὲ οὐ μὴ ἀποθάνῃ.<br>
+                <strong>Traducción:</strong> El que cree en mí no morirá jamás.</li>
+            <li><strong>ἐὰν θέλῃς</strong> δύνασαί με καθαρίσαι.<br>
+                <strong>Traducción:</strong> Si quieres, puedes limpiarme.</li>
+            <li><strong>οὐ μὴ γεύσωνται</strong> θανάτου.<br>
+                <strong>Traducción:</strong> De ninguna manera probarán la muerte.</li>
+        </ol>
+
+        <h3>Ejercicio 3: Completa la tabla</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Verbo</th>
+                    <th>Subjuntivo Presente Activo</th>
+                    <th>Subjuntivo Aoristo Activo</th>
+                    <th>Significado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>λύω</td>
+                    <td>λύω</td>
+                    <td>λύσω</td>
+                    <td>desate/desatare</td>
+                </tr>
+                <tr>
+                    <td>γράφω</td>
+                    <td>γράφω</td>
+                    <td>γράψω</td>
+                    <td>escriba/escribiere</td>
+                </tr>
+                <tr>
+                    <td>ἀκούω</td>
+                    <td>ἀκούω</td>
+                    <td>ἀκούσω</td>
+                    <td>oiga/oyere</td>
+                </tr>
+                <tr>
+                    <td>πιστεύω</td>
+                    <td>πιστεύω</td>
+                    <td>πιστεύσω</td>
+                    <td>crea/creyere</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🎯 Reflexión final:</strong></p>
+            <p>El modo subjuntivo abre un nuevo mundo de significado en el griego del Nuevo Testamento, permitiéndonos acceder a las posibilidades, los deseos, los propósitos y las condiciones que los autores bíblicos querían comunicar.</p>
+            <p>Su correcta identificación y comprensión son cruciales para una exégesis precisa, especialmente en pasajes que contienen promesas enfáticas, exhortaciones comunitarias o verdades espirituales condicionadas a nuestra respuesta.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario Final</h3>
+            <div class="question">
+                <p>1. ¿Qué partícula introduce normalmente una cláusula de propósito?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">ἐάν</div>
+                    <div class="option" data-correct="true">ἵνα</div>
+                    <div class="option" data-correct="false">ὅταν</div>
+                    <div class="option" data-correct="false">ἕως</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Qué significa la construcción οὐ μή + subjuntivo aoristo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Posibilidad futura</div>
+                    <div class="option" data-correct="false">Mandato</div>
+                    <div class="option" data-correct="true">Negación enfática del futuro</div>
+                    <div class="option" data-correct="false">Condición general</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2023 Curso de Griego Koiné | Semana 25 - El Modo Subjuntivo</p>
+</footer>
+
+<script>
+    // Navegación principal
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase activa de todos los botones
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            // Agregar clase activa al botón clickeado
+            btn.classList.add('active');
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección correspondiente
+            const target = btn.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+
+    // Navegación secundaria
+    document.querySelectorAll('.sub-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase activa de todos los botones en el mismo sub-nav
+            const parent = btn.closest('.sub-nav');
+            parent.querySelectorAll('.sub-nav-btn').forEach(b => b.classList.remove('active'));
+            // Agregar clase activa al botón clickeado
+            btn.classList.add('active');
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección correspondiente
+            const target = btn.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+            // Actualizar navegación principal
+            document.querySelectorAll('.nav-btn').forEach(navBtn => {
+                navBtn.classList.remove('active');
+                if (navBtn.getAttribute('data-target') === target) {
+                    navBtn.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // Menú móvil
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+        document.getElementById('mainNav').classList.toggle('active');
+    });
+
+    // Funcionalidad de los cuestionarios
+    document.querySelectorAll('.check-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const quizContainer = btn.closest('.quiz-container');
+            const questions = quizContainer.querySelectorAll('.question');
+            let correctAnswers = 0;
+            let totalQuestions = 0;
+
+            questions.forEach(question => {
+                totalQuestions++;
+                const options = question.querySelectorAll('.option');
+                let answered = false;
+                let questionCorrect = true;
+
+                options.forEach(option => {
+                    if (option.classList.contains('selected')) {
+                        answered = true;
+                        const isCorrect = option.getAttribute('data-correct') === 'true';
+                        if (isCorrect) {
+                            option.classList.add('correct');
+                        } else {
+                            option.classList.add('incorrect');
+                            questionCorrect = false;
+                        }
+                    }
+                });
+
+                // Mostrar todas las respuestas correctas si no se respondió
+                if (!answered) {
+                    options.forEach(option => {
+                        if (option.getAttribute('data-correct') === 'true') {
+                            option.classList.add('correct');
+                        }
+                    });
+                } else if (questionCorrect) {
+                    correctAnswers++;
+                }
+            });
+
+            const result = quizContainer.querySelector('.result');
+            if (correctAnswers === totalQuestions) {
+                result.textContent = `¡Perfecto! ${correctAnswers}/${totalQuestions} respuestas correctas.`;
+                result.className = 'result correct';
+            } else {
+                result.textContent = `${correctAnswers}/${totalQuestions} respuestas correctas. ¡Sigue practicando!`;
+                result.className = 'result incorrect';
+            }
+        });
+    });
+
+    // Selección de opciones en cuestionarios
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+            const question = option.closest('.question');
+            question.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+        });
+    });
+</script>
+</body>
+</html>
