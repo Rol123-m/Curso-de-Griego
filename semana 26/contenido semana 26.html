@@ -1,0 +1,1106 @@
+[file name]: contenidoSemana26.html
+[file content begin]
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 26 — El Infinitivo Griego | Curso Griego Koiné</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{
+            --primary-color:#2c3e50;
+            --secondary-color:#3498db;
+            --accent-color:#e74c3c;
+            --light-color:#ecf0f1;
+            --dark-color:#2c3e50;
+            --transition-speed:0.4s;
+            --card-radius:10px;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
+        body{background:#f5f7fa;color:var(--dark-color);line-height:1.6;}
+        .container{max-width:1200px;margin:0 auto;padding:15px;}
+        header{background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));color:#fff;padding:1rem 0;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1);margin-bottom:1.5rem;position:relative;border-bottom:6px solid rgba(255,255,255,.06)}
+        .header-content{display:flex;flex-direction:column;align-items:center;padding:0 15px}
+        .logo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 4px 8px rgba(0,0,0,.2);margin-bottom:.7rem}
+        header h1{font-size:1.8rem;margin-bottom:.6rem}
+        .mobile-menu-btn{display:none;position:absolute;top:14px;right:14px;background:transparent;border:none;color:white;font-size:1.4rem;cursor:pointer}
+        nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;width:100%;transition:all .3s ease}
+        .nav-btn{background:rgba(255,255,255,.15);border:none;color:white;padding:8px 15px;border-radius:20px;cursor:pointer;transition:all .3s;font-weight:700;font-size:.95rem}
+        .nav-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.25)}
+        .nav-btn.active{background:white;color:var(--primary-color)}
+        .content-section{background:white;border-radius:var(--card-radius);padding:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,.08);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:opacity var(--transition-speed) ease,transform var(--transition-speed) ease;display:none}
+        .content-section.active{opacity:1;transform:translateY(0);display:block}
+        h2{color:var(--primary-color);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--secondary-color);font-size:1.5rem}
+        h3{color:var(--secondary-color);margin:1rem 0 .6rem;font-size:1.1rem}
+        p{margin-bottom:.9rem;font-size:1rem}
+        .sub-nav{display:flex;flex-wrap:wrap;gap:6px;margin:.8rem 0}
+        .sub-nav-btn{background:#e8f4fc;border:1px solid var(--secondary-color);color:var(--primary-color);padding:6px 10px;border-radius:15px;cursor:pointer;font-size:.85rem}
+        .sub-nav-btn.active{background:var(--secondary-color);color:#fff}
+        table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #ddd}
+        th{background:var(--primary-color);color:#fff}
+        tr:nth-child(even){background:#f9f9f9}
+        .quiz-container{background:#f8f9fa;border-radius:8px;padding:1.2rem;margin-top:1rem;border-left:4px solid var(--secondary-color)}
+        .question{margin-bottom:1rem}
+        .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.6rem}
+        .option{padding:8px;background:#fff;border:1px solid #ddd;border-radius:6px;cursor:pointer;transition:all .15s;font-size:.95rem}
+        .option:hover{background:#e8f4fc;border-color:var(--secondary-color)}
+        .option.selected{background:var(--secondary-color);color:#fff;border-color:var(--secondary-color)}
+        .option.correct{background:#2ecc71;color:#fff}
+        .option.incorrect{background:#e74c3c;color:#fff}
+        .check-btn,.next-btn{background:var(--secondary-color);color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;margin-top:8px}
+        .check-btn:hover,.next-btn:hover{background:#2980b9;transform:translateY(-2px)}
+        .result{margin-top:10px;font-weight:700;padding:8px;border-radius:6px;font-size:.95rem}
+        .result.correct{background:#d4edda;color:#155724}
+        .result.incorrect{background:#f8d7da;color:#721c24}
+        .vocabulary-section{background:linear-gradient(135deg,#f8f9fa,#e9ecef);padding:1.1rem;border-radius:8px;margin-top:1rem;text-align:center}
+        .app-link{display:inline-block;background:var(--accent-color);color:white;text-decoration:none;padding:10px 18px;border-radius:25px;font-weight:700;margin-top:.6rem}
+        .note{background:#e8f4fc;border-left:4px solid var(--secondary-color);padding:.8rem;margin:.8rem 0;border-radius:0 6px 6px 0}
+        .highlight{background:#fff8e1;padding:2px 6px;border-radius:3px;font-weight:700}
+        footer{text-align:center;padding:1.2rem 0;color:#7f8c8d;font-size:.85rem}
+        /* responsive */
+        @media(max-width:768px){
+            .mobile-menu-btn{display:block}
+            nav{display:none;flex-direction:column}
+            nav.active{display:flex}
+            .nav-btn{width:100%;border-radius:6px}
+            .options{grid-template-columns:1fr}
+            table{display:block;overflow-x:auto}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        <img class="logo" src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo">
+        <h1>Semana 26 — El Infinitivo Griego (τὸ ἀπαρέμφατον)</h1>
+        <nav id="mainNav">
+            <button class="nav-btn active" data-target="intro">Introducción</button>
+            <button class="nav-btn" data-target="exegesis">Ejemplo Exegético</button>
+            <button class="nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="nav-btn" data-target="formacion">Formación</button>
+            <button class="nav-btn" data-target="sustantivo">Infinitivo Sustantivado</button>
+            <button class="nav-btn" data-target="complementario">Infinitivo Complementario</button>
+            <button class="nav-btn" data-target="preposicion">Infinitivo con Preposición</button>
+            <button class="nav-btn" data-target="propósito">Infinitivo de Propósito</button>
+            <button class="nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="nav-btn" data-target="ejercicios">Ejercicios</button>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- INTRO -->
+    <section id="intro" class="content-section active">
+        <h2>Introducción: ¿Qué es el Infinitivo?</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn active" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn" data-target="exegesis">Ejemplo Exegético</button>
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+        </div>
+
+        <p>El infinitivo es un <strong>sustantivo verbal</strong>, de manera similar a como el participio es un <strong>adjetivo verbal</strong>.</p>
+
+        <div class="note">
+            <p><strong>📝 Ejemplos en español:</strong></p>
+            <ul>
+                <li>"<strong>Estudiar</strong> es mi más alta aspiración." (El infinitivo <em>estudiar</em> es el <strong>sujeto</strong> de la oración).</li>
+                <li>"Empecé <strong>a sudar</strong> cuando me di cuenta de que los finales estaban a tres semanas." (El infinitivo <em>sudar</em> es el <strong>objeto directo</strong> del verbo).</li>
+            </ul>
+        </div>
+
+        <h3>Características del Infinitivo Griego</h3>
+        <ul>
+            <li>Es un <strong>sustantivo verbal</strong>.</li>
+            <li>Siempre es <strong>indeclinable</strong> (no cambia su forma), pero se considera <strong>singular neutro</strong>.</li>
+            <li>Cuando va precedido de un artículo definido, este siempre es <strong>neutro singular</strong> y su caso lo determina la función del infinitivo.</li>
+            <li>Puede tener un <strong>objeto directo</strong> y <strong>modificadores adverbiales</strong>.</li>
+        </ul>
+
+        <div class="note">
+            <p><strong>🔍 Ejemplos con artículo:</strong></p>
+            <ul>
+                <li><strong>τὸ βάλλειν</strong> (nominativo) - "el [hecho de] arrojar" (sujeto)</li>
+                <li><strong>τῷ βάλλειν</strong> (dativo) - "para/por el [hecho de] arrojar" (objeto de preposición)</li>
+            </ul>
+        </div>
+
+        <p><strong>¡El infinitivo no tiene persona ni número!</strong></p>
+
+        <div class="quiz-container">
+            <h3>Mini-quiz: Introducción</h3>
+            <div class="question">
+                <p>1. ¿Qué es el infinitivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Un adjetivo verbal</div>
+                    <div class="option" data-correct="true">Un sustantivo verbal</div>
+                    <div class="option" data-correct="false">Un adverbio verbal</div>
+                    <div class="option" data-correct="false">Una preposición verbal</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿El infinitivo griego es declinable?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Sí</div>
+                    <div class="option" data-correct="true">No, es indeclinable</div>
+                    <div class="option" data-correct="false">Solo en algunos casos</div>
+                    <div class="option" data-correct="false">Depende del verbo</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- EJEMPLO EXEGÉTICO -->
+    <section id="exegesis" class="content-section">
+        <h2>Importancia Exegética: 1 Corintios 15:25</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn active" data-target="exegesis">Ejemplo Exegético</button>
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+        </div>
+
+        <p>Los infinitivos a menudo completan ideas importantes. No existe idea más importante que la que Pablo expresa en <strong>1 Corintios 15:25</strong>.</p>
+
+        <h3>Texto griego y traducción</h3>
+        <p><strong>Texto griego:</strong><br>
+        "δεῖ γὰρ αὐτὸν <strong>βασιλεύειν</strong> ἄχρι οὗ θῇ πάντας τοὺς ἐχθροὺς ὑπὸ τοὺς πόδας αὐτοῦ"</p>
+
+        <p><strong>Traducción:</strong> "Porque es necesario que él <strong>esté reinando</strong> hasta que haya puesto a todos sus enemigos bajo sus pies"</p>
+
+        <h3>Análisis exegético</h3>
+        <p>Un infinitivo griego contiene <strong>tiempo verbal (aspecto)</strong>, algo que no es claro en los infinitivos españoles. El "tiempo" en este versículo es <strong>presente</strong>, lo que describe una <strong>acción continua</strong>.</p>
+
+        <p>Así, este infinitivo presente explica lo que es necesario acerca de lo que Dios <strong>está en proceso de hacer</strong> a través de Jesús. Pablo enfatiza que Jesús <strong>está en proceso de reinar</strong> hasta que la tarea de sujetar todo bajo sus pies esté completa.</p>
+
+        <div class="note">
+            <p><strong>💡 Significado teológico:</strong></p>
+            <p>Esta idea es importante porque algunos piensan en el reinado de Jesús solo como algo anticipado en el futuro. Habrá una manifestación total de esa autoridad un día, pero <strong>el proceso ya ha comenzado</strong> en el segundo Adán.</p>
+        </div>
+
+        <div class="note">
+            <p><strong>📖 Referencia del AT:</strong></p>
+            <p>La observación sobre la sujeción es una alusión al <strong>Salmo 110:1</strong>, uno de los pasajes del Antiguo Testamento favoritos del Nuevo Testamento.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Ejemplo Exegético</h3>
+            <div class="question">
+                <p>1. ¿Qué aspecto tiene el infinitivo βασιλεύειν en 1 Corintios 15:25?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Aoristo (indefinido)</div>
+                    <div class="option" data-correct="true">Presente (continuo)</div>
+                    <div class="option" data-correct="false">Perfecto (completado)</div>
+                    <div class="option" data-correct="false">Futuro (futuro)</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- ASPECTO VS TIEMPO -->
+    <section id="aspecto" class="content-section">
+        <h2>Aspecto (No Tiempo) en el Infinitivo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="exegesis">Ejemplo Exegético</button>
+            <button class="sub-nav-btn active" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+        </div>
+
+        <p>Los infinitivos pueden aparecer en tres tiempos: <strong>presente, aoristo y perfecto</strong>. Como el infinitivo está fuera del modo indicativo, estas formas <strong>no diferencian tiempo absoluto, sino solo aspecto</strong>.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiempo</th>
+                    <th>Aspecto</th>
+                    <th>Traducción (Intento de reflejar aspecto)</th>
+                    <th>Traducción común</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Presente</strong></td>
+                    <td>Continuo</td>
+                    <td>"el continuar estudiando", "al estudiar"</td>
+                    <td>"estudiar"</td>
+                </tr>
+                <tr>
+                    <td><strong>Aoristo</strong></td>
+                    <td>Indefinido</td>
+                    <td>"el estudiar (de una vez)"</td>
+                    <td>"estudiar"</td>
+                </tr>
+                <tr>
+                    <td><strong>Perfecto</strong></td>
+                    <td>Completado</td>
+                    <td>"el haber estudiado"</td>
+                    <td>"haber estudiado"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Ejemplos bíblicos de aspecto</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis aspectual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Οὐδεὶς δύναται δυσὶ κυρίοις <strong>δουλεύειν</strong> (Mt 6:24)</td>
+                    <td>Nadie puede <strong>servir</strong> a dos señores</td>
+                    <td><strong>δουλεύειν</strong>: Infinitivo presente (continuo). La acción de servir se presenta como algo continuo</td>
+                </tr>
+                <tr>
+                    <td>μὴ φοβηθῇς <strong>παραλαβεῖν</strong> Μαρίαν τὴν γυναῖκά σου (Mt 1:20)</td>
+                    <td>No temas <strong>tomar</strong> a María por mujer</td>
+                    <td><strong>παραλαβεῖν</strong>: Infinitivo aoristo (indefinido). La acción de "tomar" se ve como un evento único</td>
+                </tr>
+                <tr>
+                    <td>ἤκουσαν τοῦτο αὐτὸν <strong>πεποιηκέναι</strong> τὸ σημεῖον (Jn 12:18)</td>
+                    <td>Oyeron que él <strong>había hecho</strong> esta señal</td>
+                    <td><strong>πεποιηκέναι</strong>: Infinitivo perfecto (completado). La acción de hacer el signo está completada</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>💡 Consejo de traducción:</strong></p>
+            <p>Para ayudar a reforzar el significado del aspecto en tu mente, puedes intentar inicialmente usar "continuar" en tu traducción del infinitivo presente. <strong>βλέπειν</strong> significa "continuar viendo", mientras <strong>βλέψαι</strong> significa "ver (de una vez)".</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Aspecto vs Tiempo</h3>
+            <div class="question">
+                <p>1. ¿Qué significado tiene un verbo en infinitivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Tiempo absoluto</div>
+                    <div class="option" data-correct="true">Aspecto</div>
+                    <div class="option" data-correct="false">Modo</div>
+                    <div class="option" data-correct="false">Persona</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- FORMACIÓN -->
+    <section id="formacion" class="content-section">
+        <h2>Formación del Infinitivo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="sub-nav-btn active" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn" data-target="sustantivo">Infinitivo Sustantivado</button>
+        </div>
+
+        <h3>Cuadro de Morfemas del Infinitivo</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Voz</th>
+                    <th>Presente</th>
+                    <th>1er Aoristo</th>
+                    <th>2do Aoristo</th>
+                    <th>Perfecto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Activa</strong></td>
+                    <td>ειν</td>
+                    <td>σαι</td>
+                    <td>ειν</td>
+                    <td>κεναι</td>
+                </tr>
+                <tr>
+                    <td><strong>Media</strong></td>
+                    <td>εσθαι</td>
+                    <td>σασθαι</td>
+                    <td>εσθαι</td>
+                    <td>σθαι</td>
+                </tr>
+                <tr>
+                    <td><strong>Pasiva</strong></td>
+                    <td>εσθαι</td>
+                    <td>θηναι</td>
+                    <td>ηναι</td>
+                    <td>σθαι</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🔍 Pista importante:</strong></p>
+            <p><strong>Todos los infinitivos, excepto el presente activo y el segundo aoristo activo, terminan en αι.</strong></p>
+        </div>
+
+        <h3>Paradigma: Infinitivo de λύω (soltar, desatar)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiempo/Voz</th>
+                    <th>Infinitivo</th>
+                    <th>Traducción Aspectual</th>
+                    <th>Traducción Común</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pres. Activo</strong></td>
+                    <td>λύειν</td>
+                    <td>el continuar soltando</td>
+                    <td>soltar</td>
+                </tr>
+                <tr>
+                    <td><strong>Pres. Medio</strong></td>
+                    <td>λύεσθαι</td>
+                    <td>el continuar soltando (para sí)</td>
+                    <td>soltarse</td>
+                </tr>
+                <tr>
+                    <td><strong>Pres. Pasivo</strong></td>
+                    <td>λύεσθαι</td>
+                    <td>el ser soltado continuamente</td>
+                    <td>ser soltado</td>
+                </tr>
+                <tr>
+                    <td><strong>1 Aor. Activo</strong></td>
+                    <td>λῦσαι</td>
+                    <td>el soltar (de una vez)</td>
+                    <td>soltar</td>
+                </tr>
+                <tr>
+                    <td><strong>1 Aor. Medio</strong></td>
+                    <td>λύσασθαι</td>
+                    <td>el soltar (de una vez, para sí)</td>
+                    <td>tomar para sí</td>
+                </tr>
+                <tr>
+                    <td><strong>1 Aor. Pasivo</strong></td>
+                    <td>λυθῆναι</td>
+                    <td>el ser soltado (de una vez)</td>
+                    <td>ser soltado</td>
+                </tr>
+                <tr>
+                    <td><strong>2 Aor. Activo</strong> (λαμβάνω)</td>
+                    <td>λαβεῖν</td>
+                    <td>el tomar (de una vez)</td>
+                    <td>tomar</td>
+                </tr>
+                <tr>
+                    <td><strong>Perf. Activo</strong></td>
+                    <td>λελυκέναι</td>
+                    <td>el haber soltado</td>
+                    <td>haber soltado</td>
+                </tr>
+                <tr>
+                    <td><strong>Perf. M/P</strong></td>
+                    <td>λελύσθαι</td>
+                    <td>el haberse soltado</td>
+                    <td>haberse soltado</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>📝 Notas de formación:</strong></p>
+            <ul>
+                <li>El infinitivo <strong>presente</strong> se construye sobre la <strong>raíz del tiempo presente</strong>.</li>
+                <li>El infinitivo <strong>aoristo</strong> se construye sobre la <strong>raíz del aoristo (sin aumento)</strong>.</li>
+                <li>El infinitivo <strong>perfecto</strong> se forma sobre la <strong>raíz del perfecto</strong>.</li>
+                <li>El infinitivo presente de <strong>εἰμί</strong> es <strong>εἶναι</strong>, "ser". No tiene forma de aoristo.</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Formación</h3>
+            <div class="question">
+                <p>1. ¿En qué terminan la mayoría de los infinitivos griegos?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">ειν</div>
+                    <div class="option" data-correct="false">εσθαι</div>
+                    <div class="option" data-correct="true">αι</div>
+                    <div class="option" data-correct="false">σθαι</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- INFINITIVO SUSTANTIVADO -->
+    <section id="sustantivo" class="content-section">
+        <h2>Infinitivo Sustantivado</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn active" data-target="sustantivo">Infinitivo Sustantivado</button>
+            <button class="sub-nav-btn" data-target="complementario">Infinitivo Complementario</button>
+        </div>
+
+        <p>Porque el infinitivo es un sustantivo verbal, puede realizar cualquier función que un sustantivo pueda (sujeto, objeto directo, etc.). Cuando se usa como sustantivo, usualmente, pero no siempre, va precedido por el <strong>artículo definido</strong>. Esto se llama <strong>infinitivo articular</strong>.</p>
+
+        <h3>Ejemplos bíblicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Función sintáctica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ἐμοὶ <strong>τὸ ζῆν</strong> Χριστὸς καὶ <strong>τὸ ἀποθανεῖν</strong> κέρδος (Fil 1:21)</td>
+                    <td>Para mí, <strong>el vivir</strong> es Cristo, y <strong>el morir</strong> es ganancia</td>
+                    <td><strong>Sujeto</strong> de la oración</td>
+                </tr>
+                <tr>
+                    <td><strong>τὸ ἀγαπᾶν</strong> τὸν πλησίον ὡς ἑαυτὸν (Mr 12:33)</td>
+                    <td><strong>Amar al prójimo</strong> como a uno mismo</td>
+                    <td><strong>Sujeto</strong> u <strong>objeto</strong></td>
+                </tr>
+                <tr>
+                    <td>πρὸς <strong>τὸ θεαθῆναι</strong> αὐτοῖς (Mt 6:1)</td>
+                    <td>para <strong>ser vistos</strong> por ellos</td>
+                    <td><strong>Objeto de preposición</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>💡 Regla de traducción:</strong></p>
+            <p>Tradúcelo usando "<strong>el</strong>" + sustantivo/verbo o "<strong>al</strong>" + infinitivo en español.</p>
+        </div>
+
+        <h3>El "Sujeto" del Infinitivo</h3>
+        <p>Debido a que un infinitivo no es una forma verbal finita, técnicamente <strong>no puede tener un sujeto</strong>. Sin embargo, a menudo hay un sustantivo (o pronombre) en <strong>acusativo</strong> que actúa <strong>como si fuera el sujeto</strong> del infinitivo.</p>
+
+        <div class="note">
+            <p><strong>📖 Ejemplo:</strong></p>
+            <p>οὐκ ἤφιεν <strong>λαλεῖν τὰ δαιμόνια</strong> (Mr 1:34)<br>
+            "No les permitía <strong>hablar a los demonios</strong>."<br>
+            (Literalmente: "No permitía <strong>a los demonios</strong> hablar"). <em>Τὰ δαιμόνια</em> está en acusativo y es el "sujeto" de <em>λαλεῖν</em>.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Infinitivo Sustantivado</h3>
+            <div class="question">
+                <p>1. ¿Qué caso suele tener el "sujeto" de un infinitivo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Nominativo</div>
+                    <div class="option" data-correct="true">Acusativo</div>
+                    <div class="option" data-correct="false">Genitivo</div>
+                    <div class="option" data-correct="false">Dativo</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- INFINITIVO COMPLEMENTARIO -->
+    <section id="complementario" class="content-section">
+        <h2>Infinitivo Complementario</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="sustantivo">Infinitivo Sustantivado</button>
+            <button class="sub-nav-btn active" data-target="complementario">Infinitivo Complementario</button>
+            <button class="sub-nav-btn" data-target="preposicion">Infinitivo con Preposición</button>
+        </div>
+
+        <p>El significado de un verbo finito puede ser incompleto sin información adicional. Un infinitivo se usa a menudo para completar ese significado. Cuando se usa así, se llama "<strong>infinitivo complementario</strong>".</p>
+
+        <h3>Ejemplos bíblicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Verbo principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ἤρξαντο <strong>λαλεῖν</strong> ἑτέραις γλώσσαις (Hch 2:4)</td>
+                    <td>Comenzaron <strong>a hablar</strong> en otras lenguas</td>
+                    <td>ἤρξαντο (comenzaron)</td>
+                </tr>
+                <tr>
+                    <td>δύνασαί με <strong>καθαρίσαι</strong> (Mt 8:2)</td>
+                    <td>Puedes <strong>limpiarme</strong></td>
+                    <td>δύνασαι (puedes)</td>
+                </tr>
+                <tr>
+                    <td>θέλω <strong>ποιῆσαι</strong> (Mt 20:15)</td>
+                    <td>Quiero <strong>hacer</strong></td>
+                    <td>θέλω (quiero)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Verbos que comúnmente llevan infinitivo complementario</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Verbo griego</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>δύναμαι</strong></td>
+                    <td>poder</td>
+                    <td>δύναμαι ἐσθίειν - "Puedo comer"</td>
+                </tr>
+                <tr>
+                    <td><strong>θέλω</strong></td>
+                    <td>querer</td>
+                    <td>θέλω ἐσθίειν - "Quiero comer"</td>
+                </tr>
+                <tr>
+                    <td><strong>μέλλω</strong></td>
+                    <td>estar a punto de</td>
+                    <td>μέλλω ἐσθίειν - "Estoy a punto de comer"</td>
+                </tr>
+                <tr>
+                    <td><strong>ἄρχομαι</strong></td>
+                    <td>comenzar</td>
+                    <td>ἄρχομαι ἐσθίειν - "Comienzo a comer"</td>
+                </tr>
+                <tr>
+                    <td><strong>δεῖ</strong></td>
+                    <td>es necesario</td>
+                    <td>δεῖ ἐσθίειν - "Es necesario comer"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>💡 Regla de traducción:</strong></p>
+            <p>Tradúcelo con la construcción "<strong>a</strong>" + infinitivo o simplemente el infinitivo en español.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Infinitivo Complementario</h3>
+            <div class="question">
+                <p>1. ¿Qué verbo significa "estar a punto de" y lleva infinitivo complementario?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">δύναμαι</div>
+                    <div class="option" data-correct="false">θέλω</div>
+                    <div class="option" data-correct="true">μέλλω</div>
+                    <div class="option" data-correct="false">ἄρχομαι</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- INFINITIVO CON PREPOSICIÓN -->
+    <section id="preposicion" class="content-section">
+        <h2>Infinitivo Articular con Preposición</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="complementario">Infinitivo Complementario</button>
+            <button class="sub-nav-btn active" data-target="preposicion">Infinitivo con Preposición</button>
+            <button class="sub-nav-btn" data-target="propósito">Infinitivo de Propósito</button>
+        </div>
+
+        <p>Cuando el infinitivo articular es precedido por una preposición, hay reglas de traducción específicas. El caso del artículo definido lo determina la preposición. Es la construcción más idiomática. <strong>¡No intentes traducir palabra por palabra!</strong></p>
+
+        <h3>Preposiciones comunes con infinitivo</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Preposición</th>
+                    <th>Caso Artículo</th>
+                    <th>Significado Clave</th>
+                    <th>Ejemplo (τὸ βλέπειν αὐτόν)</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>διά</strong></td>
+                    <td>Acusativo</td>
+                    <td><strong>Porque</strong>, a causa de</td>
+                    <td>διὰ τὸ βλέπειν αὐτόν</td>
+                    <td>Porque él ve</td>
+                </tr>
+                <tr>
+                    <td><strong>εἰς</strong></td>
+                    <td>Acusativo</td>
+                    <td><strong>Para</strong>, a fin de</td>
+                    <td>εἰς τὸ βλέπειν αὐτόν</td>
+                    <td>Para que él vea</td>
+                </tr>
+                <tr>
+                    <td><strong>πρός</strong></td>
+                    <td>Acusativo</td>
+                    <td><strong>Para</strong>, a fin de</td>
+                    <td>πρὸς τὸ βλέπειν αὐτόν</td>
+                    <td>Para que él vea</td>
+                </tr>
+                <tr>
+                    <td><strong>πρό</strong></td>
+                    <td>Genitivo</td>
+                    <td><strong>Antes de</strong></td>
+                    <td>πρὸ τοῦ βλέπειν αὐτόν</td>
+                    <td>Antes de que él vea</td>
+                </tr>
+                <tr>
+                    <td><strong>ἐν</strong></td>
+                    <td>Dativo</td>
+                    <td><strong>Mientras</strong>, cuando</td>
+                    <td>ἐν τῷ βλέπειν αὐτόν</td>
+                    <td>Mientras él ve</td>
+                </tr>
+                <tr>
+                    <td><strong>μετά</strong></td>
+                    <td>Acusativo</td>
+                    <td><strong>Después de</strong></td>
+                    <td>μετὰ τὸ βλέπειν αὐτόν</td>
+                    <td>Después de que él ve</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🔧 Truco de traducción:</strong></p>
+            <p>Usa la frase "<strong>el acto de...</strong>" para entender la construcción y luego ponlo en español correcto.</p>
+            <p>διὰ τὸ βλέπειν αὐτόν → "A causa del acto de ver de él" → "Porque él ve".</p>
+        </div>
+
+        <h3>Ejemplos bíblicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>αὐτὸς δὲ Ἰησοῦς οὐκ ἐπίστευεν αὐτὸν αὐτοῖς <strong>διὰ τὸ αὐτὸν γινώσκειν</strong> πάντας (Jn 2:24)</td>
+                    <td>Pero Jesús no se fiaba de ellos, <strong>porque él conocía</strong> a todos</td>
+                    <td><strong>διά</strong> + acusativo (razón)</td>
+                </tr>
+                <tr>
+                    <td>παραδώσουσιν αὐτὸν τοῖς ἔθνεσιν <strong>εἰς τὸ ἐμπαῖξαι</strong> (Mt 20:19)</td>
+                    <td>Lo entregarán a los gentiles <strong>para que se burlen</strong> de él</td>
+                    <td><strong>εἰς</strong> + acusativo (propósito)</td>
+                </tr>
+                <tr>
+                    <td>οἶδεν γὰρ ὁ πατὴρ ὑμῶν ὧν χρείαν ἔχετε <strong>πρὸ τοῦ ὑμᾶς αἰτῆσαι</strong> αὐτόν (Mt 6:8)</td>
+                    <td>Porque su Padre sabe lo que ustedes necesitan, <strong>antes de que se lo pidan</strong></td>
+                    <td><strong>πρό</strong> + genitivo (tiempo)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Infinitivo con Preposición</h3>
+            <div class="question">
+                <p>1. ¿Qué preposición con infinitivo expresa "antes de"?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">διά</div>
+                    <div class="option" data-correct="false">εἰς</div>
+                    <div class="option" data-correct="true">πρό</div>
+                    <div class="option" data-correct="false">μετά</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- INFINITIVO DE PROPÓSITO -->
+    <section id="propósito" class="content-section">
+        <h2>Infinitivo de Propósito y Resultado</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="preposicion">Infinitivo con Preposición</button>
+            <button class="sub-nav-btn active" data-target="propósito">Infinitivo de Propósito</button>
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+        </div>
+
+        <h3>A. Infinitivo de Propósito</h3>
+        <p>Otra función del infinitivo es expresar <strong>propósito</strong> ("para, a fin de").</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Método</th>
+                    <th>Ejemplo</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Con <strong>εἰς</strong> o <strong>πρός</strong></td>
+                    <td>εἰς τὸ ἀκούειν</td>
+                    <td>para oír</td>
+                </tr>
+                <tr>
+                    <td>Con artículo en <strong>genitivo (τοῦ)</strong></td>
+                    <td>Ἡρῴδης ζητεῖν τὸ παιδίον <strong>τοῦ ἀπολέσαι</strong> αὐτό (Mt 2:13)</td>
+                    <td>Herodes busca al niño <strong>para destruirlo</strong></td>
+                </tr>
+                <tr>
+                    <td>Infinitivo <strong>solo</strong></td>
+                    <td>Μὴ νομίσητε ὅτι ἦλθον <strong>καταλῦσαι</strong> τὸν νόμον (Mt 5:17)</td>
+                    <td>No penséis que he venido <strong>para abolir</strong> la ley</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>B. Infinitivo de Resultado</h3>
+        <p><strong>ὥστε</strong> ("así que, de modo que") puede ir seguido de un infinitivo para indicar el <strong>resultado</strong> de una acción.</p>
+
+        <div class="note">
+            <p><strong>📖 Ejemplo bíblico:</strong></p>
+            <p>ἔπλησαν ἀμφότερα τὰ πλοῖα <strong>ὥστε βυθίζεσθαι αὐτά</strong> (Lc 5:7)<br>
+            "Llenaron ambas barcas, <strong>de modo que se hundían</strong>"</p>
+        </div>
+
+        <div class="note">
+            <p><strong>💡 Regla de traducción:</strong></p>
+            <p>Como no tenemos un uso similar en español, traducirás este infinitivo con un <strong>verbo conjugado</strong> (en indicativo).</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Propósito y Resultado</h3>
+            <div class="question">
+                <p>1. ¿Qué partícula introduce un infinitivo de resultado?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">ἵνα</div>
+                    <div class="option" data-correct="false">ἐάν</div>
+                    <div class="option" data-correct="true">ὥστε</div>
+                    <div class="option" data-correct="false">διά</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- VOCABULARIO -->
+    <section id="vocabulario" class="content-section">
+        <h2>Vocabulario Esencial - Semana 26</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="propósito">Infinitivo de Propósito</button>
+            <button class="sub-nav-btn active" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Palabra griega</th>
+                    <th>Significado</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>δίκαιος, -αία, -αιον</strong></td>
+                    <td>justo, recto, righteous</td>
+                    <td>Adjetivo. Fundamental en teología</td>
+                </tr>
+                <tr>
+                    <td><strong>μέλλω</strong></td>
+                    <td>estar a punto de, estar por</td>
+                    <td>Verbo. Suele llevar infinitivo complementario</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Verbos comunes con infinitivo complementario</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Verbo</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>δύναμαι</strong></td>
+                    <td>poder</td>
+                    <td>δύναμαι ποιεῖν - puedo hacer</td>
+                </tr>
+                <tr>
+                    <td><strong>θέλω</strong></td>
+                    <td>querer</td>
+                    <td>θέλω ἐλθεῖν - quiero ir</td>
+                </tr>
+                <tr>
+                    <td><strong>ἄρχομαι</strong></td>
+                    <td>comenzar</td>
+                    <td>ἄρχομαι λαλεῖν - comienzo a hablar</td>
+                </tr>
+                <tr>
+                    <td><strong>δεῖ</strong></td>
+                    <td>es necesario</td>
+                    <td>δεῖ γενέσθαι - es necesario que suceda</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="vocabulary-section">
+            <h3>Práctica con App</h3>
+            <p>Practica estas palabras con nuestra aplicación de vocabulario:</p>
+            <a href="#" class="app-link">Abrir App de Vocabulario</a>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Vocabulario</h3>
+            <div class="question">
+                <p>1. ¿Qué significa μέλλω?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">poder</div>
+                    <div class="option" data-correct="false">querer</div>
+                    <div class="option" data-correct="true">estar a punto de</div>
+                    <div class="option" data-correct="false">comenzar</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- EJERCICIOS -->
+    <section id="ejercicios" class="content-section">
+        <h2>Ejercicios de Traducción</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn active" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <h3>Ejercicio 1: Identifica el uso del infinitivo</h3>
+        <p>En cada ejemplo, identifica el uso del infinitivo:</p>
+        <ol>
+            <li><strong>βασιλεύειν</strong> (1 Corintios 15:25)<br>
+                <strong>Uso:</strong> Infinitivo Complementario de δεῖ<br>
+                <strong>Traducción:</strong> reinar</li>
+            <li><strong>τὸ ζῆν</strong> (Filipenses 1:21)<br>
+                <strong>Uso:</strong> Infinitivo Sustantivado (Sujeto)<br>
+                <strong>Traducción:</strong> el vivir</li>
+            <li><strong>ἤρξαντο λαλεῖν</strong> (Hechos 2:4)<br>
+                <strong>Uso:</strong> Infinitivo Complementario de ἤρξαντο<br>
+                <strong>Traducción:</strong> comenzaron a hablar</li>
+            <li><strong>εἰς τὸ ἀκούειν</strong> (Lucas 8:10 - contexto similar)<br>
+                <strong>Uso:</strong> Infinitivo con Preposición (Propósito)<br>
+                <strong>Traducción:</strong> para oír</li>
+        </ol>
+
+        <h3>Ejercicio 2: Traduce al español</h3>
+        <p>Traduce las siguientes frases:</p>
+        <ol>
+            <li>οὐδεὶς δύναται δυσὶ κυρίοις <strong>δουλεύειν</strong>.<br>
+                <strong>Traducción:</strong> Nadie puede servir a dos señores.</li>
+            <li>μὴ φοβηθῇς <strong>παραλαβεῖν</strong> Μαρίαν τὴν γυναῖκά σου.<br>
+                <strong>Traducción:</strong> No temas tomar a María por mujer.</li>
+            <li>ἐμοὶ <strong>τὸ ζῆν</strong> Χριστὸς καὶ <strong>τὸ ἀποθανεῖν</strong> κέρδος.<br>
+                <strong>Traducción:</strong> Para mí, el vivir es Cristo, y el morir es ganancia.</li>
+            <li>μετὰ <strong>τὸ ἐγερθῆναί</strong> με προάξω ὑμᾶς εἰς τὴν Γαλιλαίαν.<br>
+                <strong>Traducción:</strong> Después de que sea levantado, iré delante de ustedes a Galilea.</li>
+        </ol>
+
+        <h3>Ejercicio 3: Completa la tabla</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Verbo</th>
+                    <th>Infinitivo Presente Activo</th>
+                    <th>Infinitivo Aoristo Activo</th>
+                    <th>Significado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>λύω</td>
+                    <td>λύειν</td>
+                    <td>λῦσαι</td>
+                    <td>soltar</td>
+                </tr>
+                <tr>
+                    <td>γράφω</td>
+                    <td>γράφειν</td>
+                    <td>γράψαι</td>
+                    <td>escribir</td>
+                </tr>
+                <tr>
+                    <td>ἀκούω</td>
+                    <td>ἀκούειν</td>
+                    <td>ἀκοῦσαι</td>
+                    <td>oír</td>
+                </tr>
+                <tr>
+                    <td>πιστεύω</td>
+                    <td>πιστεύειν</td>
+                    <td>πιστεῦσαι</td>
+                    <td>creer</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🎯 Reflexión final:</strong></p>
+            <p>El modo infinitivo completa nuestro panorama de las formas verbales no personales en griego koiné. Como sustantivo verbal, nos permite captar acciones conceptualizadas como ideas ("el creer", "el haber sido salvados"), expresar propósito, resultado y completar el significado de verbos clave.</p>
+            <p>Dominar sus formas y, sobre todo, sus diversos usos sintácticos, es esencial para una exégesis precisa, permitiéndonos entender no solo lo que se dice, sino también la perspectiva aspectual y la relación entre las ideas en el texto.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario Final</h3>
+            <div class="question">
+                <p>1. ¿Qué preposición con infinitivo expresa "porque"?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">διά</div>
+                    <div class="option" data-correct="false">εἰς</div>
+                    <div class="option" data-correct="false">πρό</div>
+                    <div class="option" data-correct="false">μετά</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Qué verbo significa "es necesario" y lleva infinitivo complementario?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">δύναμαι</div>
+                    <div class="option" data-correct="false">θέλω</div>
+                    <div class="option" data-correct="false">μέλλω</div>
+                    <div class="option" data-correct="true">δεῖ</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2023 Curso de Griego Koiné | Semana 26 - El Infinitivo Griego</p>
+</footer>
+
+<script>
+    // Navegación principal
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase activa de todos los botones
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            // Agregar clase activa al botón clickeado
+            btn.classList.add('active');
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección correspondiente
+            const target = btn.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+
+    // Navegación secundaria
+    document.querySelectorAll('.sub-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase activa de todos los botones en el mismo sub-nav
+            const parent = btn.closest('.sub-nav');
+            parent.querySelectorAll('.sub-nav-btn').forEach(b => b.classList.remove('active'));
+            // Agregar clase activa al botón clickeado
+            btn.classList.add('active');
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección correspondiente
+            const target = btn.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+            // Actualizar navegación principal
+            document.querySelectorAll('.nav-btn').forEach(navBtn => {
+                navBtn.classList.remove('active');
+                if (navBtn.getAttribute('data-target') === target) {
+                    navBtn.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // Menú móvil
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+        document.getElementById('mainNav').classList.toggle('active');
+    });
+
+    // Funcionalidad de los cuestionarios
+    document.querySelectorAll('.check-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const quizContainer = btn.closest('.quiz-container');
+            const questions = quizContainer.querySelectorAll('.question');
+            let correctAnswers = 0;
+            let totalQuestions = 0;
+
+            questions.forEach(question => {
+                totalQuestions++;
+                const options = question.querySelectorAll('.option');
+                let answered = false;
+                let questionCorrect = true;
+
+                options.forEach(option => {
+                    if (option.classList.contains('selected')) {
+                        answered = true;
+                        const isCorrect = option.getAttribute('data-correct') === 'true';
+                        if (isCorrect) {
+                            option.classList.add('correct');
+                        } else {
+                            option.classList.add('incorrect');
+                            questionCorrect = false;
+                        }
+                    }
+                });
+
+                // Mostrar todas las respuestas correctas si no se respondió
+                if (!answered) {
+                    options.forEach(option => {
+                        if (option.getAttribute('data-correct') === 'true') {
+                            option.classList.add('correct');
+                        }
+                    });
+                } else if (questionCorrect) {
+                    correctAnswers++;
+                }
+            });
+
+            const result = quizContainer.querySelector('.result');
+            if (correctAnswers === totalQuestions) {
+                result.textContent = `¡Perfecto! ${correctAnswers}/${totalQuestions} respuestas correctas.`;
+                result.className = 'result correct';
+            } else {
+                result.textContent = `${correctAnswers}/${totalQuestions} respuestas correctas. ¡Sigue practicando!`;
+                result.className = 'result incorrect';
+            }
+        });
+    });
+
+    // Selección de opciones en cuestionarios
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+            const question = option.closest('.question');
+            question.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+        });
+    });
+</script>
+</body>
+</html>
+[file content end]
