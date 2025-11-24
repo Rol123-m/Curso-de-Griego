@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 27 — El Modo Imperativo | Curso Griego Koiné</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{
+            --primary-color:#2c3e50;
+            --secondary-color:#3498db;
+            --accent-color:#e74c3c;
+            --light-color:#ecf0f1;
+            --dark-color:#2c3e50;
+            --transition-speed:0.4s;
+            --card-radius:10px;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
+        body{background:#f5f7fa;color:var(--dark-color);line-height:1.6;}
+        .container{max-width:1200px;margin:0 auto;padding:15px;}
+        header{background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));color:#fff;padding:1rem 0;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1);margin-bottom:1.5rem;position:relative;border-bottom:6px solid rgba(255,255,255,.06)}
+        .header-content{display:flex;flex-direction:column;align-items:center;padding:0 15px}
+        .logo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 4px 8px rgba(0,0,0,.2);margin-bottom:.7rem}
+        header h1{font-size:1.8rem;margin-bottom:.6rem}
+        .mobile-menu-btn{display:none;position:absolute;top:14px;right:14px;background:transparent;border:none;color:white;font-size:1.4rem;cursor:pointer}
+        nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;width:100%;transition:all .3s ease}
+        .nav-btn{background:rgba(255,255,255,.15);border:none;color:white;padding:8px 15px;border-radius:20px;cursor:pointer;transition:all .3s;font-weight:700;font-size:.95rem}
+        .nav-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.25)}
+        .nav-btn.active{background:white;color:var(--primary-color)}
+        .content-section{background:white;border-radius:var(--card-radius);padding:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,.08);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:opacity var(--transition-speed) ease,transform var(--transition-speed) ease;display:none}
+        .content-section.active{opacity:1;transform:translateY(0);display:block}
+        h2{color:var(--primary-color);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--secondary-color);font-size:1.5rem}
+        h3{color:var(--secondary-color);margin:1rem 0 .6rem;font-size:1.1rem}
+        p{margin-bottom:.9rem;font-size:1rem}
+        .sub-nav{display:flex;flex-wrap:wrap;gap:6px;margin:.8rem 0}
+        .sub-nav-btn{background:#e8f4fc;border:1px solid var(--secondary-color);color:var(--primary-color);padding:6px 10px;border-radius:15px;cursor:pointer;font-size:.85rem}
+        .sub-nav-btn.active{background:var(--secondary-color);color:#fff}
+        table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #ddd}
+        th{background:var(--primary-color);color:#fff}
+        tr:nth-child(even){background:#f9f9f9}
+        .quiz-container{background:#f8f9fa;border-radius:8px;padding:1.2rem;margin-top:1rem;border-left:4px solid var(--secondary-color)}
+        .question{margin-bottom:1rem}
+        .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.6rem}
+        .option{padding:8px;background:#fff;border:1px solid #ddd;border-radius:6px;cursor:pointer;transition:all .15s;font-size:.95rem}
+        .option:hover{background:#e8f4fc;border-color:var(--secondary-color)}
+        .option.selected{background:var(--secondary-color);color:#fff;border-color:var(--secondary-color)}
+        .option.correct{background:#2ecc71;color:#fff}
+        .option.incorrect{background:#e74c3c;color:#fff}
+        .check-btn,.next-btn{background:var(--secondary-color);color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;margin-top:8px}
+        .check-btn:hover,.next-btn:hover{background:#2980b9;transform:translateY(-2px)}
+        .result{margin-top:10px;font-weight:700;padding:8px;border-radius:6px;font-size:.95rem}
+        .result.correct{background:#d4edda;color:#155724}
+        .result.incorrect{background:#f8d7da;color:#721c24}
+        .vocabulary-section{background:linear-gradient(135deg,#f8f9fa,#e9ecef);padding:1.1rem;border-radius:8px;margin-top:1rem;text-align:center}
+        .app-link{display:inline-block;background:var(--accent-color);color:white;text-decoration:none;padding:10px 18px;border-radius:25px;font-weight:700;margin-top:.6rem}
+        .note{background:#e8f4fc;border-left:4px solid var(--secondary-color);padding:.8rem;margin:.8rem 0;border-radius:0 6px 6px 0}
+        .highlight{background:#fff8e1;padding:2px 6px;border-radius:3px;font-weight:700}
+        footer{text-align:center;padding:1.2rem 0;color:#7f8c8d;font-size:.85rem}
+        /* responsive */
+        @media(max-width:768px){
+            .mobile-menu-btn{display:block}
+            nav{display:none;flex-direction:column}
+            nav.active{display:flex}
+            .nav-btn{width:100%;border-radius:6px}
+            .options{grid-template-columns:1fr}
+            table{display:block;overflow-x:auto}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        <img class="logo" src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo">
+        <h1>Semana 27 — El Modo Imperativo (ἡ προστακτική)</h1>
+        <nav id="mainNav">
+            <button class="nav-btn active" data-target="intro">Introducción</button>
+            <button class="nav-btn" data-target="exegesis">Perspectiva Exegética</button>
+            <button class="nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="nav-btn" data-target="persona">Persona</button>
+            <button class="nav-btn" data-target="formacion">Formación</button>
+            <button class="nav-btn" data-target="paradigmas">Paradigmas</button>
+            <button class="nav-btn" data-target="usos">Usos del Imperativo</button>
+            <button class="nav-btn" data-target="prohibiciones">Prohibiciones</button>
+            <button class="nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="nav-btn" data-target="ejercicios">Ejercicios</button>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- INTRO -->
+    <section id="intro" class="content-section active">
+        <h2>Introducción: ¿Qué es el Modo Imperativo?</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn active" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn" data-target="exegesis">Perspectiva Exegética</button>
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+        </div>
+
+        <p>El <strong>modo imperativo</strong> se utiliza cuando un verbo expresa un <strong>mandato, una orden, una exhortación o una petición</strong>.</p>
+
+        <div class="note">
+            <p><strong>📝 Ejemplos en español:</strong></p>
+            <ul>
+                <li>"¡<strong>Estudia</strong>!" significa "¡(Tú) estudia!"</li>
+                <li>"¡<strong>Vengan</strong> aquí!"</li>
+                <li>"<strong>Hable</strong> más despacio"</li>
+            </ul>
+        </div>
+
+        <p>En griego, el imperativo tiene un rango de significado más amplio: existe en <strong>segunda y tercera persona</strong>, y el <strong>aspecto</strong> es significativo.</p>
+
+        <div class="note">
+            <p><strong>🎯 Diferencias clave griego vs español:</strong></p>
+            <ul>
+                <li><strong>Segunda persona</strong>: "¡Tú haz!" (βλέπε - "¡Mira!")</li>
+                <li><strong>Tercera persona</strong>: "¡Que él haga!" (βλεπέτω - "¡Que él mire!")</li>
+                <li><strong>Aspecto</strong>: Continuo vs Indefinido</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Mini-quiz: Introducción</h3>
+            <div class="question">
+                <p>1. ¿Qué modo expresa mandatos u órdenes?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Indicativo</div>
+                    <div class="option" data-correct="false">Subjuntivo</div>
+                    <div class="option" data-correct="true">Imperativo</div>
+                    <div class="option" data-correct="false">Optativo</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿En qué personas existe el imperativo en griego?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Solo 2a persona</div>
+                    <div class="option" data-correct="true">2a y 3a persona</div>
+                    <div class="option" data-correct="false">1a, 2a y 3a persona</div>
+                    <div class="option" data-correct="false">Solo 3a persona</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- PERSPECTIVA EXEGÉTICA -->
+    <section id="exegesis" class="content-section">
+        <h2>Perspectiva Exegética: Autoridad y Mandatos</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="intro">Introducción</button>
+            <button class="sub-nav-btn active" data-target="exegesis">Perspectiva Exegética</button>
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+        </div>
+
+        <p>No hay forma más directa en griego de ordenar hacer algo que usando un <strong>imperativo simple</strong>, especialmente el imperativo de <strong>segunda persona</strong>.</p>
+
+        <p>Cuando un mandato se da en una situación específica, quien lo emite se presenta como una <strong>figura de autoridad</strong> y espera que los destinatarios obedezcan exactamente.</p>
+
+        <h3>Ejemplo en 1 Corintios 16:1-4 vs 2 Corintios 8-9</h3>
+
+        <div class="note">
+            <p><strong>📖 1 Corintios 16:1-4 (Alta autoridad):</strong></p>
+            <p>Pablo usa <strong>imperativos directos</strong>:</p>
+            <ul>
+                <li><strong>ποιήσατε</strong> (2a pers. imperativo) - "¡Hagan!"</li>
+                <li><strong>τιθέτω</strong> (3a pers. imperativo) - "¡Que cada uno ponga!"</li>
+            </ul>
+            <p>No da más razón que haber "ordenado" (διέταξα) lo mismo a las iglesias de Galacia.</p>
+        </div>
+
+        <div class="note">
+            <p><strong>📖 2 Corintios 8-9 (Autoridad disminuida):</strong></p>
+            <p>En <strong>39 versículos</strong> solo hay <strong>un imperativo</strong>:</p>
+            <ul>
+                <li><strong>ἐπιτελέσατε</strong> (2 Cor 8:11) - "¡Completen!"</li>
+            </ul>
+            <p>Usa formas más débiles para expresar ideas imperativas.</p>
+        </div>
+
+        <h3>Análisis exegético</h3>
+        <p>Este cambio radical en el enfoque de Pablo sugiere fuertemente que había <strong>perdido gran parte de su autoridad</strong> en Corinto, principalmente por la influencia de sus opositores.</p>
+
+        <div class="note">
+            <p><strong>💡 Aplicación pastoral:</strong></p>
+            <p>"A menos que los pastores inviertan tiempo constantemente en cultivar relaciones sanas con sus feligreses, arriesgan perder su capacidad de motivar a la iglesia a atender a la predicación de la Palabra y a vivir la vida cristiana."</p>
+            <p><em>- Verlyn Verbrugge</em></p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Perspectiva Exegética</h3>
+            <div class="question">
+                <p>1. ¿Qué sugiere el cambio en el uso de imperativos entre 1 y 2 Corintios?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Pablo mejoró su griego</div>
+                    <div class="option" data-correct="true">Pablo perdió autoridad en Corinto</div>
+                    <div class="option" data-correct="false">Los corintios ya entendían mejor</div>
+                    <div class="option" data-correct="false">El tema era menos importante</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- ASPECTO VS TIEMPO -->
+    <section id="aspecto" class="content-section">
+        <h2>Aspecto (No Tiempo) en el Imperativo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="exegesis">Perspectiva Exegética</button>
+            <button class="sub-nav-btn active" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="sub-nav-btn" data-target="persona">Persona</button>
+        </div>
+
+        <p><strong>Aspecto Clave:</strong> Al igual que en el subjuntivo, el verbo en modo imperativo <strong>no indica tiempo</strong> (pasado, presente, futuro). Su único significado es aspectual.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo de Imperativo</th>
+                    <th>Aspecto</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Imperativo Presente</strong></td>
+                    <td>Continuo</td>
+                    <td>Acción continua o repetitiva</td>
+                    <td><strong>βλέπε</strong> - "Sigue mirando"</td>
+                </tr>
+                <tr>
+                    <td><strong>Imperativo Aoristo</strong></td>
+                    <td>Indefinido</td>
+                    <td>Acción indefinida o puntual</td>
+                    <td><strong>βλέψον</strong> - "¡Mira!" (orden puntual)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🔍 Terminología precisa:</strong></p>
+            <p>Es más preciso llamarlos <strong>"imperativo continuo"</strong> e <strong>"imperativo indefinido"</strong>, porque su verdadero significado es aspectual, no temporal.</p>
+        </div>
+
+        <h3>Ejemplos de diferencia aspectual</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Contexto</th>
+                    <th>Imperativo Presente</th>
+                    <th>Imperativo Aoristo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vigilancia continua</td>
+                    <td><strong>βλέπε</strong> - "¡Sigue vigilando!"</td>
+                    <td><strong>βλέψον</strong> - "¡Echa un vistazo!"</td>
+                </tr>
+                <tr>
+                    <td>Ayuda</td>
+                    <td><strong>βοήθει</strong> - "¡Sigue ayudando!"</td>
+                    <td><strong>βοήθησον</strong> - "¡Ayuda!" (en este momento)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Aspecto vs Tiempo</h3>
+            <div class="question">
+                <p>1. ¿Qué significado tiene un verbo en imperativo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Tiempo absoluto</div>
+                    <div class="option" data-correct="true">Aspecto</div>
+                    <div class="option" data-correct="false">Modo</div>
+                    <div class="option" data-correct="false">Voz</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Qué aspecto tiene el imperativo aoristo?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Continuo</div>
+                    <div class="option" data-correct="true">Indefinido</div>
+                    <div class="option" data-correct="false">Perfectivo</div>
+                    <div class="option" data-correct="false">Futuro</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- PERSONA -->
+    <section id="persona" class="content-section">
+        <h2>Persona: Segunda y Tercera Persona</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="aspecto">Aspecto vs Tiempo</button>
+            <button class="sub-nav-btn active" data-target="persona">Persona</button>
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+        </div>
+
+        <p>El griego tiene imperativos de <strong>segunda persona</strong> ("¡Tú haz!") y de <strong>tercera persona</strong> ("¡Que él haga!").</p>
+
+        <h3>Comparación de personas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Ejemplo Griego</th>
+                    <th>Traducción Literal</th>
+                    <th>Traducción Natural</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>2a Singular</strong></td>
+                    <td><strong>βλέπε</strong></td>
+                    <td>"(Tú) ¡Mira!"</td>
+                    <td>"¡Mira!"</td>
+                </tr>
+                <tr>
+                    <td><strong>3a Singular</strong></td>
+                    <td><strong>βλεπέτω</strong></td>
+                    <td>"Que él mire"</td>
+                    <td>"¡Que él mire!" / "Él debe mirar"</td>
+                </tr>
+                <tr>
+                    <td><strong>2a Plural</strong></td>
+                    <td><strong>βλέπετε</strong></td>
+                    <td>"(Vosotros) ¡Mirad!"</td>
+                    <td>"¡Miren!"</td>
+                </tr>
+                <tr>
+                    <td><strong>3a Plural</strong></td>
+                    <td><strong>βλεπέτωσαν</strong></td>
+                    <td>"Que ellos miren"</td>
+                    <td>"¡Que ellos miren!" / "Ellos deben mirar"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>💡 Clave para 3a persona:</strong></p>
+            <p>Para los imperativos de tercera persona, en español usamos palabras como "<strong>que</strong>", "<strong>debe</strong>" o un pronombre ("él", "ellos").</p>
+        </div>
+
+        <h3>Ejemplos bíblicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ἀκολούθει μοι</strong> (Mr 2:14)</td>
+                    <td>"¡Sígueme!"</td>
+                    <td>2a persona singular</td>
+                </tr>
+                <tr>
+                    <td><strong>ἐλθέτω ἡ βασιλεία σου</strong> (Mt 6:10)</td>
+                    <td>"¡Venga tu reino!"</td>
+                    <td>3a persona singular</td>
+                </tr>
+                <tr>
+                    <td><strong>δότε αὐτοῖς ὑμεῖς φαγεῖν</strong> (Mr 6:37)</td>
+                    <td>"¡Vosotros dadles de comer!"</td>
+                    <td>2a persona plural (con énfasis)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Persona del Imperativo</h3>
+            <div class="question">
+                <p>1. ¿Cómo se traduce normalmente un imperativo de 3a persona?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Con "tú" implícito</div>
+                    <div class="option" data-correct="true">Con "que" o "debe"</div>
+                    <div class="option" data-correct="false">Como infinitivo</div>
+                    <div class="option" data-correct="false">Como participio</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- FORMACIÓN -->
+    <section id="formacion" class="content-section">
+        <h2>Formación del Imperativo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="persona">Persona</button>
+            <button class="sub-nav-btn active" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn" data-target="paradigmas">Paradigmas</button>
+        </div>
+
+        <h3>A. Morfemas del Imperativo</h3>
+        <p>La clave está en memorizar las <strong>terminaciones o morfemas</strong> del imperativo. Las formas de <strong>segunda persona singular son irregulares y deben memorizarse</strong>. Las demás son regulares.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona y Número</th>
+                    <th>Voz Activa & Aoristo Pasivo</th>
+                    <th>Voz Media/Pasiva</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2a Pers. Singular</td>
+                    <td><strong>? (Memorizar)</strong></td>
+                    <td><strong>? (Memorizar)</strong></td>
+                </tr>
+                <tr>
+                    <td>3a Pers. Singular</td>
+                    <td><strong>-τω</strong></td>
+                    <td><strong>-σθω</strong></td>
+                </tr>
+                <tr>
+                    <td>2a Pers. Plural</td>
+                    <td><strong>-τε</strong></td>
+                    <td><strong>-σθε</strong></td>
+                </tr>
+                <tr>
+                    <td>3a Pers. Plural</td>
+                    <td><strong>-τωσαν</strong></td>
+                    <td><strong>-σθωσαν</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>💡 Regla mnemotécnica:</strong></p>
+            <p>Piensa en la <strong>-σθ-</strong> de la voz media/pasiva (ej: -σθε) como el reemplazo de la <strong>-τ-</strong> de la voz activa (ej: -τε).</p>
+        </div>
+
+        <h3>B. Formación por tiempos</h3>
+
+        <h4>Presente Activo</h4>
+        <p><strong>Fórmula:</strong> Tema de Presente + Vocal de Conexión + Morfema Imperativo</p>
+        <p>λυ + ε + τω → <strong>λυέτω</strong></p>
+
+        <h4>1er Aoristo Activo</h4>
+        <p><strong>Fórmula:</strong> Tema de Aoristo (sin aumento) + Formativo Temporal + Morfema Imperativo</p>
+        <p>λυ + σα + τω → <strong>λυσάτω</strong></p>
+
+        <div class="note">
+            <p><strong>⚠️ ¡Atención! Formas Confusas:</strong></p>
+            <ul>
+                <li>La <strong>2a persona plural</strong> del imperativo tiene las mismas terminaciones que el indicativo</li>
+                <li><strong>λύου</strong> (2a sg medio/pasivo) se parece al imperfecto indicativo</li>
+                <li><strong>λῦσαι</strong> (2a sg aoristo medio) se parece al infinitivo aoristo activo</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Formación</h3>
+            <div class="question">
+                <p>1. ¿Qué formas del imperativo deben memorizarse especialmente?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Todas las formas</div>
+                    <div class="option" data-correct="true">2a persona singular</div>
+                    <div class="option" data-correct="false">3a persona plural</div>
+                    <div class="option" data-correct="false">Solo activas</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- PARADIGMAS -->
+    <section id="paradigmas" class="content-section">
+        <h2>Paradigmas Completos del Imperativo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="formacion">Formación</button>
+            <button class="sub-nav-btn active" data-target="paradigmas">Paradigmas</button>
+            <button class="sub-nav-btn" data-target="usos">Usos del Imperativo</button>
+        </div>
+
+        <h3>Paradigma Completo (Verbo λύω)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiempo/Voz</th>
+                    <th>2a Singular</th>
+                    <th>3a Singular</th>
+                    <th>2a Plural</th>
+                    <th>3a Plural</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pres. Activo</strong></td>
+                    <td><strong>λῦε</strong></td>
+                    <td>λυέτω</td>
+                    <td>λύετε</td>
+                    <td>λυέτωσαν</td>
+                    <td>(Tú) ¡Suelta!</td>
+                </tr>
+                <tr>
+                    <td><strong>1er Aor. Activo</strong></td>
+                    <td><strong>λῦσον</strong></td>
+                    <td>λυσάτω</td>
+                    <td>λύσατε</td>
+                    <td>λυσάτωσαν</td>
+                    <td>(Tú) ¡Suelta!</td>
+                </tr>
+                <tr>
+                    <td><strong>Pres. Medio</strong></td>
+                    <td><strong>λύου</strong></td>
+                    <td>λυέσθω</td>
+                    <td>λύεσθε</td>
+                    <td>λυέσθωσαν</td>
+                    <td>¡Suélta(te)!</td>
+                </tr>
+                <tr>
+                    <td><strong>1er Aor. Medio</strong></td>
+                    <td><strong>λῦσαι</strong></td>
+                    <td>λυσάσθω</td>
+                    <td>λύσασθε</td>
+                    <td>λυσάσθωσαν</td>
+                    <td>¡Suélta(te)!</td>
+                </tr>
+                <tr>
+                    <td><strong>Pres. Pasivo</strong></td>
+                    <td><strong>λύου</strong></td>
+                    <td>λυέσθω</td>
+                    <td>λύεσθε</td>
+                    <td>λυέσθωσαν</td>
+                    <td>¡Sé soltado!</td>
+                </tr>
+                <tr>
+                    <td><strong>1er Aor. Pasivo</strong></td>
+                    <td><strong>λύθητι</strong></td>
+                    <td>λυθήτω</td>
+                    <td>λύθητε</td>
+                    <td>λυθήτωσαν</td>
+                    <td>¡Sé soltado!</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Segundo Aoristo (Ejemplos)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Voz</th>
+                    <th>2a Singular</th>
+                    <th>3a Singular</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Activo</strong></td>
+                    <td><strong>λάβε</strong></td>
+                    <td>λαβέτω</td>
+                    <td>¡Toma! / ¡Que tome!</td>
+                </tr>
+                <tr>
+                    <td><strong>Medio</strong></td>
+                    <td><strong>γενοῦ</strong></td>
+                    <td>γενέσθω</td>
+                    <td>¡Llega a ser! / ¡Que llegue a ser!</td>
+                </tr>
+                <tr>
+                    <td><strong>Pasivo</strong></td>
+                    <td><strong>γράφητι</strong></td>
+                    <td>γραφήτω</td>
+                    <td>¡Sé escrito! / ¡Que sea escrito!</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Verbo εἰμί (ser)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Forma</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2a sg</td>
+                    <td><strong>ἴσθι</strong></td>
+                    <td>¡Sé!</td>
+                </tr>
+                <tr>
+                    <td>3a sg</td>
+                    <td><strong>ἔστω</strong></td>
+                    <td>¡Que sea!</td>
+                </tr>
+                <tr>
+                    <td>2a pl</td>
+                    <td><strong>ἔστε</strong></td>
+                    <td>¡Sed!</td>
+                </tr>
+                <tr>
+                    <td>3a pl</td>
+                    <td><strong>ἔστωσαν</strong></td>
+                    <td>¡Que sean!</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Paradigmas</h3>
+            <div class="question">
+                <p>1. ¿Cuál es la 2a persona singular del presente activo de λύω?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">λῦε</div>
+                    <div class="option" data-correct="false">λύετε</div>
+                    <div class="option" data-correct="false">λῦσον</div>
+                    <div class="option" data-correct="false">λύου</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- USOS -->
+    <section id="usos" class="content-section">
+        <h2>Usos del Imperativo</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="paradigmas">Paradigmas</button>
+            <button class="sub-nav-btn active" data-target="usos">Usos del Imperativo</button>
+            <button class="sub-nav-btn" data-target="prohibiciones">Prohibiciones</button>
+        </div>
+
+        <h3>A. Mandato Directo</h3>
+        <p>Es el uso principal: ordenar o mandar directamente.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ἀκολούθει μοι</strong> (Mr 2:14)</td>
+                    <td>"¡Sígueme!"</td>
+                    <td>Mandato directo (2a sg)</td>
+                </tr>
+                <tr>
+                    <td><strong>δότε αὐτοῖς ὑμεῖς φαγεῖν</strong> (Mr 6:37)</td>
+                    <td>"¡Vosotros dadles de comer!"</td>
+                    <td>Mandato enfático (2a pl)</td>
+                </tr>
+                <tr>
+                    <td><strong>ἐλθέτω ἡ βασιλεία σου</strong> (Mt 6:10)</td>
+                    <td>"¡Venga tu reino!"</td>
+                    <td>Mandato (3a sg)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>B. Petición o Ruego (Imperativo de Súplica)</h3>
+        <p>Se usa para rogar o suplicar, especialmente cuando se dirige a Dios.</p>
+
+        <div class="note">
+            <p><strong>💡 Importante:</strong></p>
+            <p>No se "ordena" a Dios, se le "suplica". En español y griego usamos el imperativo para ruegos piadosos.</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Texto griego</th>
+                    <th>Traducción</th>
+                    <th>Análisis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>κύριε, δίδαξον ἡμᾶς προσεύχεσθαι</strong> (Lc 11:1)</td>
+                    <td>"Señor, <strong>enséñanos</strong> a orar."</td>
+                    <td>Ruego o súplica</td>
+                </tr>
+                <tr>
+                    <td><strong>ἐλθέτω ἡ βασιλεία σου, γενηθήτω τὸ θέλημά σου</strong> (Mt 6:10)</td>
+                    <td>"<strong>Venga</strong> tu reino, <strong>hágase</strong> tu voluntad."</td>
+                    <td>Ruego dirigido a Dios</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>📖 Nota exegética:</strong></p>
+            <p>En Mateo 6:10, la traducción tradicional "Venga tu reino" es un <strong>imperativo dirigido a Dios</strong>. El creyente ruega a Dios que envíe su reino.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Usos del Imperativo</h3>
+            <div class="question">
+                <p>1. ¿Qué uso tiene el imperativo en "κύριε, δίδαξον ἡμᾶς"?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Mandato directo</div>
+                    <div class="option" data-correct="true">Petición o ruego</div>
+                    <div class="option" data-correct="false">Prohibición</div>
+                    <div class="option" data-correct="false">Condición</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- PROHIBICIONES -->
+    <section id="prohibiciones" class="content-section">
+        <h2>Prohibiciones y Negaciones</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="usos">Usos del Imperativo</button>
+            <button class="sub-nav-btn active" data-target="prohibiciones">Prohibiciones</button>
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+        </div>
+
+        <p>En griego hay <strong>varias formas de decir "¡No!"</strong>, cada una con su propio matiz.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Construcción</th>
+                    <th>Uso y Matiz</th>
+                    <th>Ejemplo y Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. οὐ + Futuro Indicativo</strong></td>
+                    <td>Negación simple de una acción futura</td>
+                    <td><strong>οὐ μοιχεύσεις</strong> (Rom 13:9)<br>"No cometerás adulterio."</td>
+                </tr>
+                <tr>
+                    <td><strong>2. μή + Imperativo Presente</strong></td>
+                    <td>Prohíbe una <strong>acción continua</strong> en curso</td>
+                    <td><strong>μὴ μεριμνᾶτε</strong> τῇ ψυχῇ ὑμῶν (Mt 6:25)<br>"<strong>No se preocupen</strong> por su vida."</td>
+                </tr>
+                <tr>
+                    <td><strong>3. μή + Imperativo Aoristo</strong></td>
+                    <td>Prohíbe una <strong>acción indefinida o puntual</strong></td>
+                    <td><strong>μὴ γνώτω</strong> ἡ ἀριστερά σου... (Mt 6:3)<br>"<strong>No se enter</strong> tu mano izquierda..."</td>
+                </tr>
+                <tr>
+                    <td><strong>4. μή + Subjuntivo Aoristo</strong></td>
+                    <td>Negación más fuerte y general</td>
+                    <td><strong>μὴ νομίσητε</strong>... (Mt 5:17)<br>"<strong>No piensen</strong> que he venido..."</td>
+                </tr>
+                <tr>
+                    <td><strong>5. οὐ μή + Subjuntivo Aoristo</strong></td>
+                    <td><strong>Negación enfática del futuro</strong><br>"¡De ninguna manera!"</td>
+                    <td><strong>οὐ μὴ παρέλθωσιν</strong> (Mt 24:35)<br>"<strong>De ninguna manera pasarán</strong>."</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Investigación Reciente sobre Prohibiciones</h3>
+
+        <div class="note">
+            <p><strong>🔍 Tradicional vs Actual:</strong></p>
+            <p><strong>Tradicional:</strong><br>
+            • μή + Presente = "¡Deja de hacer eso!"<br>
+            • μή + Aoristo = "¡No empieces a hacer eso!"</p>
+            <p><strong>Actual (más preciso):</strong><br>
+            • μή + Presente = Prohíbe acción continua (general)<br>
+            • μή + Aoristo = Prohíbe acción indefinida (específica)</p>
+        </div>
+
+        <h4>Ejemplo exegético: 1 Timoteo 4:7</h4>
+        <p><strong>παραιτοῦ</strong> (presente imperativo) - "rechaza" los mitos</p>
+
+        <div class="note">
+            <p><strong>💡 Interpretación:</strong></p>
+            <p>Si el presente imperativo significara "¡Deja de participar!", implicaría que Timoteo estaba involucrado en mitos. Pero si es un "principio general continuo" ("Mantente alejado de los mitos"), no afirma ni niega su participación actual.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Prohibiciones</h3>
+            <div class="question">
+                <p>1. ¿Qué construcción es la negación más enfática?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">μή + presente imperativo</div>
+                    <div class="option" data-correct="false">μή + aoristo imperativo</div>
+                    <div class="option" data-correct="true">οὐ μή + aoristo subjuntivo</div>
+                    <div class="option" data-correct="false">οὐ + futuro indicativo</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- VOCABULARIO -->
+    <section id="vocabulario" class="content-section">
+        <h2>Vocabulario Esencial - Semana 27</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="prohibiciones">Prohibiciones</button>
+            <button class="sub-nav-btn active" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Palabra griega</th>
+                    <th>Transliteración</th>
+                    <th>Significado</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ἀπόλλυμι</strong></td>
+                    <td>apóllumi</td>
+                    <td>Destruir, matar (act.);<br>perderse, morir (med./pas.)</td>
+                    <td>Verbo compuesto. La α- inicial no aumenta, pero la -ο- sí (ej: ἀπώλλυον)</td>
+                </tr>
+                <tr>
+                    <td><strong>ἀπολύω</strong></td>
+                    <td>apolýō</td>
+                    <td>Soltar, liberar</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong>εἴτε</strong></td>
+                    <td>eíte</td>
+                    <td>Si, ya sea, o (partícula)</td>
+                    <td>Usada para introducir alternativas</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Palabras clave para prohibiciones</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partícula</th>
+                    <th>Uso</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>μή</strong></td>
+                    <td>Niega subjuntivo, imperativo e infinitivo</td>
+                    <td>μὴ φοβοῦ - "No temas"</td>
+                </tr>
+                <tr>
+                    <td><strong>οὐ</strong></td>
+                    <td>Niega indicativo</td>
+                    <td>οὐκ οἶδα - "No sé"</td>
+                </tr>
+                <tr>
+                    <td><strong>οὐ μή</strong></td>
+                    <td>Negación enfática del futuro</td>
+                    <td>οὐ μὴ ἀπόλωνται - "De ninguna manera perecerán"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="vocabulary-section">
+            <h3>Práctica con App</h3>
+            <p>Practica estas palabras con nuestra aplicación de vocabulario:</p>
+            <a href="#" class="app-link">Abrir App de Vocabulario</a>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario: Vocabulario</h3>
+            <div class="question">
+                <p>1. ¿Qué significa ἀπόλλυμι en voz media/pasiva?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Destruir</div>
+                    <div class="option" data-correct="true">Perderse, morir</div>
+                    <div class="option" data-correct="false">Liberar</div>
+                    <div class="option" data-correct="false">Creer</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+    <!-- EJERCICIOS -->
+    <section id="ejercicios" class="content-section">
+        <h2>Ejercicios de Traducción</h2>
+        <div class="sub-nav">
+            <button class="sub-nav-btn" data-target="vocabulario">Vocabulario</button>
+            <button class="sub-nav-btn active" data-target="ejercicios">Ejercicios</button>
+        </div>
+
+        <h3>Ejercicio 1: Identifica y traduce imperativos</h3>
+        <p>En cada ejemplo, identifica el imperativo y tradúcelo:</p>
+        <ol>
+            <li><strong>πορεύεσθε</strong> (Mateo 10:6)<br>
+                <strong>Análisis:</strong> Presente, activo, 2a persona plural<br>
+                <strong>Traducción:</strong> "Id / Vayan"</li>
+            <li><strong>γίνου</strong> (1 Timoteo 4:12 - de γίνομαι)<br>
+                <strong>Análisis:</strong> 2do aoristo, medio, 2a persona singular<br>
+                <strong>Traducción:</strong> "Sé / Llega a ser"</li>
+            <li><strong>μὴ κρίνετε</strong> (Mateo 7:1)<br>
+                <strong>Análisis:</strong> Presente, activo, 2a persona plural con μή<br>
+                <strong>Traducción:</strong> "No juzguen (dejen de juzgar)"</li>
+        </ol>
+
+        <h3>Ejercicio 2: Traduce al español</h3>
+        <p>Traduce las siguientes frases:</p>
+        <ol>
+            <li><strong>ἀκολούθει μοι</strong>.<br>
+                <strong>Traducción:</strong> "¡Sígueme!"</li>
+            <li><strong>κύριε, δίδαξον ἡμᾶς προσεύχεσθαι</strong>.<br>
+                <strong>Traducción:</strong> "Señor, enséñanos a orar."</li>
+            <li><strong>ἐλθέτω ἡ βασιλεία σου</strong>.<br>
+                <strong>Traducción:</strong> "¡Venga tu reino!"</li>
+            <li><strong>μὴ φοβοῦ</strong>.<br>
+                <strong>Traducción:</strong> "No temas."</li>
+        </ol>
+
+        <h3>Ejercicio 3: Completa la tabla</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Verbo</th>
+                    <th>Imperativo Pres. Activo 2sg</th>
+                    <th>Imperativo Aor. Activo 2sg</th>
+                    <th>Significado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>λύω</td>
+                    <td>λῦε</td>
+                    <td>λῦσον</td>
+                    <td>suelta</td>
+                </tr>
+                <tr>
+                    <td>γράφω</td>
+                    <td>γράφε</td>
+                    <td>γράψον</td>
+                    <td>escribe</td>
+                </tr>
+                <tr>
+                    <td>ἀκούω</td>
+                    <td>ἄκουε</td>
+                    <td>ἄκουσον</td>
+                    <td>oye</td>
+                </tr>
+                <tr>
+                    <td>πιστεύω</td>
+                    <td>πίστευε</td>
+                    <td>πίστευσον</td>
+                    <td>cree</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><strong>🎯 Reflexión final:</strong></p>
+            <p>El modo imperativo nos permite entender cómo se ejerce la autoridad, se hacen peticiones y se establecen límites en el Nuevo Testamento. La distinción entre aspecto continuo e indefinido, así como entre segunda y tercera persona, enriquece nuestra comprensión de los mandamientos bíblicos y las exhortaciones apostólicas.</p>
+        </div>
+
+        <div class="quiz-container">
+            <h3>Cuestionario Final</h3>
+            <div class="question">
+                <p>1. ¿Qué construcción prohíbe una acción continua?</p>
+                <div class="options">
+                    <div class="option" data-correct="true">μή + presente imperativo</div>
+                    <div class="option" data-correct="false">μή + aoristo imperativo</div>
+                    <div class="option" data-correct="false">οὐ + futuro indicativo</div>
+                    <div class="option" data-correct="false">οὐ μή + subjuntivo</div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. ¿Cómo se traduce un imperativo de 3a persona singular?</p>
+                <div class="options">
+                    <div class="option" data-correct="false">Con "tú" implícito</div>
+                    <div class="option" data-correct="true">Con "que" o "debe"</div>
+                    <div class="option" data-correct="false">Como participio</div>
+                    <div class="option" data-correct="false">Como infinitivo</div>
+                </div>
+            </div>
+            <button class="check-btn">Verificar Respuestas</button>
+            <div class="result"></div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2023 Curso de Griego Koiné | Semana 27 - El Modo Imperativo</p>
+</footer>
+
+<script>
+    // Navegación principal
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase activa de todos los botones
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            // Agregar clase activa al botón clickeado
+            btn.classList.add('active');
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección correspondiente
+            const target = btn.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+
+    // Navegación secundaria
+    document.querySelectorAll('.sub-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover clase activa de todos los botones en el mismo sub-nav
+            const parent = btn.closest('.sub-nav');
+            parent.querySelectorAll('.sub-nav-btn').forEach(b => b.classList.remove('active'));
+            // Agregar clase activa al botón clickeado
+            btn.classList.add('active');
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección correspondiente
+            const target = btn.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+            // Actualizar navegación principal
+            document.querySelectorAll('.nav-btn').forEach(navBtn => {
+                navBtn.classList.remove('active');
+                if (navBtn.getAttribute('data-target') === target) {
+                    navBtn.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // Menú móvil
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+        document.getElementById('mainNav').classList.toggle('active');
+    });
+
+    // Funcionalidad de los cuestionarios
+    document.querySelectorAll('.check-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const quizContainer = btn.closest('.quiz-container');
+            const questions = quizContainer.querySelectorAll('.question');
+            let correctAnswers = 0;
+            let totalQuestions = 0;
+
+            questions.forEach(question => {
+                totalQuestions++;
+                const options = question.querySelectorAll('.option');
+                let answered = false;
+                let questionCorrect = true;
+
+                options.forEach(option => {
+                    if (option.classList.contains('selected')) {
+                        answered = true;
+                        const isCorrect = option.getAttribute('data-correct') === 'true';
+                        if (isCorrect) {
+                            option.classList.add('correct');
+                        } else {
+                            option.classList.add('incorrect');
+                            questionCorrect = false;
+                        }
+                    }
+                });
+
+                // Mostrar todas las respuestas correctas si no se respondió
+                if (!answered) {
+                    options.forEach(option => {
+                        if (option.getAttribute('data-correct') === 'true') {
+                            option.classList.add('correct');
+                        }
+                    });
+                } else if (questionCorrect) {
+                    correctAnswers++;
+                }
+            });
+
+            const result = quizContainer.querySelector('.result');
+            if (correctAnswers === totalQuestions) {
+                result.textContent = `¡Perfecto! ${correctAnswers}/${totalQuestions} respuestas correctas.`;
+                result.className = 'result correct';
+            } else {
+                result.textContent = `${correctAnswers}/${totalQuestions} respuestas correctas. ¡Sigue practicando!`;
+                result.className = 'result incorrect';
+            }
+        });
+    });
+
+    // Selección de opciones en cuestionarios
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+            const question = option.closest('.question');
+            question.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+        });
+    });
+</script>
+</body>
+</html>
